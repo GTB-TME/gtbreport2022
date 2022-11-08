@@ -1,0 +1,487 @@
+country,iso2,iso3,year,report.frequency,report.coverage,m.01,m.02,m.03,m.04,m.05,m.06,m.07,m.08,m.09,m.10,m.11,m.12,q.1,q.2,q.3,q.4,gaps.na,remarks
+Angola,AO,AGO,2020,71,35,,,,,,,,,,,,,18164,16650,16101,14342,0,"Jusqu'á ce jour la fréquence de notification de cas de Tuberculose est trimestrielle.  Le total accumulé  de nouveaux cas de tuberculose et de rechute (toutes formes confondues) qui ont été notifiés  pendant la période de janvier à juin 2020 est de  30. 231 dont 93 cas de Tuberculose pharmaco-résistante repris en deux trimestres, au premier trimestre 17.213 dont 59 TBMDR et au deuxième trimestre 13.018 dont 34 TBMDR.
+Données partielles 14 provinces sur 18 et seront actualisées "
+Democratic Republic of the Congo,CD,COD,2020,71,35,,,,,,,,,,,,,49504,48381,50753,50854,0,"la complétude de rapportage n'est pas totale,  nous allons modifier ses données avec l'évolution de la complétude mais ses données concernent (incluent) toutes les unités du pays"
+Central African Republic,CF,CAF,2020,70,,,,,,,,,,,,,,,,,,,
+Congo,CG,COG,2020,70,,,,,,,,,,,,,,,,,,,
+Ethiopia,ET,ETH,2020,71,35,,,,,,,,,,,,,28879,22122,24832,26334,1,Note that Report for the quarter Oct-Dec 2020 not included from the Northern region(Tigray). We have expected 1500-1800 cases per quarter from this region.
+Gabon,GA,GAB,2020,70,,,,,,,,,,,,,,,,,,,
+Kenya,KE,KEN,2020,70,34,7543,6796,7478,5271,5103,5752,6013,5787,6023,6057,5578,3722,,,,,0,The data provided is based on the date treatment was started as opposed to the date of notfication to the national program. The data is from all the expected reporting TB control zones
+Liberia,LR,LBR,2020,70,,,,,,,,,,,,,,,,,,,
+Lesotho,LS,LSO,2020,71,34,,,,,,,,,,,,,1526,917,855,1273,1,The data is reported quarterly
+Mozambique,MZ,MOZ,2020,70,34,6113,7786,11145,7184,7201,7593,7573,8551,8725,7964,9052,8204,,,,,1,
+Namibia,NA,NAM,2020,70,34,698,649,645,522,459,524,475,427,543,586,499,510,,,,,1,"The data provided above is for TB All forms for all reporting units in Namibia.  
+
+Kindly note that, Data for 2021 is yet to be verified in at the end of the Jan-Mar 2021 quarter, therefore not provided above."
+Nigeria,NG,NGA,2020,71,34,,,,,,,,,,,,,32289,26755,35444,41150,0,"1. The above figure is for the new and relapse only. The quarterly breakdown for All forms of TB Cases notified are as follows: Q1-33,132; Q2-27,363; Q3-36,194 and Q4-41,884.
+
+2. The country is currently cleaning the data from the states and the figure may slightly change."
+Sierra Leone,SL,SLE,2020,70,,1654,1548,1424,756,782,1155,1275,1408,1507,1483,1427,1371,,,,,1,
+United Republic of Tanzania,TZ,TZA,2020,70,,6583,7243,8755,6292,6295,7606,6940,7340,8067,6346,6643,6576,,,,,0,January 2021 data entry is going on.
+Uganda,UG,UGA,2020,71,34,,,,,,,,,,,,,16399,12871,15798,15694,1,Data for 2021 will only be available after April 28
+South Africa,ZA,ZAF,2020,71,34,,,,,,,,,,,,,63051,38534,41165,48490,0,Revised data provided by Sicelo Dlamini by email 2021-09-07.
+Zambia,ZM,ZMB,2020,70,,3073,3248,3324,2646,2540,2631,3039,3555,3861,3997,4025,4089,,,,,0,
+Zimbabwe,ZW,ZWE,2020,71,,,,,,,,,,,,,,4992,3365,3296,,1,"The programme collects the information on quarterly basis. We are only able to provide quarterly data.
+1 st Quarter 2020 = 4891 New and relapsed cases ( Bacteriologically Confirmed, pulmonary clinically diagnosed and extra-pulmonary) (Total notifications for all  forms of TB = 4988)
+
+2nd Quarter 2020  - 3075  New and relapsed cases ( Bacteriologically Confirmed, pulmonary clinically diagnosed and extra-pulmonary) (total notifications for all  forms of TB = 3138)
+"
+Antigua and Barbuda,AG,ATG,2020,71,34,,,,,,,,,,,,,0,1,1,,0,
+Argentina,AR,ARG,2020,70,34,1215,908,857,774,762,731,704,825,748,774,756,714,,,,,0,
+Aruba,AW,ABW,2020,70,,,,,,,,,,,,,,,,,,,
+Barbados,BB,BRB,2020,70,,,,,,,,,,,,,,,,,,,
+Bolivia (Plurinational State of),BO,BOL,2020,71,35,,,,,,,,,,,,,1787,1035,1088,2018,0,"No se cuenta con información de algunos Establecimientos de Salud, en los que falleció el personal de salud responsable del envió de la información de Tuberculosis."
+Brazil,BR,BRA,2020,70,34,8359,7027,8221,5910,5430,6117,6755,6634,7033,6778,5879,4495,,,,,1,"Brazil does not use an online information system for TB, so, the decrease in the total number of TB cases (new and relapses) notified in the latest months of 2020 is virtual, and due to the outdated information system. "
+Bahamas,BS,BHS,2020,71,34,,,,,,,,,,,,,11,5,10,6,0,
+Belize,BZ,BLZ,2020,70,,7,9,12,10,6,10,5,3,5,2,9,3,,,,,0,
+Canada,CA,CAN,2020,70,,,,,,,,,,,,,,,,,,,
+Chile,CL,CHL,2020,70,34,254,236,221,156,125,151,151,202,217,215,226,197,,,,,1,"
+data from 2021 is not available yet"
+Colombia,CO,COL,2020,70,,1108,1222,1240,912,960,810,796,805,975,1062,969,878,,,,,0,"Se están realizando los respectivos seguimientos para garantizar que se efectúe el reporte completo de casos durante la actual emergencia sanitaria. No obstante se evidencia disminución en la detección de los casos en razó a la emergencia sanitaria. Los datos reportados deben observarse como preliminares con corte 05 de febrero de 2021
+
+"
+Costa Rica,CR,CRI,2020,70,35,36,40,25,32,38,30,30,28,20,20,22,14,,,,,1,Falta ingresar o revisar algunos casos de Centros penales
+Cuba,CU,CUB,2020,70,,49,58,41,56,31,49,70,33,57,43,45,48,,,,,0,"Todas estas cifras son preliminares,aun con probabilidades de modificacion "
+Curaçao,CW,CUW,2020,70,,,,,,,,,,,,,,,,,,,
+Dominica,DM,DMA,2020,70,,5,8,3,1,3,0,1,0,1,0,0,0,,,,,0,
+Dominican Republic,DO,DOM,2020,70,34,327,284,200,95,161,179,168,155,226,219,184,132,,,,,0,
+Ecuador,EC,ECU,2020,71,34,,,,,,,,,,,,,1599,818,1386,1465,0,"casos nuevos y recaída, tb todas las formas año 2020 (Ecuador)"
+Grenada,GD,GRD,2020,70,34,1,0,0,0,0,0,0,0,0,0,0,0,,,,,0,
+Guatemala,GT,GTM,2020,71,34,,,,,,,,,,,,,898,561,566,684,0,
+Guyana,GY,GUY,2020,70,34,53,33,34,9,24,30,24,27,29,40,19,29,,,,,0,Months January and February are incomplete since reports are done quarterly and request for information are still coming in.
+Honduras,HN,HND,2020,70,34,220,195,169,110,123,144,111,121,155,206,147,153,,,,,1," Estos son datos relimares 2020 casos TB Sensible (nuevos y recaídas).  El flujo de la información actualmente es trimestral, pero a través de la Unidad de vigilancia de la salud la obtenemos de forma mensual. "
+Haiti,HT,HTI,2020,71,,,,,,,,,,,,,,3007,1997,3019,,0,"Ces informations sont tirées directement des rapports trimestriels des départements sanitaires : Mars pour janvier-mars, juin pour avril-juin et septembre pour juillet-septembre
+
+"
+Jamaica,JM,JAM,2020,71,34,,,,,,,,,,,,,10,20,16,8,0,These are preliminary data
+Saint Kitts and Nevis,KN,KNA,2020,71,34,,,,,,,,,,,,,1,0,1,0,1,
+Saint Lucia,LC,LCA,2020,70,34,1,0,1,0,0,1,3,0,0,1,1,1,,,,,0,These are the figures to date as of 26/2/2021.  Please note the figures for January and February 2021 may be subject to change if there is late reporting.
+Mexico,MX,MEX,2020,70,34,2178,2013,2071,1387,1118,1170,1228,1364,1464,1607,1338,1222,,,,,0,"Datos preliminares de 2020. base 31/01/21.
+Incluye todas las unidades del país."
+Nicaragua,NI,NIC,2020,70,34,183,201,195,142,122,109,134,146,158,208,165,123,,,,,1,Febrero tendremos información primeros 10 días de marzo
+Panama,PA,PAN,2020,70,,153,130,143,80,91,85,88,82,139,109,89,67,,,,,0,Se solicito información del  mes de enero y febrero 2021 
+Peru,PE,PER,2020,70,34,2880,2597,2213,1168,1127,1391,1517,1730,2060,2317,2259,2107,,,,,0,
+Puerto Rico,PR,PRI,2020,71,34,,,,,,,,,,,,,5,8,8,6,0,
+Paraguay,PY,PRY,2020,70,34,212,245,186,137,167,209,197,189,178,261,233,173,,,,,0,Datos preliminares
+Suriname,SR,SUR,2020,70,34,12,8,5,8,16,3,7,14,14,10,8,3,,,,,1,
+El Salvador,SV,SLV,2020,70,34,,,787,,,368,,,362,,,520,,,,,0,"Los casos de tuberculosis nuevos más recaídas están reportados por TRIMESTRES para el año 2020, los cuales aún son datos preliminares para los períodos reportados."
+Sint Maarten (Dutch part),SX,SXM,2020,70,,0,0,0,0,0,0,0,0,0,0,0,0,,,,,0,
+Trinidad and Tobago,TT,TTO,2020,70,34,14,16,9,20,11,28,25,23,18,30,14,15,,,,,1,Previous lost to follow up patients not included. Proportion of clinically diagnosed TB cases increased due to non-availability of nucleic acid amplification tests (Xpert MTB-Rif) since middle of 2020. (Cartridges were not available and the machine has been reallocated to test COVID-19 samples). 
+United States of America,US,USA,2020,70,34,507,600,625,519,510,602,589,539,552,642,539,939,,,,,1,"Data for 2020 is provisional and subject to change.  Data for 2021 is not available for all areas and is unreliable.  As a result, this information is not included."
+Uruguay,UY,URY,2020,70,34,106,77,86,43,57,61,101,95,75,79,95,91,,,,,0,Las cifras corresponden al 23/2/2021
+Saint Vincent and the Grenadines,VC,VCT,2020,70,34,0,0,1,1,1,1,3,0,0,2,1,3,,,,,0,
+Venezuela (Bolivarian Republic of),VE,VEN,2020,70,34,971,879,793,506,629,893,737,649,672,847,819,918,,,,,0,"Durante el 2020 todas las unidades notificaron los datos pueden variar debido al retraso en el envio de la informacion, para el 2021 solo 12 unidades han notificado informacion hasta la fecha."
+Pakistan,PK,PAK,2020,71,35,,,,,,,,,,,,,78955,49922,74170,70000,0,Q4 data is not received and is projected.
+Andorra,AD,AND,2020,70,34,0,1,0,0,0,0,1,0,0,0,0,0,,,,,0,
+Albania,AL,ALB,2020,71,34,,,,,,,,,,,,,60,79,56,45,1,January-June data provided by the WHO European Regional Office
+Armenia,AM,ARM,2020,70,34,45,48,55,16,25,31,34,24,34,29,23,30,,,,,0,January-June data provided by the WHO European Regional Office
+Austria,AT,AUT,2020,70,,,,,,,,,,,,,,,,,,,
+Azerbaijan,AZ,AZE,2020,70,,359,424,417,310,257,342,267,279,247,270,241,267,,,,,0,January-June data provided by the WHO European Regional Office
+Bosnia and Herzegovina,BA,BIH,2020,70,,,,,,,,,,,,,,,,,,,
+Belgium,BE,BEL,2020,70,,,,,,,,,,,,,,,,,,,
+Bulgaria,BG,BGR,2020,70,,110,93,79,76,72,63,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Belarus,BY,BLR,2020,70,34,195,164,181,136,98,88,103,105,136,137,133,86,,,,,0,January-June data provided by the WHO European Regional Office
+Switzerland,CH,CHE,2020,70,34,34,56,18,19,39,35,32,28,25,13,22,27,,,,,0,
+Cyprus,CY,CYP,2020,70,,,,,,,,,,,,,,,,,,,
+Czechia,CZ,CZE,2020,70,,,,,,,,,,,,,,,,,,,
+Germany,DE,DEU,2020,70,,403,369,360,295,358,386,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Denmark,DK,DNK,2020,70,,19,25,19,15,19,20,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Estonia,EE,EST,2020,70,34,12,10,8,6,9,11,16,8,8,12,16,3,,,,,1,"January-June data provided by the WHO European Regional Office, updated 26.02.2021"
+Spain,ES,ESP,2020,70,,,,,,,,,,,,,,,,,,,
+Finland,FI,FIN,2020,70,34,19,17,14,9,11,13,17,13,20,10,19,12,,,,,0,
+France,FR,FRA,2020,70,34,380,397,355,370,396,409,445,344,414,359,339,347,,,,,1,"Data is reported uo to February 24, 2021. 2020 data are not consolidated and may slightly change, although probably not substantially. 2021 data are very preliminary and will substantially change, including January but especially February which is reported only until February 24."
+United Kingdom of Great Britain and Northern Ireland,GB,GBR,2020,70,,410,396,413,354,317,384,414,322,370,373,345,361,,,,,1,January-December 2020 data provided by the WHO European Regional Office
+Georgia,GE,GEO,2020,70,,162,183,170,95,148,169,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Greece,GR,GRC,2020,70,,,,,,,,,,,,,,,,,,,
+Croatia,HR,HRV,2020,70,,,,,,,,,,,,,,,,,,,
+Hungary,HU,HUN,2020,70,,58,32,43,32,23,26,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Ireland,IE,IRL,2020,70,34,22,18,23,17,20,29,20,18,20,15,24,14,,,,,0,Data  for January to February 2021 has not yet been validated. Data  for 2020 is still undergoing final validations but it is unlikely that the actual number of cases will change.
+Israel,IL,ISR,2020,70,,22,10,5,10,10,3,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Iceland,IS,ISL,2020,70,,,,,,,,,,,,,,,,,,,
+Italy,IT,ITA,2020,70,35,219,167,91,103,141,265,246,161,143,119,119,139,,,,,0,"Due to the covid pandemic, we have extended the deadline for notification."
+Kyrgyzstan,KG,KGZ,2020,70,,448,573,554,294,280,351,241,239,338,232,228,244,,,,,1,"данных за январь - февраль 2021 года нет.
+данные за октябрь - декабрь 2020 года - предварительные."
+Kazakhstan,KZ,KAZ,2020,70,34,982,995,918,840,553,634,439,579,737,857,850,851,,,,,0,January-June data provided by the WHO European Regional Office
+Lithuania,LT,LTU,2020,70,,118,76,65,47,36,42,60,53,59,59,38,35,,,,,0,January-June data provided by the WHO European Regional Office
+Luxembourg,LU,LUX,2020,70,,,,,,,,,,,,,,,,,,,
+Latvia,LV,LVA,2020,70,,,,,,,,,,,,,,,,,,,
+Monaco,MC,MCO,2020,70,,,,,,,,,,,,,,,,,,,
+Republic of Moldova,MD,MDA,2020,70,34,221,238,202,112,100,130,141,122,118,140,122,112,,,,,0,January-June data provided by the WHO European Regional Office
+Montenegro,ME,MNE,2020,70,34,2,5,5,4,3,10,2,2,2,4,0,3,,,,,1,January-June data provided by the WHO European Regional Office
+North Macedonia,MK,MKD,2020,70,,19,18,12,11,17,5,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Malta,MT,MLT,2020,70,34,7,16,17,21,10,9,16,19,5,11,5,4,,,,,0,
+Netherlands,NL,NLD,2020,70,34,60,57,62,40,49,69,55,44,56,51,31,49,,,,,0,January-June data provided by the WHO European Regional Office
+Norway,NO,NOR,2020,70,,20,11,10,18,11,21,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Poland,PL,POL,2020,70,,,,,,,,,,,,,,,,,,,
+Portugal,PT,PRT,2020,70,,152,120,128,86,100,81,91,105,83,82,66,41,,,,,0,January-June data provided by the WHO European Regional Office ( data were corrected)
+Romania,RO,ROU,2020,71,34,,,,,,,,,,,,,2601,1532,1735,1353,0,
+Serbia,RS,SRB,2020,70,,35,27,11,6,6,4,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+Russian Federation,RU,RUS,2020,70,34,6540,6493,6132,6344,3216,3679,4599,4057,4176,4759,3990,4346,,,,,0,
+Sweden,SE,SWE,2020,70,,28,21,26,26,24,26,28,31,26,32,28,32,,,,,1,January-June data provided by the WHO European Regional Office
+Slovenia,SI,SVN,2020,70,34,10,6,2,9,3,4,7,9,3,7,9,7,,,,,0,January-June data provided by the WHO European Regional Office
+Slovakia,SK,SVK,2020,70,,8,1,16,8,5,16,,,,,,,,,,,,January-June data provided by the WHO European Regional Office
+San Marino,SM,SMR,2020,70,,,,,,,,,,,,,,,,,,,
+Tajikistan,TJ,TJK,2020,71,34,,,,,,,,,,,,,1340,996,976,835,0,"January-June data provided by the WHO European Regional Office
+Представленные данные являются верифицированные, то есть окончательные данные за 2020 год."
+Turkmenistan,TM,TKM,2020,70,,,,,,,,,,,,,,,,,,,
+Türkiye,TR,TUR,2020,70,34,864,901,958,550,462,875,825,695,737,706,665,723,,,,,0,Provisional January-December data provided by national TB surveillance system.
+Ukraine,UA,UKR,2020,70,,2026,2050,2001,1301,1057,1238,1601,1246,1357,1277,1110,1274,,,,,0,January-June data provided by the WHO European Regional Office
+Uzbekistan,UZ,UZB,2020,70,,,,,,,,,,,,,,,,,,,
+Bangladesh,BD,BGD,2020,71,34,,,,,,,,,,,,,71521,28246,60497,69826,0,"We receive report in quarterly basis. 1st quarter notification(January-March): 71,521; 2nd quarter (April-June): 28,246;  3rd quarter (July-September): 60,497 and 4th quarter (October -December): 69826."
+Indonesia,ID,IDN,2020,70,,43787,40427,39398,25369,19049,26593,26878,23179,24317,20644,21124,16747,,,,,1,
+India,IN,IND,2020,70,,177098,192841,152973,75515,109533,141847,126612,109398,125253,133883,125356,151174,,,,,0,"Source of Data - Nikshay (NTP MIS), Extracted as on 01-02-2021. Now, there has been an additional increase of 3000 cases in India figures when further extraction done on 12-02-2021"
+Democratic People's Republic of Korea,KP,PRK,2020,71,,,,,,,,,,,,,,19956,28689,26987,22737,0,I have updated all quarterly data for 2020.
+Myanmar,MM,MMR,2020,71,,,,,,,,,,,,,,33886,21895,,,1,"Q1 - 33886 and Q2 - 21895. According to routine recording and reporting system, NTP can provided quarterly data only. As soon as COVID-19 confirmed case was detected in country on 23 March, there was a significant decline in TB case notification as a result of ACF activities suspension and COVID-19 response measures like stay home and travel restrictions. It was leading to 34% decline in case notification compared to previous year (Apr- Jun) achievement."
+Nepal,NP,NPL,2020,70,34,2258,2584,2672,1874,1775,2068,2490,2592,2027,2405,1784,1835,,,,,1,Data for February 2021 still under reporting on HMIS. All the data reported in the system were collected form HMIS.
+Thailand,TH,THA,2020,70,34,8133,7639,8770,7177,6956,7266,7270,7598,7988,7080,6794,7089,,,,,0,The data were collected from both the NTIP program and report of the private or non MoPH health facilities. 
+Timor-Leste,TL,TLS,2020,71,34,,,,,,,,,,,,,927,635,807,856,0,"Updated 2021-07-01 by Hazim Timimi (WHO/Geneva) based on feedback remarks made during the 2021 data collection round. Previously the numbers were 445, 348, 382 and 386, i.e. significantly lower than the final figures"
+China,CN,CHN,2020,70,34,47506,31538,51538,60142,58528,59628,58329,53641,52930,47619,48880,44990,,,,,0,These are the numbers of reported pulmonary TB cases sourced from the monthly communicable disease surveillance reports of the China CDC. They have been multiplied by a factor of 0.7019 to account for the historical relationship between reported cases and the final number of notified cases for the period 2017-2019 (annually rather than monthly data)
+Cambodia,KH,KHM,2020,70,,2768,2686,2207,1737,2286,2388,3139,2430,2471,2492,2374,2145,,,,,0,
+Lao People's Democratic Republic,LA,LAO,2020,70,34,664,509,664,347,548,809,618,720,601,550,802,346,,,,,0,"These monthly TB notification data are based on DHIS2 TB Tracker which has started in 2019 and is in the transition period, therefore data entry performance is around 80%. Its coverage has not been changed much during these six months, thus these data could show the trend.
+
+The drop in April probably is due to possible less access to TB diagnosis and under-reporting by the impact of Covid 19 and lockdown between April 1st and May 17th.
+
+December 2020 January and February 2021 is still preli"
+Mongolia,MN,MNG,2020,70,34,273,329,409,437,362,369,305,288,332,216,253,228,,,,,1,
+Malaysia,MY,MYS,2020,70,34,2028,2067,2172,1305,1666,1748,1871,2370,1772,1598,2069,2297,,,,,0,We usually download data by 10th for the previous months. Therefore this was the preliminary data for Feb 2021..the data may change after 10th March 2021
+Papua New Guinea,PG,PNG,2020,71,34,,,,,,,,,,,,,7307,7413,6851,6740,1,"The NTP is not able to provide the information. The national department of health is under lockdown and the M&E officers were not able to access the office to encode Q2 reports by August 06, which is the deadline for submission. In addition, reporting for drug-susceptible TB is quarterly while drug-resistant TB is semi-annual, and therefore, it is not possible to provide the requested number of notified cases by month. 
+
+Comments from WPRO: All numbers for Q1-Q4 2020 were updated on 23Mar2021"
+Philippines,PH,PHL,2020,70,35,40104,37042,28376,10489,13726,20282,20338,16938,18701,18757,17100,17605,,,,,0,There might still be some level of underreporting especially from private physicians.
+Solomon Islands,SB,SLB,2020,70,34,23,23,31,26,22,29,34,33,30,22,29,19,,,,,0,
+Viet Nam,VN,VNM,2020,70,34,7221,7657,8195,6070,7730,8540,9451,7911,7983,8268,8106,8191,,,,,1,
+Angola,AO,AGO,2021,71,35,,,,,,,,,,,,,19600,14982,13211,,0,Ces données sont encore partielles
+Burkina Faso,BF,BFA,2021,71,34,,,,,,,,,,,,,1632,1700,1766,,0,   
+Burundi,BI,BDI,2021,71,34,,,,,,,,,,,,,1823,1794,1713,1544,0,
+Benin,BJ,BEN,2021,71,34,,,,,,,,,,,,,1035,922,844,910,1,
+Botswana,BW,BWA,2021,71,34,,,,,,,,,,,,,691,608,525,320,0,The data is not complete. This is preliminary actual statistcis. 
+Democratic Republic of the Congo,CD,COD,2021,71,34,,,,,,,,,,,,,53466,55038,52983,53893,0,"Le taux de rapportage (complétude de rapportage) est de  98,3% pour le q1; de 97% pour le q2; de 97,5% pour le q.3 2021 enfin  de  97% pour le q4 des unités ayant rapporté"
+Central African Republic,CF,CAF,2021,71,35,,,,,,,,,,,,,3107,3132,,,0,La complétude des données à ce stade est de 93% (84 CDT/90) pour le Trimestre 1 et de 90% (81/90) pour le Trimestre 2. Les données sont encore collectées à l'aide des supports papiers et sont transmis par des moyens occasionnels. Mobiliser des moyens pour une gestion dématérialisée des données pourra améliorer la promptitude.
+Congo,CG,COG,2021,70,,,,,,,,,,,,,,,,,,,
+Côte d'Ivoire,CI,CIV,2021,71,34,,,,,,,,,,,,,4832,5303,5258,5291,0,
+Cameroon,CM,CMR,2021,71,35,,,,,,,,,,,,,5751,5497,5677,5815,1,
+Cabo Verde,CV,CPV,2021,71,35,,,,,,,,,,,,,31,,,,1,
+Algeria,DZ,DZA,2021,70,,,,,,,,,,,,,,,,,,1,
+Eritrea,ER,ERI,2021,71,34,,,,,,,,,,,,,317,,,,1,The program collects the TB data on quarter base only
+Ethiopia,ET,ETH,2021,71,35,,,,,,,,,,,,,25764,26159,26031,25793,0,As a result of instability in the northern part of the country; reports from the Tigray region and part of the Amhara region were not included.
+Gabon,GA,GAB,2021,71,35,,,,,,,,,,,,,1313,1290,1271,1199,0,
+Ghana,GH,GHA,2021,70,35,1166,926,1130,1135,1132,1161,1022,1041,974,1107,1128,1015,,,,,1,Some reporting units have not reported yet. 
+Gambia,GM,GMB,2021,70,35,185,165,205,197,178,228,143,165,166,178,239,169,,,,,1,Some of months not yet verified but they will be reported accordingly.
+Guinea,GN,GIN,2021,71,34,,,,,,,,,,,,,4705,4517,4474,4334,0,les données sont encours de revue pour validation finale 
+Equatorial Guinea,GQ,GNQ,2021,70,34,155,135,,,,,,,,,,,,,,,1,"DO YOU MEAN 2020 AND 2021???? it reads 2021 and 2022
+----
+Hazim Timimi (WHO) deleted the monthly notifications of 2020 (93, 127, 145, 105, 98, 78, 84, 97, 109, 105, 161, 144) and moved January/February 2022 to 2021. Sent email 2021-10-20 requesting notifications up to end of September 2021."
+Guinea-Bissau,GW,GNB,2021,71,35,,,,,,,,,,,,,608,627,593,590,1,"Donnés préliminaires de TB dans le trimestre 1, 2 et 3. Il manque encore les données de trimestre 4. "
+Kenya,KE,KEN,2021,70,34,3675,6381,9628,5396,6069,7486,4226,6512,7999,,,,,,,,1,
+Comoros,KM,COM,2021,70,,,,,,,,,,,,,,,,,,,
+Liberia,LR,LBR,2021,71,,,,,,,,,,,,,,2025,1991,1658,,1,"The Data for Q3 is incomplete, due to the wet season and bad roads network in some parts of the country. "
+Lesotho,LS,LSO,2021,71,34,,,,,,,,,,,,,994,1051,1209,1217,1,
+Madagascar,MG,MDG,2021,71,34,,,,,,,,,,,,,10376,8331,8785,11150,0,Le nombre de cas enregistré en Q2 était souvent le plus bas par rapport au trois trimestre pendant toute l'année.
+Mali,ML,MLI,2021,71,35,,,,,,,,,,,,,1840,1708,1537,,0,"seules les données du T1 2021 sont disponibles, pour le deuxième trimestre le rapport est bouclé mais par rapport au troisième trimestre il reste encore 7 CDT qui n'ont pas encore saisie sur la plate forme DHIS2"
+Mauritania,MR,MRT,2021,71,,,,,,,,,,,,,,,,,,1,
+Mauritius,MU,MUS,2021,70,34,11,8,7,6,,,,,,,,,,,,,0,
+Malawi,MW,MWI,2021,71,34,,,,,,,,,,,,,3317,3794,3437,3577,1,
+Mozambique,MZ,MOZ,2021,70,34,6921,7410,7419,7872,8008,8456,8284,8997,8361,8933,9352,8418,,,,,0,
+Namibia,NA,NAM,2021,70,34,482,509,603,542,527,480,445,597,668,658,751,602,,,,,1,"The Data provided above includes both DR-TB and DS-TB New and Relapse Patients (all forms), advice if that is not what is required.
+
+Figures provided above are likely to change after the thoroughly annual data verification, This processes is conducted annually."
+Niger,NE,NER,2021,70,34,950,943,1190,1132,1101,1221,1028,1053,1110,1056,1035,956,,,,,1,
+Nigeria,NG,NGA,2021,71,34,,,,,,,,,,,,,42892,50096,54358,57260,0,
+Rwanda,RW,RWA,2021,70,34,412,380,496,462,378,523,382,356,538,385,403,463,,,,,1,
+Seychelles,SC,SYC,2021,70,34,0,2,1,1,1,1,1,0,1,1,0,1,,,,,1,
+Sierra Leone,SL,SLE,2021,70,34,1109,1447,1683,1476,1437,1466,1348,1476,1538,1628,1543,1518,,,,,1,
+Senegal,SN,SEN,2021,71,,,,,,,,,,,,,,3489,,,,1,nous poursuivons la collecte et la consolidation des données du second trimestre 
+South Sudan,SS,SSD,2021,71,,,,,,,,,,,,,,9907,11250,15875,12550,1,
+Sao Tome and Principe,ST,STP,2021,70,,8,10,8,,,,,,,,,,,,,,1,
+Eswatini,SZ,SWZ,2021,71,34,,,,,,,,,,,,,473,502,526,460,1,
+Chad,TD,TCD,2021,71,34,,,,,,,,,,,,,3135,3401,3340,3556,1,"Données Q4, 5 CDT n'ont pas envoye leurs rapports"
+Togo,TG,TGO,2021,71,34,,,,,,,,,,,,,645,609,551,616,0,
+United Republic of Tanzania,TZ,TZA,2021,70,34,5689,6032,7801,6136,6806,7939,6690,7683,8661,6719,8138,7232,,,,,0,The data for the last 3 months may change as data entry for remote facilities is still going on.
+Uganda,UG,UGA,2021,71,34,,,,,,,,,,,,,18293,19217,18983,18242,0,"Data reported is from 94.6% of the expected reporting Health Facilities. Over the years, the Quarter of Oct-Dec has been characterized by reduction in cases notified (Seasonality)"
+South Africa,ZA,ZAF,2021,71,35,,,,,,,,,,,,,55207,33539,36199,43658,0,Taken from powerpoint slide produced by S'celo Dlamini and emailed by Nkateko Mkhondo  2022-03-03
+Zambia,ZM,ZMB,2021,70,34,3696,3611,4728,4061,3574,4061,3616,3873,4514,4387,5059,4470,,,,,0,
+Zimbabwe,ZW,ZWE,2021,71,34,,,,,,,,,,,,,3687,4122,2842,,1,"The reporting rate is at 79% we will update special 1st week of November 2021 
+"
+Antigua and Barbuda,AG,ATG,2021,71,34,,,,,,,,,,,,,2,1,1,0,0,
+Argentina,AR,ARG,2021,70,34,926,835,992,857,736,844,938,1090,1206,1027,1042,718,,,,,0,
+Aruba,AW,ABW,2021,70,34,0,0,0,0,0,,,,,,,,,,,,0,
+Barbados,BB,BRB,2021,70,,,,,,,,,,,,,,,,,,,
+Bolivia (Plurinational State of),BO,BOL,2021,71,34,,,,,,,,,,,,,1540,1558,1791,,0,Se ha corregido las notificaciones de los anteriores trimestres por duplicidad de datos.
+Brazil,BR,BRA,2021,70,,,,,,,,,,,,,,,,,,1,"The Information System to notify tuberculosis cases in Brazil is not online. There is a big delay to send the information filled in the Health Units to the Ministry of Health. Because of this it is not possible to send WHO the monthly information for 2021.
+
+To tuberculosis drug resistant cases our country can do this monitoring because for these cases there is an online information system. "
+Bahamas,BS,BHS,2021,70,34,2,3,9,8,4,4,4,1,1,0,3,6,,,,,1,Opting to submit monthly reports for new and relapse cases
+Belize,BZ,BLZ,2021,70,34,2,5,7,6,5,11,6,3,0,3,7,3,,,,,1,
+Canada,CA,CAN,2021,70,34,,,,,,,,,,,,,,,,,1,"Our provincial and territorial partners send us data annually (neither monthly or quarterly) in May/June each year. For example, in the year 2021, TB data for the year 2020 is received May 2021. Thus, data requested above will not be received until May/June 2022."
+Chile,CL,CHL,2021,70,34,198,194,220,203,200,197,242,269,244,234,220,238,,,,,1,
+Colombia,CO,COL,2021,70,,702,901,1144,1036,1043,953,1085,1241,1402,1374,1276,1122,,,,,0,Datos preliminares sujetos a actualización. Se observa disminución de casos de TB especialmente en meses donde existe un impacto mayor de la COVID-19
+Costa Rica,CR,CRI,2021,70,,21,31,28,38,17,27,29,21,19,23,18,7,,,,,0,
+Cuba,CU,CUB,2021,70,34,32,33,63,37,53,40,26,19,30,,,,,,,,1,
+Curaçao,CW,CUW,2021,70,,,,,,,,,,,,,,,,,,,
+Dominica,DM,DMA,2021,70,,0,0,0,0,0,0,0,0,0,0,0,0,,,,,0,
+Dominican Republic,DO,DOM,2021,70,34,232,257,339,330,303,253,311,332,314,301,268,256,,,,,0,
+Ecuador,EC,ECU,2021,71,34,,,,,,,,,,,,,1251,1227,1773,,0,
+Grenada,GD,GRD,2021,70,34,1,0,1,0,0,0,0,0,0,0,0,0,,,,,1,
+Guatemala,GT,GTM,2021,71,34,,,,,,,,,,,,,600,722,774,706,0,"es dato preliminar, los datos de diciembre no se tiene completamente verificados. "
+Guyana,GY,GUY,2021,70,34,24,21,31,34,33,33,45,36,34,44,41,38,,,,,0,
+Honduras,HN,HND,2021,70,34,159,141,171,177,164,185,180,182,161,,,,,,,,0,
+Haiti,HT,HTI,2021,70,,,,,,,,,,,,,,,,,,,
+Jamaica,JM,JAM,2021,70,34,2,7,4,1,6,5,3,3,3,2,3,4,,,,,1,2021 Data are preliminary.
+Saint Kitts and Nevis,KN,KNA,2021,71,34,,,,,,,,,,,,,3,,,,1,2 of the cases are deceased from other pathologies apart from tuberculosis
+Saint Lucia,LC,LCA,2021,70,34,0,0,1,0,0,0,2,1,0,0,0,0,,,,,0,All reported cases are new cases.  Please note that there were no reported cases from September to December 2021. Please also note that this information may be subject to change.
+Mexico,MX,MEX,2021,70,34,1283,1427,2068,1964,1966,2084,1876,1708,1737,1776,1770,1538,,,,,0,"Datos preliminares, aun no se realiza cierre de la base de datos. 17/01/22"
+Nicaragua,NI,NIC,2021,70,34,148,164,159,154,151,185,165,170,127,128,164,120,,,,,1,
+Panama,PA,PAN,2021,70,,91,106,105,120,117,131,113,133,115,111,89,96,,,,,0,"Información preliminar, los equipos que registran los datos están en atención y vacunación de pacientes COVID19  "
+Peru,PE,PER,2021,70,34,2012,1809,2084,1998,1917,2036,2163,2319,2348,2355,2362,1989,,,,,1,
+Puerto Rico,PR,PRI,2021,71,34,,,,,,,,,,,,,2,4,3,9,1,
+Paraguay,PY,PRY,2021,70,34,186,223,214,177,164,191,256,287,277,,,,,,,,1,
+Suriname,SR,SUR,2021,70,34,12,4,7,8,10,7,7,3,11,,,,,,,,0,
+El Salvador,SV,SLV,2021,70,34,176,167,,,,,,,,,,,,,,,0,"Para el año 2020 los datos notificados son por TRIMESTRES. Los años están erróneos? Deberían ser año 2020 y año 2021... es correcto? Porqué se solicitan datos del año 2022?
+-----
+Hazim Timimi (OMS) suprimió las notificaciones trimestrales de 2020 (785, 372, 366, 516) y trasladó enero/febrero de 2022 a 2021. Envió un correo electrónico 2021-10-20 solicitando notificaciones hasta finales de septiembre de 2021."
+Sint Maarten (Dutch part),SX,SXM,2021,71,34,,,,,,,,,,,,,0,,,,1,
+Trinidad and Tobago,TT,TTO,2021,70,34,16,6,24,21,,,,,,,,,,,,,0,
+United States of America,US,USA,2021,70,34,350,454,562,545,524,563,,,,,,,,,,,0,
+Uruguay,UY,URY,2021,70,34,60,52,77,34,47,84,106,93,93,,,,,,,,0,
+Saint Vincent and the Grenadines,VC,VCT,2021,70,34,0,0,0,1,1,0,0,0,0,1,1,0,,,,,0,
+Venezuela (Bolivarian Republic of),VE,VEN,2021,70,35,813,876,768,636,638,737,906,762,825,815,757,813,,,,,0,"En la actualidad los estados con municipios muy distantes (3 entidades) no han recolectado toda la data del 2021, faltaria informacion del ultimo trimestre."
+Pakistan,PK,PAK,2021,71,34,,,,,,,,,,,,,74951,78506,92279,95537,0,
+Andorra,AD,AND,2021,70,34,0,0,0,0,1,0,1,0,0,0,0,0,,,,,0,
+Albania,AL,ALB,2021,70,34,17,11,20,27,28,24,34,22,29,22,21,14,,,,,1,
+Armenia,AM,ARM,2021,70,34,20,36,38,30,26,35,36,,,,,,,,,,1,
+Austria,AT,AUT,2021,70,,,,,,,,,,,,,,,,,,,
+Azerbaijan,AZ,AZE,2021,70,34,176,242,216,242,296,312,329,342,376,383,354,346,,,,,0,
+Bosnia and Herzegovina,BA,BIH,2021,70,,,,,,,,,,,,,,,,,,,
+Belgium,BE,BEL,2021,70,,,,,,,,,,,,,,,,,,,
+Bulgaria,BG,BGR,2021,70,,,,,,,,,,,,,,,,,,,
+Belarus,BY,BLR,2021,70,34,92,107,139,165,136,146,117,121,121,95,119,124,,,,,0,
+Switzerland,CH,CHE,2021,70,34,20,19,34,33,43,32,42,23,20,25,24,21,,,,,0,counts from october to december for 2021 may not be complete.
+Cyprus,CY,CYP,2021,70,,,,,,,,,,,,,,,,,,,
+Czechia,CZ,CZE,2021,70,,,,,,,,,,,,,,,,,,,
+Germany,DE,DEU,2021,70,34,303,298,360,336,341,362,381,325,324,280,275,271,,,,,1,
+Denmark,DK,DNK,2021,70,,,,,,,,,,,,,,,,,,,
+Estonia,EE,EST,2021,70,34,8,10,13,9,6,5,11,9,3,13,12,,,,,,1,Data for December 2021 will be available from February 2022.
+Spain,ES,ESP,2021,70,,,,,,,,,,,,,,,,,,,
+Finland,FI,FIN,2021,70,34,21,11,16,11,11,21,11,15,8,11,14,8,,,,,0,
+France,FR,FRA,2021,70,34,319,353,410,387,321,453,373,354,363,306,358,259,,,,,1,
+United Kingdom of Great Britain and Northern Ireland,GB,GBR,2021,70,35,323,322,387,405,375,445,405,372,376,338,328,364,,,,,1,Reporting data for England only. 
+Georgia,GE,GEO,2021,70,34,114,136,155,141,117,134,146,108,112,99,101,119,,,,,0,
+Greece,GR,GRC,2021,70,,,,,,,,,,,,,,,,,,,
+Croatia,HR,HRV,2021,70,,,,,,,,,,,,,,,,,,,
+Hungary,HU,HUN,2021,70,34,30,18,38,32,22,25,18,22,22,36,32,25,,,,,0,Units are reporting if they detected any case.
+Ireland,IE,IRL,2021,70,34,16,18,25,25,15,23,22,11,18,11,16,19,,,,,0,
+Israel,IL,ISR,2021,70,,,,,,,,,,,,,,,,,,,
+Iceland,IS,ISL,2021,70,,,,,,,,,,,,,,,,,,,
+Italy,IT,ITA,2021,70,35,165,112,204,101,186,306,246,173,174,135,75,75,,,,,0,
+Kyrgyzstan,KG,KGZ,2021,70,34,238,422,529,542,397,337,328,299,377,318,278,325,,,,,1,
+Kazakhstan,KZ,KAZ,2021,70,34,666,796,847,1002,779,820,740,624,729,723,831,855,,,,,0,
+Lithuania,LT,LTU,2021,70,34,54,43,67,48,51,61,51,48,53,50,50,38,,,,,0,The data are preliminary
+Luxembourg,LU,LUX,2021,70,34,3,4,4,2,2,1,5,4,2,,,,,,,,0,
+Latvia,LV,LVA,2021,70,,,,,,,,,,,,,,,,,,,
+Monaco,MC,MCO,2021,70,34,0,0,0,0,0,0,0,0,0,0,0,1,,,,,0,
+Republic of Moldova,MD,MDA,2021,70,34,123,191,149,184,141,207,195,175,158,155,171,210,,,,,0,
+Montenegro,ME,MNE,2021,70,34,1,8,4,2,7,9,5,10,3,3,9,15,,,,,1,
+North Macedonia,MK,MKD,2021,70,,,,,,,,,,,,,,,,,,,
+Malta,MT,MLT,2021,70,34,5,7,3,6,6,7,6,6,2,2,3,4,,,,,0,
+Netherlands,NL,NLD,2021,70,34,44,54,60,55,62,68,67,55,72,55,47,50,,,,,0,
+Norway,NO,NOR,2021,70,34,10,14,15,8,17,6,,,,,,,,,,,1,
+Poland,PL,POL,2021,70,,,,,,,,,,,,,,,,,,,
+Portugal,PT,PRT,2021,70,34,104,94,132,139,144,144,102,121,96,114,93,103,,,,,1,
+Romania,RO,ROU,2021,71,34,,,,,,,,,,,,,1794,2033,2231,1560,0,
+Serbia,RS,SRB,2021,70,,,,,,,,,,,,,,,,,,,
+Russian Federation,RU,RUS,2021,70,34,3990,4659,5377,6599,4275,4833,5058,4195,3907,4786,4569,4532,,,,,1,
+Sweden,SE,SWE,2021,70,34,32,32,32,35,30,31,34,32,25,25,23,36,,,,,1,
+Slovenia,SI,SVN,2021,70,34,5,3,13,7,7,6,6,10,4,5,7,7,,,,,0,
+Slovakia,SK,SVK,2021,70,34,4,4,9,9,4,11,8,9,14,20,22,26,,,,,0,
+San Marino,SM,SMR,2021,70,,,,,,,,,,,,,,,,,,,
+Tajikistan,TJ,TJK,2021,70,,,,,,,,,,,,,,,,,,,
+Turkmenistan,TM,TKM,2021,70,,,,,,,,,,,,,,,,,,,
+Türkiye,TR,TUR,2021,70,34,552,709,893,853,693,878,704,744,794,712,780,824,,,,,0,
+Ukraine,UA,UKR,2021,70,,1317,1480,1665,1567,1324,1579,1676,1510,1425,1456,1441,1540,,,,,0,
+Uzbekistan,UZ,UZB,2021,70,,,,,,,,,,,,,,,,,,,
+Bangladesh,BD,BGD,2021,71,34,,,,,,,,,,,,,74332,76007,77021,79157,1,
+Indonesia,ID,IDN,2021,70,,35053,31532,39848,38948,34749,37652,25075,30670,39631,42452,45619,44017,,,,,1,Data as of 1 April 2022
+India,IN,IND,2021,70,34,164960,169979,183419,122049,83911,159795,188615,180869,187770,171065,157424,163525,,,,,1,Provisional data of Jan-December 2021 submitted. Data extracted from Nikshay as of 03rd February 2022.
+Democratic People's Republic of Korea,KP,PRK,2021,71,,,,,,,,,,,,,,18265,21823,25730,21595,0,"A total of 87,413 notified"
+Myanmar,MM,MMR,2021,71,35,,,,,,,,,,,,,12910,19178,11129,20228,1,Q3 and Q4 data as of 10th February 2022. Many BMUs still need to submit the reports and delays happened due to the lack of a focal person in BMUs. Data will update after compiling all the remaining areas.
+Nepal,NP,NPL,2021,70,34,2372,2176,2734,3369,2447,1558,2475,3334,3009,2471,2513,2828,,,,,1,
+Thailand,TH,THA,2021,70,34,6251,5656,7557,6002,5472,5830,4792,4552,5011,5400,5294,4883,,,,,0,"The data was extracted from the National TB Information Program (์NTIP) on January 25, 2022."
+Timor-Leste,TL,TLS,2021,71,34,,,,,,,,,,,,,841,563,761,990,1,
+China,CN,CHN,2021,70,34,45492,38903,56716,56537,52813,51859,53799,47705,47597,43090,43344,43369,,,,,0,These are the numbers of reported pulmonary TB cases sourced from the monthly communicable disease surveillance reports of the China CDC. They have been multiplied by a factor of 0.7019 to account for the historical relationship between reported cases and the final number of notified cases for the period 2017-2019 (annually rather than monthly data)
+Cambodia,KH,KHM,2021,70,34,2119,2264,2220,1318,1584,1451,1290,1348,1635,1653,2362,2418,,,,,0,
+Lao People's Democratic Republic,LA,LAO,2021,70,34,553,508,716,390,366,465,671,831,432,345,367,423,,,,,1,"Data source: case based TB Tracker in DHIS2, HMIS, Ministry of Health Lao PDR.
+TB - All notified TB case (new and relapse, all forms)
+
+First country lockdown in April-June 2021 and second country lockdown in September-December 2021
+The numbers were change because the districts re-enter the numbers of TB cases into system after country un lockdown. 
+
+The last number update are New and Relapse cases. The data source from TB-Tracer DHis2."
+Mongolia,MN,MNG,2021,70,,212,156,310,222,231,269,178,197,197,204,252,281,,,,,0,
+Malaysia,MY,MYS,2021,70,34,1447,1431,1731,1642,1722,2028,1411,1724,1725,2207,1981,2102,,,,,1,
+Papua New Guinea,PG,PNG,2021,71,35,,,,,,,,,,,,,7420,6796,8248,6409,0,"Hazim Timimi updated numbers 2022-07-21 from numbers provided by Manami Yanagawi (WHO/WPRO) in email of 2022-07-14.
+
+Previous comment:
+We have a very low report submission of 31% in Q4,2021 compare to other Quarters of 2021, 78% for Q1, 73% for Q2 and 58% for Q3. This was because most of the BMU and provincial staffs were still on holidays for the festive period and were not able to compile reports on time which was due on the 30th January 2021.    "
+Philippines,PH,PHL,2021,70,35,24679,24663,29335,22354,23501,25733,27894,26705,25224,24386,23571,19748,,,,,1,Jan to Sep are all units. Oct to Dec are just some units.
+Solomon Islands,SB,SLB,2021,70,34,20,28,28,33,35,33,39,36,43,26,25,19,,,,,0,
+Viet Nam,VN,VNM,2021,70,35,8767,5065,8659,8024,6896,5525,4057,2692,3134,4966,5652,5268,,,,,0,
+Bangladesh,BD,BGD,2022,71,34,,,,,,,,,,,,,69687,56028,,,0,
+Indonesia,ID,IDN,2022,70,,53420,36144,45104,41121,42787,36434,,,,,,,,,,,0,data per 22 August 2022
+India,IN,IND,2022,70,34,146796,171089,209346,201081,202134,198898,158469,,,,,,,,,,1,The data source is Nikshay and the date of extraction are as of 01st August 2022
+Democratic People's Republic of Korea,KP,PRK,2022,70,,,,,,,,,,,,,,,,,,,
+Myanmar,MM,MMR,2022,70,,,,,,,,,,,,,,,,,,,
+Nepal,NP,NPL,2022,70,34,2947,2278,3201,3766,3261,3828,3664,,,,,,,,,,1,
+Thailand,TH,THA,2022,70,34,5777,5458,5833,5009,5635,5867,,,,,,,,,,,0,"We extracted the TB data from the National TB Information Program on August 4, 2022."
+Timor-Leste,TL,TLS,2022,71,,,,,,,,,,,,,,1272,1365,,,1,
+Angola,AO,AGO,2022,71,35,,,,,,,,,,,,,13869,18336,,,0,
+Burkina Faso,BF,BFA,2022,71,34,,,,,,,,,,,,,1485,,,,0,
+Burundi,BI,BDI,2022,71,,,,,,,,,,,,,,1870,1894,,,0,Les données présentées ne sont pas encore validées. Elles sont donc provisoires
+Benin,BJ,BEN,2022,71,34,,,,,,,,,,,,,1049,1007,,,1,
+Botswana,BW,BWA,2022,70,35,176,150,151,48,9,,,,,,,,,,,,0,NTP has just conducted its Data verification activity and noted that majority of case registration data is not captured into OpenMRS. So the currents numbers are low.
+Democratic Republic of the Congo,CD,COD,2022,70,,,,,,,,,,,,,,,,,,,
+Central African Republic,CF,CAF,2022,70,,,,,,,,,,,,,,,,,,,
+Congo,CG,COG,2022,70,,,,,,,,,,,,,,,,,,,
+Côte d'Ivoire,CI,CIV,2022,71,34,,,,,,,,,,,,,5338,,,,0,
+Cameroon,CM,CMR,2022,71,35,,,,,,,,,,,,,6189,5563,,,0,
+Cabo Verde,CV,CPV,2022,70,,,,,,,,,,,,,,,,,,,
+Algeria,DZ,DZA,2022,70,,,,,,,,,,,,,,,,,,,
+Eritrea,ER,ERI,2022,70,,,,,,,,,,,,,,,,,,,
+Ethiopia,ET,ETH,2022,71,35,,,,,,,,,,,,,29352,,,,0,we still expect a report from health facilities and the figure could be changed. Note that data information from conflict areas is not included in the report. 
+Gabon,GA,GAB,2022,71,35,,,,,,,,,,,,,1229,1023,,,0,
+Ghana,GH,GHA,2022,70,,,,,,,,,,,,,,,,,,,
+Gambia,GM,GMB,2022,70,34,175,182,239,243,203,225,,,,,,,,,,,1,
+Guinea,GN,GIN,2022,71,34,,,,,,,,,,,,,4895,4603,,,0,
+Equatorial Guinea,GQ,GNQ,2022,70,35,164,202,225,194,218,,,,,,,,,,,,1,This preliminary data corresponds to approximately 80% of reporting Jan-May. June reports are still being processed
+Guinea-Bissau,GW,GNB,2022,71,34,,,,,,,,,,,,,735,715,,,1,
+Kenya,KE,KEN,2022,70,,,,,,,,,,,,,,,,,,,
+Comoros,KM,COM,2022,70,,,,,,,,,,,,,,,,,,,
+Liberia,LR,LBR,2022,70,,,,,,,,,,,,,,,,,,,
+Lesotho,LS,LSO,2022,71,34,,,,,,,,,,,,,1270,1183,,,1,
+Madagascar,MG,MDG,2022,70,,,,,,,,,,,,,,,,,,,
+Mali,ML,MLI,2022,71,34,,,,,,,,,,,,,1833,,,,0,
+Mauritania,MR,MRT,2022,70,,,,,,,,,,,,,,,,,,0,
+Mauritius,MU,MUS,2022,70,34,14,8,13,12,14,8,9,,,,,,,,,,0,
+Malawi,MW,MWI,2022,71,34,,,,,,,,,,,,,4376,4435,,,0,
+Mozambique,MZ,MOZ,2022,70,35,7331,7986,9186,9329,9689,9675,9517,,,,,,,,,,0,
+Namibia,NA,NAM,2022,70,34,602,607,858,,,,,,,,,,,,,,1,The data above may change due to the National annual TB notification data verification
+Niger,NE,NER,2022,70,34,991,1053,1256,1244,1347,1296,,,,,,,,,,,0,"Au cours du premier semestre 2022, les quatre unités TBMR ont enregistré 48 cas de tuberculose pharmacorésistante (22 cas au premier trimestre 2022 et 26 cas au second trimestre 2022).Ces cas ne sont pas inclus dans les données rapportées mensuellement ci dessus."
+Nigeria,NG,NGA,2022,70,,,,,,,,,,,,,,,,,,,
+Rwanda,RW,RWA,2022,70,,,,,,,,,,,,,,,,,,,
+Seychelles,SC,SYC,2022,70,34,0,1,0,0,,,,,,,,,,,,,0,
+Sierra Leone,SL,SLE,2022,70,34,1515,1415,1628,,,,,,,,,,,,,,1,
+Senegal,SN,SEN,2022,70,,,,,,,,,,,,,,,,,,,
+South Sudan,SS,SSD,2022,71,,,,,,,,,,,,,,4767,4846,,,0,
+Sao Tome and Principe,ST,STP,2022,71,34,,,,,,,,,,,,,24,35,,,1,
+Eswatini,SZ,SWZ,2022,71,34,,,,,,,,,,,,,531,530,,,1,
+Chad,TD,TCD,2022,71,34,,,,,,,,,,,,,3860,,,,0,
+Togo,TG,TGO,2022,71,34,,,,,,,,,,,,,695,711,,,0,
+United Republic of Tanzania,TZ,TZA,2022,70,34,6580,6710,10997,8616,8920,9325,4862,,,,,,,,,,0,
+Uganda,UG,UGA,2022,71,34,,,,,,,,,,,,,23428,22955,,,0,"Notifications 115.2% (23428/20338)increased due to a Nation-wide Community Awareness Screening, testing and Treatment (CAST TB) Campaign implemented in March 2022. The reporting rate was at 93.5%
+
+Reporting rate for Apr-Jun 2022 is 95.8%"
+South Africa,ZA,ZAF,2022,70,,,,,,,,,,,,,,,,,,,
+Zambia,ZM,ZMB,2022,70,34,3998,4252,5060,,,,,,,,,,,,,,0,
+Zimbabwe,ZW,ZWE,2022,70,,,,,,,,,,,,,,,,,,,
+Antigua and Barbuda,AG,ATG,2022,71,34,,,,,,,,,,,,,0,0,,,0,
+Argentina,AR,ARG,2022,70,34,758,852,996,827,,,,,,,,,,,,,0,
+Aruba,AW,ABW,2022,70,34,0,0,1,1,,,,,,,,,,,,,0,
+Barbados,BB,BRB,2022,70,,,,,,,,,,,,,,,,,,,
+Bolivia (Plurinational State of),BO,BOL,2022,70,,,,,,,,,,,,,,,,,,,
+Brazil,BR,BRA,2022,70,,,,,,,,,,,,,,,,,,,
+Bahamas,BS,BHS,2022,70,34,4,4,3,7,2,5,,,,,,,,,,,0,
+Belize,BZ,BLZ,2022,70,,4,1,6,5,,,,,,,,,,,,,0,
+Canada,CA,CAN,2022,70,,,,,,,,,,,,,,,,,,,
+Chile,CL,CHL,2022,70,35,203,151,186,168,140,80,,,,,,,,,,,0,
+Colombia,CO,COL,2022,70,34,1024,1263,1523,1541,1660,1306,,,,,,,,,,,0,información preliminar sujeta a actualización. 
+Costa Rica,CR,CRI,2022,70,34,20,23,35,35,24,22,8,,,,,,,,,,0,En Costa Rica el reporte es trimestral 
+Cuba,CU,CUB,2022,70,,40,62,93,64,,,,,,,,,,,,,1,
+Curaçao,CW,CUW,2022,70,,,,,,,,,,,,,,,,,,,
+Dominica,DM,DMA,2022,70,34,0,,,,,,,,,,,,,,,,0,
+Dominican Republic,DO,DOM,2022,70,34,240,258,,,,,,,,,,,,,,,,
+Ecuador,EC,ECU,2022,71,34,,,,,,,,,,,,,1547,,,,0,
+Grenada,GD,GRD,2022,70,34,0,0,0,0,0,1,0,,,,,,,,,,0,
+Guatemala,GT,GTM,2022,71,34,,,,,,,,,,,,,914,1084,,,0,
+Guyana,GY,GUY,2022,70,34,31,14,35,27,53,34,34,,,,,,,,,,0,
+Honduras,HN,HND,2022,71,34,,,,,,,,,,,,,553,,,,0,
+Haiti,HT,HTI,2022,70,,,,,,,,,,,,,,,,,,,
+Jamaica,JM,JAM,2022,70,34,2,6,4,,,,,,,,,,,,,,0,
+Saint Kitts and Nevis,KN,KNA,2022,71,34,,,,,,,,,,,,,0,0,,,1,a case was identified in August and another is pending gene expert results but has the clinical accumen
+Saint Lucia,LC,LCA,2022,70,,0,1,1,0,0,0,0,,,,,,,,,,0,
+Mexico,MX,MEX,2022,70,34,1784,1831,2506,2177,2376,,,,,,,,,,,,0,
+Nicaragua,NI,NIC,2022,70,,154,181,200,169,,,,,,,,,,,,,0,
+Panama,PA,PAN,2022,70,,81,125,121,133,126,77,,,,,,,,,,,0,
+Peru,PE,PER,2022,70,34,2102,2291,2670,2280,2310,2067,1601,,,,,,,,,,0,
+Puerto Rico,PR,PRI,2022,71,,,,,,,,,,,,,,3,6,,,1,
+Paraguay,PY,PRY,2022,70,34,246,204,305,144,,,,,,,,,,,,,0,
+Suriname,SR,SUR,2022,70,34,6,8,13,7,12,,,,,,,,,,,,1,
+El Salvador,SV,SLV,2022,70,,,,,,,,,,,,,,,,,,,
+Sint Maarten (Dutch part),SX,SXM,2022,70,,,,,,,,,,,,,,,,,,,
+Trinidad and Tobago,TT,TTO,2022,70,,,,,,,,,,,,,,,,,,,
+United States of America,US,USA,2022,70,,,,,,,,,,,,,,,,,,,
+Uruguay,UY,URY,2022,70,34,79,62,95,85,81,,,,,,,,,,,,0,
+Saint Vincent and the Grenadines,VC,VCT,2022,70,34,0,1,0,0,0,,,,,,,,,,,,0,
+Venezuela (Bolivarian Republic of),VE,VEN,2022,70,35,836,736,916,835,875,731,,,,,,,,,,,0,
+Pakistan,PK,PAK,2022,71,34,,,,,,,,,,,,,103214,,,,1,"Currently, the TB data is consolidated on quarterly basis in Pakistan. However, online monthly data will be available once the case based DHIS2 is rolled out in the country by the year 2023. "
+Andorra,AD,AND,2022,71,34,,,,,,,,,,,,,1,1,,,1,
+Albania,AL,ALB,2022,70,34,13,28,27,20,28,23,,,,,,,,,,,0,
+Armenia,AM,ARM,2022,70,34,41,38,39,31,,,,,,,,,,,,,0,
+Austria,AT,AUT,2022,70,,,,,,,,,,,,,,,,,,,
+Azerbaijan,AZ,AZE,2022,70,,,,,,,,,,,,,,,,,,,
+Bosnia and Herzegovina,BA,BIH,2022,70,,,,,,,,,,,,,,,,,,,
+Belgium,BE,BEL,2022,70,,,,,,,,,,,,,,,,,,,
+Bulgaria,BG,BGR,2022,70,,,,,,,,,,,,,,,,,,,
+Belarus,BY,BLR,2022,70,34,139,132,163,169,142,163,,,,,,,,,,,0,
+Switzerland,CH,CHE,2022,70,34,33,28,26,37,35,37,31,,,,,,,,,,0,
+Cyprus,CY,CYP,2022,70,,,,,,,,,,,,,,,,,,,
+Czechia,CZ,CZE,2022,70,,,,,,,,,,,,,,,,,,,
+Germany,DE,DEU,2022,70,34,262,299,347,304,395,347,,,,,,,,,,,0,
+Denmark,DK,DNK,2022,70,34,15,18,27,12,19,15,3,,,,,,,,,,0,"These data are national figures for Denmark, however not completely validated.
+Best regards Louise Holm and Anders Koch, Statens Serum Institut, national responsible persons for reporting of TB for Denmark."
+Estonia,EE,EST,2022,70,34,11,10,11,8,,,,,,,,,,,,,1,
+Spain,ES,ESP,2022,70,,,,,,,,,,,,,,,,,,,
+Finland,FI,FIN,2022,70,34,19,9,12,24,15,14,12,,,,,,,,,,0,
+France,FR,FRA,2022,70,,,,,,,,,,,,,,,,,,,
+United Kingdom of Great Britain and Northern Ireland,GB,GBR,2022,70,35,305,,,,,,,,,,,,,,,,,
+Georgia,GE,GEO,2022,70,,,,,,,,,,,,,,,,,,,
+Greece,GR,GRC,2022,70,,,,,,,,,,,,,,,,,,,
+Croatia,HR,HRV,2022,70,,,,,,,,,,,,,,,,,,,
+Hungary,HU,HUN,2022,70,34,19,33,36,41,34,,,,,,,,,,,,0,"We added the notified ones of 2022, but there are more cases identified in the laboratory and not notified yet J-M: 9,4,5,5,5"
+Ireland,IE,IRL,2022,70,34,22,23,22,12,18,28,20,,,,,,,,,,0,
+Israel,IL,ISR,2022,70,,,,,,,,,,,,,,,,,,,
+Iceland,IS,ISL,2022,70,,,,,,,,,,,,,,,,,,,
+Italy,IT,ITA,2022,70,,,,,,,,,,,,,,,,,,,
+Kyrgyzstan,KG,KGZ,2022,70,,332,396,413,442,369,440,,,,,,,,,,,0,
+Kazakhstan,KZ,KAZ,2022,70,34,657,917,876,1041,819,,,,,,,,,,,,0,
+Lithuania,LT,LTU,2022,70,34,69,39,66,62,59,35,19,,,,,,,,,,0,
+Luxembourg,LU,LUX,2022,70,34,3,1,7,1,6,5,,,,,,,,,,,0,les données peuvent encore varier et ne sont pas définitives
+Latvia,LV,LVA,2022,70,,,,,,,,,,,,,,,,,,,
+Monaco,MC,MCO,2022,70,34,0,0,0,0,,,,,,,,,,,,,0,Aucun cas de tuberculose chez des personnes résidant à Monaco pour le début d'année 2022
+Republic of Moldova,MD,MDA,2022,70,34,149,165,193,177,178,208,167,,,,,,,,,,0,
+Montenegro,ME,MNE,2022,70,34,7,4,8,6,5,5,5,,,,,,,,,,1,
+North Macedonia,MK,MKD,2022,70,,9,11,14,11,17,12,,,,,,,,,,,0,
+Malta,MT,MLT,2022,70,34,10,5,3,4,2,3,6,,,,,,,,,,0,
+Netherlands,NL,NLD,2022,70,34,38,55,61,52,47,55,,,,,,,,,,,0,
+Norway,NO,NOR,2022,70,,,,,,,,,,,,,,,,,,,
+Poland,PL,POL,2022,70,,,,,,,,,,,,,,,,,,,
+Portugal,PT,PRT,2022,70,,94,85,94,38,,,,,,,,,,,,,1,
+Romania,RO,ROU,2022,71,34,,,,,,,,,,,,,1990,2549,,,0,
+Serbia,RS,SRB,2022,70,,,,,,,,,,,,,,,,,,,
+Russian Federation,RU,RUS,2022,70,34,4397,4202,4772,6039,4624,4742,,,,,,,,,,,1,
+Sweden,SE,SWE,2022,70,34,35,27,40,29,43,38,,,,,,,,,,,1,
+Slovenia,SI,SVN,2022,70,34,3,7,4,8,8,9,,,,,,,,,,,0,
+Slovakia,SK,SVK,2022,70,34,8,7,8,10,11,14,8,,,,,,,,,,0,
+San Marino,SM,SMR,2022,70,,,,,,,,,,,,,,,,,,,
+Tajikistan,TJ,TJK,2022,70,,,,,,,,,,,,,,,,,,,
+Turkmenistan,TM,TKM,2022,70,,,,,,,,,,,,,,,,,,,
+Türkiye,TR,TUR,2022,70,34,780,753,907,,,,,,,,,,,,,,0,
+Ukraine,UA,UKR,2022,70,34,1453,1713,1475,1532,1689,1653,1578,,,,,,,,,,0,
+Uzbekistan,UZ,UZB,2022,71,34,,,,,,,,,,,,,3578,,,,0,
+China,CN,CHN,2022,70,34,39459,33745,51622,43306,44349,48997,48056,,,,,,,,,,0,
+Cambodia,KH,KHM,2022,70,,2216,2260,2386,,,,,,,,,,,,,,1,For April: Data is not yet completed/not yet available.
+Lao People's Democratic Republic,LA,LAO,2022,70,34,444,578,656,572,1012,741,730,,,,,,,,,,0,TB - All notified TB Case (New and Relapse all forms) source TB tracker DHIS2
+Mongolia,MN,MNG,2022,70,34,212,175,249,270,303,241,,,,,,,,,,,0,
+Malaysia,MY,MYS,2022,70,34,1642,1844,1608,1788,,,,,,,,,,,,,1,
+Papua New Guinea,PG,PNG,2022,71,35,,,,,,,,,,,,,7864,7053,,,0,"By 18 May 2022, only 34% (88) out of 257 TB BMUs reported to NTP for Q1, 2022"
+Philippines,PH,PHL,2022,70,35,29412,32204,40998,25236,35013,42979,19009,,,,,,,,,,0,Reports are due quarterly. Jan to June are all units. July is some units.
+Solomon Islands,SB,SLB,2022,70,34,19,15,24,20,,,,,,,,,,,,,0,
+Viet Nam,VN,VNM,2022,70,34,6234,5642,7915,8130,8757,9574,,,,,,,,,,,1,

@@ -1,0 +1,238 @@
+country,year,iso2,mdr.coh,mdr.succ,mdr.fail,mdr.died,mdr.lost,c.mdr.neval,c.mdr.tsr,xdr.coh,xdr.succ,xdr.fail,xdr.died,xdr.lost,c.xdr.neval,c.xdr.tsr,gaps.na.rxmdr.xdr.outcomes,remarks.rxmdr.xdr.outcomes
+Bangladesh,2019,BD,1235,909,46,102,137,41,74,7,6,0,1,0,0,86,0,
+Bhutan,2019,BT,70,68,0,0,1,1,97,0,0,0,0,0,0,,0,The 8 pre XDR cases in 2019 have been included under 2.53.
+Indonesia,2019,ID,5276,2466,227,918,1133,532,47,351,112,47,73,79,40,32,0,"Not evaluated includes patients reported to be still on treatment, patients whose diagnosis changed, patients referred to other facilities without treatment result information.
+
+2.53 The number that started treatment in 2019 lower than reported because some of the cases confirmed as pre-XDR-TB/XDR-TB (move to 2.54)
+
+The number that started treatment in 2019 [29] only XDR-TB, where 2.54 [351] including pre-XDR-TB and XDR-TB."
+India,2019,IN,60858,34891,9260,7985,8051,671,57,3023,1666,295,648,362,52,55,0,"1) All confirmed MDR/RR-TB includes any FQ or SLI resistance. 
+2) Treatment failed includes regimen change.
+3) Not evaluated includes patients still on treatment
+4) The MDR & XDR cases were reconciled after submission of the data for GTB report 2020 and updated MDR & XDR patients registered for treatment are 60858 & 3023"
+Democratic People's Republic of Korea,2019,KP,2312,1662,426,124,100,0,72,84,66,10,4,4,0,79,1,
+Sri Lanka,2019,LK,19,13,0,5,1,0,68,0,0,0,0,0,0,,1,"Out of the 20 MDR/TB patients reported in 2020 report, diagnosis of one patient was changed and he was managed as drug-susceptible TB according to the pre-treatment culture results. "
+Myanmar,2019,MM,1962,1516,28,265,80,73,77,26,21,0,3,1,1,81,0,
+Maldives,2019,MV,1,0,0,0,0,1,0,0,0,0,0,0,0,,0,
+Nepal,2019,NP,366,266,2,44,30,24,73,114,84,1,17,7,5,74,0,The outcome of RR/MDR has two different cohort period; patients enrolled in treatment for SSTR includes the patients who were enrolled in treatment before 16 months whereas the patient in longer regimen includes patients enrolled before 24 months period. The outcome of 378 RR/MDR TB reported last year would come in the next reporting period.
+Thailand,2019,TH,1095,764,37,124,113,57,70,17,14,1,2,0,0,82,0,
+Timor-Leste,2019,TL,9,9,0,0,0,0,100,0,0,0,0,0,0,,0,
+Angola,2019,AO,,,,,,,,,,,,,,,1,
+Burkina Faso,2019,BF,62,43,3,12,4,0,69,2,1,0,1,0,0,50,0,le nombre d'enregistrés a été corrigé.
+Burundi,2019,BI,64,60,0,4,0,0,94,0,0,0,0,0,0,,0,Le taux de succès thérapeutique des malades TB/RR est de 94% et celui de décès de 6%.
+Benin,2019,BJ,23,19,1,2,1,0,83,0,0,0,0,0,0,,1,
+Botswana,2019,BW,66,30,0,5,3,28,45,0,0,0,0,0,0,,0,
+Democratic Republic of the Congo,2019,CD,822,636,23,90,73,0,77,29,23,0,6,0,0,79,0,
+Central African Republic,2019,CF,74,46,0,5,9,14,62,0,0,0,0,0,0,,0,
+Congo,2019,CG,133,108,0,12,6,7,81,0,0,0,0,0,0,,0,Le Nombre de patients TB-RR ou TB-MR confirmés en laboratoire qui ont commencé un traitement pour la TB-MR en 2019 est bel et bien 133
+Côte d'Ivoire,2019,CI,394,285,18,58,33,0,72,15,4,1,9,1,0,27,0,
+Cameroon,2019,CM,170,141,3,13,13,0,83,5,2,0,3,0,0,40,0,
+Cabo Verde,2019,CV,2,2,0,0,0,0,100,0,0,0,0,0,0,,0,
+Algeria,2019,DZ,,,,,,,,,,,,,,,1,
+Eritrea,2019,ER,17,15,0,2,0,0,88,0,0,0,0,0,0,,0,
+Ethiopia,2019,ET,646,441,20,58,36,91,68,,,,,,,,1,
+Gabon,2019,GA,58,31,0,7,8,12,53,3,0,0,0,0,3,0,0,
+Ghana,2019,GH,217,154,38,4,17,4,71,2,1,0,1,0,0,50,0,
+Gambia,2019,GM,8,7,0,1,0,0,88,0,0,0,0,0,0,,0,
+Guinea,2019,GN,231,174,4,32,19,2,75,4,2,1,1,0,0,50,0,
+Equatorial Guinea,2019,GQ,34,24,3,2,5,0,71,4,3,0,1,0,0,75,0,
+Guinea-Bissau,2019,GW,26,13,1,7,5,0,50,0,0,0,0,0,0,,1,"En 2019, 33 cas de TB-R ont été détectés. Parmi les cas détectés, nous notons les suivants :
+ - On a enregistré 3 décès et 1 perte de vue précoce, tous n'ayant pas commencé le traitement.
+- 3 cas ont été recrutés dans le traitement en 2020, en dehors de la période de déclaration, en raison du retard du test LPA.
+ - Les 26 autres cas ont été recrutés, évalués et inclus dans le rapport (cohorte annuelle de résultats de traitement 2019)."
+Kenya,2019,KE,502,367,5,78,31,21,73,9,5,0,2,1,1,56,0,
+Comoros,2019,KM,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Liberia,2019,LR,83,65,1,12,5,0,78,,,,,,,,1,
+Lesotho,2019,LS,180,144,1,26,5,4,80,4,2,1,1,0,0,50,0,
+Madagascar,2019,MG,49,35,2,10,2,0,71,0,0,0,0,0,0,,0,
+Mali,2019,ML,42,32,0,6,3,1,76,1,0,0,0,1,0,0,0,
+Mauritania,2019,MR,22,12,4,2,2,2,55,0,0,0,0,0,0,,0,
+Mauritius,2019,MU,1,1,0,0,0,0,100,0,0,0,0,0,0,,0,
+Malawi,2019,MW,87,64,0,15,8,0,74,,,,,,,,1,We reported 104 DR TB patients in 2021 . And our reporting is based on all DR TB enrolled 2 years prior to the reporting period. 
+Mozambique,2019,MZ,1336,968,64,183,109,12,72,97,80,1,10,4,2,82,0,The number of patients started treatment is equal  2.17 Number of patients (not laboratory-confirmed RR-TB or MDR-TB) who started treatment for MDR-TB in 2019 + 2.18 Number of laboratory-confirmed RR-TB or MDR-TB patients who started treatment for MDR-TB in 2019
+Namibia,2019,NA,278,209,10,34,23,2,75,4,3,1,0,0,0,75,0,2.53:Changes made
+Niger,2019,NE,64,55,1,5,3,0,86,1,1,,,,,100,0,
+Nigeria,2019,NG,1975,1580,20,217,119,39,80,15,10,0,2,3,0,67,0,"2.53 includes all RR/MDR (1832), Pre-XDR (128) and XDR (15)   (Total of 1975 was placed on treatment)
+2.54 includes XDR (15)
+"
+Rwanda,2019,RW,100,94,0,5,1,0,94,0,0,0,0,0,0,,0,
+Seychelles,2019,SC,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Sierra Leone,2019,SL,147,118,2,24,3,0,80,,,,,,,,1,
+Senegal,2019,SN,49,41,2,5,1,0,84,0,0,0,0,0,0,,0,
+South Sudan,2019,SS,62,56,0,2,2,2,90,0,0,0,0,0,0,,0,
+Sao Tome and Principe,2019,ST,2,1,0,1,0,0,50,0,0,0,0,0,0,,1,
+Eswatini,2019,SZ,131,107,1,20,3,0,82,8,7,0,0,1,0,88,1,
+Chad,2019,TD,56,15,1,6,9,25,27,0,0,0,0,0,0,,0,
+Togo,2019,TG,20,14,2,4,0,0,70,3,2,0,1,0,0,67,0,
+United Republic of Tanzania,2019,TZ,518,379,1,100,29,9,73,1,0,0,0,0,1,0,1,
+Uganda,2019,UG,556,444,16,70,25,1,80,8,4,3,1,0,0,50,0,2.53: The total number of cases registered [556] should normally be the same as the number that started treatment in 2019 [549] as reported in section 2.18 of the 2020  however changes in data due to Data harmonization sessions affect the data
+South Africa,2019,ZA,8317,5467,120,1359,1279,92,66,1190,708,58,230,154,40,59,0,The country has been in the past lumping Pre-XDR-TB with MDR-TB and not separately while this reporting is reporting pre-XDR-TB with XDR-TB.
+Zambia,2019,ZM,494,370,61,5,43,15,75,6,5,1,0,0,0,83,0,
+Zimbabwe,2019,ZW,329,141,3,63,12,110,43,4,0,0,0,0,4,0,0,
+Antigua and Barbuda,2019,AG,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Anguilla,2019,AI,0,,,,,,,0,,,,,,,0,
+Argentina,2019,AR,196,59,2,26,42,67,30,7,2,0,3,0,2,29,0,Las diferencias con la notificación 2019 es la actualizacación de la bse de datos del Sistema Nacional de Vigilancia posterior al cierre de la carga de infromación para el Porgrama Global de OMS
+Aruba,2019,AW,,,,,,,,,,,,,,,1,
+Barbados,2019,BB,0,0,0,0,0,0,,0,0,0,0,0,0,,0,We do not have drug resistant TB
+Bermuda,2019,BM,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Bolivia (Plurinational State of),2019,BO,113,59,1,18,35,0,52,0,0,0,0,0,0,,0,
+Brazil,2019,BR,639,353,31,57,160,38,55,9,2,2,2,2,1,22,0,The TB information system in Brazil is very dynamic and the database is often qualified.
+Bahamas,2019,BS,1,1,0,0,0,0,100,0,0,0,0,0,0,,0,
+Belize,2019,BZ,0,0,0,0,0,0,,0,0,0,0,0,0,,1,
+Canada,2019,CA,,,,,,,,,,,,,,,,
+Chile,2019,CL,60,30,1,8,17,4,50,5,4,0,0,1,0,80,0,
+Colombia,2019,CO,197,111,0,26,32,28,56,2,1,0,0,1,0,50,0,
+Costa Rica,2019,CR,1,1,0,0,0,0,100,0,0,0,0,0,0,,0,
+Cuba,2019,CU,10,9,1,0,0,0,90,,,,,,,,1,
+Curaçao,2019,CW,,,,,,,,,,,,,,,,
+Dominica,2019,DM,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Dominican Republic,2019,DO,152,108,6,8,30,0,71,7,3,2,1,1,0,43,0,
+Ecuador,2019,EC,,,,,,,,,,,,,,,1,Por el sistema de información que actualmente tiene el país y las dificultades para obtener la información a tiempo no se dispone de datos para cohorte de MDR.
+Grenada,2019,GD,0,0,0,0,0,0,,0,0,0,0,0,0,,1,
+Guatemala,2019,GT,103,59,2,18,24,0,57,4,3,1,0,0,0,75,0,
+Guyana,2019,GY,13,0,0,8,5,0,0,0,0,0,0,0,0,,0,
+Honduras,2019,HN,12,5,0,4,3,0,42,0,0,0,0,0,0,,0,
+Haiti,2019,HT,96,89,1,2,4,0,93,0,0,0,0,0,0,,0,
+Jamaica,2019,JM,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Saint Kitts and Nevis,2019,KN,0,,,,,,,0,,,,,,,1,
+Cayman Islands,2019,KY,,,,,,,,,,,,,,,,
+Saint Lucia,2019,LC,0,0,0,0,0,0,,0,0,0,0,0,0,,0,There were no documented cases of neither MDR nor XRD-TB in 2019.
+Montserrat,2019,MS,,,,,,,,,,,,,,,,
+Mexico,2019,MX,350,191,34,55,64,6,55,4,1,2,0,1,0,25,0,
+Nicaragua,2019,NI,56,40,1,7,8,0,71,,,,,,,,1,
+Panama,2019,PA,39,23,0,6,10,0,59,6,5,0,1,0,0,83,0,"De igual manera que para TB sensibles en ese momento que realizo el reporte todos los pacientes resistentes  no estaban ingresados a la fecha solicitada, estamos trabajando en conjunto con las Regiones de Salud del país para que el reporte sea oportuno para subsanar las brechas de los datos "
+Peru,2019,PE,1617,1002,31,109,427,48,62,72,50,5,9,7,1,69,0,"2.53 De los 1767 casos MDR + RR reportados para el año 2019, 150 fueron excluidos del tratamiento TB Resistente.
+2.54 Solo se esta considerando XDR según la definición anterior, visto que se encuentra proceso la actualización de la NT TB con las nuevas definiciones de la OMS. De los 89 XDR reportados solo 72 casos iniciaron tratamiento, 17 fallecieron antes de iniciar tratamiento."
+Puerto Rico,2019,PR,3,3,0,0,0,0,100,0,0,0,0,0,0,,0,
+Paraguay,2019,PY,9,6,0,2,1,0,67,0,0,0,0,0,0,,0,
+Suriname,2019,SR,0,,,,,,,0,0,0,0,0,0,,1,"For 2.53 o is filled in because the cases that were detected are low-level rifampicin resistant and treated according to national protocol with a high-dose of Rifampicin (30 mg/kg) under ""operational study condition). Treated for 6 months and observed for 18 months."
+El Salvador,2019,SV,21,20,0,1,0,0,95,0,0,0,0,0,0,,0,
+Sint Maarten (Dutch part),2019,SX,0,,,,,,,0,,,,,,,1,
+Turks and Caicos Islands,2019,TC,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Trinidad and Tobago,2019,TT,,,,,,,,,,,,,,,1,
+United States of America,2019,US,86,72,0,9,3,2,84,50,44,0,4,0,2,88,1,"preXDR is defined as resistance to any fluoroquinolone (not just levofloxacin and moxifloxacin) or resistance to a second-line injectable (amikacin, kanamycin or capreomycin) because we do not yet have the ability to collect this information under the new WHO definition.  XDR is captured under resistance to both classes identified above for preXDR or for bedaquiline or linezolid resistance if entered in our surveillance data set."
+Uruguay,2019,UY,6,3,0,2,1,0,50,0,0,0,0,0,0,,0,
+Saint Vincent and the Grenadines,2019,VC,0,0,0,0,0,0,,0,0,0,0,0,0,,0,No RR or MDR TB
+Venezuela (Bolivarian Republic of),2019,VE,34,23,0,5,3,3,68,1,1,0,0,0,0,100,0,
+British Virgin Islands,2019,VG,,,,,,,,,,,,,,,,
+United Arab Emirates,2019,AE,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0,This case confirmed as XDR in 2019 start the treatment ( she had  other comorbidity (HIV) 
+Afghanistan,2019,AF,396,282,8,34,57,15,71,,,,,,,,1,
+Bahrain,2019,BH,2,0,0,0,1,1,0,1,1,0,0,0,0,100,0,
+Djibouti,2019,DJ,44,31,2,6,5,,70,,,,,,,,1,2.54 PAS DE PATIENTS XDR
+Egypt,2019,EG,96,63,0,9,24,0,66,0,0,0,0,0,0,,0,
+Iraq,2019,IQ,105,72,6,9,17,1,69,1,0,1,0,0,0,0,0,"After revising the definitions of DRTB, one case of 2019 cohort is not called preXDR. During the check order, the program found inconsistence between section 2.20 in 2020 report and current report. Please, be noted in 2020 report; 2.20 was only referring to only XDR not pre-XDR"
+Iran (Islamic Republic of),2019,IR,28,15,0,8,4,1,54,0,0,0,0,0,0,,0,
+Jordan,2019,JO,3,3,0,0,0,0,100,0,0,0,0,0,0,,1,XDR cannot be reported seperately
+Kuwait,2019,KW,4,2,,,2,,50,,,,,,,,0,
+Lebanon,2019,LB,8,2,0,1,1,4,25,1,0,0,0,0,1,0,1,
+Libya,2019,LY,16,4,0,4,6,2,25,0,0,0,0,0,0,,0,
+Morocco,2019,MA,198,113,12,35,32,6,57,38,20,2,8,7,1,53,0,
+Oman,2019,OM,4,0,0,1,0,3,0,0,0,0,0,0,0,,0,
+Pakistan,2019,PK,2527,1834,89,405,153,46,73,407,271,28,74,18,16,67,0,
+"occupied Palestinian territory, including east Jerusalem",2019,PS,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Qatar,2019,QA,9,0,0,0,1,8,0,0,0,0,0,0,0,,0,
+Saudi Arabia,2019,SA,27,22,0,2,3,0,81,0,0,0,0,0,0,,0,
+Sudan,2019,SD,212,175,1,19,15,2,83,1,1,0,0,0,0,100,1,The data updated  for Number of patients started on drug-resistant TB treatment in 2019 was 212
+Somalia,2019,SO,335,257,1,15,28,34,77,2,2,0,0,0,0,100,0,
+Syrian Arab Republic,2019,SY,11,8,0,2,1,0,73,0,0,0,0,0,0,,1,
+Tunisia,2019,TN,19,16,,3,,,84,0,0,,,,,,1,
+Yemen,2019,YE,45,33,3,5,4,0,73,0,0,0,0,0,0,,1,
+Andorra,2019,AD,0,,,,,,,0,,,,,,,1,
+Albania,2019,AL,2,1,0,1,,,50,0,0,0,0,0,0,,1,
+Armenia,2019,AM,65,35,7,12,10,1,54,12,6,1,4,0,1,50,0,
+Austria,2019,AT,6,6,0,0,0,0,100,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Azerbaijan,2019,AZ,815,486,99,87,143,,60,186,113,32,13,28,,61,1,
+Bosnia and Herzegovina,2019,BA,,,,,,,,,,,,,,,1,
+Belgium,2019,BE,16,14,0,0,1,1,88,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Bulgaria,2019,BG,,,,,,,,,,,,,,,,
+Belarus,2019,BY,772,640,13,64,47,8,83,287,206,19,24,36,2,72,0,
+Switzerland,2019,CH,12,11,0,0,1,0,92,,,,,,,,1,all cases combined in 2.53
+Cyprus,2019,CY,1,0,0,0,0,1,0,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Czechia,2019,CZ,6,4,0,0,0,2,67,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Germany,2019,DE,97,45,0,5,3,44,46,4,1,0,0,1,2,25,,Data extracted from ECDC/TESSy 2022-08-26
+Denmark,2019,DK,,,,,,,,,,,,,,,,
+Estonia,2019,EE,22,18,1,2,1,0,82,5,3,0,0,1,1,60,,Data extracted from ECDC/TESSy 2022-08-26
+Spain,2019,ES,21,12,0,0,0,9,57,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Finland,2019,FI,3,2,0,0,0,1,67,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Faroe Islands,2019,FO,,,,,,,,,,,,,,,,
+France,2019,FR,86,7,0,0,3,76,8,9,0,0,1,0,8,0,,Data extracted from ECDC/TESSy 2022-08-26
+United Kingdom of Great Britain and Northern Ireland,2019,GB,,,,,,,,,,,,,,,,
+Georgia,2019,GE,218,171,4,13,28,2,78,53,30,5,4,10,4,57,0,
+Greenland,2019,GL,,,,,,,,,,,,,,,1,
+Greece,2019,GR,,,,,,,,,,,,,,,,
+Croatia,2019,HR,,,,,,,,,,,,,,,,
+Hungary,2019,HU,10,3,1,0,2,4,30,3,0,0,1,0,2,0,,Data extracted from ECDC/TESSy 2022-08-26
+Ireland,2019,IE,6,2,0,1,0,3,33,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Israel,2019,IL,9,5,1,1,2,0,56,1,1,0,0,0,0,100,0,
+Iceland,2019,IS,,,,,,,,,,,,,,,,
+Italy,2019,IT,,,,,,,,,,,,,,,,
+Kyrgyzstan,2019,KG,1173,841,42,79,208,3,72,97,60,10,8,19,0,62,0,
+Kazakhstan,2019,KZ,5892,4486,196,600,289,321,76,655,476,55,82,22,20,73,0,"в 2019 начали лечение 403 пациента ШЛУ. В 2.54 мы даем 655 пациентов, это включает также и преШЛУ"
+Lithuania,2019,LT,115,78,2,20,7,8,68,58,0,3,9,3,43,0,,Data extracted from ECDC/TESSy 2022-08-26
+Luxembourg,2019,LU,,,,,,,,,,,,,,,,
+Latvia,2019,LV,,,,,,,,,,,,,,,,
+Monaco,2019,MC,0,,,,,,,0,,,,,,,1,
+Republic of Moldova,2019,MD,559,387,35,76,13,48,69,37,21,7,4,3,2,57,0,
+Montenegro,2019,ME,0,0,0,0,0,0,,0,0,0,0,0,0,,1,
+North Macedonia,2019,MK,2,,,,2,,,0,,,,,,,0,
+Malta,2019,MT,,,,,,,,,,,,,,,,
+Netherlands,2019,NL,9,8,0,0,0,1,89,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Norway,2019,NO,2,1,0,0,0,1,50,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Poland,2019,PL,,,,,,,,,,,,,,,,
+Portugal,2019,PT,14,6,0,0,2,6,43,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Romania,2019,RO,340,175,50,58,49,8,51,37,7,13,12,2,3,19,,Data extracted from ECDC/TESSy 2022-08-26
+Serbia,2019,RS,,,,,,,,,,,,,,,,
+Russian Federation,2019,RU,32574,16447,5187,5070,3572,2298,50,39,11,15,5,5,3,28,1,"The definition of XDR-TB and the instructions used in the preparation of the report in 2018 differed from the current definitions, and therefore a data update for 2019 is not possible. I give explanations on the movement below.
+32574 confirmed RR-TB/MDR-TB cases were derived from 24566 initially reported, 6010 previously designated XDR and 2172 from not laboratory-confirmed RR-TB or MDR-TB; 39 were then assessed as XDR in the new definition, and 135 were canceled."
+Sweden,2019,SE,10,9,0,0,0,1,90,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+Slovenia,2019,SI,,,,,,,,,,,,,,,,
+Slovakia,2019,SK,5,4,0,1,0,0,80,0,0,0,0,0,0,,,Data extracted from ECDC/TESSy 2022-08-26
+San Marino,2019,SM,,,,,,,,,,,,,,,,
+Tajikistan,2019,TJ,588,454,14,66,54,0,77,68,53,4,9,2,0,78,0,
+Turkmenistan,2019,TM,649,358,106,106,71,8,55,113,59,15,30,8,1,52,0,
+Türkiye,2019,TR,155,7,0,16,11,121,5,8,0,0,0,1,7,0,0,
+Ukraine,2019,UA,7259,4460,907,969,918,5,61,0,0,0,0,0,0,,0,"В 2019 году регистрация случаев была по дефинициям устойчивости (фторхинолонам и инъекционным препаратам второго ряда). В п. 2.53 включены все случаи (РУ-ТБ/МЛУ-ТБ, пре-ШЛУ или ШЛУ-ТБ)."
+Uzbekistan,2019,UZ,2040,1422,113,223,162,120,70,627,411,32,108,34,42,66,0,
+Kosovo,2019,XA,0,0,0,0,0,0,,0,0,0,0,0,0,,1,
+American Samoa,2019,AS,,,,,,,,,,,,,,,,
+Australia,2019,AU,22,19,0,0,0,3,86,3,2,0,1,0,0,67,0,
+Brunei Darussalam,2019,BN,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Cook Islands,2019,CK,0,0,0,0,0,0,,0,0,0,0,0,0,,0,No RR - TB/MDR cases reported in 2019
+China,2019,CN,13525,7182,590,42,5711,0,53,,,,,,,,1, 2.53 has included XDR-TB cases.
+Fiji,2019,FJ,1,1,0,0,0,0,100,0,0,0,0,0,0,,0,
+Micronesia (Federated States of),2019,FM,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Guam,2019,GU,2,1,0,1,0,0,50,0,0,0,0,0,0,,0,
+"China, Hong Kong SAR",2019,HK,19,15,0,2,0,2,79,2,2,0,0,0,0,100,0,"When reporting 2019 data in 2020, all pre-XDR were grouped under RR/MDR-TB (total=21). There should be 19 RR/MDR-TB and 2 pre-XDR-TB started on TB treatment in 2019. There was no XDR-TB in 2019."
+Japan,2019,JP,49,28,0,10,2,9,57,,,,,,,,1,2.53: included MDR/XDR/pre-XDR TB cases.
+Cambodia,2019,KH,114,97,2,12,3,0,85,21,13,0,6,2,0,62,0,
+Kiribati,2019,KI,3,3,0,0,0,0,100,0,0,0,0,0,0,,0,
+Republic of Korea,2019,KR,736,539,2,119,65,11,73,,,,,,,,0,"2.53
+7 were excluded to another changed other disease.
+
+2.54
+We are not able to calculate the TB treatment success rate for patients with pre-XDR-TB/XDR- TB because we have not applied a new definition if (pre-)XDR-TB and treatment outcome yet. "
+Lao People's Democratic Republic,2019,LA,39,30,0,8,1,0,77,0,0,0,0,0,0,,0,
+Marshall Islands,2019,MH,0,0,0,0,0,0,,0,0,0,0,0,0,,1,none drug resistant diagnosed in 2019
+Mongolia,2019,MN,179,126,7,20,18,8,70,,,,,,,,1,"in 2.53 included all case RR-TB/MDR-TB TB, pre XDR-TB/XDR-TB"
+"China, Macao SAR",2019,MO,6,4,0,1,0,1,67,0,0,0,0,0,0,,1,
+Northern Mariana Islands,2019,MP,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Malaysia,2019,MY,169,93,6,41,12,17,55,3,1,0,1,0,1,33,1,"2.5.3 We have strengthen surveillance for enrolment to second line treatment. We have updated that 169 patients received DRTB treatment for cohort 2019.
+"
+New Caledonia,2019,NC,0,,,,,,,0,,,,,,,1,
+Nauru,2019,NR,0,0,0,0,0,0,,0,0,0,0,0,0,,0, There is no MDR - R resistance case in Nauru.
+Niue,2019,NU,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+New Zealand,2019,NZ,7,7,0,0,0,0,100,0,0,0,0,0,0,,0,
+French Polynesia,2019,PF,1,1,,,,,100,,,,,,,,1,
+Papua New Guinea,2019,PG,284,199,2,36,40,7,70,3,3,,,,,100,1,
+Philippines,2019,PH,5641,4146,148,642,692,13,73,259,192,10,25,31,1,74,0,
+Palau,2019,PW,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Solomon Islands,2019,SB,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Singapore,2019,SG,9,4,0,0,0,5,44,2,1,0,0,0,1,50,1,"2.53 & 2.54:total started treatment in 2019 =11 cases
+2.54: 2 cases of pre-XDR"
+Tokelau,2019,TK,,,,,,,,,,,,,,,,
+Tonga,2019,TO,0,0,0,0,0,0,,0,0,0,0,0,0,,0,NO RR-TB/MDR-TB diagnosed during the reporting period.
+Tuvalu,2019,TV,0,0,0,0,0,0,,0,0,0,0,0,0,,0,
+Viet Nam,2019,VN,2981,2218,153,182,333,95,74,236,144,13,33,35,11,61,0,"The difference between 2.53, the total number of cases registered [2981] with the number in 2019 [3014], and 2.54, total [236] with the number that started treatment in 2019 [41] is because in the old report, it only asked for XDR cases, this year include pre-XDR cases as well"
+Vanuatu,2019,VU,2,2,0,0,0,0,100,0,0,0,0,0,0,,0,Both patient were cured from MDR. 
+Wallis and Futuna Islands,2019,WF,,,,,,,,,,,,,,,,
+Samoa,2019,WS,0,0,0,0,0,0,,0,0,0,0,0,0,,0,

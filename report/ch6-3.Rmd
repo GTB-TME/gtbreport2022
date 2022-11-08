@@ -1,0 +1,933 @@
+---
+title: "Chapter 6.3"
+author: "Takuya Yamanaka" # Based on the test version of Chapter 5 "chapter_5_test" by Hazim 
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # to save intermediate .png
+    keep_md: true    
+---
+
+```{r setup, include=FALSE}
+
+# Set chunk options.
+# Results "asis" is needed to avoid xtable output being html encoded
+# Suppress messages, warnings and also the ## at the beginning of printed text
+# Set a default figure width too.
+
+knitr::opts_chunk$set(echo = FALSE,
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      fig.width = 12)
+
+
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(RColorBrewer)
+library(whomap)
+library(gtbreport)
+library(here)
+library(cowplot)
+
+# Get the data sets and computed values/statistics for section 6.3 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch6-3_prepare_data.r'))
+
+# Save PDF
+save_pdf = FALSE
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+# 3. ref_lnk() creates a link from text to the references in the WHO style (black, italic)
+ref_lnk <- function(display_name){
+  return(paste0('<span class="refs">[', 
+                display_name, 
+                '](#refs)</span>'))
+}
+```
+  
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.subhead {
+  margin-top: -15px; /* Bring subheadings closer to figure headings */
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+.refs, .refs a {
+  color: #3c4245;  /* match SF normal text colour */
+  font-style: italic;
+}
+
+/* table tab6_3_1*/
+
+/* Recreating simple striped bootstrap table */
+#tab6_3_1 {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  /* Next two lines to allow horizontal scrolling on narrow screens */
+  display: block;
+  overflow-x: auto;
+}
+
+#tab6_3_1 th {
+  border-bottom: 2px solid #DDDDDD;
+  padding: 8px;
+}
+
+#tab6_3_1 td {
+  border-top: 1px solid #DDDDDD;
+  padding: 8px;
+}
+
+/* light gray for odd rows */
+#tab6_3_1 tr:nth-child(odd) td {
+  background-color: #F5F5F5;	
+}
+
+/* light gray when hovering over a row */
+#tab6_3_1 tr:hover td {
+  background-color: #DDDDDD;
+}
+
+/* Centre-align all column headings except for the first */
+#tab6_3_1 th:not(:first-child) {
+  text-align: center !important;
+}
+
+/* prevent numbers from wrapping in any of the columns */
+#tab6_3_1 td {
+  white-space: nowrap;
+}
+
+/* table tab6_3_2 */
+
+/* Recreating simple striped bootstrap table */
+#tab6_3_2 {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  /* Next two lines to allow horizontal scrolling on narrow screens */
+  display: block;
+  overflow-x: auto;
+}
+
+#tab6_3_2 th {
+  border-bottom: 2px solid #DDDDDD;
+  padding: 8px;
+}
+
+#tab6_3_2 td {
+  border-top: 1px solid #DDDDDD;
+  padding: 8px;
+}
+
+/* light gray for odd rows */
+#tab6_3_2 tr:nth-child(odd) td {
+  background-color: #F5F5F5;	
+}
+
+/* light gray when hovering over a row */
+#tab6_3_2 tr:hover td {
+  background-color: #DDDDDD;
+}
+
+/* prevent numbers from wrapping in any of the columns */
+#tab6_3_2 td {
+  white-space: nowrap;
+}
+
+```
+
+# 6.3 TB determinants  
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+The tuberculosis (TB) epidemic is strongly influenced by social and economic development and health-related risk factors such as undernourishment, diabetes, HIV infection, alcohol use disorders and smoking. Achieving global targets for reductions in TB disease burden requires progress in addressing these determinants. For example, numbers of TB cases and deaths started to decline in western Europe, North America and some other parts of the world around the turn of the 20th century, as incomes grew, levels of poverty fell, and housing and nutrition improved (`r ref_lnk("1, 2")`). The fastest declines in TB incidence and TB mortality in western Europe occurred in the 1950s and 1960s, in the context of progress towards universal health coverage (UHC), rapid social and economic development, and the availability of effective drug treatments.
+
+The World Health Organization (WHO) has developed a framework for monitoring the Sustainable Development Goals (SDGs) related to TB. The framework comprises 14 indicators for which a relationship with TB incidence could be established, under seven SDGs (see <span class="red">Annex 6</span>) of the main report). Five are health-related risk factors for TB and six are broader socioeconomic determinants; the other 3 indicators, for UHC and current health expenditures, are covered in <span class="red">Section 6.1</span>). 
+
+There is a particularly clear relationship between TB incidence and (i) undernourishment and (ii) gross domestic product (GDP) per capita (`r lnk("Fig. 6.3.1")`).
+
+### `r anch("Fig. 6.3.1")` <span class="red">Fig. 6.3.1</span> The relationship between GDP per capita and the prevalence of undernourishment and TB incidence per 100 000 population, `r report_year-1`^a^
+
+```{r Fig 6.3.1}
+
+f6.3.1a_plot  <- 
+  f6.3.1a_data %>% 
+  ggplot(aes(x=gdp,y=inc)) +
+  geom_point() +
+  scale_x_log10() + scale_y_log10(limits=c(1,1000)) +
+  xlab('GDP per capita (US$ thousands)') +
+  ylab('Incidence per 100 000 population (log scale)') +
+  geom_smooth(method='lm', fill="lawngreen",color="limegreen") +
+  theme_gtb() #+ theme(panel.background = element_rect(fill = "#F7DEB4")) 
+
+f6.3.1b_plot <-
+  f6.3.1b_data %>% 
+  ggplot(aes(x=nut,y=inc)) +
+  geom_point() +
+  scale_x_log10() + scale_y_log10(limits=c(1,1000)) +
+  xlab('Prevalence of undernourishment (% of population)') +
+  ylab('Incidence per 100 000 population (log scale)') +
+  geom_smooth(method='lm', fill="royalblue2",color="dodgerblue3") +
+  theme_gtb() #+ theme(panel.background = element_rect(fill = "#E7EEF8"))  
+    
+aligned_plots <- align_plots(f6.3.1a_plot,f6.3.1b_plot, align="hv", axis="tblr") 
+f6.3.1_plot <- ggdraw() +
+  draw_plot(f6.3.1a_plot, x=0,   y=0, width=.5, height=1) +
+  draw_plot(f6.3.1b_plot, x=0.5, y=0, width=.5, height=1) 
+
+print(f6.3.1_plot)
+
+
+```
+<div class="footnote">^a^ The year of data used for GDP per capita and undernourishment is the latest year for which data are available in the World Bank (https://data.worldbank.org/) and SDG (https://unstats.un.org/sdgs/dataportal) databases, respectively.</div> 
+
+
+
+<br />
+Globally in `r report_year-1`, an estimated `r ftb(f6.3.2_txt$Undernourishment/1e6)` million incident cases of TB were attributable to undernourishment, `r ftb(f6.3.2_txt$hiv/1e6)` million to HIV infection, `r ftb(f6.3.2_txt$alcohol/1e6)` million to alcohol use disorders, `r ftb(f6.3.2_txt$Smoking/1e6)` million to smoking and `r ftb(f6.3.2_txt$Diabetes/1e6)` million to diabetes (`r lnk("Fig. 6.3.2")`). 
+
+### `r anch("Fig. 6.3.2")`<span class="red">Fig. 6.3.2</span> Global estimates of the number of TB cases attributable to selected risk factors, `r report_year-1`
+
+```{r fig 6.3.2}
+
+f6.3.2_plot <- f6.3.2_data  %>% 
+  ggplot(aes(x = risk_factor, y = best, group=risk_factor))+
+  geom_point(aes(col=risk_factor),position=position_dodge(width=0.5),size=4)+
+  geom_errorbar(aes(ymin=lo, ymax=hi,col=risk_factor),
+                width=0.2,cex=1.5,position=position_dodge(width=0.5))+ 
+  xlab(NULL) + 
+  ylab("Number of cases (millions)") + 
+  scale_y_continuous(breaks=c(1,5e5, 1e6, 15e5, 2e6, 25e5, 3e6), labels = c("0","0.5","1.0","1.5","2.0","2.5","3.0"), limits = c(0,2.5e6)) +
+  theme(legend.position = "none")+
+  scale_color_manual(name = NULL, values=c("green4","firebrick2","goldenrod3","deeppink3","dodgerblue3")
+  ) + 
+  coord_flip()
+
+f6.3.2_plot <- f6.3.2_plot + theme_gtb()+theme(legend.position = "none")
+f6.3.2_plot
+
+
+```
+<div id="fig_6_3_2"></div>
+<div class="footnote">Sources of data used to produce estimates were: Imtiaz S et al. Eur Resp Jour (2017); Hayashi S et al. Trop Med Int Health (2018); L&#246;nnroth K et al. Lancet (2010); World Bank Sustainable Development Goals Database (http://datatopics.worldbank.org/sdgs/); WHO Global Health Observatory (https://www.who.int/data/gho); and WHO Global TB Programme.</div>  
+  
+ 
+```{r Tab 6.3.1, eval=FALSE, include=FALSE}
+
+`r anch("Table 6.3.1")`
+   
+### <span class="red">TABLE 6.3.1</span> Status of selected risk factors for TB, 30 high TB burden countries and three global TB watchlist countries, latest available year  
+
+#### Table 6.3.2 Health SDG indicators in 30 HBCs + 3 watch list countries 
+
+Tab6.3.1 <- 
+  sdg %>% filter(iso3 %in% iso3_hbc_plus_wl) %>% arrange(-year) %>% 
+  group_by(iso3,indicator_id,sex) %>% slice(1) %>% 
+  mutate(f=  (indicator_id=="SN.ITK.DEFC.ZS"     & sex == 'a')) %>% 
+  mutate(f=f+(indicator_id=="MDG_0000000029"     & sex == 'a')) %>% 
+  mutate(f=f+(indicator_id=="M_Est_smk_curr_std" & sex != 'a')) %>% 
+  mutate(f=f+(indicator_id=="NCD_GLUC_04"        & sex != 'a')) %>% 
+  mutate(f=f+(indicator_id=="SA_0000001462"      & sex != 'a')) %>% 
+  filter(f==1) %>% 
+  pivot_wider(id_cols=c(iso3,country), names_from = c(indicator_id,sex), values_from = value) %>% 
+  rename("hiv"=3,"dm_f"=4,"dm_m"=5,"alc_f"=6,"alc_m"=7,"nut"=8,"smk_f"=9,"smk_m"=10) %>% 
+  select(iso3,country,nut,hiv,smk_f,smk_m,dm_f,dm_m,alc_f,alc_m) %>% 
+  arrange(country) 
+
+# format the numrical data  
+Tab6.3.1 <- Tab6.3.1 %>% 
+  mutate_at(vars(nut:alc_m),display_num_NA_to_dash) 
+
+# Create a table object using kable 
+table_header <- c('Country',' ',' ',
+                  'Female','Male','Female','Male','Female','Male')
+
+knitr::kable(Tab6.3.1[,-1], 
+             format = "html", 
+             col.names = table_header, 
+             align = 'lrrrrrrrr', 
+             table.attr = "id='tab6_3_2'") %>% # Add a table ID so that it can be styled using extra CSS in Sitefinity 
+  add_header_above(align = "c", c(' ' = 1, 
+                                  'Prevalence of undernourishment\n(% of population)'=1,
+                                  'HIV prevalence\n(% of population aged 15–49 years)'=1,
+                                  'Smoking prevalence\n(% of population aged ≥15 years)' =2,
+                                  'Diabetes prevalence\n(% of population aged ≥18 years)'=2,
+                                  'Alcohol use disorders, 12 month prevalence\n(% of population aged ≥15 years)'=2))
+
+<div class="footnote">— Data were not available.<br />
+Sources: World Bank Sustainable Development Goals Database (http://datatopics.worldbank.org/sdgs/) and WHO Global Health Observatory (https://www.who.int/gho)</div>  
+
+```
+
+
+
+<br />
+There is considerable variation among countries in the relative importance and contribution of the five factors (`r lnk("Fig. 6.3.3")`), and thus also variation in which of these factors need to be prioritized as part of national efforts to reduce the burden of TB disease.
+
+### `r anch("Fig. 6.3.3")`<span class="red">Fig. 6.3.3</span> Estimated percentage of incident TB cases attributable to five risk factors^a^ at country level, `r report_year-1`
+
+#### (a) Undernourishment^b^ 
+```{r Fig 6.3.3a}
+
+# produce the map
+  whomap(f6.3.3a_data,
+         map.title = "",
+         colours = palatte_fig6.3.3a,
+         legend.title = "Percentage", 
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+  
+
+```
+
+#### (b) Alcohol use disorders 
+```{r Fig 6.3.3b}
+
+# produce the map
+  whomap(f6.3.3b_data,
+         map.title = "",
+         colours = palatte_fig6.3.3b,
+         legend.title = "Percentage", 
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+  
+
+```
+
+#### (c) HIV infection
+```{r Fig 6.3.3c}
+
+# produce the map
+  whomap(f6.3.3c_data,
+         map.title = "",
+         colours = palatte_fig6.3.3c,
+         legend.title = "Percentage", 
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+  
+
+```
+
+#### (d) Diabetes^b^  
+```{r Fig 6.3.3d}
+
+# produce the map
+  whomap(f6.3.3d_data,
+         map.title = "",
+         colours = palatte_fig6.3.3d,
+         legend.title = "Percentage", 
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+  
+
+```
+
+#### (e) Smoking  
+```{r Fig 6.3.3e}
+
+# produce the map
+  whomap(f6.3.3e_data,
+         map.title = "",
+         colours = palatte_fig6.3.3e,
+         legend.title = "Percentage", 
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+
+
+```
+<div class="footnote">^a^ The percentages for alcohol use disorders, diabetes and smoking were calculated using incidence estimates restricted to adults aged ≥15 years.<br />^b^ WHO plans to commission systematic reviews to update estimates of the relative risk of TB associated with undernourishment and diabetes.</div>   
+  
+  
+
+<br />
+Variation in the relative contribution of five health-related risk factors to TB incidence is evident in the 30 high TB burden countries and 3 global TB watchlist countries (`r lnk("Fig. 6.3.4")`). Undernourishment is the leading contributor in most countries, although HIV infection is the top contributor in several African countries, especially in southern and east Africa.  
+  
+### `r anch("Fig. 6.3.4")`<span class="red">Fig. 6.3.4</span> Estimated number of TB cases attributable to five risk factors, 30 high TB burden countries and 3 global TB watchlist countries,^a^ `r report_year - 1` 
+<div class="subhead">Best estimates (in colour) and uncertainty intervals (black) are shown. Blank areas (missing bars) represent no data available.</div>
+   
+```{r fig_6.3.4, fig.alt="Panel", fig.height=14, fig.width=12}
+
+f6.3.4_plot <- f6.3.4_data %>% 
+  ggplot(aes(x=risk_factor, y=best/1000, fill=risk_factor)) + 
+  geom_bar(stat="identity", position=position_dodge()) +
+#  geom_bar_interactive(aes(tooltip = best),stat="identity", position=position_dodge()) +
+  geom_errorbar(aes(ymin=lo/1000,ymax=hi/1000),colour='grey30',size=.2,
+                width=.2,position=position_dodge(.9)) +
+  xlab("")+ ylab("Cases (thousands)") +
+  facet_wrap(~country, ncol = 5, scales = "free_x", labeller = label_wrap_gen(width = 20))+
+  coord_flip() +
+  scale_x_discrete(limits = c('Undernourishment','Smoking','HIV','Diabetes','Alcohol use disorders')) +
+  scale_fill_manual(values=palatte_f6.3.4) +
+  theme_minimal() +
+#  theme_gtbr_2020() +
+  theme(legend.position = "none",
+        panel.grid = element_blank(), 
+        axis.line.x = element_line(size = 0.2),
+        axis.ticks = element_line(size = 0.2),
+        axis.text.y  = element_text(size = 10, face = "plain"), 
+        strip.text.x = element_text(size = 11, color = "black", face = "bold"))
+f6.3.4_plot
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_BRA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_KHM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_CHN"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_COG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_COD"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_ETH"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_GAB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_IND"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_IDN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_KEN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_LSO"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_LBR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_MOZ"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_MMR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_NGA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_PAK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_PNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_PHL"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_RUS"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_SLE"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_ZAF"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_THA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_UGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_TZA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_4_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_ZMB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_4_ZWE"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ The three global TB watchlist countries are Cambodia, Russian Federation and Zimbabwe (<span class="red">Annex 3</span>) of the main report).<br />Sources of data used to produce estimates were: Imtiaz S et al. Eur Resp Jour (2017); Hayashi S et al. Trop Med Int Health (2018); L&#246;nnroth K et al. Lancet (2010); World Bank Sustainable Development Goals Database (http://datatopics.worldbank.org/sdgs); WHO Global Health Observatory (https://www.who.int/data/gho); and WHO Global TB Programme.</div>  
+
+
+
+<br />
+As with health-related risk factors for TB, there is considerable variation by country in the status of other TB determinants, including access to clean fuels, income inequality, poverty, social protection and housing conditions (`r lnk("Fig. 6.3.5")`). 
+
+### `r anch("Fig. 6.3.5")`<span class="red">Fig. 6.3.5</span> Status of selected SDG indicators beyond SDG 3 at country level, latest available year
+
+#### (a) Access to clean fuels
+```{r fig 6.3.5a, fig.width=12,  fig.alt="Map for selected SDG indicators beyond SDG 3 in high TB burden countries - a"}
+
+# produce the map
+whomap(f6.3.5a_data,
+       map.title = "",
+       colours = rev(brewer.pal(4, "Blues")),
+       legend.title = "Percentage of population with access to\nclean fuels and technologies for cooking", 
+       na.col = "white",water.col = "white",
+       legend.pos = c(0.,0.40))
+
+
+```
+
+#### (b) Income inequality
+```{r fig 6.3.5b, fig.width=12,  fig.alt="Map for selected SDG indicators beyond SDG 3 in high TB burden countries - b"}
+
+# produce the map
+whomap(f6.3.5b_data,
+       map.title = "",
+       colours = brewer.pal(4, "Reds"),
+       legend.title = "GINI index", 
+       na.col = "white",water.col = "white",
+       legend.pos = c(0,0.40))
+
+
+```
+
+#### (c) Living in poverty
+```{r fig 6.3.5c, fig.width=12,  fig.alt="Map for selected SDG indicators beyond SDG 3 in high TB burden countries - c"}
+
+# produce the map
+whomap(f6.3.5c_data,
+       map.title = "",
+       colours = brewer.pal(4, "Greens"),
+       legend.title = "Percentage of population living\nbelow the international poverty line", 
+       na.col = "white",water.col = "white",
+       legend.pos = c(0,0.40))
+
+
+```
+
+#### (d) Access to social protection
+```{r fig 6.3.5d, fig.width=12,  fig.alt="Map for selected SDG indicators beyond SDG 3 in high TB burden countries - d"}
+
+# produce the map
+whomap(f6.3.5d_data,
+       map.title = "",
+       colours = rev(brewer.pal(4, "Oranges")),
+       legend.title = "Percentage of population covered by\nsocial protection and labour programmes.", 
+       na.col = "white",water.col = "white",
+       legend.pos = c(0,0.40))
+
+
+```
+
+#### (e) Living in slums
+```{r fig 6.3.5e, fig.width=12,  fig.alt="Map for selected SDG indicators beyond SDG 3 in high TB burden countries - e"}
+
+# produce the map
+whomap(f6.3.5e_data,
+       map.title = "",
+       colours = brewer.pal(4, "Purples"),
+       legend.title = "Percentage of urban population\nliving in slums", 
+       na.col = "white",water.col = "white",
+       legend.pos = c(0,0.40))
+
+
+```
+
+#### (f) Undernourishment
+```{r fig 6.3.5f, fig.width=12,  fig.alt="Map for selected SDG indicators beyond SDG 3 in high TB burden countries - e"}
+
+# produce the map
+whomap(f6.3.5f_data,
+       map.title = "",
+       colours = brewer.pal(4, "PuRd"),
+       legend.title = "Percentage of population\nundernourished", 
+       na.col = "white",water.col = "white",
+       legend.pos = c(0,0.40))
+
+
+```
+<div class="footnote">**Access to clean fuels:** Percentage of population with access to clean fuels and technologies for cooking.<br />**Income inequality:** GINI index is shown where 0 is perfect equality and 100 is perfect inequality.<br />**Living in poverty:** Percentage of population living below the international poverty line, which is defined e.g. living on $1.90 per day (at 2017 purchasing power parity).<br />**Access to social protection:** Percentage of population covered by social protection and labour programmes.<br />**Living in slums:** Percentage of urban population living in slums.<br />**Undernourishment:** Percentage of population undernourished.<br />Source: World Bank Sustainable Development Goals Database (http://datatopics.worldbank.org/sdgs/)</div>
+
+
+
+<br />
+The most recent data for undernourishment and five socioeconomic indicators associated with TB incidence for the 30 high TB burden countries and three global TB watchlist countries are shown in `r lnk("Fig. 6.3.6")`. In this figure, the outer edge of the circle (100) is the ideal value for each indicator. To represent this situation visually, the indicators "proportion of the urban population living in slums" and "proportion of the population living below the international poverty line" are inverted. 
+
+All indicator values in the figure are for the general population as opposed to people with TB; values for TB patients specifically (e.g. out-of-pocket expenditure and access to social protection) may differ from these general values.
+
+Based on the latest available data in the World Bank database, some upper-middle-income and lower-middle-income countries (e.g. Brazil, China, India, Indonesia, Mongolia, South Africa, Thailand, and Viet Nam) appear to be performing relatively well. However, progress is likely to have been set back by the COVID-19 pandemic. Even before the pandemic, other high TB burden countries already faced major challenges in achieving a range of TB-related SDG targets. Moreover, values for poor populations and vulnerable groups most at risk of developing TB are likely to be worse than national averages.
+Addressing broader determinants of the TB epidemic requires multisectoral action and accountability. Global and national progress in adapting and using the WHO multisectoral accountability framework for TB (MAF-TB) is one of the <span class="red">featured topics</span>) of this report. 
+
+### `r anch("Fig. 6.3.6")`<span class="red">Fig. 6.3.6</span> Status of selected SDG indicators beyond SDG 3 in 30 high TB burden and 3 global TB watchlist countries, latest available year
+
+```{r fig_6.3.6, fig.alt="Panel for selected SDG indicators beyond SDG 3 in high TB burden countries", fig.width=15, fig.height=20}
+
+f6.3.6_plot <- ggplot(f6.3.6_data) +
+  # Make custom panel grid
+  geom_hline(
+    aes(yintercept = y), 
+    data.frame(y = c(0:5) * 20),
+    color = "lightgrey"
+  ) + 
+  # Add bars to represent the cumulative track lengths
+  # str_wrap(region, 5) wraps the text so each line has at most 5 characters
+  # (but it doesn't break long words!)
+  geom_col(
+    aes(
+      x =  reorder(str_wrap(sdg, 6), value),
+      y = value,
+      fill = value
+    ),
+    position = "dodge2",
+    show.legend = TRUE,
+    alpha = .9
+  ) +
+  # Lollipop shaft for mean gain per indicator
+  geom_segment(
+    aes(
+      x = reorder(str_wrap(sdg, 6), value),
+      y = 0,
+      xend = reorder(str_wrap(sdg, 6), value),
+      yend = 72
+    ),
+    linetype = "dashed",
+    color = "gray12"
+  ) + 
+  facet_wrap(~country, ncol = 6, #scales = "free_x", 
+             labeller = label_wrap_gen(width = 20)
+  )+
+  # texts instead of x axis label
+  geom_text(aes(label = reorder(str_wrap(sdg, 6), value),x = reorder(str_wrap(sdg, 6), value), y = 110),size=3)  +
+  # Make it circular!
+  coord_polar()
+
+f6.3.6_plot <- f6.3.6_plot  +
+  annotate(
+    x = 0.5, 
+    y = 20, 
+    label = "20", size=2.5,
+    geom = "text", 
+    color = "gray12"
+  ) +
+  annotate(
+    x = 0.5, 
+    y = 40, size=2.5,
+    label = "40", 
+    geom = "text", 
+    color = "gray12"
+  ) +
+  annotate(
+    x = 0.5, 
+    y = 60, size=2.5,
+    label = "60", 
+    geom = "text", 
+    color = "gray12"
+  ) +
+  annotate(
+    x = 0.5, 
+    y = 80,size=2.5,
+    label = "80", 
+    geom = "text", 
+    color = "gray12"
+  ) +
+  annotate(
+    x = 0.5, 
+    y = 100, size=2.5,
+    label = "100", 
+    geom = "text", 
+    color = "gray12"
+  ) 
+
+f6.3.6_plot <-  f6.3.6_plot  +
+  # Scale y axis so bars don't start in the center
+  scale_y_continuous(
+    limits = c(-30, 110),
+    expand = c(0, 0),
+    breaks = c(0, 20, 40, 60, 80, 100)
+  ) + 
+  # New fill and legend title for number of tracks per region
+  scale_fill_gradientn(
+    "SDG Index",
+    colours = c( "#6C5B7B","#6c84c0","#8a96f8","#95dcf8"),
+    breaks=c(0,20,40,60,80,100),#labels=c(0,20,40,60,80,100), 
+  ) +
+  # Make the guide for the fill discrete
+  guides(
+    fill = guide_colorsteps(
+      barwidth = 15, barheight = .5, title.position = "top", title.hjust = .5, show.limits = TRUE
+    )
+  ) +
+  theme_minimal() +
+  theme(
+    # Remove axis ticks and text
+    panel.grid = element_blank(), 
+    panel.background = element_rect(fill = "white", color = "white"),
+    panel.spacing = unit(2, "lines"),
+    axis.title = element_blank(),
+    axis.ticks = element_blank(),
+    axis.text.y = element_blank(),
+    # Use gray text for the region names
+    axis.text.x = element_blank(),
+    # Move the legend to the bottom
+    legend.position = "bottom",
+    legend.spacing.x = unit(0, 'cm'),
+    strip.text.x = element_text(size = 11, color = "black", face = "bold")
+  ) 
+
+f6.3.6_plot
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_BRA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_KHM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_CHN"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_COG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_COD"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_ETH"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_GAB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_IND"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_IDN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_KEN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_LSO"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_LBR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_MOZ"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_MMR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_NGA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_PAK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_PNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_PHL"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_RUS"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_SLE"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_ZAF"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_THA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_UGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_TZA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_ZMB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_3_6_v2_ZWE"></div>
+</div>
+</div>
+
+<div class="footnote">**Clean fuels:** Percentage of population with access to clean fuels and technologies for cooking.<br />**Income equality:** An inverse GINI index is shown where 0 is perfect inequality and 100 is perfect equality.<br />**Not in poverty:** Percentage of population living above the international poverty line, which is defined e.g. living on $1.90 per day (at 2017 purchasing power parity).<br />**Not in slums:** Percentage of urban population not living in slums.<br />**Social protection:** Percentage of population covered by social protection and labour programmes.<br />**Nutrition:** Percentage of population not undernourished.<br />Source: World Bank Sustainable Development Goals Database (http://datatopics.worldbank.org/sdgs/).</div>
+
+
+
+
+Further country-specific details for the 14 indicators related to TB incidence are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data/) and [Country profiles](https://app.powerbi.com/view?r=eyJrIjoiNDE5Y2EzNzQtZDMxYy00ZmFlLWEwMjMtZDA0NmUzYTlkZDAzIiwidCI6ImY2MTBjMGI3LWJkMjQtNGIzOS04MTBiLTNkYzI4MGFmYjU5MCIsImMiOjh9&pageName=ReportSectionbb9acc102d62977ada64).
+
+
+
+`r anch("refs")`
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+1. Grange JM, Gandy M, Farmer P, Zumla A. Historical declines in tuberculosis: nature, nurture and the biosocial model. Int J Tuberc Lung Dis. 2001;5(3):208&#8211;12 (https://www.ncbi.nlm.nih.gov/pubmed/11326817).
+  
+2. Styblo K, Meijer J, Sutherland I. [The transmission of tubercle bacilli: its trend in a human population]. Bull World Health Organ. 1969;41(1):137&#8211;78 (https://www.ncbi.nlm.nih.gov/pubmed/5309081).
+  
+</div> 
+  
+
+
+```{r eval=save_pdf}
+# this section is for saving .pdf and .csv for graphic design for PDF report - not web version!
+
+# fig 21
+f6.3.1a_data %>% write_csv(here("./report/pdf/fig20_l.csv"))   
+f6.3.1b_data %>% write_csv(here("./report/pdf/fig20_r.csv"))   
+ggsave(here('report/pdf/fig20.pdf'), plot=f6.3.1_plot, width=12, height=8)
+
+# fig 37
+# f6.3.2_data %>% write_csv(here("./report/pdf/fig37.csv"))   
+# ggsave(here('report/pdf/fig37.pdf'), plot=f6.3.2_plot, width=12, height=8)
+
+
+```
+
+
+
+  

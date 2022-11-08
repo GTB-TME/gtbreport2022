@@ -1,0 +1,303 @@
+--- 
+title: "Chapter_1" 
+author: "Philippe Glaziou, Nim Pathy, Pete Dodd" 
+date: "`r Sys.Date()`" 
+output:  
+  html_fragment: 
+    # Don’t include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    fig_width: 12 
+    # Don’t write figure captions 
+    fig_caption: FALSE 
+--- 
+
+
+```{r setup, include=FALSE} 
+# Chapter 1
+# Set options, load data, utility functions 
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  results = "asis",
+  message = FALSE,
+  warning = FALSE
+)
+library(data.table)
+library(gtbreport)
+library(ggpubr)
+library(here)
+
+source(here('report/ch1_2_dataprep.R'))
+
+
+``` 
+
+
+
+
+
+
+`r anch("Fig. 1.1")`
+
+### <span style="color:#F21905">Fig. 1.1</span> Global trend in case notifications of people newly diagnosed with TB, 2016&#8211;2020
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.1, fig.alt="Global trend in notifications of new and relapse TB cases, 2017-2021"} 
+
+qplot(
+  year,
+  c.newinc / 1e6,
+  data = global[year >= 2017],
+  geom = 'line',
+  size = I(1)
+) +
+  xlab('') + ylab('Notifications per year (millions)') +
+  theme_gtb()
+
+ggsave(here('report/pdf/fig01.pdf'), width=8.3, height=5.8)
+fwrite(global[year>=2017, .(year, c.newinc)], 
+       file=here('report/pdf/fig01.csv'))
+
+
+```
+
+
+
+
+
+
+
+
+
+`r anch("Fig. 1.2")`
+
+### <span style="color:#F21905">Fig. 1.2</span> Trends in notifications of new and relapse TB cases by WHO region, 2016&#8211;2020
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.2, fig.alt="Trends in notifications of new and relapse TB cases by WHO region, 2017-2021"} 
+
+qplot(
+  year,
+  c.newinc / 1e6,
+  data = regional[year >= 2017],
+  geom = 'line',
+  size = I(1),
+  colour = I('dark blue')
+) +
+  xlab('') + ylab('Notifications per year (millions)') +
+  facet_wrap( ~ region, scales = 'free_y') +
+  theme_gtb()
+
+ggsave(here('report/pdf/fig02.pdf'), width=12, height=8)
+fwrite(regional[year>=2017, .(region, year, c.newinc)], 
+       file=here('report/pdf/fig02.csv'))
+
+```
+
+
+
+
+
+
+
+
+
+`r anch("Fig. 1.3")`
+
+### <span style="color:#F21905">Fig. 1.3</span> Trends in monthly or quarterly notifications of TB cases in selected high TB burden countries, January 2020&#8211;June 2021, ^a^
+<span class="subhead">The black line indicates the average number of monthly or quarterly case notifications in 2019.</span>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=8, fig_1.3, fig.alt="Trends in monthly or quarterly notifications of TB cases from January 2020 to June 2022, selected high TB burden countries"} 
+
+qplot(variable,
+      value,
+      data = monthly[(year %in% 2020:2021 & nm == 12)|(year==2022 & !is.na(value))],
+      geom = 'line',
+      group = year,
+      colour = as.character(year),
+      size = I(1)) +
+  geom_hline(
+    aes(yintercept = n2019 / 12),
+    linetype = I(1),
+    colour = I('#000000'),
+    size = I(1)
+  ) +
+  facet_wrap(~ country, scales = 'free_y') +
+  scale_x_continuous(breaks=1:12) +
+  xlab('Month, 2020-2022') + ylab('Notifications per month') +
+  theme_gtb()
+
+qplot(variable,
+      value,
+      data = qty[!is.na(value) & year<2022],
+      geom = 'line',
+      group = year,
+      size = I(1),
+      colour = as.character(year)) +
+  geom_hline(
+    aes(yintercept = n2019 / 4),
+    linetype = I(1),
+    colour = I('#000000'),
+    size = I(1)
+  ) +
+  facet_wrap( ~ country, scales = 'free_y') +
+  xlab('Quarter, 2020') + ylab('Notifications per quarter') +
+  theme_gtb()
+
+```
+
+<div class="footnote"> ^a^ Data are shown for countries that were able to report provisional national numbers for all months or quarters to WHO by July 2021.</div> 
+
+
+
+
+
+
+
+
+
+<!-- `r anch("Fig. 1.5")` -->
+
+<!-- ### <span style="color:#F21905">Fig. 1.5</span> TB notifications in 2020 compared with 2019 in the 30 high TB burden countries -->
+
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.5, fig.alt="Shortfaill in TB notifications in the 30 high TB burden countries in 2020 compared with 2019"}  -->
+
+<!-- dta <- est[year==2020 & g.hbc==TRUE, .(iso3, country, shortfall = short * 100)] -->
+
+<!-- ggbarplot( -->
+<!--   dta, -->
+<!--   x = 'country', -->
+<!--   y = 'shortfall', -->
+<!--   fill = "#00aaad", -->
+<!--   color = 'white', -->
+<!--   sort.val = "desc", -->
+<!--   xlab = '', -->
+<!--   ylab = 'Percentage of TB notifications in 2020 compared with 2019' -->
+<!-- ) +  -->
+<!--   rotate() +  -->
+<!--   geom_hline(yintercept=100) +  -->
+<!--   scale_y_continuous(breaks=seq(0,110, by=10)) -->
+
+<!-- ``` -->
+
+
+
+
+
+
+
+
+
+
+<!-- `r anch("Fig. 1.6")` -->
+
+<!-- ### <span style="color:#F21905">Fig. 1.6</span> The 16 countries with the largest contributions to the global shortfall in TB notifications in 2020 compared with 2019 -->
+
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.6, fig.alt="The 16 countries with the largest contributions to the global shortfall in TB notifications in 2020 compared with 2019"}  -->
+
+<!-- gshort <- global[year==2019, c.newinc] - global[year==2020, c.newinc] -->
+<!-- dta <- -->
+<!--   est[year >= yr-1 & -->
+<!--         iso3 %in% unique(model$iso3), .(shortfall = -diff(c.newinc)), by=.(iso3, country)] -->
+<!-- dta[, pshort := 100 * shortfall / gshort] -->
+
+<!-- # ggplot(data = dta, aes(reorder(country, shortfall), shortfall)) + -->
+<!-- #   geom_bar(stat = 'identity', -->
+<!-- #            fill = I('#00aaad'), -->
+<!-- #            colour = I('black')) + -->
+<!-- #   xlab('')  + ylab('Millions (2019)') + -->
+<!-- #   coord_flip() + -->
+<!-- #   theme_gtb() -->
+
+<!-- ggbarplot( -->
+<!--   dta, -->
+<!--   x = 'country', -->
+<!--   y = 'pshort', -->
+<!--   fill = "#00aaad", -->
+<!--   color = 'white', -->
+<!--   sort.val = "asc", -->
+<!--   xlab = '', -->
+<!--   ylab = 'Percentage of global shortfall in 2020 TB notifications compared with 2019' -->
+<!-- ) +  -->
+<!--   rotate() -->
+
+<!-- ``` -->
+
+
+
+
+
+
+
+
+
+`r anch("Fig. 1.7")`
+
+### <span style="color:#F21905">Fig. 1.7</span> Estimated impact of the COVID-19 pandemic on TB mortality for 31 selected countries, 1990-2021
+
+<span class="subhead">TB mortality rate (including HIV)^a^</span> 
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=11, fig_1.7, fig.alt="Estimated impact of the COVID-19 pandemic on TB mortality for 16 selected countries, up to 2025"} 
+
+
+qplot(
+  as.Date(date),
+  best,
+  data = model2[measure == 'mort' &
+                 hiv == 'a' & year<2022],
+  colour = scenario,
+  size = I(1),
+  geom = 'line'
+) +
+  xlab('') + ylab('TB mortality rate per 100 000 population per month') +
+  facet_wrap( ~ country, scales = 'free_y') +
+  scale_colour_manual(values = c("black", "red"))+
+  theme_gtb() +
+  theme(legend.position = 'none')
+
+```
+
+<!-- <div class="footnote"> ^a^ These estimates are standardized so that rates in January 2020 equal 100 and all subsequent rates are relative to January 2019. For example, a reading of 115 translates into a 15% increase relative to January 2019. Baseline is a scenario of no COVID-19 disruptions based on pre-2020 trends. The impact of COVID-19 related disruptions on estimated mortality is noticeable from 2020 onward.</div>  -->
+
+
+
+
+
+
+
+`r anch("Fig. 1.8")`
+
+### <span style="color:#F21905">Fig. 1.8</span> Estimated impact of the COVID-19 pandemic on TB incidence for 16 selected countries, 2019-2021
+
+<span class="subhead">TB incidence rate^a^</span> 
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=11, fig_1.8, fig.alt="Estimated impact of the COVID-19 pandemic on TB incidence for 16 selected countries, up to 2025"} 
+
+qplot(
+  as.Date(date),
+  best,
+  data = model2[measure == 'inc' &
+                 hiv == 'a' & year<2022],
+  colour = scenario,
+  size = I(1),
+  geom = 'line'
+) +
+  xlab('') + ylab('TB incidence rate per 100 000 population per month') +
+  facet_wrap( ~ country) +
+  scale_colour_manual(values = c("black", "blue"))+
+#  labs(title = bquote('Standardized TB incidence' ~rate^a)) +
+  scale_y_log10() +
+  theme_gtb() +
+  theme(legend.position = 'none')
+
+```
+
+<!-- <div class="footnote">^a^ These estimates are standardized so that rates in January 2019 equal 100 and all subsequent rates are relative to January 2019. For example, a reading of 115 translates into a 15% increase relative to January 2019. Baseline is a counterfactual scenario of no COVID-19, based on pre-2020 trends. The impact of COVID-19 related disruptions on estimated incidence is limited in 2020 and more noticeable in subsequent years.</div>  -->
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+group.type,group.type.description
+g_eca_sro,Economic Commission for Africa Sub-Regional Office
+g_econ_zone,Economic zone
+g_est,Epidemiological group for estimates
+g_gbd,Global Burden of Disease group (region)
+g_hb_mdr,30 high MDR-TB burden countries (introduced 2015/2016)
+g_hb_tb,30 high TB burden countries (introduced 2015/2016)
+g_hb_tbhiv,30 high TB/HIV burden countries (introduced 2015/2016)
+g_hbc22,22 high TB burden countries (deprecated 2015)
+g_hbhiv41,41 high TB/HIV burden countries (deprecated 2015)
+g_hbhiv63,63 high TB/HIV burden countries (deprecated 2015)
+g_hbmdr27,27 high MDR-TB burden countries (deprecated 2015)
+g_income,World Bank income group
+g_mdgdev,Millenium Development Goals (MDG) development group
+g_mdgdev_geog,Millenium Development Goals (MDG) geographic characteristics (developing countries)
+g_mdgdev_status,Millenium Development Goals (MDG) database development status
+g_mdgregion,Millenium Development Goals (MDG) region
+g_mdgsubregion,Millenium Development Goals (MDG) database sub-regions to exclude China or India
+g_SADC,Southern African Development Community
+g_sdg_region,Sustainable Development Goals (SDG) database region
+g_sdg_subregion,Sustainable Development Goals (SDG) database sub-region
+g_shortfall_2020,30 countries with the biggest contributions to the global shortfall in TB notifications 2020vs2019
+g_UNAIDS,UNAIDS region
+g_usaid,USAID priority countries
+g_watchlist,3 global watchlist countries that had been in g_hb_tb before 2021
+g_wb_region,World Bank region
+g_wb_region_income,World Bank region and income group combination
+g_who_subregion,WHO sub-regions
+g_whoregion,WHO region
+global,Global (all countries)

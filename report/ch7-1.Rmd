@@ -1,0 +1,89 @@
+--- 
+title: "Chapter7" 
+author: "Irwin Law" 
+date: "`r Sys.Date()`" 
+output:  
+  html_fragment: 
+    # Don't include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    #fig_width: 12 
+    # Don't write figure captions 
+    fig_caption: FALSE 
+--- 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,  fig.align = "center"}
+
+
+# Clear the decks ----
+rm(list=ls())
+
+
+# Load packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+library(ggplot2)
+library(dplyr)
+library(gtbreport)
+library(here)
+
+```
+
+
+### <span style="color:#F21905">Fig. 7.1</span> Funding for TB research, 2015&#8211;2020
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,  fig.align = "left", fig.width=12}
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Create figure 7.1
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# get the finance data ----
+# actually just enter it here manually
+
+year <- c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021)
+
+research <- c(0.643, 0.675, 0.639, 0.686, 0.674, 0.621, 0.726, 0.772, 0.906, 0.901, 0.915, NA)
+
+tb_research <- data.frame(year, research)
+
+
+# Plot research funding as a simple bar chart ----
+
+plot_research <- tb_research %>%
+  
+  filter(year < 2021 & year >= 2015) %>%
+  
+  ggplot(aes(x=year, y=research)) +
+  
+  geom_bar(stat = "identity", fill = "lightblue") +
+  
+  scale_x_continuous(name="", breaks = c(2015, 2016, 2017, 2018, 2019, 2020)) +
+  
+  # display y-axis scale im millions
+  scale_y_continuous(name = "Billions (current US$)",
+                     limits = c(0,2.1)) +
+  
+  # add target funding of USD 2 billion as dashed horizontal line
+  geom_hline(yintercept = 2,
+             linetype="dashed",
+             color = "#222222",
+             size=1.5,
+             show.legend = TRUE) +
+  
+  annotate("text",
+           x = 2019, y = 1.9,
+           label = "Target",
+           size = 4,
+           color = "#222222") +
+  theme_gtb()
+
+plot_research
+
+#ggsave(here('report/html_drafts/f7.1.png'),width=8.3, height = 5.8)
+
+```
+<div class="footnote">Source: Treatment Action Group, Stop TB Partnership. Tuberculosis research funding trends 2005-2020. New York: Treatment Action Group; 2021 (https://www.treatmentactiongroup.org/resources/tbrd-report/tbrd-report-2021/)
+</left>
+</div>
+

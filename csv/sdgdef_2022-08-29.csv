@@ -1,0 +1,15 @@
+indicator.id,sdg.number,display.name.in.profile,data.source,name.at.source,source.url
+EG.CFT.ACCS.ZS,7.1.2,Access to clean fuels and technologies for cooking  (% of population),World Bank,Access to clean fuels and technologies for cooking  (% of population),http://data.worldbank.org/indicator/EG.CFT.ACCS.ZS
+EN_LND_SLUM,11.1.1,Population living in slums (% of urban population),UN SDG database,Proportion of urban population living in slums (%),https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_LND_SLUM
+FINPROTECTION_CATA_TOT_10_POP,3.8.2,Greater than 10% of total household expenditure or income on health (% of population),WHO-GHO,Catastrophic out-of-pocket health spending (SDG indicator 3.8.2),https://ghoapi.azureedge.net/api/FINPROTECTION_CATA_TOT_10_POP
+GHED_CHE_pc_PPP_SHA2011,3,"Health expenditure per capita, PPP (current international $)",WHO-GHO,Current health expenditure (CHE) per capita in PPP int$,https://ghoapi.azureedge.net/api/GHED_CHE_pc_PPP_SHA2011
+M_Est_smk_curr_std,3.a.1,Smoking prevalence (% of population aged >= 15 years),WHO-GHO,Estimate of current tobacco smoking prevalence (%) (age-standardized rate),https://ghoapi.azureedge.net/api/M_Est_smk_curr_std
+MDG_0000000029,3.3.1,HIV prevalence (% of population aged 15-49 years),WHO-GHO,Prevalence of HIV among adults aged 15 to 49 (%),https://ghoapi.azureedge.net/api/MDG_0000000029
+NCD_GLUC_04,3.4.1,Diabetes prevalence (% of population aged >= 18 years),WHO-GHO,Raised fasting blood glucose (>=7.0 mmol/L or on medication)(age-standardized estimate),https://ghoapi.azureedge.net/api/NCD_GLUC_04
+NY.GDP.PCAP.PP.KD,8.1.1,"GDP per capita, PPP (constant 2011 international $)",World Bank,"GDP per capita, PPP (constant 2011 international $)",http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD
+per_allsp.cov_pop_tot,1.3.1,Population covered by social protection floors/systems (% of population),World Bank,Coverage of social protection and labor programs (% of population),http://data.worldbank.org/indicator/per_allsp.cov_pop_tot
+SA_0000001462,3,"Alcohol use disorders, 12 month prevalence (% of population aged >= 15 years)",WHO-GHO,"Alcohol use disorders (15+), 12 month prevalence (%) with 95%",https://ghoapi.azureedge.net/api/SA_0000001462
+SI.POV.GINI,10.1.1,"GINI index (0=perfect equality, 100=perfect inequality)",World Bank,GINI index (World Bank estimate),http://data.worldbank.org/indicator/SI.POV.GINI
+SI_POV_DAY1,1.1.1,Population living below the international poverty line (% of population),UN SDG database,Proportion of population below the international poverty line of US$1.90 per day,https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1
+SN.ITK.DEFC.ZS,2.1.1,Prevalence of undernourishment (% of population),World Bank,Prevalence of undernourishment (% of population),http://data.worldbank.org/indicator/SN.ITK.DEFC.ZS
+UHC_INDEX_REPORTED,3.8.1,UHC index of essential service coverage (based on 14 tracer indicators including TB treatment),WHO-GHO,UHC index of essential service coverage,https://ghoapi.azureedge.net/api/UHC_INDEX_REPORTED

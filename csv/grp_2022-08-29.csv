@@ -1,0 +1,147 @@
+group.type,group.name,group.description
+g_whoregion,AFR,WHO African Region
+g_whoregion,AMR,WHO/PAHO Region of the Americas
+g_whoregion,EMR,WHO Eastern Mediterranean Region
+g_whoregion,EUR,WHO European Region
+g_whoregion,SEA,WHO South-East Asia Region
+g_whoregion,WPR,WHO Western Pacific Region
+g_est,AFRhigh,Africa high-HIV Epidemiological Group
+g_est,AFRlow,Africa low-HIV Epidemiological Group
+g_est,CEUR,Central Europe Epidemiological Group
+g_est,EEUR,Eastern Europe Epidemiological Group
+g_est,EME,Established Market Economies Epidemiological Group
+g_est,EMR,Eastern Mediterranean Epidemiological Group
+g_est,LAC,Latin America Epidemiological Group
+g_est,SEAR,South-East Asia Epidemiological Group
+g_est,WPR,Western Pacific Epidemiological Group
+g_income,HIC,"World Bank high-income economies (GNI per capita of USD 13,206 or more in 2021)"
+g_income,UMC,"World Bank upper middle-income economies (GNI per capita of USD 4,256 - 13,205 in 2021)"
+g_income,LMC,"World Bank lower middle-income economies (GNI per capita of USD 1,086 - 4,255 in 2021)"
+g_income,LIC,"World Bank low-income economies (GNI per capita of USD 1,085 or less in 2021)"
+global,global,Global
+g_mdgdev_status,514,Developed regions (MDG)
+g_mdgregion,172A,CIS in Asia MDG Regional Grouping
+g_mdgregion,172B,CIS in Europe MDG Regional Grouping
+g_mdgregion,746,Northern Africa MDG Regional Grouping
+g_mdgregion,738,Sub-Saharan Africa MDG Regional Grouping
+g_mdgregion,419A,Latin America MDG Regional Grouping (deprecated 2017)
+g_mdgregion,029,Caribbean MDG Regional Grouping (deprecated 2017)
+g_mdgregion,518,Eastern Asia MDG Regional Grouping
+g_mdgregion,034,Southern Asia MDG Regional Grouping (deprecated 2017)
+g_mdgregion,035,South-Eastern Asia MDG Regional Grouping (deprecated 2017)
+g_mdgregion,485,Western Asia MDG Regional Grouping
+g_mdgregion,009,Oceania MDG Regional Grouping (deprecated 2017)
+g_mdgdev,199,Least Developed Countries (LDCs) MDG Development Subgroup
+g_mdgdev,778,Transition Countries of South-Eastern Europe MDG Development Subgroup
+g_mdgdev_geog,432,Landlocked Developing Countries (LLDCs) MDG Geographic Characteristic Subgroup
+g_mdgdev_geog,722,Small Island Developing States (SIDS) MDG Geographic Characteristic Subgroup
+g_mdgregion,172,Countries of the Commonwealth of Independent States (CIS) MDG Regional Grouping = (172A + 172B)
+g_mdgregion,419,Latin America and the Caribbean MDG Regional Grouping = (419A + 029)
+g_mdgdev_status,515,Developing regions (MDG)
+g_gbd,ASIAPAC_hi_income,Asia Pacific High Income Global Burden of Disease Group
+g_gbd,ASIA_CENT,Asia Central Global Burden of Disease Group
+g_gbd,ASIA_EAST,Asia East Global Burden of Disease Group
+g_gbd,ASIA_SOUTH,Asia South Global Burden of Disease Group
+g_gbd,ASIA_SEAST,Asia South-East Global Burden of Disease Group
+g_gbd,AUSTRALASIA,Australasia Global Burden of Disease Group
+g_gbd,CARIBBEAN,Caribbean Global Burden of Disease Group
+g_gbd,EUR_CENT,Europe Central Global Burden of Disease Group
+g_gbd,EUR_EAST,Europe East Global Burden of Disease Group
+g_gbd,EUR_WEST,Europe West Global Burden of Disease Group
+g_gbd,LAC_ANDEAN,Latin America Andean Global Burden of Disease Group
+g_gbd,LAC_CENT,Latin America Central Global Burden of Disease Group
+g_gbd,LAC_SOUTH,Latin America South Global Burden of Disease Group
+g_gbd,LAC_TROPICAL,Latin America Tropical Global Burden of Disease Group
+g_gbd,NAFR_MDEAST,North Africa Middle East Global Burden of Disease Group
+g_gbd,NAMR_hi_income,North America High Income Global Burden of Disease Group
+g_gbd,OCEANIA,Oceania Global Burden of Disease Group
+g_gbd,SSAFR_CENT,Sub-Saharan Africa Central Global Burden of Disease Group
+g_gbd,SSAFR_EAST,Sub-Saharan Africa East Global Burden of Disease Group
+g_gbd,SSAFR_SOUTH,Sub-Saharan Africa South Global Burden of Disease Group
+g_gbd,SSAFR_WEST,Sub-Saharan Africa West Global Burden of Disease Group
+g_wb_region_income,EAP,East Asia and Pacific World Bank Regional Grouping (excluding high-income countries)
+g_wb_region_income,ECA,Europe and Central Asia World Bank Regional Grouping (excluding high-income countries)
+g_wb_region_income,LAC,Latin America and the Caribbean World Bank Regional Grouping (excluding high-income countries)
+g_wb_region_income,MNA,Middle East and North Africa World Bank Regional Grouping (excluding high-income countries)
+g_wb_region_income,SAS,South Asia World Bank Regional Grouping (excluding high-income countries)
+g_wb_region_income,SSA,Sub-Saharan Africa World Bank Regional Grouping (excluding high-income countries)
+g_wb_region_income,OED,High income OECD World Bank Regional/High Income Grouping
+g_wb_region_income,NOC,High income non-OECD World Bank Regional/High Income Grouping
+g_wb_region,EAS,East Asia and Pacific World Bank Regional Grouping (all income levels)
+g_wb_region,ECS,Europe and Central Asia World Bank Regional Grouping (all income levels)
+g_wb_region,LCN,Latin America and the Caribbean World Bank Regional Grouping (all income levels)
+g_wb_region,MEA,Middle East and North Africa World Bank Regional Grouping (all income levels)
+g_wb_region,NAC,North America World Bank Regional Grouping (all income levels)
+g_wb_region,SSF,Sub-Saharan Africa World Bank Regional Grouping (all income levels)
+g_mdgregion,135,Caucasus and Central Asia MDG Regional Grouping
+g_econ_zone,EMU,European Monetary Union economic zone
+g_eca_sro,CA,Central Africa Sub-Regional Office of the Economic Commission for Africa
+g_eca_sro,EA,Eastern Africa Sub-Regional Office of the Economic Commission for Africa
+g_eca_sro,NA,North Africa Sub-Regional Office of the Economic Commission for Africa
+g_eca_sro,WA,West Africa Sub-Regional Office of the Economic Commission for Africa
+g_eca_sro,SA,Southern Africa Sub-Regional Office of the Economic Commission for Africa
+g_income,MIC,World Bank middle income economies composite group = (LMC + UMC)
+g_income,LMY,World Bank low and middle income economiescomposite group  =(LIC + LMC + UMC)
+g_hbmdr27,high,On old 27 high MDR-TB burden countries list (deprecated 2015)
+g_hbmdr27,low,NOT on old 27 high MDR-TB burden countries list (deprecated 2015)
+g_sdg_region,513,Northern America (M49) and Europe (M49)
+g_sdg_subregion,21,Northern America (M49)
+g_sdg_subregion,150,Europe (M49)
+g_sdg_region,419,Latin America and the Caribbean (MDG=M49)
+g_sdg_region,62,Central Asia (M49) and Southern Asia (MDG=M49)
+g_sdg_subregion,143,Central Asia (M49)
+g_sdg_subregion,34,Southern Asia (MDG=M49)
+g_sdg_region,753,Eastern Asia (M49) and South-eastern Asia (MDG=M49)
+g_sdg_subregion,30,Eastern Asia (M49)
+g_sdg_subregion,35,South-eastern Asia (MDG=M49)
+g_sdg_region,747,Western Asia (M49) and Northern Africa (M49)
+g_sdg_subregion,145,Western Asia (M49)
+g_sdg_subregion,15,Northern Africa (M49)
+g_sdg_region,202,Sub-Saharan Africa (M49)
+g_sdg_region,9,Oceania (M49)
+g_sdg_subregion,543,Oceania (M49) excluding Australia and New Zealand (M49)
+g_sdg_subregion,53,Australia and New Zealand (M49)
+g_mdgsubregion,223,Eastern Asia excluding China (MDG)
+g_mdgsubregion,127,Southern Asia excluding India (MDG)
+g_hbc22,high,On old 22 high TB burden countries list (deprecated 2015)
+g_hbhiv41,high,On old 41 high TB/HIV burden countries list (deprecated 2015)
+g_hbhiv63,high,On old 63 high TB/HIV burden countries list (deprecated 2015)
+g_hb_tb,1,On 30 high TB burden countries list
+g_hb_tbhiv,1,On 30 high TB/HIV burden countries list
+g_hb_mdr,1,On 30 high MDR-TB burden countries list
+g_who_subregion,AFR_IST_CA,Central Africa Inter-country Support Team
+g_who_subregion,AFR_IST_WA,West Africa Inter-country Support Team
+g_who_subregion,AFR_IST_SA,East and Southern Africa Inter-country Support Team
+g_who_subregion,AMR_CARIB,All caribbean countries and territories
+g_SADC,1,Member state of Southern African Development Community
+g_UNAIDS,asia_pacific,UNAIDS Asia and the Pacific region
+g_UNAIDS,caribbean,UNAIDS Caribbean region
+g_UNAIDS,e_s_africa,UNAIDS Eastern and Southern Africa region
+g_UNAIDS,e_europe_c_asia,UNAIDS Eastern Europe and Central Asia region
+g_UNAIDS,latin_america,UNAIDS Latin America region
+g_UNAIDS,m_east_n_africa,UNAIDS Middle East and North Africa region
+g_UNAIDS,wc_africa,UNAIDS Western and Central Africa region
+g_UNAIDS,wc_europe_n_america,UNAIDS Western and Central Europe and North America region
+g_who_subregion,WPR_PICS_FJI,PICs under Fiji DPS
+g_who_subregion,WPR_PICS_WSM,PICs under Samoa CO
+g_who_subregion,WPR_CHN_SARs,"CHN, HKG, MAC"
+g_who_subregion,WPR_MYS_SGP_BRN,"MYS, SGP, BRN under Malaysia CO"
+g_who_subregion,AMR_CARIB_EAST,Eastern Caribbean countries
+g_usaid,1,USAID priority countries
+g_shortfall_2020,1,On the list of 30 shortfall countries for 2020 vs 2019 TB notifications
+g_watchlist,1,On the list of 3 global watchlist countries
+g_who_subregion,AFR_AO_MZ_CV_ST,"MCAT Mozambique (Angola, Mozambique, Cabo Verde, Sao Tome and Principe)"
+g_who_subregion,AFR_BJ_BF_NE_TG,"MCAT Burkina Faso (Benin, Burkina Faso, Niger, Togo)"
+g_who_subregion,AFR_GM_GH_LR_SL,"MCAT Ghana (Gambia, Ghana, Liberia, Sierra Leone)"
+g_who_subregion,AFR_CI_GN_GW_ML,"MCAT Cote d'Ivoire (Cote d'Ivoire, Guinea, Guinea-Bissau, Mali)"
+g_who_subregion,AFR_DZ_MR_SN,"MCAT Senegal (Algeria, Mauritania, Senegal)"
+g_who_subregion,AFR_CM_TD_GQ_GA,"MCAT Gabon (Cameroon, Chad, Equatorial Guinea, Gabon)"
+g_who_subregion,AFR_BI_KM_MG,"MCAT Madagascar (Burundi, Comoros, Madagascar)"
+g_who_subregion,AFR_ER_UG_TZ,"MCAT Uganda (Eritrea, Uganda, United Republic of Tanzania)"
+g_who_subregion,AFR_KE_MU_RW_SC,"MCAT Kenya (Kenya, Mauritius, Rwanda, Seychelles)"
+g_who_subregion,AFR_MW_NA_ZM_ZW,"MCAT Zimbabwe (Malawi, Namibia, Zambia, Zimbabwe)"
+g_who_subregion,AFR_BW_SZ_LS_ZA,"MCAT South Africa (Botswana, Eswatini, Lesotho, South Africa)"
+g_who_subregion,AMR_AW_CW_SX,"Aruba, Curacao, Saint Maarten (Dutch part)"
+g_who_subregion,WPR_PICS_FSM,PICs under FSM CO
+g_who_subregion,AMR_BS_TC,"Bahamas, Turks and Caicos Islands"
+g_who_subregion,EUR_KZ_KG_TJ_TM_UZ,"Central Asia (Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan)"

@@ -1,0 +1,987 @@
+--- 
+title: "Chapter_2_1 Interactive charts" 
+author: "Takuya Yamanaka" 
+date: "`r Sys.Date()`" 
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output:  
+  html_fragment: 
+    # Don’t include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    fig_width: 12 
+    # Don’t write figure captions 
+    fig_caption: FALSE 
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+    
+    
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch2-1.rmd"), output_file = "ch2-1.html", output_dir = here::here("report/html_drafts/"))
+--- 
+
+
+```{r setup, include=FALSE} 
+# Chapter 1
+# Set options, load data, utility functions 
+
+knitr::opts_chunk$set(echo = FALSE,  
+                      results = "asis", 
+                      message = FALSE, 
+                      warning = FALSE) 
+library(gtbreport)
+
+library(tidyverse)
+library(jsonlite)
+library(dplyr)
+library(here)
+
+source(here('report/ch1_2_dataprep.R'))
+
+
+
+``` 
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+```
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+
+
+_Draft! Prepared `r Sys.Date()`_
+
+### <span class="red">Fig. 2.1.1</span> Global trends in the estimated number of incident TB cases and the incidence rate, 2000&#8211;2021
+<span class="subhead">Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</span> 
+
+<div class="col-md-6">
+#### (a) Number
+<div id="fig_2_1_1a"></div>
+</div>
+<div class="col-md-6">
+#### (b) Rate per 100 000 population
+<div id="fig_2_1_1b"></div>
+</div>
+
+<BR>
+
+
+### <span class="red">Fig. 2.1.2</span> Estimated TB incidence in 2021, for countries with at least 100 000 incident cases
+
+<span class="red">**!static figure!**</span>
+
+
+
+
+
+
+
+
+### <span class="red">Fig. 2.1.3 </span>Estimated TB incidence rates, 2021
+
+<span class="red">**!static figure!**</span>
+
+
+
+
+
+
+
+### <span class="red">Fig. 2.1.4</span> Estimated HIV prevalence in people with a new or relapse TB, 2021
+
+<span class="red">**!static figure!**</span>
+
+
+
+
+
+
+
+ 
+### <span class="red">Fig. 2.1.5</span> Global estimates of TB incidence numbers and case notifications disaggregated by age and sex (female in <span style="color:#951b81">purple</span>; male in <span style="color:#80a51b">green</span>), 2021
+
+<div id="fig_2_1_5_global"></div>
+
+<BR>
+
+
+
+
+### <span class="red">Fig. 2.1.6</span> Regional estimates of TB incidence numbers and case notifications disaggregated by age and sex (female in <span style="color:#951b81">purple</span>; male in <span style="color:#80a51b">green</span>), 2021
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_1_6_afro"></div>
+<div id="fig_2_1_6_euro"></div>
+</div>
+	
+<div class="col-md-4">
+<div id="fig_2_1_6_amro"></div>
+<div id="fig_2_1_6_emro"></div>
+</div>
+	
+<div class="col-md-4">
+<div id="fig_2_1_6_searo"></div>
+<div id="fig_2_1_6_wpro"></div>
+</div>
+</div>
+
+
+<BR>
+
+
+
+
+### <span class="red">Fig. 2.1.7</span> Trends in estimated TB incidence rates by WHO region, 2000&#8211;2021
+<span class="subhead">Total TB incidence rates are shown in <span style="color:#3232ff">blue</span> and incidence rates of HIV-positive TB are shown in <span style="color:#87ceeb">light blue</span>. The black solid lines show notifications of new and relapse cases for comparison with estimates of the total incidence rate. Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2021 milestone of the End TB Strategy.</span> 
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_1_7_afro"></div>
+<div id="fig_2_1_7_euro"></div>
+</div>
+	
+<div class="col-md-4">
+<div id="fig_2_1_7_amro"></div>
+<div id="fig_2_1_7_emro"></div>
+</div>
+	
+<div class="col-md-4">
+<div id="fig_2_1_7_searo"></div>
+<div id="fig_2_1_7_wpro"></div>
+</div>
+</div>
+
+
+
+### <span class="red">Fig. 2.1.8</span> Trends in estimated TB incidence rates in the 30 high TB burden countries compared with notifications of new and relapse cases, 2000&#8211;2021
+<span class="subhead">TB incidence rates are shown in <span style="color:#3232ff">blue</span>. The black solid lines show notifications of new and relapse cases for comparison with estimates of the total incidence rate. Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</span> 
+
+<div class="row">
+<div class="col-md-2">
+<div id="fig_2_1_8_AGO"></div>
+<div id="fig_2_1_8_COG"></div>
+<div id="fig_2_1_8_IND"></div>
+<div id="fig_2_1_8_MNG"></div>
+<div id="fig_2_1_8_PAK"></div>
+<div id="fig_2_1_8_THA"></div>
+</div>
+<div class="col-md-2">
+<div id="fig_2_1_8_BGD"></div>
+<div id="fig_2_1_8_PRK"></div>
+<div id="fig_2_1_8_IDN"></div>
+<div id="fig_2_1_8_MOZ"></div>
+<div id="fig_2_1_8_PNG"></div>
+<div id="fig_2_1_8_UGA"></div>
+</div>
+<div class="col-md-2">
+<div id="fig_2_1_8_BRA"></div>
+<div id="fig_2_1_8_COD"></div>
+<div id="fig_2_1_8_KEN"></div>
+<div id="fig_2_1_8_MMR"></div>
+<div id="fig_2_1_8_PHL"></div>
+<div id="fig_2_1_8_TZA"></div>
+</div>
+<div class="col-md-2">
+<div id="fig_2_1_8_CAF"></div>
+<div id="fig_2_1_8_ETH"></div>
+<div id="fig_2_1_8_LSO"></div>
+<div id="fig_2_1_8_NAM"></div>
+<div id="fig_2_1_8_SLE"></div>
+<div id="fig_2_1_8_VNM"></div>
+</div>
+<div class="col-md-2">
+<div id="fig_2_1_8_CHN"></div>
+<div id="fig_2_1_8_GAB"></div>
+<div id="fig_2_1_8_LBR"></div>
+<div id="fig_2_1_8_NGA"></div>
+<div id="fig_2_1_8_ZAF"></div>
+<div id="fig_2_1_8_ZMB"></div>
+</div>
+</div>
+
+
+
+
+
+### <span class="red">Fig. 2.1.9</span> Trends in estimated TB incidence rates in the 3 global TB watchlist countries compared with notifications of new and relapse cases, 2000&#8211;2021
+<span class="subhead">TB incidence rates are shown in <span style="color:#3232ff">blue</span>. The black solid lines show notifications of new and relapse cases for comparison with estimates of the total incidence rate. Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</span> 
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_1_9_KHM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_1_9_RUS"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_1_9_ZWE"></div>
+</div>
+</div>
+
+
+
+### <span class="red">Fig. 2.1.10</span> Countries which, by 2021, had reached the 2020 milestone of the End TB Strategy for reducing the TB incidence rate 
+
+<span class="red">**!static figure!**</span>
+
+
+
+### <span class="red">Fig. 2.1.11</span> Main methods used to estimate TB incidence up to 2019
+
+<span class="red">**!static figure!**</span>
+
+
+
+
+
+
+### <span class="red">Fig. 2.1.12</span> Main methods used to estimate TB incidence in 2021
+
+<span class="red">**!static figure!**</span>
+
+
+<script type="text/javascript">
+
+/* JSON data objects for the figures */
+
+```{r, json_2_1} 
+# renaming variable for Kendo UI
+names(global) <- gsub('[.]', '_', names(global))
+
+names(regional) <- gsub('[.]', '_', names(regional))
+
+names(hest) <- gsub('[.]', '_', names(hest))
+
+dta <- est[iso3 %in% c('KHM','RUS','ZWE')]
+dta[, inc.milestone := inc[16] * 0.8, by = iso3]
+names(dta) <- gsub('[.]', '_', names(dta))
+
+```
+
+var fig_2_1_1a_data = `r global %>% select(year,inc_num,inc_lo_num,inc_hi_num,c_newinc,inc_h_num,inc_h_hi_num,inc_h_lo_num) %>% toJSON("rows")`; 
+var fig_2_1_1b_data = `r global %>% select(year,inc,inc_lo,inc_hi,newinc,inc_h,inc_h_hi,inc_h_lo) %>% mutate(milestone = as.numeric(select(filter(global,year==2015),inc))*0.8) %>% toJSON("rows")`; 
+
+var fig_2_1_5_data = `r globsplt %>% pivot_wider(names_from = sex, values_from = inc:pop) %>% mutate(inc_F = inc_F*(-1), newrel_F = newrel_F*(-1)) %>% mutate(diff_M = inc_M-newrel_M, diff_F=inc_F-newrel_F) %>% arrange(rev(age))%>% mutate(age=ifelse(age=="65plus","\u226565",as.character(age))) %>% toJSON("rows")`; 
+
+var fig_2_1_6_data = `r regsplt %>% select(!pop) %>% pivot_wider(names_from = sex, values_from = inc:newrel) %>% mutate(inc_F = inc_F*(-1), newrel_F = newrel_F*(-1)) %>% mutate(diff_M = inc_M-newrel_M, diff_F=inc_F-newrel_F) %>% arrange(rev(age)) %>% mutate(age=ifelse(age=="65plus","\u226565",as.character(age))) %>% toJSON("rows")`; 
+
+var fig_2_1_7_data = `r regional %>% select(region,year,inc,inc_lo,inc_hi,newinc,inc_h,inc_h_hi,inc_h_lo,inc_milestone) %>% toJSON("rows")`; 
+
+var fig_2_1_8_data = `r hest %>% select(country,iso3,year,inc,inc_lo,inc_hi,newinc,inc_h,inc_h_hi,inc_h_lo,inc_milestone) %>% toJSON("rows")`; 
+
+var fig_2_1_9_data = `r dta %>% select(country,iso3,year,inc,inc_lo,inc_hi,newinc,inc_h,inc_h_hi,inc_h_lo,inc_milestone) %>% toJSON("rows")`; 
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+
+function createFig_2_1_1a(fig_ID) {
+ 
+		$(fig_ID).kendoChart({
+			dataSource: fig_2_1_1a_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+        name: "All TB cases",
+				field: "inc_num",
+				color: "blue",
+				tooltip: {
+					visible: true,
+					template: "All TB cases (#= category #): #= tb_format_thou(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_lo_num",
+				toField: "inc_hi_num",
+				color: "blue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= tb_format_thou(value.from) #–#= tb_format_thou(value.to) #"
+				}
+			},{
+				type: "line",
+        name: "Notifications of new and relapse cases",
+				field: "c_newinc",
+				color: "black",
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Notifications of new and relapse cases (#= category #): #= num_spacer(value) #"
+				}
+			},{
+				type: "line",
+        name: "HIV-positive TB cases",
+				field: "inc_h_num",
+				color: "lightskyblue",
+				tooltip: {
+					visible: true,
+					template: "HIV-positive TB cases (#= category #): #= tb_format_thou(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_h_lo_num",
+				toField: "inc_h_hi_num",
+				color: "lightskyblue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= tb_format_thou(value.from) #–#= tb_format_thou(value.to) #"
+				}
+			},],      
+      
+			valueAxis: {
+				type: "log",
+        labels: {
+					template: "#= axis_spacer(value/1e6) #"
+				},
+				title: {
+					text: "Millions per year (log scale)",
+					visible: true
+				},
+        min: 5e5,
+        majorUnit: 4,
+				line: {
+					visible: false
+				}
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto",
+          step: 5
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+					visible: true
+				}
+			}
+
+		});
+}
+
+
+
+function createFig_2_1_1b(fig_ID) {
+ 
+		$(fig_ID).kendoChart({
+			dataSource: fig_2_1_1b_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+        name: "All TB cases",
+				field: "inc",
+				color: "blue",
+				tooltip: {
+					visible: true,
+					template: "All TB cases (#= category #): #= tb_format_thou(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_lo",
+				toField: "inc_hi",
+				color: "blue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= tb_format_thou(value.from) #–#= tb_format_thou(value.to) #"
+				}
+			},{
+				type: "line",
+        name: "Notifications of new and relapse cases",
+				field: "newinc",
+				color: "black",
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Notifications of new and relapse cases (#= category #): #= num_spacer(value) #"
+				}
+			},{
+				type: "line",
+        name: "HIV-positive TB cases",
+				field: "inc_h",
+				color: "lightskyblue",
+				tooltip: {
+					visible: true,
+					template: "HIV-positive TB cases (#= category #): #= tb_format_thou(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_h_lo",
+				toField: "inc_h_hi",
+				color: "lightskyblue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= tb_format_thou(value.from) #–#= tb_format_thou(value.to) #"
+				}
+			},{
+        type: "line",
+        dashType: "dash",
+        field: "milestone",
+        color: "grey",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false,
+			}
+      },],      
+      
+			valueAxis: {
+				type: "log",
+        labels: {
+					template: "#= axis_spacer(value) #"
+				},
+				title: {
+					text: "Rate per 100 000 population per year (log scale)",
+					visible: true
+				},
+        min: 7,
+        max: 400,
+				line: {
+					visible: false
+				}
+			},      
+      render: function (e) {
+            var draw = kendo.drawing;
+            var padding = 100;
+            var padding2 = 130;
+            var element = this.element;
+            var rect = new kendo.geometry.Rect([padding, padding2], [element.width() - 2 * padding, element.height() - 2 * padding2]);
+
+            var text = new draw.Text("2020 milestone", [0, 0], { font: "bold 9px Verdana,Arial,sans-serif" });
+            draw.align([text], rect, "start");
+            draw.vAlign([text], rect, "start");
+            e.sender.surface.draw(text);
+          },
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto",
+          step: 5
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+					visible: true
+				}
+			}
+
+		});
+}
+
+function createFig_2_1_5(fig_ID, data, min) {
+  
+		$(fig_ID).kendoChart({		
+      dataSource: fig_2_1_5_data,			
+      chartArea: {
+				height: 500
+			},	  
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar",
+        stack: true,
+        gap: 0.2
+			},
+			series: [{
+				field: "newrel_M",
+				color: "#1C9611",
+        tooltip: {
+				visible: true,
+				template: "Number of cases notified in males aged #= category # years: #= num_spacer(value)#"
+			}
+			},{
+				field: "diff_M",
+				color: "#EEEEEE",
+        tooltip: {
+				visible: true,
+				template: "Estimated TB incidence number in males aged #= category # years: #= tb_format_thou(dataItem.inc_M)# "
+			}
+			},{
+				field: "newrel_F",
+				color: "#B71BFA",
+        tooltip: {
+				visible: true,
+				template: "Number of cases notified in females aged #= category # years: #= num_spacer(value*(-1))#"
+			}
+			},{
+				field: "diff_F",
+				color: "#EEEEEE",
+        tooltip: {
+				visible: true,
+				template: "Estimated TB incidence number in females aged #= category # years: #= tb_format_thou(dataItem.inc_F*(-1))#"
+			}
+			},
+              ],
+			valueAxis: {
+				labels: {
+				template:  "#= kendo.toString(Math.abs(value),'n0').replace(/,/g, ' ') #",
+				},
+        title: {
+					text: "Number of cases"
+				},
+				line: {
+					visible: false
+				},
+        axisCrossingValue: min,
+        min: min
+			},
+			categoryAxis: {
+				field: "age",
+				labels: {
+					rotation: "auto"
+				},
+        title: {
+					text: "Age group (years)"
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+function createFig_2_1_6(fig_ID, data, filter, min) {
+  
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.name == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+      chartArea: {
+				height: 250
+			},		     
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar",
+        stack: true,
+        gap: 0.2
+			},
+			series: [{
+				field: "newrel_M",
+				color: "#1C9611",
+        tooltip: {
+				visible: true,
+				template: "Number of cases notified in males aged #= category # years: #= num_spacer(value)#"
+			}
+			},{
+				field: "diff_M",
+				color: "#EEEEEE",
+        tooltip: {
+				visible: true,
+				template: "Estimated TB incidence number in males aged #= category # years: #= tb_format_thou(dataItem.inc_M)# "
+			}
+			},{
+				field: "newrel_F",
+				color: "#B71BFA",
+        tooltip: {
+				visible: true,
+				template: "Number of cases notified in females aged #= category # years: #= num_spacer(value*(-1))#"
+			}
+			},{
+				field: "diff_F",
+				color: "#EEEEEE",
+        tooltip: {
+				visible: true,
+				template: "Estimated TB incidence number in females aged #= category # years: #= tb_format_thou(dataItem.inc_F*(-1))#"
+			}
+			},
+              ],
+			valueAxis: {
+				labels: {
+				template:  "#= kendo.toString(Math.abs(value),'n0').replace(/,/g, ' ') #",
+				step:2
+				},
+        title: {
+					text: "Number of cases"
+				},
+				line: {
+					visible: false
+				},
+        axisCrossingValue: min,
+        min: min
+			},
+			categoryAxis: {
+				field: "age",
+				labels: {
+					rotation: "auto"
+				},
+        title: {
+					text: "Age group (years)"
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}  
+
+
+function createFig_2_1_7(fig_ID, data, filter, min, unit) {
+ 
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.region == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 400
+			},	      
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+        name: "All TB cases",
+				field: "inc",
+				color: "blue",
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					template: "TB incidence rate (#= category #): #= num_spacer(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_lo",
+				toField: "inc_hi",
+				color: "blue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= num_spacer(value.from) #–#= num_spacer(value.to) #"
+				}
+			},{
+				type: "line",
+        name: "Notifications of new and relapse cases",
+				field: "newinc",
+				color: "black",     
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "TB case notification rate (#= category #): #= num_spacer(value) #"
+				}
+			},{
+				type: "line",
+        name: "HIV-positive TB cases",
+				field: "inc_h",
+				color: "lightskyblue", 
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					template: "Incidence rate of HIV-positive TB (#= category #): #= num_spacer(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_h_lo",
+				toField: "inc_h_hi",
+				color: "lightskyblue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= num_spacer(value.from) #–#= num_spacer(value.to) #"
+				}
+			},{
+        type: "line",
+        dashType: "dash",
+        field: "inc_milestone",
+        color: "grey",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false
+			}
+      },],      
+      
+			valueAxis: {
+				type: "log",
+        labels: {
+					template: "#= axis_spacer(value) #"
+				},
+				title: {
+					text: "Rate per 100 000 population\nper year (log scale)",
+					visible: true
+				},
+        min: min,
+        majorUnit: unit,
+        axisCrossingValue: 0.1,
+				line: {
+					visible: false
+				}
+			},      
+
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+          step: 5
+				},
+				majorGridLines: {
+					visible: false
+				},
+
+				title: {
+					text: "Year",
+					visible: true
+				}
+			}
+
+		});
+}
+
+function createFig_2_1_8(fig_ID, data, filter, min, max, unit) {
+ 
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.country == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 250
+			},	      
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+				field: "inc",
+				color: "blue",
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					template: "TB incidence rate (#= category #): #= num_spacer(value) #"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "inc_lo",
+				toField: "inc_hi",
+				color: "blue",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= num_spacer(value.from) #–#= num_spacer(value.to) #"
+				}
+			},{
+				type: "line",
+				field: "newinc",
+				color: "black",     
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "TB case notification rate (#= category #): #= num_spacer(value) #"
+				}
+			},{
+        type: "line",
+        dashType: "dash",
+        field: "inc_milestone",
+        color: "grey",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false
+			}
+      },],      
+      
+			valueAxis: {
+				type: "log",
+        labels: {
+					template: "#= axis_spacer(value) #"
+				},
+				title: {
+					text: "Rate per 100 000 population\nper year (log scale)",
+					visible: true
+				},
+       min: min,
+        max: max,
+        majorUnit: unit,
+        axisCrossingValue: 0.1,
+				line: {
+					visible: false
+				}
+			},      
+
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+          step: 5
+				},
+				majorGridLines: {
+					visible: false
+				},
+
+				title: {
+					text: "Year",
+					visible: true
+				}
+			}
+
+		});
+}
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+
+$(document).ready(function () {
+  createFig_2_1_1a("#fig_2_1_1a");
+  createFig_2_1_1b("#fig_2_1_1b");
+  createFig_2_1_5("#fig_2_1_5_global",fig_2_1_5_data,-1e6);
+                 createFig_2_1_6("#fig_2_1_6_euro",fig_2_1_6_data,"European Region",-20000);
+                 createFig_2_1_6("#fig_2_1_6_afro",fig_2_1_6_data,"African Region",-200000);
+                  createFig_2_1_6("#fig_2_1_6_emro",fig_2_1_6_data,"Eastern Mediterranean Region",-80000);
+                  createFig_2_1_6("#fig_2_1_6_amro",fig_2_1_6_data,"Region of the Americas",-30000);
+                  createFig_2_1_6("#fig_2_1_6_wpro",fig_2_1_6_data,"Western Pacific Region",-150000);
+                  createFig_2_1_6("#fig_2_1_6_searo",fig_2_1_6_data,"South-East Asia Region",-500000);
+                createFig_2_1_7("#fig_2_1_7_euro",fig_2_1_7_data,"European Region",1,10);
+                 createFig_2_1_7("#fig_2_1_7_afro",fig_2_1_7_data,"African Region",1,10);
+                  createFig_2_1_7("#fig_2_1_7_emro",fig_2_1_7_data,"Eastern Mediterranean Region",0.1,10);
+                  createFig_2_1_7("#fig_2_1_7_amro",fig_2_1_7_data,"Region of the Americas",1,4);
+                  createFig_2_1_7("#fig_2_1_7_wpro",fig_2_1_7_data,"Western Pacific Region",1,10);
+                  createFig_2_1_7("#fig_2_1_7_searo",fig_2_1_7_data,"South-East Asia Region",1,10);
+                  createFig_2_1_8("#fig_2_1_8_AGO",fig_2_1_8_data,"Angola",80, 600, 2);
+                 createFig_2_1_8("#fig_2_1_8_COG",fig_2_1_8_data,"Congo",100,1000,2);
+                 createFig_2_1_8("#fig_2_1_8_IND",fig_2_1_8_data,"India",80,1000,2);
+                 createFig_2_1_8("#fig_2_1_8_MNG",fig_2_1_8_data,"Mongolia",70,1000,2);
+                 createFig_2_1_8("#fig_2_1_8_PAK",fig_2_1_8_data,"Pakistan",5,600,4);
+                 createFig_2_1_8("#fig_2_1_8_THA",fig_2_1_8_data,"Thailand",50,600,2);
+                 
+                 createFig_2_1_8("#fig_2_1_8_BGD",fig_2_1_8_data,"Bangladesh",50,600,2);
+                 createFig_2_1_8("#fig_2_1_8_PRK",fig_2_1_8_data,"Democratic People's Republic of Korea",100,700,2);
+                 createFig_2_1_8("#fig_2_1_8_IDN",fig_2_1_8_data,"Indonesia",20,600,2);
+                 createFig_2_1_8("#fig_2_1_8_MOZ",fig_2_1_8_data,"Mozambique",100,600,2);
+                 createFig_2_1_8("#fig_2_1_8_PNG",fig_2_1_8_data,"Papua New Guinea",100,700,2);
+                 createFig_2_1_8("#fig_2_1_8_UGA",fig_2_1_8_data,"Uganda",100,600,2);
+                 
+                 createFig_2_1_8("#fig_2_1_8_BRA",fig_2_1_8_data,"Brazil",20,100,2);
+                 createFig_2_1_8("#fig_2_1_8_COD",fig_2_1_8_data,"Democratic Republic of the Congo",100,600,2);
+                 createFig_2_1_8("#fig_2_1_8_KEN",fig_2_1_8_data,"Kenya",100,1500,2);
+                 createFig_2_1_8("#fig_2_1_8_MMR",fig_2_1_8_data,"Myanmar",50,1500,2);
+                 createFig_2_1_8("#fig_2_1_8_PHL",fig_2_1_8_data,"Philippines",100,1000,2);
+                 createFig_2_1_8("#fig_2_1_8_TZA",fig_2_1_8_data,"United Republic of Tanzania",50,1500,2);
+                 
+                 createFig_2_1_8("#fig_2_1_8_CAF",fig_2_1_8_data,"Central African Republic",50,1000,2);
+                 createFig_2_1_8("#fig_2_1_8_ETH",fig_2_1_8_data,"Ethiopia",50,1500,2);
+                 createFig_2_1_8("#fig_2_1_8_LSO",fig_2_1_8_data,"Lesotho",100,2500,2);
+                 createFig_2_1_8("#fig_2_1_8_NAM",fig_2_1_8_data,"Namibia",200,3000,2);
+                 createFig_2_1_8("#fig_2_1_8_SLE",fig_2_1_8_data,"Sierra Leone",50,600,2);
+                 createFig_2_1_8("#fig_2_1_8_VNM",fig_2_1_8_data,"Viet Nam",50,800,2);
+                 
+                 createFig_2_1_8("#fig_2_1_8_CHN",fig_2_1_8_data,"China",20,200,2);
+                 createFig_2_1_8("#fig_2_1_8_GAB",fig_2_1_8_data,"Gabon",100,1000,2);
+                 createFig_2_1_8("#fig_2_1_8_LBR",fig_2_1_8_data,"Liberia",50,600,2);
+                 createFig_2_1_8("#fig_2_1_8_NGA",fig_2_1_8_data,"Nigeria",20,400,2);
+                 createFig_2_1_8("#fig_2_1_8_ZAF",fig_2_1_8_data,"South Africa",200,3000,2);
+                 createFig_2_1_8("#fig_2_1_8_ZMB",fig_2_1_8_data,"Zambia",100,1500,2);
+
+                createFig_2_1_8("#fig_2_1_9_KHM",fig_2_1_9_data,"Cambodia",100,1500,2);
+                createFig_2_1_8("#fig_2_1_9_RUS",fig_2_1_9_data,"Russian Federation",20,200,2);
+                createFig_2_1_8("#fig_2_1_9_ZWE",fig_2_1_9_data,"Zimbabwe",100,1500,2);
+
+});  
+
+```

@@ -1,0 +1,943 @@
+---
+title: "Chapter 1 COVID-19 & TB" 
+author: "Takuya Yamanaka,with tweaks by Hazim Timimi"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    keep_md: true
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch1_rev_kendo.rmd"), output_file = "ch1_rev_kendo.html", output_dir = here::here("report/html_drafts/"))
+---
+  
+  
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(gtbreport)
+
+library(jsonlite)
+library(dplyr)
+library(here)
+
+# Get the data sets and computed values/statistics for section 3.1 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch1_prepare_data.r'))
+
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+
+
+# 1. COVID-19 and TB  
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+
+### <span style="color:#F21905">Fig. 1.1</span> Global trend in case notifications of people newly diagnosed with TB, 2015&#8211;`r report_year-1`
+
+<div id="fig_1_1"></div>
+
+
+<BR>
+
+### <span style="color:#F21905">Fig. 1.2</span> Trends in case notifications of people newly diagnosed with TB by WHO region, 2015&#8211;`r report_year-1`
+
+<div class="col-md-4">
+  <div id="fig_1_2_afro"></div>
+  <div id="fig_1_2_euro"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_2_amro"></div>
+  <div id="fig_1_2_emro"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_2_searo"></div>
+  <div id="fig_1_2_wpro"></div>
+</div>
+
+<BR>
+<BR>
+
+
+
+### <span style="color:#F21905">Fig. 1.3</span> The top 10 countries that accounted for ≥90% of the global reduction in case notifications of people newly diagnosed with TB in 2020 and 2021, compared with 2019
+#### Countries that accounted for 90% of the reduction are shown in <span style="color:#F21905">red</span>.
+#### (a) Reduction in 2020 compared with 2019
+
+<div id="fig_1_3a"></div>
+
+
+#### (b) Reduction in 2021 compared with 2019
+
+<div id="fig_1_3b"></div>
+<div class="footnote"> ^a^ Reductions in China and South Africa were consistent with, or a limited departure from, pre-2020 downward trends. See <span class="red">Fig. 1.6 (f)</span>.</div> 
+
+<BR>
+
+### <span style="color:#F21905">Fig. 1.4</span> Changes in national case notifications^a^ of people newly diagnosed with TB (%), 2019&#8211;2020 and 2019&#8211;2021 
+
+
+<div id="fig_1_4"></div>
+ 
+
+### <span style="color:#F21905">Fig. 1.5</span> Case notifications of people newly diagnosed with TB in 2020 and 2021 compared with 2019, 30 high TB burden and 3 global TB watchlist countries^a^
+#### The vertical dashed line marks the level of 2019.
+
+<div id="fig_1_5"></div>
+ 
+### <span style="color:#F21905">Fig. 1.6</span> Case notifications of people newly diagnosed with TB in the 30 high TB burden and 3 global TB watchlist countries, categorized according to the timing and degree of disruptions during the COVID-19 pandemic
+#### (a) Negative impact in 2020,^a^ partial recovery in 2021
+
+<div class="col-md-4">
+  <div id="fig_1_6_PHL"></div>
+  <div id="fig_1_6_IND"></div>
+  <div id="fig_1_6_BRA"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_6_IDN"></div>
+  <div id="fig_1_6_LBR"></div>
+  <div id="fig_1_6_GAB"></div>
+</div>	
+
+<div class="col-md-4">
+  <div id="fig_1_6_ZWE"></div>
+  <div id="fig_1_6_KEN"></div>
+  <div id="fig_1_6_PNG"></div>
+</div>
+	
+
+#### (b) Negative impact in 2020,^a^ recovery to 2019 levels or beyond in 2021
+
+<div class="row">
+<div class="col-md-4">
+  <div id="fig_1_6_BGD"></div>
+  <div id="fig_1_6_UGA"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_6_PAK"></div>
+  <div id="fig_1_6_COG"></div>
+</div>	
+
+<div class="col-md-4">
+  <div id="fig_1_6_SLE"></div>
+</div>	
+</div>
+
+
+
+#### (c) Negative impact in 2020,^a^ further decline in 2021
+
+<div class="row">
+<div class="col-md-4">
+  <div id="fig_1_6_LSO"></div>
+  <div id="fig_1_6_AGO"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_6_MMR"></div>
+  <div id="fig_1_6_MNG"></div>
+</div>	
+
+<div class="col-md-4">
+  <div id="fig_1_6_RUS"></div>
+</div>	
+</div>
+
+
+
+#### (d) No or minimal negative impact in 2020,^a^ negative impact in 2021^b^ 
+
+<div class="row">
+<div class="col-md-4">
+  <div id="fig_1_6_KHM"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_6_VNM"></div>
+</div>	
+
+<div class="col-md-4">
+  <div id="fig_1_6_THA"></div>
+</div>	
+</div>
+
+
+
+#### (e) Increases in 2020 and 2021
+
+<div class="row">
+<div class="col-md-4">
+  <div id="fig_1_6_CAF"></div>
+  <div id="fig_1_6_NGA"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_6_COD"></div>
+  <div id="fig_1_6_TZA"></div>
+</div>	
+
+<div class="col-md-4">
+  <div id="fig_1_6_MOZ"></div>
+  <div id="fig_1_6_ZMB"></div>
+</div>	
+</div>
+
+
+#### (f) No or limited departure from pre-2020 downward trend
+
+<div class="row">
+<div class="col-md-4">
+  <div id="fig_1_6_CHN"></div>
+  <div id="fig_1_6_NAM"></div>
+</div>
+
+<div class="col-md-4">
+  <div id="fig_1_6_PRK"></div>
+  <div id="fig_1_6_ZAF"></div>
+</div>	
+
+<div class="col-md-4">
+  <div id="fig_1_6_ETH"></div>
+</div>	
+</div>
+
+
+
+### <span style="color:#F21905">Fig. 1.7</span> Provisional^a^ number of monthly TB case notifications in India, 2020&#8211;`r report_year`
+    
+<div id="fig_1_7"></div>
+
+
+<script type="text/javascript">
+
+/* JSON data objects for the figures */
+
+var fig_1_1_data = `r f1.1_data %>% mutate(c_newinc = c_newinc/1e6) %>% select(year, c_newinc) %>% toJSON("rows")`; 
+
+var fig_1_2_data = `r f1.2_data %>% mutate(c_newinc = c_newinc/1e6) %>% select(year, entity, c_newinc) %>% toJSON("rows")`;  
+
+var fig_1_3a_data =  `r f1.3a_data %>% mutate(value = pct_contribute2020*100) %>% select(country, value) %>% toJSON("rows")`; 
+
+var fig_1_3b_data =  `r f1.3b_data %>% mutate(value = pct_contribute2021*100) %>% select(country, value) %>% toJSON("rows")`;   
+
+var fig_1_4_data =  `r f1.4_data %>% mutate(x = pct1920*100, y = pct1921*100, size = cn2021, color = ifelse(hbc==1, "#E41B17", "dodgerblue")) %>% select(country, x, y, size, color) %>% toJSON("rows")`   ;
+
+var fig_1_5_data = `r f1.5_data %>% mutate(value = value*100) %>% select(country, year=shortfall, value) %>% pivot_wider(names_from = year, values_from = value) %>% arrange(pct2020) %>% mutate(pct2019=100) %>% mutate(country=str_wrap(country, width = 27,indent = 2)) %>% toJSON("rows")`   ;
+
+var fig_1_6a_data = `r f1.6_data %>% filter(col=="a") %>% select(country, year, c_newinc) %>% toJSON("rows")`   ;  
+
+var fig_1_6b_data = `r f1.6_data %>% filter(col=="b") %>% select(country, year, c_newinc) %>% toJSON("rows")`   ;  
+
+var fig_1_6c_data = `r f1.6_data %>% filter(col=="c") %>% select(country, year, c_newinc) %>% toJSON("rows")`   ;  
+
+var fig_1_6d_data = `r f1.6_data %>% filter(col=="d") %>% select(country, year, c_newinc) %>% toJSON("rows")`   ;  
+
+var fig_1_6e_data = `r f1.6_data %>% filter(col=="e") %>% select(country, year, c_newinc) %>% toJSON("rows")`   ;  
+
+var fig_1_6f_data = `r f1.6_data %>% filter(col=="f") %>% select(country, year, c_newinc) %>% toJSON("rows")`   ;  
+
+var fig_1_7_data = `r f1.7_data  %>% pivot_wider(names_from = year, values_from = value) %>% rename(cn2019=2, cn2020=3, cn2021=4, cn2022=5) %>% mutate(month = month.name[c(1:12)], month_abb = month.abb[c(1:12)]) %>% toJSON("rows")`   ;  
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to show numbers with spaces as thousands separator */
+
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard in tool tips
+  return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;')
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a breaking space as per WHO standard in axis labels
+  return kendo.toString(number, 'n0').replace(/,/g, ' ')
+}
+
+function tb_format_pct(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 100) {
+    return n.toPrecision(2)
+      } else {
+    return n.toPrecision(3)
+  } 
+}
+
+/* Functions to create the figures */
+
+function createFig_1_1() {
+		$("#fig_1_1").kendoChart({
+			dataSource: fig_1_1_data,
+			chartArea: {
+				height: 400
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "c_newinc",
+				color: "navy"
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Notifications per year (millions)"
+				},
+				line: {
+					visible: false
+				},
+				max: 7.5,
+				min: 5,
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year"
+				}
+			},
+			tooltip: {
+				visible: true,
+				format: "{0:0.00}",
+				template: "#= category #, #= value.toPrecision(3) # million",
+			}
+		});
+}
+
+
+function createFig_1_2(fig_ID, data, filter) {
+  
+  		// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.entity == filter);
+  
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 250
+			},	
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "c_newinc",
+				color: "navy",
+        tooltip: {
+				visible: true,
+				format: "{0:0.00}",
+				template: "#= category #, #= value.toPrecision(3) # million",
+			}
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Notifications per year\n(millions)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year"
+				}
+			}
+
+		});
+}
+
+
+function createFig_1_3a() {
+		$("#fig_1_3a").kendoChart({
+			dataSource: fig_1_3a_data,
+			chartArea: {
+				height: 400
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar"
+			},
+			series: [{
+				field: "value",
+				color: "#E41B17",
+				gap: 0.2
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Share of reduction (%)"
+				},
+				line: {
+					visible: false
+				},
+				max: 50,
+			},
+			categoryAxis: {
+				field: "country",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				}
+			},
+			tooltip: {
+				visible: true,
+				format: "{0:0.0}%",
+				template: "#= category #, #= value.toPrecision(2) #%"
+			}
+		});
+}
+
+
+function createFig_1_3b() {
+		$("#fig_1_3b").kendoChart({
+			dataSource: fig_1_3b_data,
+			chartArea: {
+				height: 400
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar"
+			},
+			series: [{
+				field: "value",
+				color: function(point) {
+      if (point.value > 10) {
+        return "#E41B17";
+      } else {return "grey";
+             }
+      },
+				gap: 0.2
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Share of reduction (%)"
+				},
+				line: {
+					visible: false
+				},
+				max: 50,
+			},
+			categoryAxis: {
+				field: "country",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				}
+			},
+			tooltip: {
+				visible: true,
+				format: "{0:0.0}%",
+				template: "#= category #, #= value.toPrecision(2) #%"
+			}
+		});
+}
+
+
+function createFig_1_4() {
+   
+		$("#fig_1_4").kendoChart({
+			dataSource: fig_1_4_data,
+			chartArea: {
+				height: 600
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bubble"
+			},
+			series: [{
+				xField: "x",
+        yField: "y",
+        sizeField: "size",
+        maxSize: 80,
+        minSize: 5,
+        categoryField: "country",
+				color: "color"
+			}],
+      xAxis: {
+        labels: {
+          format: "{0:N0}",
+          rotation: "auto"
+                    },
+        title: {
+					text: "Change between 2019 and 2020 (%)"
+				},
+        axisCrossingValue: -70,
+        majorUnit: 10,
+                    plotBands: [{
+                       from: -0.05,
+                        to: 0.05,
+                        color: "black",
+                        opacity: 0.8
+                    },{
+                       from: 0,
+                        to: 40,
+                        color: "blue",
+                        opacity: 0.07
+                    },{
+                        from: 0,
+                        to: -70,
+                        color: "red",
+                        opacity: 0.05
+                    }]
+                },
+      yAxis: {
+        labels: {
+          format: "{0:N0}"
+               },
+        title: {
+					text: "Change between 2019 and 2021 (%)"
+				},
+        line: {width: 0
+                    },
+        min: -70,
+        max: 80,
+        axisCrossingValue: -70,
+        majorUnit: 10,
+                     plotBands: [{
+                       from: -0.07,
+                        to: 0.07,
+                        color: "black",
+                        opacity: 0.8
+                    },{
+                        from: 0,
+                        to: 80,
+                        color: "yellow",
+                        opacity: 0.05
+                    },{
+                        from: 0,
+                        to: -70,
+                        color: "red",
+                        opacity: 0.05
+                    }]
+                },
+      tooltip: {
+				visible: true,
+				template: "#= category #: #= value.x.toPrecision(2) #% (2019-2020), #= value.y.toPrecision(2) #% (2019-2021), #= num_spacer(dataItem.size) # cases (2021)"
+			}
+
+		});
+}
+
+
+  function createFig_1_5() {
+   
+		$("#fig_1_5").kendoChart({
+			dataSource: fig_1_5_data,
+			chartArea: {
+				height: 900
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "bar",
+				field: 0,
+				opacity: 0
+			}, {
+        type: "line",
+				field: "pct2020",
+        opacity: 0,
+				color: "dodgerblue",
+        markers: {
+          visible: true,
+          background: "dodgerblue",
+          size: 8
+        },
+			tooltip: {
+				visible: true,
+        background: "dodgerblue",
+				template: "#= category # (2020): #= tb_format_pct(value) #%"
+			}
+			},{
+        type: "line",
+				field: "pct2021",
+        opacity: 0,
+				color: "goldenrod",
+        markers: {
+          visible: true,
+          background: "goldenrod",
+          size: 8
+        },
+			tooltip: {
+				visible: true,
+        background: "goldenrod",
+				template: "#= category # (2021): #= tb_format_pct(value) #%"
+			}
+			}, {
+        type: "line",
+				name: "2020",
+				color: "dodgerblue"
+			},{
+        type: "line",
+				name: "2021",
+				color: "goldenrod"
+			},{
+        type: "line",
+        dashType: "dash",
+        field: "pct2019",
+        color: "black",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false,
+			}
+      },],
+			valueAxis: {
+				labels: {
+					format: "{0}",
+					rotation: "auto"
+				},
+				title: {
+					text: "Number in 2020, 2021\nas a percentage of 2019"
+				},
+				line: {
+					visible: false
+				},
+				min: 40,
+				max: 180,
+				axisCrossingValue: 40,
+				majorUnit: 20
+				
+			},
+			categoryAxis: {
+				field: "country",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+
+function createFig_1_6(fig_ID, data, filter) {
+  
+  		// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.country == filter);
+  
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 250
+			},	
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "c_newinc",
+				color: "limegreen",
+        tooltip: {
+				visible: true,
+				format: "{0}",
+				// Use non-breaking spaces as group separators
+				template: "#= category #: #= num_spacer(value) #"
+			}
+			}],
+			valueAxis: {
+				labels: {
+					// Use breaking spaces as group separators
+					template: "#= axis_spacer(value) #"
+ 				},
+				title: {
+					text: "Notifications per year"
+				},
+				line: {
+					visible: false
+				}
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year"
+				},
+//       plotBands: [
+//      { from: 5, to: 7, color: "lightgrey", opacity: 0.3}
+//        ]
+			}
+
+		});
+}
+
+
+function createFig_1_7(fig_ID, data) {
+  	
+		$(fig_ID).kendoChart({
+			dataSource: fig_1_7_data,
+			chartArea: {
+				height: 400
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "line",
+        field: "cn2020",
+        name: "2020",
+        color: "dodgerblue",
+           markers: {
+             visible: true,
+             size: 10
+           },
+			tooltip: {
+				visible: true,
+				template: "#= dataItem.month # (2020): #= num_spacer(value) #"
+			}
+      },{
+        type: "line",
+        field: "cn2021",
+        name: "2021",
+        color: "limegreen",
+           markers: {
+             visible: true,
+             size: 10
+           },
+			tooltip: {
+				visible: true,
+				template: "#= dataItem.month # (2021): #= num_spacer(value) #"
+			}
+      },{
+        type: "line",
+        field: "cn2022",    
+        name: "2022",
+        color: "goldenrod",
+           markers: {
+             visible: true,
+             size: 10
+           },
+			tooltip: {
+				visible: true,
+				template: "#= dataItem.month # (2022): #= num_spacer(value) #"
+			}
+      },{
+        type: "line",
+        dashType: "dash",
+        field: "cn2019",
+        color: "grey",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false,
+				template: "#= dataItem.month # (2019): #= num_spacer(value) #"
+			}
+      },
+              ],
+      render: function (e) {
+            var draw = kendo.drawing;
+            var d = new Date();
+            var padding = 10;
+            var padding2 = 85;
+            var element = this.element;
+            var rect = new kendo.geometry.Rect([padding, padding2], [element.width() - 2 * padding, element.height() - 2 * padding2]);
+            var text = new draw.Text("Monthly average (2019): 180 194", [0, 0], { font: "bold 10px Verdana,Arial,sans-serif" });
+            draw.align([text], rect, "end");
+            draw.vAlign([text], rect, "start");
+            e.sender.surface.draw(text);
+          },
+			valueAxis: {
+				labels: {
+					template: "#= axis_spacer(value) #"
+				},        
+				title: {
+					text: "Monthly notifications",
+				},
+				line: {
+					visible: true
+				},
+        min: 0,
+			},
+			categoryAxis: {
+				field: "month_abb",
+				labels: {
+					rotation: 0
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+
+$(document).ready(function () {
+                  createFig_1_1();
+                  createFig_1_2("#fig_1_2_afro",fig_1_2_data,"African Region");
+                  createFig_1_2("#fig_1_2_amro",fig_1_2_data,"Region of the Americas");
+                  createFig_1_2("#fig_1_2_searo",fig_1_2_data,"South-East Asia Region");
+                  createFig_1_2("#fig_1_2_euro",fig_1_2_data,"European Region");
+                  createFig_1_2("#fig_1_2_emro",fig_1_2_data,"Eastern Mediterranean Region");
+                  createFig_1_2("#fig_1_2_wpro",fig_1_2_data,"Western Pacific Region");
+                  createFig_1_3a();
+                  createFig_1_3b();
+                  createFig_1_4();
+                  createFig_1_5();
+                  createFig_1_6("#fig_1_6_PHL",fig_1_6a_data,"Philippines");
+                  createFig_1_6("#fig_1_6_IND",fig_1_6a_data,"India");
+                  createFig_1_6("#fig_1_6_BRA",fig_1_6a_data,"Brazil");
+                  createFig_1_6("#fig_1_6_IDN",fig_1_6a_data,"Indonesia");
+                  createFig_1_6("#fig_1_6_LBR",fig_1_6a_data,"Liberia");
+                  createFig_1_6("#fig_1_6_GAB",fig_1_6a_data,"Gabon");
+                  createFig_1_6("#fig_1_6_ZWE",fig_1_6a_data,"Zimbabwe");
+                  createFig_1_6("#fig_1_6_KEN",fig_1_6a_data,"Kenya");
+                  createFig_1_6("#fig_1_6_PNG",fig_1_6a_data,"Papua New Guinea");
+                  createFig_1_6("#fig_1_6_BGD",fig_1_6b_data,"Bangladesh");
+                  createFig_1_6("#fig_1_6_UGA",fig_1_6b_data,"Uganda");
+                  createFig_1_6("#fig_1_6_PAK",fig_1_6b_data,"Pakistan");
+                  createFig_1_6("#fig_1_6_COG",fig_1_6b_data,"Congo");
+                  createFig_1_6("#fig_1_6_SLE",fig_1_6b_data,"Sierra Leone");
+                  createFig_1_6("#fig_1_6_LSO",fig_1_6c_data,"Lesotho");
+                  createFig_1_6("#fig_1_6_AGO",fig_1_6c_data,"Angola");
+                  createFig_1_6("#fig_1_6_MMR",fig_1_6c_data,"Myanmar");
+                  createFig_1_6("#fig_1_6_MNG",fig_1_6c_data,"Mongolia");
+                  createFig_1_6("#fig_1_6_RUS",fig_1_6c_data,"Russian Federationᵇ");
+                  createFig_1_6("#fig_1_6_KHM",fig_1_6d_data,"Cambodia");
+                  createFig_1_6("#fig_1_6_VNM",fig_1_6d_data,"Viet Nam");
+                  createFig_1_6("#fig_1_6_THA",fig_1_6d_data,"Thailand");
+                  createFig_1_6("#fig_1_6_CAF",fig_1_6e_data,"Central African Republic");
+                  createFig_1_6("#fig_1_6_NGA",fig_1_6e_data,"Nigeria");
+                  createFig_1_6("#fig_1_6_COD",fig_1_6e_data,"Democratic Republic of the Congo");
+                  createFig_1_6("#fig_1_6_TZA",fig_1_6e_data,"United Republic of Tanzania");
+                  createFig_1_6("#fig_1_6_MOZ",fig_1_6e_data,"Mozambique");
+                  createFig_1_6("#fig_1_6_ZMB",fig_1_6e_data,"Zambia");
+                  createFig_1_6("#fig_1_6_CHN",fig_1_6f_data,"Chinaᵃ");
+                  createFig_1_6("#fig_1_6_NAM",fig_1_6f_data,"Namibiaᵃ");
+                  createFig_1_6("#fig_1_6_PRK",fig_1_6f_data,"Democratic People's Republic of Korea");
+                  createFig_1_6("#fig_1_6_ZAF",fig_1_6f_data,"South Africa");
+                  createFig_1_6("#fig_1_6_ETH",fig_1_6f_data,"Ethiopia");
+                  createFig_1_7("#fig_1_7",fig_1_7_data);
+});
+
+
+```

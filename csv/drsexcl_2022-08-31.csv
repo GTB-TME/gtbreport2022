@@ -1,0 +1,59 @@
+country,iso2,iso3,year,rm.new,rm.new.reason,rm.ret,rm.ret.reason
+Afghanistan,AF,AFG,2017,,,1,"The number of previously treated cases with RR-TB is not reported, so the proportion of RR-TB among previously treated cannot be calculated"
+Angola,AO,AGO,2019,1,"Given the identified weaknesses of data recording and reporting in the country and the low detected prevalence of resistance (0.8% RR among new), exclude data for new and previously treated cases and plan for a national survey in 2020.",1,"Given the identified weaknesses of data recording and reporting in the country and the low detected prevalence of resistance (0.8% RR among new), exclude data for new and previously treated cases and plan for a national survey in 2020."
+Azerbaijan,AZ,AZE,2015,0,,1,Routine surveillance included chronic cases which distorts the representativeness of the data
+Bangladesh,BD,BGD,2017,,,1,Apparent 100% coverage of rif testimg among previously treated pulmonary bac-confirmed cases seemed unlikely; 2011 DRS results preferred by us and NTP
+Bahamas,BS,BHS,2015,1,pulm_new reported in 2.23 is only 60.4% of new_labconf+new_clindx in 2.1/2.2,0,
+Bosnia and Herzegovina,BA,BIH,2015,0,,1,DST results for retreatment in 2.23 are blank; pulm_ret reported in 2.23 is only 57.3% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Bhutan,BT,BTN,2015,1,Estimate of rif resistance of 11.7% in new seems too high,0,
+China,CN,CHN,2015,1,pulm_new reported in 2.23 is only 12.6% of new_labconf+new_clindx in 2.1/2.2,1,no pulm_ret reported in 2.23 and those tested in 2.23 are only 64% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Congo,CG,COG,2020,1,100% testing coverage for new cases seems unlikely (4095/4095). Last year it was 28%. Testing coverage for prev treated cases remains 49%. ,,
+Djibouti,DJ,DJI,2015,1,2015 survey results likely to be more reliable,1,2015 survey results likely to be more reliable
+Algeria,DZ,DZA,2015,1,pulm_new reported in 2.23 is only 0.2% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 6.1% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Ecuador,EC,ECU,2015,0,,1,pulm_ret reported in 2.23 is only 40.4% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Eritrea,ER,ERI,2015,1,"coverage of 100% seemed unlikely; message to country confirmed that 2.23 reports samples, not patients ",1,
+Ethiopia,ET,ETH,2015,0,,1,pulm_ret reported in 2.23 is only 35.5% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Ethiopia,ET,ETH,2021,,,1,The proportion of cases with RR is 1.3% which is much lower than recent survey and surveillance data
+Gabon,GA,GAB,2018,1,A laboratory review and epi review in September 2018 noted many programmatic and laboratory weaknesses,,
+Ghana,GH,GHA,2017,1,"As 2017 is the first time achieving class A, it was agreed with the NTP we need to ensure good record-linkage and exclude surveillance data for new cases this year, and re-assess next year",,
+Guinea,GN,GIN,2017,,,1,"The proportion of previously treated cases with RR-TB is 36.5%. This seems very high. Given known challenges with the lab network in this country, better to exclude"
+Gambia,GM,GMB,2015,0,,1,pulm_ret reported in 2.23 is only 44.3% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Guinea-Bissau,GW,GNB,2017,,,1,The proportion of previously treated cases with RR-TB is 0% and only a very low number previously treated TB cases were notified (35
+Guinea-Bissau,GW,GNB,2019,,,1,"All of the 16 previously treated bacteriologically confirmed cases are reported as MDR-TB, which seems unlikely."
+India,IN,IND,2017,,,1,NTP preferred to use results of the 2016 drug resistance survey because of low coverage of the private sector in routine surveillance
+Iraq,IQ,IRQ,2016,1,We have 2013 survey data that we believe to be more reliable,1,We have 2013 survey data that we believe to be more reliable
+Iraq,IQ,IRQ,2017,1,We have 2013 survey data that we believe to be more reliable,,
+Iraq,IQ,IRQ,2018,1,Estimate of prevalence of RR-TB among new cases us too low (1.5%) compared to the survey conducted in 2013 (6.1%),,
+Jamaica,JM,JAM,2015,0,,1,pulm_ret reported in 2.23 is only 25% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Lao People's Democratic Republic,LA,LAO,2018,,,1,"Survey data from 2018 show a lower proportion of resistance, and quality of surveillance data has been questioned by the country"
+Lebanon,LB,LBN,2015,0,,1,pulm_ret reported and those testing in 2.23 are only 72.2% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2 (although numbers are very small: 18 versus 13)……maybe should be acccepted? But the % in retreat is now 0% versus 29% in 2013 surveillance
+Liberia,LR,LBR,2020,1,"Coverage in the first snapshot was too high and since corrected, but wanted to exclude for the first run before taking the second snapshot.",1,"Coverage in the first snapshot was too high and since corrected, but wanted to exclude for the first run before taking the second snapshot."
+Maldives,MV,MDV,2015,1,pulm_new reported in 2.23 is only 54.2% of new_labconf+new_clindx in 2.1/2.2,0,
+Mexico,MX,MEX,2015,1,pulm_new reported in 2.23 is only 0.3% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 8.2% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Myanmar,MM,MMR,2017,1,"Based on discussion with Matteo, Ikushi and Si Thu Aung (NTP manager), we decided it was best to use the results of the 2011 DRS instead of routine surveillance because of problems of duplicates and incorrect assignment of previous treatment history",1,"Based on discussion with Matteo, Ikushi and Si Thu Aung (NTP manager), we decided it was best to use the results of the 2011 DRS instead of routine surveillance because of problems of duplicates and incorrect assignment of previous treatment history"
+Mozambique,MZ,MOZ,2015,1,pulm_new reported in 2.23 is only 1.3% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 17.6% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Malaysia,MY,MYS,2015,1,pulm_new reported in 2.23 is only 62.6% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 42.1% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+New Caledonia,NC,NCL,2015,1,pulm_new reported in 2.23 is 126% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 5.5% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Niger,NE,NER,2015,0,,1,99.5% coverage of retreatment seems unlikely
+Nicaragua,NI,NIC,2015,0,,1,pulm_ret reported in 2.23 is only 57.4% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Nepal,NP,NPL,2019,,,1,NTP report that the denominaotr is the TB register but numerator is the Xpert database which contains many duplicates and thus is over-estimating testing coverage
+Nepal,NP,NPL,2020,,,1,NTP report that the denominator is the TB register but numerator is the Xpert database which contains many duplicates and thus is over-estimating testing coverage
+Pakistan,PK,PAK,2021,1,"While 98,855 cases were diagnosed with TB by WRD (question LAB.3), qu.2.27 and 2.28 show 134,088 cases with a rifampicin testing result. As NTRL reports that almost all rifampicin testing is by Xpert (not by culture), there is likely double-counting of cases appearing in 2.27/2.28.",1,"While 98,855 cases were diagnosed with TB by WRD (question LAB.3), qu.2.27 and 2.28 show 134,088 cases with a rifampicin testing result. As NTRL reports that almost all rifampicin testing is by Xpert (not by culture), there is likely double-counting of cases appearing in 2.27/2.28."
+Philippines,PH,PHL,2020,1,The prevalence of RR-TB from new cases in 2020 (3.3%) is higher than that reported from the 2019 survey (1.8%). The WHO RO prefers to use 2019 survey data due to higher RR-TB from routine data likely being short-lived and resulting from temporary selection bias due to Covid-19.,,
+Somalia,SO,SOM,2017,1,We have 2011 survey data that we believe to be more reliable,,
+Somalia,SO,SOM,2020,,,1,"0 cases of RR-TB detected among previously treated, which is not in line with 2019 surveillance results when 88% of previously treated were RR-TB"
+Serbia,RS,SRB,2015,1,pulm_new reported in 2.23 is only 57.0% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 62.2% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Eswatini,SZ,SWZ,2018,1,"Routine surveillance does not capture all RR-TB cases, due to rpoB 491 mutation",1,"Routine surveillance does not capture all RR-TB cases, due to rpoB 491 mutation"
+Eswatini,SZ,SWZ,2019,1,"Given the circulation of  the rpoB 491 mutation missed by Xpert MTB/RIF, LPA and MGIT, routine surveillance data for both new and previously treated cases may not be reliable until the revised diagnostic algorithm is fully implemented from the beginning of 2020.",1,"Given the circulation of  the rpoB 491 mutation missed by Xpert MTB/RIF, LPA and MGIT, routine surveillance data for both new and previously treated cases may not be reliable until the revised diagnostic algorithm is fully implemented from the beginning of 2020."
+Eswatini,SZ,SWZ,2020,1,The rpoB 491 mutation is missed by current tests; surveillance estimates are very different from survey estimates suggesting roll out of new diagnostic algorithm is not yet fully implemented,1,The rpoB 491 mutation is missed by current tests; surveillance estimates are very different from survey estimates suggesting roll out of new diagnostic algorithm is not yet fully implemented
+Syrian Arab Republic,SY,SYR,2015,1,pulm_new reported in 2.23 is only 16.8% of new_labconf+new_clindx in 2.1/2.2,0,
+Tajikistan,TJ,TJK,2017,1,Prefer using the 2017 survey results instead of 2017 surveillance.,1,Prefer using the 2017 survey results instead of 2017 surveillance.
+Tajikistan,TJ,TJK,2018,1,"Proportion of resistance among new cases is 30.5%, which is higher than the 2017 survey result of 21%.  EURO recommended using the survey.",,
+Turkmenistan,TM,TKM,2020,1,The proportion of rifampicin resistant TB among new TB cases is 0% (0/533). This is substantially lower than the proportion reported previously (23%; 2018 survey).,1,The proportion of rifampicin resistant TB previously treated TB cases is 0% (0/300). This is substantially lower than the proportion reported previously (54%; 2018 survey).
+Ukraine,UA,UKR,2015,1,We have 2015 survey data that we believe to be more reliable,1,We have 2015 survey data that we believe to be more reliable
+South Africa,ZA,ZAF,2015,1,pulm_new reported in 2.23 is 128% of new_labconf+new_clindx in 2.1/2.2 and no pulm_ret reported,1,no pulm_ret reported in 2.23
+South Africa,ZA,ZAF,2018,1,Estimate of prevalence of RR-TB is too high compared to the 2014 survey which showed 3.5% RR-TB among new,1,Estimate of prevalence of RR-TB is too high compared to the 2014 survey
+South Africa,ZA,ZAF,2020,1,They are reporting 100% testing coverage for both rifampicin and isoniazid among new (92650/ 92650) TB cases. Survey data was considered more reliable after discussions with Nazir. ,1,They are reporting 100% testing coverage for both rifampicin and isoniazid among previously treated (19888/ 19888) TB cases. Survey data was considered more reliable after discussions with Nazir.
+Zambia,ZM,ZMB,2015,1,pulm_new reported in 2.23 is only 0% of new_labconf+new_clindx in 2.1/2.2,1,pulm_ret reported in 2.23 is only 1.4% of ret_rel_labconf+ret_rel_clindx+ret_nrel in 2.1/2.2
+Zambia,ZM,ZMB,2020,,,1,"The prevalence of RR-TB among previously treated cases from surveillance data is 4.7%, which is very different to 2008 and 2020 survey data (18% and 9.3% respectively). MoH prefers to report 2020 survey data until they can ascertain surveillance data for retreatment cases."
+Zimbabwe,ZW,ZWE,2018,,,1,NTP cites problems with data not being captured well from the potential two different sources i.e. the Lab Register and the TB register; they put zeros instead of empty numbers for previously treated (except for number tested) so data do not make sense.

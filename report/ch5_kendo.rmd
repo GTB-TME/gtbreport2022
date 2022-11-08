@@ -1,0 +1,1303 @@
+---
+title: "5: Financing for TB prevention, diagnostic and treatment services - interactive charts"
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # to save intermediate .png
+    keep_md: true
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+---
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+# Set output folder -- can only do this if not using the 
+# RStudio knit button and instead doing the following from the 
+# command line:
+# rmarkdown::render("ch5_txt.rmd", output_file = "ch5.html")
+# Establish the report year ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+report_year <- 2022
+# And the latest year for which the available data are being displayed in graphics
+latest_year <- 2021
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Set up the running environment ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#source("io/set_environment.r")  # particular to each person so this file is in the ignore list
+# Load packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(gtbreport) # TO
+library(here)
+library(stringr)
+library(jsonlite)
+
+# Load TB data ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+source(here('report/ch5_prepare_data_kendo.r'))
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.section.level3 {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #BCBCBC;
+  margin-bottom: 2em;
+}
+
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+# 5. Financing for TB prevention, diagnostic and treatment services
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.1</span> Estimates of funding required for TB prevention, diagnostic and treatment services in `r Fig5.1$n[Fig5.1$year == latest_year]` low- and middle-income countries^a^, in the Global Plan to End TB 2018&#8211;2022
+
+<div id="fig_5_1"></div>
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.2</span> The `r countries` low- and middle-income countries included in analyses of TB financing, 2010&#8211;`r latest_year`
+
+<span class="red">**!static figure!**</span>
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.3</span> Spending on TB prevention, diagnostic and treatment services in `r countries` low- and middle-income countries^a^ compared with the global target set at the UN high-level meeting on TB of at least US$ 13 billion per year, 2015&#8211;`r latest_year`
+ 
+
+<div id="fig_5_3"></div>
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.4</span> Spending on TB prevention, diagnostic and treatment services in total and by category of expenditure, 2010&#8211;`r latest_year`, `r countries` countries with `r burden_inc`% of reported TB cases in `r latest_year`
+
+<div id="fig_5_4"></div>
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.5</span> Spending on drug-susceptible TB and MDR/RR-TB, 2010&#8211;`r latest_year`, three country groups
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_5a"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_5b"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_5c"></div>
+</div>
+</div>
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.6</span> Spending on TB prevention, diagnostic and treatment services by funding source, 2010&#8211;`r latest_year`, `r countries` countries with `r burden_inc`% of reported TB cases in `r latest_year`
+
+<div id="fig_5_6"></div>
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.7</span> Spending on TB prevention, diagnostic and treatment services from domestic sources and international donors, 2010&#8211;`r latest_year`, 9 country groups
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_7a"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_7b"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_7c"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_7d"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_7e"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_7f"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_7g"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_7h"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_7i"></div>
+</div>
+</div>
+
+### <span class="fig" style="color:#F21905">Fig. 5.8</span> Spending by national TB programmes on TB prevention, diagnostic and treatment services in the 30 high TB burden countries and 3 global TB watchlist countries disaggregated by source of funding, 2010&#8211;`r latest_year`^a^
+
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_BRA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_KHM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_CHN"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_COG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_COD"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_ETH"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_GAB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_IND"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_IDN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_KEN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_LSO"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_LBR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_MOZ"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_MMR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_NGA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_PAK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_PNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_PHL"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_RUS"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_SLE"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_ZAF"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_THA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_UGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_TZA"></div>
+</div>
+
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_5_8_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_ZMB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_5_8_ZWE"></div>
+</div>
+</div>
+
+
+
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.9</span> Gaps between the funding required for national strategic plans for TB and available funding as reported by national TB programmes, by income group and by WHO region, 2010&#8211;`r latest_year`
+
+<span class="subhead">The total reported gap in `r latest_year` amounted to US$ `r latest_year_budgetgap_bn` billion</span>
+
+
+<div class="row">
+<div class="col-md-6">
+<div id="fig_5_9a"></div>
+</div>
+<div class="col-md-6">
+<div id="fig_5_9b"></div>
+</div>
+</div>
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.10</span> Sources of funding and funding gaps reported for the TB-specific budgets included in national strategic plans for TB in the 30 high TB burden countries and 3 global TB watchlist countries, `r latest_year`^a^
+
+
+
+<div id="fig_5_10a"></div>
+<div id="fig_5_10b"></div>
+<div id="fig_5_10c"></div>
+
+<div class="footnote">^a^ The three global TB watchlist countries are Cambodia, Russian Federation and Zimbabwe (<span class="fig" style="color:#F21905">Annex E3</span>).</div>
+
+### <span class="fig" style="color:#F21905">Fig. 5.11</span> Estimated cost per patient treated for drug-susceptible TB in `r nrow(dstb_cpp_no)` countries, `r latest_year`^a^
+
+<span class="red">**!static figure!**</span>
+
+
+<div class="footnote">^a^ Limited to countries with at least 100 patients on first-line treatment in `r latest_year`.</div>
+
+
+### <span class="fig" style="color:#F21905">Fig. 5.12</span> Estimated cost per patient treated for MDR/RR-TB in `r nrow(mdr_cpp_no)` countries, `r latest_year`^a^
+
+<span class="red">**!static figure!**</span>
+
+
+<div class="footnote">MDR/RR-TB: multidrug/rifampicin resistant-TB.<br>
+^a^ Limited to countries with at least 20 patients on second-line treatment in `r latest_year`.</div>
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_5_1_data = `r Fig5.1 %>%  toJSON("rows")`   ;  
+
+var fig_5_3_data = `r Fig5.3 %>% pivot_wider(names_from = name, values_from = value) %>% mutate(year=as.numeric(as.character(year))) %>% rename(domestic=2,international=3) %>% add_row(year=c(2014,2022)) %>% mutate(target=13) %>% arrange(year)  %>% toJSON("rows")`   ;  
+
+var fig_5_4_data = `r Fig5.4 %>%  toJSON("rows")`   ;  
+
+var fig_5_6_data = `r Fig5.6 %>% filter(year <= latest_year) %>% group_by(year) %>% summarise_at(vars(int, ext, tot), function(x) sum(x, na.rm = T)) %>% toJSON("rows")`   ;  
+
+var fig_5_5_data = `r Fig5.5 %>%   filter(year <= latest_year) %>% group_by(year, g_brics) %>% summarise_at(vars(DSTB,MDR),sum,na.rm = T ) %>% mutate(g_brics=ifelse(as.character(g_brics)=="High TB burden and global TB watchlist countries outside BRICSᵃ (n=28)","High TB burden and global TB watchlist countries\noutside BRICS\u1D43 (n=28)",as.character(g_brics))) %>% toJSON("rows")`   ;  
+
+var fig_5_7_data = `r Fig5.7 %>%   filter(year <= latest_year) %>% group_by(year,grp) %>% summarise_all(sum, na.rm = T) %>% mutate(grp=ifelse(as.character(grp)=="High TB burden and global TB watchlist countries outside BRICSᵃ (n=28)","High TB burden and global TB watchlist countries\noutside BRICS\u1D43 (n=28)",as.character(grp))) %>% toJSON("rows")`   ;  
+
+var fig_5_8_data = `r Fig5.8 %>%   filter(name != "gap_tot" & year <= latest_year)  %>% pivot_wider(names_from = name, values_from = value) %>% rename(int=3,ext=4) %>%  toJSON("rows")`   ;  
+
+var fig_5_9a_data = `r Fig5.9 %>% filter( year <= latest_year) %>%   group_by(year, grp = g_income) %>%   mutate_at(vars(gap_tot), function(x) ifelse(x < 0, 0 , x)) %>%   summarise_at(vars(gap_tot), sum, na.rm = T) %>% pivot_wider(names_from = grp, values_from = gap_tot) %>%  toJSON("rows")`   ;  
+
+var fig_5_9b_data = `r Fig5.9 %>% filter( year <= latest_year) %>% group_by(year, grp = g_whoregion) %>% mutate_at(vars(gap_tot), function(x) ifelse(x < 0, 0 , x)) %>% summarise_at(vars(gap_tot), sum, na.rm = T) %>% pivot_wider(names_from = grp, values_from = gap_tot) %>% select(year,AFR,AMR,SEA,EUR,EMR,WPR) %>%  toJSON("rows")`   ;  
+
+var fig_5_10a_data = `r Fig5_10_1_data %>% pivot_wider(names_from = variable,values_from = value) %>% arrange(desc(int_pct)) %>% mutate(country=str_wrap(country, width = 23,indent = 2)) %>% toJSON("rows")`   ; 
+
+var fig_5_10b_data = `r Fig5_10_2_data %>% pivot_wider(names_from = variable,values_from = value) %>% arrange(desc(int_pct)) %>% mutate(country=str_wrap(country, width = 23,indent = 2)) %>% toJSON("rows")`   ; 
+
+var fig_5_10c_data = `r Fig5_10_3_data %>% pivot_wider(names_from = variable,values_from = value) %>% arrange(desc(int_pct)) %>% toJSON("rows")`   ; 
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+
+function tb_format_pct(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 99.5) {
+    return n.toPrecision(2)
+      } else {
+    return n.toPrecision(3)
+  } 
+}
+
+function tb_format_num(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 100) {
+    return Number(n.toPrecision(2))
+      } else {
+    return kendo.toString(n, 'n0').replace(/,/g, ' ');
+  } 
+}
+
+function createFig_5_1(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_5_1_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "column",
+        stack: true,
+        gap: 0.2
+			},
+			series: [{
+        name: "TB preventive therapy (drugs only)",
+				field: "GP_TPT",
+				color: "#0091D1",
+        tooltip: {
+				visible: true,
+				template: "TB preventive therapy (drugs only) (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "TB/HIV",
+				field: "GP_TBHIV",
+				color: "#E58B23",
+        tooltip: {
+				visible: true,
+				template: "TB/HIV (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "Drug-resistant TB",
+				field: "GP_MDR",
+				color: "#8C0046",
+        tooltip: {
+				visible: true,
+				template: "Drug-resistant TB (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "Drug-susceptible TB",
+				field: "GP_DSTB",
+				color: "#012352",
+        tooltip: {
+				visible: true,
+				template: "Drug-susceptible TB (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},
+              ],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Billions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+function createFig_5_3(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_5_3_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "column",
+        stack: true,
+        gap: 0.2
+			},
+			series: [{
+        name: "Domestic funding",
+				field: "domestic",
+				color: "#4ABAFC",
+        tooltip: {
+				visible: true,
+				template: "Domestic funding (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "International funding",
+				field: "international",
+				color: "#E63E13",
+        tooltip: {
+				visible: true,
+				template: "International funding (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        type: "line",
+        dashType: "dash",
+        field: "target",
+        color: "grey",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false,
+			}
+      },],     
+            render: function (e) {
+            var draw = kendo.drawing;
+            var padding = 100;
+            var padding2 = 25;
+            var element = this.element;
+            var rect = new kendo.geometry.Rect([padding, padding2], [element.width() - 2 * padding, element.height() - 2 * padding2]);
+
+            var text = new draw.Text("Target", [0, 0], { font: "bold 9px Verdana,Arial,sans-serif" });
+            draw.align([text], rect, "start");
+            draw.vAlign([text], rect, "start");
+            e.sender.surface.draw(text);
+          },
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Billions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+        min: 1,
+        max: 8,
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+
+function createFig_5_4(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_5_4_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Total",
+				field: "Total",
+				color: "#00aaad",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Total (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "Drug-susceptible TB",
+				field: "DSTB",
+				color: "#012352",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Drug-susceptible TB (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "Drug-resistant TB",
+				field: "MDR",
+				color: "#8C0046",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Drug-resistant TB (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "TB/HIV",
+				field: "TBHIV",
+				color: "#E58B23",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "TB/HIV (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "TB preventive treatment (drugs only)",
+				field: "TPT",
+				color: "#0091D1",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "TB preventive treatment (drugs only) (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "Other",
+				field: "Other",
+				color: "#A3ADBA",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Other (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Billions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+        max: 7
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 2
+					},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+function createFig_5_6(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_5_6_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Total",
+				field: "tot",
+				color: "#00AAAD",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Total (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "Domestic funding",
+				field: "int",
+				color: "#4ABAFC",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Domestic funding (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "International funding",
+				field: "ext",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "International funding (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Billions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+        max: 7
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+function createFig_5_5(fig_ID,data,filter) {
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.g_brics == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 400
+			},	     
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Drug-susceptible TB",
+				field: "DSTB",
+				color: "#4ABAFC",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Drug-susceptible TB (#= category #): #= num_spacer(value) # million"
+			}
+			},{
+        name: "MDR/RR-TB",
+				field: "MDR",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "MDR/RR-TB (#= category #): #= num_spacer(value) # million"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= axis_spacer(value) #",
+				},
+				title: {
+					text: "Millions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+function createFig_5_7(fig_ID,data,filter) {
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.grp == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 400
+			},	     
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Domestic funding",
+				field: "int",
+				color: "#4ABAFC",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Domestic funding (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},{
+        name: "International funding",
+				field: "ext",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "International funding (#= category #): #= value.toPrecision(2) # billion"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Billions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+function createFig_5_8(fig_ID,data,filter) {
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.country == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 250
+			},	     
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Domestic funding",
+				field: "int",
+				color: "#4ABAFC",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Domestic funding (#= category #): #= tb_format_num(value) # million"
+			}
+			},{
+        name: "International funding",
+				field: "ext",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "International funding (#= category #): #= tb_format_num(value) # million"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Millions\n(constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 5
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+function createFig_5_9a(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_5_9a_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom",
+				orientation: "vertical",
+
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Low-income countries",
+				field: "LIC",
+				color: "#814550",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Low-income countries (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},{
+        name: "Lower-middle-income countries",
+				field: "LMC",
+				color: "#8FD314",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Lower-middle-income countries (#= category #): #= num_spacer(Number(value.toPrecision(2))) # million"
+			}
+			},{
+        name: "Upper-middle-income countries",
+				field: "UMC",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Upper-middle-income countries (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= axis_spacer(value) #",
+				},
+				title: {
+					text: "Millions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+          step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+function createFig_5_9b(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_5_9b_data,
+			chartArea: {
+				height: 540
+			},	
+			legend: {
+				position: "bottom",
+				orientation: "vertical",
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "African Region",
+				field: "AFR",
+				color: "#FC1C1E",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "African Region (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},{
+        name: "Region of the Americas",
+				field: "AMR",
+				color: "#00a76d",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Region of the Americas (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},{
+        name: "South-East Asia Region",
+				field: "SEA",
+				color: "#218ed4",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "South-East Asia Region (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},{
+        name: "European Region",
+				field: "EUR",
+				color: "#91a93e",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "European Region (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},{
+        name: "Eastern Mediterranean Region",
+				field: "EMR",
+				color: "#FF8C1F",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Eastern Mediterranean Region (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},{
+        name: "Western Pacific Region",
+				field: "WPR",
+				color: "#b72270",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Western Pacific Region (#= category #): #= Number(value.toPrecision(2)) # million"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= axis_spacer(value) #",
+				},
+				title: {
+					text: "Millions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+          step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+function createFig_5_10(fig_ID,data,title,height) {
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: height
+			},	
+      title: {
+				text: title,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar",
+        stack: {
+          type: "100%"
+        },
+        gap: 0.2
+			},
+			series: [{
+        name: "Domestic funding",
+				field: "int_pct",
+				color: "#4ABAFC",
+        tooltip: {
+				visible: true,
+				template: "Domestic funding (#= category #): #= tb_format_pct(value) #%"
+			}
+			},{
+        name: "Global Fund",
+				field: "gf_pct",
+				color: "#ED1D24",
+        tooltip: {
+				visible: true,
+				template: "Global Fund (#= category #): #= tb_format_pct(value) #%"
+			}
+			},{
+        name: "International funding (excluding Global Fund)",
+				field: "oth_pct",
+				color: "#00a76d",
+        tooltip: {
+				visible: true,
+				template: "International funding (excluding Global Fund) (#= category #): #= tb_format_pct(value) #%"
+			}
+			},{
+        name: "Budget gap",
+				field: "gap_pct",
+				color: "lightgrey",
+        tooltip: {
+				visible: true,
+				template: "Budget gap (#= category #): #= tb_format_pct(value) #%"
+			}
+			},],
+			valueAxis: {
+
+				title: {
+					text: "Percentage"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "country",
+				labels: {
+					rotation: 0,
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+$(document).ready(function() {
+  createFig_5_1("#fig_5_1");
+  createFig_5_3("#fig_5_3");
+  createFig_5_4("#fig_5_4");
+  createFig_5_6("#fig_5_6");
+  createFig_5_5("#fig_5_5a",fig_5_5_data,"BRICS (n=5)");
+  createFig_5_5("#fig_5_5b",fig_5_5_data,"High TB burden and global TB watchlist countries\noutside BRICSᵃ (n=28)");
+  createFig_5_5("#fig_5_5c",fig_5_5_data,"Rest of world (n=103)");
+    createFig_5_7("#fig_5_7a",fig_5_7_data,"BRICS (n=5)");
+  createFig_5_7("#fig_5_7b",fig_5_7_data,"High TB burden and global TB watchlist countries\noutside BRICS\u1D43 (n=28)");
+  createFig_5_7("#fig_5_7c",fig_5_7_data,"Rest of world (n=103)");
+  createFig_5_7("#fig_5_7d",fig_5_7_data,"Low-income countries");
+  createFig_5_7("#fig_5_7e",fig_5_7_data,"Lower-middle-income countries");
+  createFig_5_7("#fig_5_7f",fig_5_7_data,"Upper-middle-income countries");
+  createFig_5_7("#fig_5_7g",fig_5_7_data,"Africa");
+  createFig_5_7("#fig_5_7h",fig_5_7_data,"Asiaᵇ");
+  createFig_5_7("#fig_5_7i",fig_5_7_data,"Other regionsᶜ");
+    createFig_5_8("#fig_5_8_AGO",fig_5_8_data,"Angola");
+                   createFig_5_8("#fig_5_8_COG",fig_5_8_data,"Congo");
+                 createFig_5_8("#fig_5_8_IND",fig_5_8_data,"India");
+                 createFig_5_8("#fig_5_8_MNG",fig_5_8_data,"Mongolia");
+                 createFig_5_8("#fig_5_8_PAK",fig_5_8_data,"Pakistan");
+                 createFig_5_8("#fig_5_8_THA",fig_5_8_data,"Thailand");
+                 
+                 createFig_5_8("#fig_5_8_BGD",fig_5_8_data,"Bangladesh");
+                 createFig_5_8("#fig_5_8_PRK",fig_5_8_data,"Democratic People's Republic of Korea");
+                 createFig_5_8("#fig_5_8_IDN",fig_5_8_data,"Indonesia");
+                 createFig_5_8("#fig_5_8_MOZ",fig_5_8_data,"Mozambique");
+                 createFig_5_8("#fig_5_8_PNG",fig_5_8_data,"Papua New Guinea");
+                 createFig_5_8("#fig_5_8_UGA",fig_5_8_data,"Uganda");
+                 
+                 createFig_5_8("#fig_5_8_BRA",fig_5_8_data,"Brazil");
+                 createFig_5_8("#fig_5_8_COD",fig_5_8_data,"Democratic Republic of the Congo");
+                 createFig_5_8("#fig_5_8_KEN",fig_5_8_data,"Kenya");
+                 createFig_5_8("#fig_5_8_MMR",fig_5_8_data,"Myanmar");
+                 createFig_5_8("#fig_5_8_PHL",fig_5_8_data,"Philippines");
+                 createFig_5_8("#fig_5_8_TZA",fig_5_8_data,"United Republic of Tanzania");
+                 
+                 createFig_5_8("#fig_5_8_CAF",fig_5_8_data,"Central African Republic");
+                 createFig_5_8("#fig_5_8_ETH",fig_5_8_data,"Ethiopia");
+                 createFig_5_8("#fig_5_8_LSO",fig_5_8_data,"Lesotho");
+                 createFig_5_8("#fig_5_8_NAM",fig_5_8_data,"Namibia");
+                 createFig_5_8("#fig_5_8_SLE",fig_5_8_data,"Sierra Leone");
+                 createFig_5_8("#fig_5_8_VNM",fig_5_8_data,"Viet Nam");
+                 
+                 createFig_5_8("#fig_5_8_CHN",fig_5_8_data,"China");
+                 createFig_5_8("#fig_5_8_GAB",fig_5_8_data,"Gabon");
+                 createFig_5_8("#fig_5_8_LBR",fig_5_8_data,"Liberia");
+                 createFig_5_8("#fig_5_8_NGA",fig_5_8_data,"Nigeria");
+                 createFig_5_8("#fig_5_8_ZAF",fig_5_8_data,"South Africa");
+                 createFig_5_8("#fig_5_8_ZMB",fig_5_8_data,"Zambia");
+
+                 createFig_5_8("#fig_5_8_ZWE",fig_5_8_data,"Zimbabwe");
+                 createFig_5_8("#fig_5_8_RUS",fig_5_8_data,"Russian Federation");
+                 createFig_5_8("#fig_5_8_KHM",fig_5_8_data,"Cambodia");
+  createFig_5_9a("#fig_5_9a");
+  createFig_5_9b("#fig_5_9b");
+    createFig_5_10("#fig_5_10a",fig_5_10a_data,"Low-income",400);
+  createFig_5_10("#fig_5_10b",fig_5_10b_data,"Lower-middle-income",660);
+  createFig_5_10("#fig_5_10c",fig_5_10c_data,"Upper-middle-income",350);
+  
+});
+
+```

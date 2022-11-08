@@ -1,0 +1,23 @@
+age.group,description
+10_14,10 - 14 years
+10_19,10 - 19 years
+10_29,10 - 29 years
+10plus,10 years and above
+15_24,15 - 24 years
+15_34,15 - 34 years
+15plus,15 years and above
+20_29,20 - 29 years
+25_34,25 - 34 years
+30_39,30 - 39 years
+30_49,30 - 49 years
+35_44,35 - 44 years
+35_54,35 - 54 years
+3monthplus,3 months and above
+40_49,40 - 49 years
+45_54,45 - 54 years
+50plus,50 years and above
+55_64,55 - 64 years
+55plus,55 years and above
+5plus,5 years and above
+65plus,65 years and above
+all,All ages

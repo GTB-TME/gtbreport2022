@@ -1,0 +1,16 @@
+patients,case,countries,countryyears
+new,r,91,166
+new,r.h,98,284
+new,r.m,1,2
+new,dh0,73,512
+new,dh0.x,53,152
+new,dh1r,30,30
+new,dh1r.x,1,1
+new,dh2,40,108
+ret,r,98,228
+ret,r.h,90,222
+ret,r.m,1,2
+ret,dh0,75,492
+ret,dh0.x,67,158
+ret,dh1r,28,28
+ret,dh2,36,83

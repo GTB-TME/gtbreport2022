@@ -1,0 +1,39 @@
+﻿wbcode,year,Country Name,sdg381,SDG 3.8.2,WB income group classification
+AGO,2018,Angola,39,36,Lower-middle income
+BGD,2016,Bangladesh,46,24,Lower-middle income
+BRA,2017,Brazil,75,12,Upper-middle income
+CAF,2008,Central African Republic,24,7,Low income
+CHN,2016,China,79,24,Upper-middle income
+COD,2012,Democratic Republic of the Congo,32,5,Low income
+ETH,2015,Ethiopia,37,2,Low income
+GAB,2017,Gabon,51,4,Upper-middle income
+IDN,2017,Indonesia,55,5,Lower-middle income
+IND,2017,India,57,17,Lower-middle income
+KEN,2015,Kenya,52,5,Lower-middle income
+KHM,2019,Cambodia,61,18,Lower-middle income
+LBR,2016,Liberia,38,7,Low income
+LSO,2010,Lesotho,43,5,Lower-middle income
+MMR,2017,Myanmar,56,13,Lower-middle income
+MNG,2018,Mongolia,63,7,Lower-middle income
+MOZ,2014,Mozambique,41,2,Low income
+NAM,2015,Namibia,59,2,Upper-middle income
+NGA,2018,Nigeria,43,16,Lower-middle income
+PAK,2015,Pakistan,41,4,Lower-middle income
+PHL,2015,Philippines,49,6,Lower-middle income
+RUS,2019,Russian Federation,75,7,Upper-middle income
+SLE,2018,Sierra Leone,39,16,Low income
+THA,2019,Thailand,83,2,Upper-middle income
+TZA,2018,United Republic of Tanzania,45,4,Low income
+UGA,2016,Uganda,46,15,Low income
+VNM,2018,Viet Nam,69,10,Lower-middle income
+ZAF,2014,South Africa,63,1,Upper-middle income
+ZMB,2010,Zambia,45,0,Lower-middle income
+ZWE,2017,Zimbabwe,56,12,Low income
+,,,,,
+Note: ,SDG 3.8.1 estimates are based on interpolated points between available years over the 2000-2019 period,,,,
+,Published data for both SDG 3.8.1 and 3.8.2 can be accessed from WHO GHO database on universal health coverage https://www.who.int/data/gho/data/major-themes/universal-health-coverage-major,,,,
+,WB income group classification matched to the year of the available estimates for both SDG 3.8.1 & SDG 3.8.2,,,,
+,,,,,
+Source:, Background data prepared by WHO for the 2021 global monitoring report on Universal Health coverage jointly produced with the World Bank [1].  ,,,,
+,Global monitoring report on financial protection in health 2021. Geneva: World Health Organization and,,,,
+,International Bank for Reconstruction and Development / The World Bank; 2021. Licence: CC BY-NC-SA 3.0 IGO.,,,,

@@ -1,0 +1,43 @@
+IndicatorCode,Indicator,ValueType,ParentLocationCode,ParentLocation,Location type,SpatialDimValueCode,Location,Period type,Period,IsLatestYear,Dim1 type,Dim1,Dim1ValueCode,Dim2 type,Dim2,Dim2ValueCode,Dim3 type,Dim3,Dim3ValueCode,DataSourceDimValueCode,DataSource,FactValueNumericPrefix,FactValueNumeric,FactValueUoM,FactValueNumericLowPrefix,FactValueNumericLow,FactValueNumericHighPrefix,FactValueNumericHigh,Value,FactValueTranslationID,FactComments,Language,DateModified
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AFR,Africa,Year,2019,true,,,,,,,,,,,,,46.17,,,,,,46,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EMR,Eastern Mediterranean,Year,2019,true,,,,,,,,,,,,,56.8,,,,,,57,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,SEAR,South-East Asia,Year,2019,true,,,,,,,,,,,,,60.77,,,,,,61,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,GLOBAL,(WHO) Global,Year,2019,true,,,,,,,,,,,,,67.48,,,,,,67,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AMR,Americas,Year,2019,true,,,,,,,,,,,,,77.11,,,,,,77,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EUR,Europe,Year,2019,true,,,,,,,,,,,,,79.23,,,,,,79,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,WPR,Western Pacific,Year,2019,true,,,,,,,,,,,,,79.74,,,,,,80,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AFR,Africa,Year,2017,false,,,,,,,,,,,,,44.42,,,,,,44,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EMR,Eastern Mediterranean,Year,2017,false,,,,,,,,,,,,,54.92,,,,,,55,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,SEAR,South-East Asia,Year,2017,false,,,,,,,,,,,,,56.77,,,,,,57,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,GLOBAL,(WHO) Global,Year,2017,false,,,,,,,,,,,,,65.5,,,,,,65,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AMR,Americas,Year,2017,false,,,,,,,,,,,,,76.67,,,,,,77,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EUR,Europe,Year,2017,false,,,,,,,,,,,,,78.02,,,,,,78,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,WPR,Western Pacific,Year,2017,false,,,,,,,,,,,,,77.83,,,,,,78,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AFR,Africa,Year,2015,false,,,,,,,,,,,,,43.05,,,,,,43,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EMR,Eastern Mediterranean,Year,2015,false,,,,,,,,,,,,,52.29,,,,,,52,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,SEAR,South-East Asia,Year,2015,false,,,,,,,,,,,,,54,,,,,,54,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,GLOBAL,(WHO) Global,Year,2015,false,,,,,,,,,,,,,63.58,,,,,,64,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,WPR,Western Pacific,Year,2015,false,,,,,,,,,,,,,75.17,,,,,,75,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AMR,Americas,Year,2015,false,,,,,,,,,,,,,76.11,,,,,,76,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EUR,Europe,Year,2015,false,,,,,,,,,,,,,76.55,,,,,,77,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AFR,Africa,Year,2010,false,,,,,,,,,,,,,38.59,,,,,,39,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,SEAR,South-East Asia,Year,2010,false,,,,,,,,,,,,,47.05,,,,,,47,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EMR,Eastern Mediterranean,Year,2010,false,,,,,,,,,,,,,48.08,,,,,,48,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,GLOBAL,(WHO) Global,Year,2010,false,,,,,,,,,,,,,58.43,,,,,,58,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,WPR,Western Pacific,Year,2010,false,,,,,,,,,,,,,67.54,,,,,,68,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EUR,Europe,Year,2010,false,,,,,,,,,,,,,72.78,,,,,,73,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AMR,Americas,Year,2010,false,,,,,,,,,,,,,73.84,,,,,,74,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AFR,Africa,Year,2005,false,,,,,,,,,,,,,29.78,,,,,,30,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,SEAR,South-East Asia,Year,2005,false,,,,,,,,,,,,,34.05,,,,,,34,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EMR,Eastern Mediterranean,Year,2005,false,,,,,,,,,,,,,41.88,,,,,,42,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,GLOBAL,(WHO) Global,Year,2005,false,,,,,,,,,,,,,50.42,,,,,,50,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,WPR,Western Pacific,Year,2005,false,,,,,,,,,,,,,59.54,,,,,,60,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EUR,Europe,Year,2005,false,,,,,,,,,,,,,66.29,,,,,,66,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AMR,Americas,Year,2005,false,,,,,,,,,,,,,70.62,,,,,,71,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AFR,Africa,Year,2000,false,,,,,,,,,,,,,24.22,,,,,,24,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,SEAR,South-East Asia,Year,2000,false,,,,,,,,,,,,,29.81,,,,,,30,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EMR,Eastern Mediterranean,Year,2000,false,,,,,,,,,,,,,35.18,,,,,,35,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,GLOBAL,(WHO) Global,Year,2000,false,,,,,,,,,,,,,45.26,,,,,,45,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,WPR,Western Pacific,Year,2000,false,,,,,,,,,,,,,51.26,,,,,,51,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,EUR,Europe,Year,2000,false,,,,,,,,,,,,,63.73,,,,,,64,,,EN,2021-11-30T23:00:00.000Z
+UHC_INDEX_REPORTED,UHC Service Coverage Index (SDG 3.8.1),text,GLOBAL,(WHO) Global,WHO region,AMR,Americas,Year,2000,false,,,,,,,,,,,,,65.44,,,,,,65,,,EN,2021-11-30T23:00:00.000Z

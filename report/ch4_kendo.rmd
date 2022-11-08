@@ -1,0 +1,624 @@
+---
+title: "Section 4 TB prevention - Kendo UI charts"
+author: "Hazim Timimi"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch4_kendo.rmd"), output_file = "ch4_kendo.html", output_dir = here::here("report/html_drafts/"))
+---
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+library(dplyr)
+library(here)
+library(jsonlite)
+
+# Get the data sets and computed values/statistics for section 3.4 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch4_prepare_data.r'))
+
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+
+<!-- End of links section -->
+
+
+# 4. TB prevention
+
+## Kendo UI charts
+
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` and HIV TPT file dated `r csv_tpt_fix_datestamp`_
+
+### Fig. 4.1</span> The global number of people provided with TB preventive treatment, 2015–`r report_year - 1`
+
+
+<div id="fig_4_1"></div>
+
+
+### <span class="red">Fig. 4.6</span> Completion of TB preventive treatment among contacts starting treatment,^a^ `r report_year - 2`
+
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_6_afr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_amr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_6_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_wpr"></div>
+</div>
+</div>
+
+
+
+### <span class="red">Fig. 4.7</span> Provision of TB preventive treatment to people living with HIV^a^, 2005–`r report_year - 1`
+
+<div id="fig_4_7_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_7_afr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_amr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_7_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_wpr"></div>
+</div>
+</div>
+
+
+### <span class="red">Fig. 4.9</span> Completion of TB preventive treatment among people living with HIV^a^, `r report_year - 2`
+
+<div id="fig_4_9"></div>
+
+
+### <span class="red">Fig. 4.12</span> BCG vaccination coverage in infants^a^, globally and by WHO region 2019-2021
+
+
+<div id="fig_4_12_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_12_afr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_amr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_12_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_wpr"></div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+/* JSON data objects for the figures */
+
+var fig_4_1_data = `r f4.1_data %>% pivot_wider(names_from = "TPT_category", id_cols = "year", values_from = "how_many") %>% toJSON("rows")`;
+
+
+var fig_4_6_data = `r f4.6_data %>% mutate(size=10) %>%  select(-newinc_con_prevtx_cmplt) %>% toJSON("rows")`;
+
+
+var fig_4_7_data = `r f4.7_data %>% toJSON("rows")`;
+
+
+```{r, fig4.9_bubbles}
+
+
+f4.9_bubbles <- f4.9_data %>% 
+  # Convert regional names to colours
+  mutate(col = case_when(
+    entity == "African Region" ~ "red",
+    entity == "Region of the Americas" ~ "orange",
+    entity == "South-East Asia Region" ~ "yellow",
+    entity == "European Region" ~ "green",
+    entity == "Eastern Mediterranean Region" ~ "blue",
+    entity == "Western Pacific Region" ~ "purple"),
+    
+    # Add a standard size for the bubbles
+    size = 10) %>% 
+  
+  # Drop unnecessary variables
+  select(-hiv_all_tpt_completed, -entity)
+
+```
+
+
+var fig_4_9_data = `r f4.9_bubbles %>%  toJSON("rows")`;
+
+
+var fig_4_12_data = `r f4.12_data %>% toJSON("rows")`;
+
+</script>
+
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+  return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;')
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+function createFig_4_1() {
+        $("#fig_4_1").kendoChart({
+            dataSource: {
+                data: fig_4_1_data
+            },
+            legend: {
+                position: "bottom"
+            },
+            seriesDefaults: {
+                type: "column",
+                stack: true,
+                gap: 0.2,
+                tooltip: {
+                    visible: true,
+                    template: "#= series.name #: (#= category #): #= num_spacer(value)#"
+                }
+            },
+            series: [{
+                name: "People living with HIV",
+                field: "hiv_tpt",
+                color: "#ffc425"
+                }, {
+                name: "Household contacts aged <5 years",
+                field: "house_con04_tpt",
+                color: "#9fcd25"
+                }, {
+                name: "Household contacts aged \u22655 years",
+                field: "house_con5plus_tpt",
+                color: "dark green"
+            }],
+            valueAxis: {
+                labels: {
+                    template: "#= kendo.format('{0}',value/1000000) #"
+                },
+                title: {
+                    text: "Number of people (millions)"
+                },
+                line: {
+                    visible: false
+                }
+            },
+            categoryAxis: {
+                field: "year",
+                labels: {
+                    rotation: "auto"
+                },
+                majorGridLines: {
+                    visible: false
+                }
+            }
+        });
+}
+
+
+function createFig_4_6(fig_ID, data, filter) {
+
+  // Filter the dataset on the entity variable
+  dataJSON = data.filter( element => element.entity == filter);
+
+  $(fig_ID).kendoChart({
+        dataSource: dataJSON,
+        chartArea: {
+            height: 250
+        },  
+        title: {
+                  text: filter,
+                  color: "black",
+                  font: "bold 14px  Arial,Helvetica,sans-serif"
+              },  
+        legend: {
+            // hide the legend
+            visible: false
+        },
+        series: [{
+        // Using bubble instead of scatter chart otherwise wouldn't be able to see 
+        // the country name in the tooltip. So had to fix a bubble size in the data
+        type: "bubble",
+        xField: "newinc_con_prevtx",
+        yField: "pct_completed",
+        categoryField: "country",
+        sizeField: "size",
+        maxSize: 10,
+        minSize: 10,
+            }],
+        yAxis: {
+            labels: {
+                template: "#= kendo.format('{0}', value) #%"
+            },
+            title: {
+                text: "% contacts who completed\nTB preventive treatment",
+                visible: true,
+                font: "12px  Arial,Helvetica,sans-serif"
+            },
+            line: {
+                visible: false
+            }
+        },
+        xAxis: {
+            type: "log",
+            majorGridLines: {
+                visible: false
+            },
+            labels: {
+                template: "#= kendo.format('{0}',num_spacer(value)) #"
+            },
+            title: {
+                text: "Contacts starting TB preventive treatment\n(log scale)",
+                visible: true,
+                font: "12px  Arial,Helvetica,sans-serif"
+            }
+        },
+        tooltip: {
+				    visible: true,
+				    template: "#= category #, #= num_spacer(value.x)# started treatment, #= kendo.toString(value.y, 'n0')#% completed"
+			}
+    });
+}
+
+
+
+function createFig_4_7(fig_ID, data, filter) {
+
+  // Filter the dataset on the entity variable
+  dataJSON = data.filter( element => element.entity == filter);
+
+  $(fig_ID).kendoChart({
+        dataSource: dataJSON,
+        chartArea: {
+            height: 250
+        },  
+        title: {
+                  text: filter,
+                  color: "black",
+                  font: "bold 14px  Arial,Helvetica,sans-serif"
+              },  
+        legend: {
+            // hide the legend
+            visible: false
+        },
+        seriesDefaults: {
+            type: "line",
+            tooltip: {
+                visible: true,
+                template: "#= series.name #: (#= category #): #= num_spacer(value)#"
+            }
+        },
+        series: [{
+            name: "Newly enrolled on HIV treatment",
+            field: "hiv_tpt_new",
+            color: "red",
+    				dashType: "dash",
+            markers: {
+              size: 3
+            }
+            },{
+            name: "Currently on HIV treatment",
+            field: "hiv_tpt_all",
+            color: "blue",  
+            markers: {
+              size: 3
+            }
+            }],
+        valueAxis: {
+            labels: {
+                template: "#= axis_spacer(value/1e3) #"
+            },
+            title: {
+                text: "Number of people (thousands)",
+                visible: true,
+                font: "12px  Arial,Helvetica,sans-serif"
+            },
+            line: {
+                visible: false
+            }
+        },
+        categoryAxis: {
+            field: "year",
+            labels: {
+                step: 5
+            },
+            majorGridLines: {
+                visible: false
+            },
+            title: {
+                text: "Year",
+                visible: true,
+                font: "12px  Arial,Helvetica,sans-serif"
+            }
+        }
+    });
+}
+
+
+function createFig_4_9() {
+
+  $("#fig_4_9").kendoChart({
+        dataSource:  {
+            data: fig_4_9_data
+        },
+        legend: {
+            position: "bottom"
+        },
+        chartArea: {
+            height: 300
+        }, 
+        seriesDefaults: {
+            // Using bubble instead of scatter chart otherwise wouldn't be able to see 
+            // the country name in the tooltip. So had to fix a bubble size in the data
+            type: "bubble",
+            xField: "hiv_all_tpt_started",
+            yField: "pct_completed",
+            categoryField: "country",
+            sizeField: "size",
+            maxSize: 10,
+            minSize: 10,
+            colorField: "col"
+        },
+        // The individual series are here purely to create the legend
+        series: [{
+            name: "African Region",
+            field: "entity",
+            color: "red"
+            }, {
+            name: "Region of the Americas",
+            field: "entity",
+            color: "orange"
+            }, {
+            name: "South-East Asia Region",
+            field: "entity",
+            color: "yellow"
+            }, {
+            name: "European Region",
+            field: "entity",
+            color: "green"
+            }, {
+            name: "Eastern Mediterranean Region",
+            field: "entity",
+            color: "blue"
+            }, {
+            name: "Western Pacific Region",
+            field: "entity",
+            color: "purple"
+            }],
+        yAxis: {
+            labels: {
+                template: "#= kendo.format('{0}', value) #%"
+            },
+            title: {
+                text: "% who completed TB preventive treatment",
+                visible: true,
+                font: "12px  Arial,Helvetica,sans-serif"
+            },
+            line: {
+                visible: false
+            }
+        },
+        xAxis: {
+            type: "log",
+            majorGridLines: {
+                visible: false
+            },
+            labels: {
+                template: "#= kendo.format('{0}',num_spacer(value)) #"
+            },
+            title: {
+                text: "People living with HIV starting TB preventive treatment (log scale)",
+                visible: true,
+                font: "12px  Arial,Helvetica,sans-serif"
+            }
+        },
+        tooltip: {
+				    visible: true,
+				    template: "#= category #, #= num_spacer(value.x)# started treatment, #= kendo.toString(value.y, 'n0')#% completed"
+			}
+    });
+}
+
+function createFig_4_12(fig_ID, data, filter) {
+  
+  		// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.entity == filter);
+  
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 250
+			},	
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "bcg_coverage",
+				color: "#473c8b", 
+        markers: {
+          size: 3
+        },
+        tooltip: {
+				visible: true,
+				template: "#= category #: #= value.toPrecision(2) #%",
+			}
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "BCG coverage (%)",
+          font: "14px Arial,Helvetica,sans-serif"
+				},
+				line: {
+					visible: false
+				},
+        max: 100,
+        min: 0
+			},
+			categoryAxis: {
+				field: "year",
+        labels: {
+					rotation: "auto"
+          },
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year"
+				}
+			}
+
+		});
+}
+
+
+```
+
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+
+$(document).ready(function() {
+  
+  createFig_4_1();
+  
+  createFig_4_6("#fig_4_6_afr", fig_4_6_data, "African Region");
+  createFig_4_6("#fig_4_6_amr", fig_4_6_data, "Region of the Americas");
+  createFig_4_6("#fig_4_6_sear", fig_4_6_data, "South-East Asia Region");
+  createFig_4_6("#fig_4_6_eur", fig_4_6_data, "European Region");
+  createFig_4_6("#fig_4_6_emr", fig_4_6_data, "Eastern Mediterranean Region");
+  createFig_4_6("#fig_4_6_wpr", fig_4_6_data, "Western Pacific Region");
+  
+  
+  createFig_4_7("#fig_4_7_global", fig_4_7_data, "Global");
+  createFig_4_7("#fig_4_7_afr", fig_4_7_data, "African Region");
+  createFig_4_7("#fig_4_7_amr", fig_4_7_data, "Region of the Americas");
+  createFig_4_7("#fig_4_7_sear", fig_4_7_data, "South-East Asia Region");
+  createFig_4_7("#fig_4_7_eur", fig_4_7_data, "European Region");
+  createFig_4_7("#fig_4_7_emr", fig_4_7_data, "Eastern Mediterranean Region");
+  createFig_4_7("#fig_4_7_wpr", fig_4_7_data, "Western Pacific Region");
+  
+  createFig_4_9();
+  
+  createFig_4_12("#fig_4_12_global", fig_4_12_data, "Global");
+  createFig_4_12("#fig_4_12_afr", fig_4_12_data, "African Region");
+  createFig_4_12("#fig_4_12_amr", fig_4_12_data, "Region of the Americas");
+  createFig_4_12("#fig_4_12_sear", fig_4_12_data, "South-East Asia Region");
+  createFig_4_12("#fig_4_12_eur", fig_4_12_data, "European Region");
+  createFig_4_12("#fig_4_12_emr", fig_4_12_data, "Eastern Mediterranean Region");
+  createFig_4_12("#fig_4_12_wpr", fig_4_12_data, "Western Pacific Region");
+
+  
+});
+
+```
+
+

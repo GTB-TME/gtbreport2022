@@ -1,0 +1,289 @@
+country,iso2,year,used.2021.defs.flg,rel.with.new.flg,newrel.coh,newrel.succ,newrel.fail,newrel.died,newrel.lost,c.newrel.neval,c.new.tsr,ret.nrel.coh,ret.nrel.succ,ret.nrel.fail,ret.nrel.died,ret.nrel.lost,c.ret.nrel.neval,c.ret.tsr,tbhiv.coh,tbhiv.succ,tbhiv.fail,tbhiv.died,tbhiv.lost,c.tbhiv.neval,c.tbhiv.tsr,tb.014.coh,tb.014.succ,tb.014.fail,tb.014.died,tb.014.lost,c.tb.014.neval,c.tb.014.tsr,newrel.f.coh,newrel.f.succ,newrel.f.fail,newrel.f.died,newrel.f.lost,newrel.f.neval,c.newrel.f.tsr,gaps.na.rx.outcomes,remarks.rx.outcomes,gaps.na.rx.014.outcomes,remarks.rx.014.outcomes
+Bangladesh,BD,2020,0,1,228779,218114,693,6482,838,2652,95,799,713,20,29,25,12,89,84,64,0,18,0,2,76,9363,9129,,,,,98,102295,98585,229,1779,343,1359,96,0,,0,
+Bhutan,BT,2020,1,1,848,801,19,19,0,9,94,6,6,0,0,0,0,100,6,6,0,0,0,0,100,31,26,,,,,84,,,,,,,,0,"The 8 TB cases were put under the outcome treatment failed but these cases are actually not treatment failed. The cases were diagnosed as MDR during the course of first line treatment and thus have been moved to second line treatment. As there was no option under the treatment outcome, we have put the 8 cases under the treatment failed for now. The total new and relapse TB cases in 2021 is 911 including MDR. However, the new and relapse for DSTB is only 848 in 2020.",0,
+Indonesia,ID,2020,0,1,362523,312042,1205,13685,24649,10942,86,8441,6718,53,467,933,270,80,7996,5421,17,1400,893,265,68,34368,30865,,,,,90,153780,134586,486,4551,9503,4654,88,0,"For question 2.48, 2.49 and 2.50 are data on the results of the 2020 DS TB treatment.
+Meanwhile, figures 2.1, 2.2, 2.3 and 2.4 from the 2021 GTR report are DS and DR TB notification data.
+2020 DS TB Cases Cohort, Indonesia has not used new definition of treatment outcome.",0,"For question 2.52b is the data on the results of the 2020 DS TB treatment.
+While figure 2.9 from the 2021 GTR report is notification data for DS and DR TB.
+2020 DS TB Cases Cohort, Indonesia has not used new definition of treatment outcome."
+India,IN,2020,1,1,1603958,1364874,8235,70275,48072,112502,85,120416,95934,982,5828,3479,14193,80,28738,20972,160,4085,1069,2452,73,96638,85025,,,,,88,622946,542209,2740,20668,16032,41297,87,0,"2.49 The previously treated cases excluding relapse cases notified in 2020 [183342] also includes PMDT cases for whom treatment outcome is yet to be declared and some cases due to deduplication have been filtered out from the data base.
+2.50: The outcome of these many numbers of patients are documented and available in MIS.
+",0,
+Democratic People's Republic of Korea,KP,2020,1,1,89640,77972,4644,2874,3237,913,87,8729,6658,793,600,509,169,76,0,0,0,0,0,0,,,,,,,,,,,,,,,,1,,1,
+Sri Lanka,LK,2020,0,1,7036,5815,103,546,206,366,83,227,157,6,8,38,18,69,33,24,1,7,1,0,73,,,,,,,,,,,,,,,0,"Data for 2.50 was collected over the phone as it is not available in the routine recording and reporting system.
+",1,
+Myanmar,MM,2020,0,1,72721,63617,832,3931,3690,651,87,1267,1029,33,66,128,11,81,5544,4165,56,808,413,102,75,8573,8228,,,,,96,,,,,,,,0,,0,
+Maldives,MV,2020,1,1,107,86,3,3,1,14,80,0,0,0,0,0,0,,0,0,0,0,0,0,,3,3,,,,,100,,,,,,,,0,,0,
+Nepal,NP,2020,0,1,26909,24571,184,882,605,667,91,322,273,8,20,15,6,85,,,,,,,,,,,,,,,10093,9321,54,289,189,240,92,1,,0,
+Thailand,TH,2020,1,1,85837,71435,276,7262,4034,2830,83,1688,1085,45,164,324,70,64,6631,4880,27,1094,371,259,74,885,781,,,,,88,27550,23225,83,2094,937,1211,84,0,,0,
+Timor-Leste,TL,2020,1,1,3225,2944,11,127,84,59,91,70,60,0,5,2,3,86,42,38,1,2,1,0,90,,,,,,,,,,,,,,,1,,0,
+Angola,AO,2020,1,1,64859,34139,1524,2244,7810,19142,53,2911,980,16,44,195,1676,34,5246,1709,9,211,527,2790,33,,,,,,,,,,,,,,,0,,0,
+Burkina Faso,BF,2020,1,1,5691,4655,132,435,375,94,82,231,195,9,9,16,2,84,423,323,4,76,15,5,76,,,,,,,,,,,,,,,1,,1,Notre système de surveillance basé sur les cas est en phase pilote du module tracker développé par l'OMS. Pour l'instant il ne couvre qu'une partie estimée à 30% des notifications.
+Burundi,BI,2020,1,1,7105,6741,28,232,99,5,95,110,99,1,8,2,0,90,568,502,6,44,16,0,88,289,277,,,,,96,,,,,,,,0,"Le taux de succès thérapeutique chez les coinfectés TB/VIH est de 88% et celui de décès de 8%. Le taux d'abandon est de 3%. Le nombre de cas coinfectés est effectivement 568 en 2020. L'erreur est conséquente au message de l'OMS de Février 2022 où la plupart de données de 2020 ont été effacées et remplacées par celles de 2021. Le NPO OMS Burundi a été mis au courant de ce désagrément. 
+La correction a été faite.
+",0,Le taux de succès thérapeutique des enfants de 0-14 ans est de 96%
+Benin,BJ,2020,1,1,3915,3542,60,239,47,27,90,81,62,5,3,6,5,77,542,467,6,63,6,0,86,215,195,,,,,91,,,,,,,,1,,1,
+Botswana,BW,2020,1,1,2929,2270,14,214,35,396,78,335,265,2,27,2,39,79,1347,1022,7,117,24,177,76,251,212,,,,,84,1278,984,3,79,9,203,77,0,,0,
+Democratic Republic of the Congo,CD,2020,1,1,200955,188943,524,4521,3593,3374,94,1190,902,37,73,69,109,76,12041,8875,37,810,296,2023,74,22342,20276,,,,,91,,,,,,,,0,,1,
+Central African Republic,CF,2020,1,1,12610,9994,68,546,805,1197,79,207,176,2,6,13,10,85,3087,2529,21,168,165,204,82,1629,1141,,,,,70,,,,,,,,0,,0,"Pour la quesion 2.52b, notre base de données ne prends pas en compte les résultats de traitement concernant les échecs, les décès, les perdus de vue et les non évalués pour les les femmes. Toutes, elle prends globalement en compte le nombre de succès au traitement pour les femmes qui est 4012 sur les 5399 enregistrées en 2020."
+Congo,CG,2020,1,1,11175,8408,63,189,1410,1105,75,266,202,4,8,19,33,76,833,375,2,42,106,308,45,,,,,,,,,,,,,,,0,,0,
+Côte d'Ivoire,CI,2020,1,1,19688,16534,341,1796,668,349,84,220,168,23,8,17,4,76,2989,2151,42,560,102,134,72,,,,,,,,,,,,,,,0,,0,
+Cameroon,CM,2020,1,1,22100,18899,118,1441,1124,518,86,438,342,14,20,48,14,78,5007,4138,31,576,210,52,83,1222,1087,,,,,89,8369,7194,27,563,383,202,86,0,"En plus 5007 cas de TB/VIH notifiés, 37 cas de TB arrivés avec un statut VIH connu ont été suivis. Portant ainsi le nombre total des cas de coïnfection suivis à 5044.",0,Les données avaient été mises a jour. C'est effectivement 1222 enfants qui ont été suivis et qui ont un résultat de traitement.
+Cabo Verde,CV,2020,1,1,207,189,2,9,7,0,91,3,3,0,0,0,0,100,27,24,0,3,0,0,89,6,6,,,,,100,,,,,,,,0,,0,
+Algeria,DZ,2020,0,0,3789,3383,22,114,194,76,89,64,38,6,4,13,3,59,,,,,,,,,,,,,,,,,,,,,,1,"- The patients in 2.48  are the new cases of Pulmonary Tuberculosis smears +
+- The patients in 2.49 are the cases after failure and after lost to follow ",1,
+Eritrea,ER,2020,1,1,1617,1470,45,75,12,15,91,22,20,0,2,0,0,91,60,47,4,9,0,0,78,,,,,,,,,,,,,,,0,,0,
+Ethiopia,ET,2020,1,0,104651,90115,209,2024,1496,10807,86,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,The outcome of relapse cases didn't included in the national routine surveillance system to report ,1,
+Gabon,GA,2020,0,1,4879,3064,88,220,1445,62,63,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1," 1.Le formulaire de resultats utilisé ne permet pas d'avoir  de resultats de traitement des Patients enregistrés en tant que patients « traitement après échec », « traitement après perte de suivi » ou patients dont le résultat après leur traitement le plus récent est inconnu ou non documenté tous sont inclus dans le point 2.48 
+ 2.Les cas TB-VIH notifiés également leurs résultats de traitement  ne sont pas disponible car tous sont inclus dans le point 2.",0,
+Ghana,GH,2020,1,1,12624,10861,103,1067,504,89,86,284,230,4,33,13,4,81,2114,1642,12,341,98,21,78,615,506,,,,,82,,,,,,,,0,"Of the 12674 New and relapse patients notified, 50  were moved to Second line TB Treatment, as well as 2 of the previously treated patients.",0,
+Gambia,GM,2020,1,1,2405,2085,13,183,119,5,87,13,7,3,0,3,0,54,361,257,1,67,34,2,71,,,,,,,,,,,,,,,0,,1,
+Guinea,GN,2020,1,1,15631,14223,302,655,372,79,91,263,212,17,15,17,2,81,3985,3507,80,265,58,75,88,,,,,,,,,,,,,,,0,,1,
+Equatorial Guinea,GQ,2020,1,1,1477,1098,8,106,165,100,74,47,35,0,2,7,3,74,542,367,3,74,50,48,68,98,70,,,,,71,,,,,,,,0,,0,
+Guinea-Bissau,GW,2020,0,1,2542,1908,22,242,289,81,75,18,11,0,2,5,0,61,593,429,10,81,61,12,72,,,,,,,,968,747,7,90,97,27,77,1,"Sur les 705 patients co-infectés en 2020, 593 étaient des patients nouveaux et en rechute, donc dans l'examen des patients co-infectés nous avons conclu que seuls les patients nouveaux et en rechute (593) pouvaient être analysés.
+Par conséquent, lors d'un exercice de révision de toutes les données de 2021, effectué par l'équipe, il a été constaté qu'au lieu de 705 patients co-infectés, il y en avait 593.",1,
+Kenya,KE,2020,1,1,70382,59734,403,5065,3642,1538,85,1599,1150,25,103,296,25,72,17497,13915,78,2239,927,338,80,5631,4928,,,,,88,24837,21292,87,1884,1035,539,86,0,,0,
+Comoros,KM,2020,1,0,48,44,0,3,1,0,92,4,4,0,0,0,0,100,1,1,0,0,0,0,100,,,,,,,,,,,,,,,0,,0,
+Liberia,LR,2020,0,1,6990,5290,16,305,1207,172,76,,,,,,,,,,,,,,,,,,,,,,2802,2254,5,112,364,67,80,1,"At this time of reporting the Program could not generate data related to TB/HIV cohort treatment outcome and also data for TB cases previously treated (‘treatment after failure’, ‘treatment after lost to follow up’ patients or patients whose outcome after their most recent course of treatment is unknown or undocumented treatment failure) from the DHIS2 system due to update of TB reporting form. However, the HMIS Unit at the Ministry of Health is working to correct the problem.",0,
+Lesotho,LS,2020,1,1,4478,3390,28,683,216,161,76,70,55,0,7,8,0,79,2579,1950,17,388,127,97,76,171,134,,,,,78,1540,1190,7,219,62,62,77,0,,0,
+Madagascar,MG,2020,1,1,33576,27830,255,1472,2812,1207,83,869,676,20,55,89,29,78,673,500,2,62,58,51,74,3817,3703,,,,,97,,,,,,,,0,,0,
+Mali,ML,2020,1,0,6922,5674,143,467,481,157,82,219,169,15,5,23,7,77,513,379,12,82,31,9,74,,,,,,,,,,,,,,,0,,0,Les résultats de traitement ne sont pas désagrégés par tranche d'âge
+Mauritania,MR,2020,1,1,2409,1804,9,147,205,244,75,8,6,0,0,2,0,75,51,31,0,8,5,7,61,100,72,,,,,72,,,,,,,,0,,0,
+Mauritius,MU,2020,1,1,103,86,0,6,8,3,83,2,0,0,0,2,0,0,18,10,0,3,5,0,56,3,3,,,,,100,,,,,,,,0,,0,
+Malawi,MW,2020,1,1,14863,13320,49,1094,237,163,90,241,188,15,13,23,2,78,6564,5698,44,638,114,70,87,1373,1275,,,,,93,,,,,,,,0,Outcomes data not consistent with notified cases for the previous year due to loss of paper based records and transcription errors. Some cases were switched to second line regimens hence not considered for treatment outcome evaluation,1,Outcomes data not consistent with notified cases for the previous year due to loss of paper based records and transcription errors. Some cases were switched to second line regimens hence not considered for treatment outcome evaluation
+Mozambique,MZ,2020,0,1,91948,86417,223,2120,1408,1780,94,,,,,,,,26354,23434,154,1227,557,982,89,11766,10347,,,,,88,,,,,,,,1,NTP Mozambique not yet use the new revised definitions,0,
+Namibia,NA,2020,1,1,6312,5567,85,464,180,16,88,227,173,19,8,27,0,76,1992,1654,33,232,71,2,83,631,590,,,,,94,2405,2147,29,169,56,4,89,0,"2.49: Reason why the number of cases registered [227] is not the same as the number of previously treated (but not relapse)cases notified in 2020 [246] as reported in section 2.4 of the 2021 report, is because (Section:2.4 of 2021 report) includes Drug Resistant previously treated TB cases.",0,
+Niger,NE,2020,1,1,11195,9437,161,797,647,153,84,179,132,9,17,19,2,74,315,236,5,55,16,3,75,,,,,,,,,,,,,,,0,,0,
+Nigeria,NG,2020,0,1,135784,121778,519,4723,6308,2456,90,,,,,,,,10101,8251,55,961,803,31,82,8441,7674,,,,,91,54314,48840,182,1737,2310,1245,90,1,"2.49 being corrected, will be started as soon as available",0,2.52 and 2.52b are for all forms of TB cases
+Rwanda,RW,2020,1,1,5562,4944,32,411,125,50,89,71,61,6,0,4,0,86,1072,855,7,144,55,11,80,324,299,,,,,92,,,,,,,,0,,0,
+Seychelles,SC,2020,1,1,9,7,0,0,1,1,78,0,0,0,0,0,0,,2,2,0,0,0,0,100,0,0,,,,,,,,,,,,,0,,0,
+Sierra Leone,SL,2020,1,1,15706,13914,62,709,535,486,89,83,66,1,9,5,2,80,2141,1689,5,254,85,108,79,,,,,,,,,,,,,,,0,,1,
+Senegal,SN,2020,1,1,12808,11435,162,452,510,249,89,301,243,14,7,27,10,81,578,431,10,24,34,79,75,669,422,,,,,63,,,,,,,,0,,0,
+South Sudan,SS,2020,1,1,16266,13417,230,264,1637,718,82,642,446,13,10,118,55,69,1392,1016,85,23,209,59,73,1032,938,,,,,91,,,,,,,,0,,0,
+Sao Tome and Principe,ST,2020,1,1,91,65,1,10,14,1,71,0,0,0,0,0,0,,6,5,0,1,0,0,83,3,2,,,,,67,,,,,,,,1,,1,
+Eswatini,SZ,2020,1,1,1949,1571,62,195,57,64,81,,,,,,,,1193,948,35,133,42,35,79,99,90,,,,,91,830,663,5,119,21,22,80,1,The country has moved to Universal DST. Some of the cases that were initially registered as DS-TB cases were removed from the FL register after the return of their DST results.,0,
+Chad,TD,2020,1,1,12814,10404,63,478,1053,816,81,355,232,4,18,50,51,65,1351,1068,9,121,114,39,79,927,777,,,,,84,,,,,,,,0,,0,
+Togo,TG,2020,1,1,2312,1988,43,191,70,20,86,71,51,3,8,8,1,72,402,311,12,59,16,4,77,65,62,,,,,95,,,,,,,,0,,0,
+United Republic of Tanzania,TZ,2020,1,1,84467,80709,75,2766,780,137,96,768,689,2,35,39,3,90,17818,16419,12,1055,202,130,92,13591,13245,,,,,97,34147,32686,51,1038,272,100,96,0,,0,
+Uganda,UG,2020,1,1,60429,51617,339,4326,3183,964,85,1639,1310,26,86,177,40,80,20075,17754,55,1445,577,244,88,7070,6218,,,,,88,17342,15202,80,1196,848,16,88,0,"2.49: The total number of cases registered [1456] should normally be the same as the number of previously treated (but not relapse) cases notified in 2020 [1639] as reported in section 2.4 of the 2021, however the data extraction dates and harmonization sessions cause changes
+
+Same applies to 2.50: The total number of cases registered [12471] should normally be the same as the total number of new and relapse HIV-positive TB cases notified in 2020 [20075] as reported in section 2.35 of the 202",0,2.52 Obtained from an aggregate system. It includes outcomes for retreatment 0-14-year-old TB cases 
+South Africa,ZA,2020,1,1,166064,130318,1368,13437,17187,3754,78,13475,8739,245,1113,3007,371,65,81799,64162,626,7810,7654,1547,78,16007,12821,,,,,80,65903,53194,460,5302,5448,1499,81,0,The drop in the number of registered new and relapse patients in 2020 was noted on reporting and there was an attempt to verify the information with both the custodians of the surveillance system and facilities that have these numbers. No success was met with the outcomes information due to time and the fact that even facilities find it difficult confirm their information due to restrictions posed by the surveillance system and the custodians thereof.  This applies to 2.48 - 2.50.,0,The surveillance system for DS-TB has been observed to have fluctuating numbers since 2019.  The issue is being attended to in terms of strengthening the system altogether.  The challenge of inconsistencies is applicable to all fields that compare 2020 data to 2021.
+Zambia,ZM,2020,1,1,40000,36380,174,2002,899,545,91,726,636,13,34,31,12,88,14925,13449,69,854,332,221,90,2726,2488,,,,,91,13932,12745,51,657,284,195,91,0,,0,"The NTLP is in the process of rolling out a case-based surveillance system for both Drug Susceptible TB and DR TB. However, the current recording and reporting tools have data on treatment outcomes for both children aged 0-14 years and women."
+Zimbabwe,ZW,2020,1,1,16056,14163,102,1416,300,75,88,291,230,9,23,8,21,79,8027,6740,62,897,266,62,84,886,803,,,,,91,5754,5121,35,493,87,18,89,0,,0,
+Antigua and Barbuda,AG,2020,1,1,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,0,,0,
+Anguilla,AI,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Not applicable,0,Not applicable
+Argentina,AR,2020,1,1,10122,4687,7,589,917,3922,46,614,289,4,70,127,124,47,499,188,1,99,76,135,38,729,425,0,11,53,240,58,,,,,,,,0,Las diferencias con la notificación 2019 es la actualizacación de la bse de datos del Sistema Nacional de Vigilancia posterior al cierre de la carga de infromación para el Porgrama Global de OMS,0,Las diferencias con la notificación 2019 es la actualizacación de la bse de datos del Sistema Nacional de Vigilancia posterior al cierre de la carga de infromación para el Porgrama Global de OMS
+Aruba,AW,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,,1,
+Barbados,BB,2020,0,0,2,1,0,1,0,0,50,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,,,,,,,0,One person died from another reason.,0,No children were infected with TB
+Bermuda,BM,2020,1,1,3,3,0,0,0,0,100,0,0,0,0,0,0,,1,1,0,0,0,0,100,0,0,0,0,0,0,,,,,,,,,0,,0,
+Bolivia (Plurinational State of),BO,2020,0,1,6007,4811,65,469,476,186,80,98,63,3,8,16,8,64,,,,,,,,,,,,,,,,,,,,,,1,,0,
+Brazil,BR,2020,1,1,72825,48548,46,6137,9278,8816,67,7877,2753,10,701,3087,1326,35,6334,2964,6,1329,1091,944,47,1903,1357,0,72,155,319,71,22069,15701,11,1650,2138,2569,71,1,,1,
+Bahamas,BS,2020,1,1,31,21,0,8,1,1,68,0,0,0,0,0,0,,6,2,,4,0,0,33,0,,,,,,,,,,,,,,1,1 person diagnosed with drug -susceptible TB transferred out to native country at the end of 6 weeks of RIPR Therapy.,1,No children age 0-14 years were registered for TB treatment in 2020
+Belize,BZ,2020,1,1,79,65,0,10,3,1,82,4,0,0,0,1,3,0,18,14,0,3,0,1,78,2,1,0,0,1,0,50,,,,,,,,0,in 2.50 above the HIV+ not evaluated was deported to Honduras.,1,
+Canada,CA,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Chile,CL,2020,0,1,1992,1527,1,212,164,88,77,120,66,0,15,36,3,55,196,120,0,38,30,8,61,61,53,0,1,2,5,87,,,,,,,,0,"El el país, la pérdida de seguimiento se define con 4 semanas de inasistencias a tratamiento.
+",0,
+Colombia,CO,2020,1,1,11634,8228,110,1891,1168,237,71,499,268,9,38,177,7,54,1551,791,14,501,213,32,51,297,237,2,28,18,12,80,,,,,,,,0,,0,Se genera ajuste de casos descartados
+Costa Rica,CR,2020,1,1,348,294,4,31,8,11,84,0,0,0,0,0,0,,42,34,1,4,2,1,81,8,7,0,0,0,1,88,,,,,,,,0,,0,
+Cuba,CU,2020,1,1,573,455,6,70,12,30,79,15,7,3,3,2,0,47,54,31,0,13,1,9,57,9,9,0,0,0,0,100,,,,,,,,1,,1,
+Curaçao,CW,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Dominica,DM,2020,,,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,0,,0,
+Dominican Republic,DO,2020,1,1,2418,2025,17,145,230,1,84,209,129,0,20,60,0,62,528,395,3,60,69,1,75,34,33,0,0,1,0,97,,,,,,,,0,"En el año 2020 al cierre diagnosticamos 2858, de los cuales excluimos de la cohorte de TB sensible 231 casos por TB RR/MDR, casos de cohortes anteriores, evaluando en la cohorte de TB sensible 2627",0,
+Ecuador,EC,2020,1,0,5175,3638,66,259,986,226,70,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,,1,
+Grenada,GD,2020,1,1,1,1,0,0,0,0,100,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,1,,1,
+Guatemala,GT,2020,1,1,2562,2284,21,172,84,1,89,42,25,5,1,11,0,60,154,124,0,23,7,0,81,368,358,0,8,2,0,97,,,,,,,,0,"Con los datos de la cohorte, regularmente son menos que los notificados, hemos trabajado como país que las áreas de salud ingresen a cohorte a todos sus pacientes, pero siempre dejan algún paciente que falleció o abandono tratamiento, por lo que se sigue trabajando para reducir la brecha de estos datos. ",0,Tomar en cuenta que el rango que se tiene en el programa es de 0-19 años
+Guyana,GY,2020,1,1,358,239,5,30,64,20,67,31,9,2,4,16,0,29,44,22,1,12,9,0,50,5,4,0,0,1,0,80,,,,,,,,0,No of cases reported 1 year ago differs due to the exclusion of MDR-TB cases from the cohort and 1 case that was non TB no included in this cohort.,0,
+Honduras,HN,2020,1,1,1847,1612,3,145,77,10,87,14,8,1,1,4,0,57,91,64,0,19,8,0,70,41,39,0,1,1,0,95,,,,,,,,0,,0,
+Haiti,HT,2020,1,1,10844,8883,137,652,929,243,82,212,139,0,17,48,8,66,1553,1080,28,202,191,52,70,976,803,2,50,113,8,82,,,,,,,,0,,0,
+Jamaica,JM,2020,1,1,61,38,0,2,8,13,62,0,0,0,0,0,0,,14,4,0,2,5,3,29,8,,,,,8,,,,,,,,,0,,1,
+Saint Kitts and Nevis,KN,2020,1,1,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,,,,,,,1,,1,
+Cayman Islands,KY,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Saint Lucia,LC,2020,1,1,8,6,0,1,1,0,75,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,0,"There were no HIV positive TB patients in 2020.  There were no TB patients treated who were treatment after failure, treatment after loss to follow-up.",0,There were no documented cases of TB among children 0-14 in 2020.
+Montserrat,MS,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Mexico,MX,2020,1,1,17241,12301,106,2102,1397,1335,71,636,339,8,75,175,39,53,1698,860,4,489,155,190,51,529,351,1,42,32,103,66,,,,,,,,0,"2.48- 2.49 La diferencia de los casos registrados en 2020, con lo registrado en la casilla son casos con tx con una farmacoresistencia registrada.
+2.50 En 20 casos se confirmo resistencia posteriormente.",0,
+Nicaragua,NI,2020,1,1,1886,1627,11,111,121,16,86,65,38,0,3,23,1,58,106,62,0,26,16,2,58,103,98,0,0,5,0,95,,,,,,,,0,,1,
+Panama,PA,2020,1,1,1277,1015,5,121,136,0,79,59,31,0,10,18,0,53,314,224,3,42,45,0,71,69,58,0,5,6,0,84,,,,,,,,0,"En ese momento que realizo el reporte no estaban todos los pacientes ingresados correspondiente a la fecha solicitada, estamos trabajando en conjunto con las Regiones de Salud del país para que el reporte sea oportuno para subsanar las brechas de los datos ",0,"Estos datos se actualizaron al mismo tiempo que el resultado de tratamiento de TB sensible,  seguimos trabajando con las Regiones de Salud del país para que el reporte sea oportuno para subsanar las brechas de los datos, nuestra plataforma esta siendo monitoreada con el fin de vigilar el ingreso de los pacientes "
+Peru,PE,2020,0,1,20938,17785,126,1352,871,804,85,526,354,10,40,114,8,67,1232,857,7,258,73,37,70,837,752,2,16,41,26,90,7444,6527,39,426,220,232,88,0,"Como país nos encontramos en proceso de actualización de la NTS de TB basados en las definiciones publicadas por la OMS en abril de 2021.
+2.48-2.49: Se reporta de acuerdo a la solicitud.Casos TB Sensible Nuevos y Recaídas.
+2.50: Solo casos TB/VIH TB Sensible.
+Por eso la diferencia, se excluye los casos TBS que pasan a TBDR.",0,"Se reporta solo casos TB Sensible nuevos+recaidas de acuerdo a la solicitud.
+Por ello la diferencia, asi mismo se excluyen los casos que pasa a TBDR."
+Puerto Rico,PR,2020,1,1,27,20,0,5,2,0,74,0,0,0,0,0,0,,3,1,0,2,0,0,33,1,1,0,0,0,0,100,,,,,,,,0,,0,
+Paraguay,PY,2020,1,1,2335,1596,19,280,405,35,68,225,102,6,33,80,4,45,194,61,1,69,57,6,31,119,103,0,3,11,2,87,,,,,,,,0,"Se descartaron 7 casos de TB por tipificación no MTB. 
+De los 197 pacientes nuevos y recidivantes con TB VIH informados en el 2020, 194 realizaron tratamiento para TB sensible y 3 realizaron tratamiento para TB resistente.
+",0,
+Suriname,SR,2020,1,1,103,77,2,14,9,1,75,7,4,0,1,1,1,57,22,14,1,6,1,0,64,5,3,0,0,2,0,60,,,,,,,,0,,1,
+El Salvador,SV,2020,1,1,2042,1816,4,118,85,19,89,18,7,0,1,10,0,39,123,96,0,21,6,0,78,,,,,,,,,,,,,,,0,2.48 En total son 19 casos excluidos por cambio de diagnóstico.,0,
+Sint Maarten (Dutch part),SX,2020,0,1,0,,,,,,,0,,,,,,,0,,,,,,,,,,,,,,,,,,,,,1,,0,Surveillance is in general to register the reported case follow up and monitor for the completion of medication and release by physician
+Turks and Caicos Islands,TC,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,0,There were no cases in 2020 and 2021.  The National Public Health Laboratory does not offer Multiple Drug Resistance testing.  Samples are sent overseas for this purpose.
+Trinidad and Tobago,TT,2020,1,1,220,153,6,29,32,0,70,21,7,0,2,12,0,33,30,17,0,5,8,0,57,3,3,0,0,0,0,100,,,,,,,,1,,1,
+United States of America,US,2020,0,1,6414,4769,21,495,143,986,74,,,,,,,,278,188,1,26,13,50,68,307,271,0,3,2,31,88,,,,,,,,1,"Treatment failed includes cases with adverse events. Lost to follow-up also includes those refusing treatment. Not evaluated includes those with missing results (still on treatment?), other, unknown AND those not alive at diagnosis or not started on any drugs. For 2.48 and 2.50, includes records with previous history=No, missing and unknown. For 2.49, ""treatment after failure"" or ""treatment after lost to follow up"" is not available.  Drug-susceptible is not resistant to isoniazid and rifampin.",1,Drug susceptible is defined not resistance to isoniazid and rifampin.
+Uruguay,UY,2020,0,1,968,700,0,141,98,29,72,111,58,0,10,43,0,52,122,57,0,40,22,3,47,61,61,0,0,0,0,100,,,,,,,,0,,0,
+Saint Vincent and the Grenadines,VC,2020,1,1,13,6,0,4,3,0,46,0,0,0,0,0,0,,4,1,0,2,1,0,25,1,0,0,1,0,0,0,,,,,,,,0,,0,Child died hours after positive Gene Xpert result
+Venezuela (Bolivarian Republic of),VE,2020,1,1,9150,7740,15,502,806,87,85,308,226,9,26,47,0,73,329,265,0,42,19,3,81,362,325,0,3,33,1,90,,,,,,,,0,,0,
+British Virgin Islands,VG,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+United Arab Emirates,AE,2020,1,1,62,48,1,6,2,5,77,0,0,0,0,0,0,,3,2,0,1,0,0,67,2,1,,,,,50,,,,,,,,0,"The information for the year 2020 has been updated, as 4 cases of extrapulmonary tuberculosis and 2 cases of pulmonary tuberculosis have been cancelled.",0,"the data has been updated, One of the canceled cases of extrapulmonary tuberculosis is in the age group less than 14"
+Afghanistan,AF,2020,1,1,45818,43421,171,645,660,921,95,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,,,,,,,0,"- treatment outcome for previously treated cases are not available separately. 
+- treatment outcome for new and relapse cases with HIV infection are not available separately.  ",0,treatment outcome by age was not available in the system
+Bahrain,BH,2020,1,1,,,,,,,,,,,,,,,,,,,,,,0,0,,,,,,,,,,,,,0,,0,
+Djibouti,DJ,2020,1,1,1701,1440,13,31,178,39,85,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,2.49 ET 2.50 NE SONT PAS APPLICABLE DANS NOTRE REGION,1,
+Egypt,EG,2020,1,1,6834,6087,58,220,448,21,89,102,61,4,14,23,0,60,12,10,0,2,0,0,83,471,471,,,,,100,,,,,,,,0,,0,
+Iraq,IQ,2020,1,1,4985,4692,36,119,107,31,94,29,23,1,0,5,0,79,,,,,,,,,,,,,,,,,,,,,,1,,1,
+Iran (Islamic Republic of),IR,2020,1,1,5958,5018,82,541,224,93,84,101,74,3,11,12,1,73,120,76,1,23,19,1,63,177,158,,,,,89,,,,,,,,0,"2.50: We had 126 HIV-positive TB patients in 2020, but 6 of them had been misdiagnosed.",0,
+Jordan,JO,2020,1,1,223,191,0,6,20,6,86,,,,,,,,0,0,0,0,0,0,,15,11,,,,,73,,,,,,,,1,,0,
+Kuwait,KW,2020,1,1,691,569,0,7,32,83,82,,,,,,,,,,,,,,,13,12,,,,,92,,,,,,,,0,there are 88 cases that left the country ,0,
+Lebanon,LB,2020,1,1,655,531,0,21,9,94,81,1,1,0,0,0,0,100,2,2,0,0,0,0,100,43,42,,,,,98,,,,,,,,0,,0,
+Libya,LY,2020,1,1,1734,1204,0,39,480,11,69,24,9,0,2,7,6,38,8,3,0,0,5,0,38,100,85,,,,,85,,,,,,,,0,,0,
+Morocco,MA,2020,0,1,29018,25644,118,699,2189,368,88,758,506,6,16,214,16,67,,,,,,,,2079,1941,,,,,93,,,,,,,,1,,0,
+Oman,OM,2020,1,1,312,175,1,26,6,104,56,0,0,0,0,0,0,,8,4,0,2,0,2,50,5,4,,,,,80,,,,,,,,1,one patient still on treatment added as not evaluated as per your guidance ,0,1 still on tratment
+Pakistan,PK,2020,1,1,272990,255447,1058,6024,6084,4377,94,3746,3163,51,124,175,233,84,556,458,3,48,20,27,82,,,,,,,,,,,,,,,0,,0,
+"occupied Palestinian territory, including east Jerusalem",PS,2020,1,1,26,24,2,0,0,0,92,0,0,0,0,0,0,,0,0,0,0,0,0,,6,6,,,,,100,,,,,,,,0,,0,
+Qatar,QA,2020,1,1,852,660,4,5,35,148,77,0,0,0,0,0,0,,2,2,0,0,0,0,100,7,4,,,,,57,,,,,,,,0,"2.48: 852 because 9 MDR cases were excluded
+
+",0,the 3 remaining kids left the country 
+Saudi Arabia,SA,2020,0,1,2448,2192,6,198,5,47,90,63,47,0,6,6,4,75,40,32,0,4,1,3,80,79,70,,,,,89,,,,,,,,0,,0,
+Sudan,SD,2020,1,1,17408,14922,50,526,1099,811,86,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,,0,
+Somalia,SO,2020,0,1,16888,15122,64,431,168,1103,90,9,9,0,0,0,0,100,125,57,0,9,1,58,46,,,,,,,,,,,,,,,1,,0,
+Syrian Arab Republic,SY,2020,1,1,2639,2390,18,38,193,0,91,71,50,9,2,5,5,70,1,1,0,0,0,0,100,186,186,,,,,100,,,,,,,,0,"2.48: Updated by Hazim Timimi (WHO/Geneva) 2022-08-29: subtracted the numbers in 2.49 from the numbers originally reported in 2.48 (2710, 2440, 27, 40, 203, 0)",1,
+Tunisia,TN,2020,1,1,2647,2325,10,77,235,,88,5,3,,,1,1,60,,,,,,,,205,,,,,,,,,,,,,,1,,1,
+Yemen,YE,2020,0,1,8852,7831,30,177,486,328,88,51,35,2,2,4,8,69,,,,,,,,,,,,,,,,,,,,,,0,"2.50) Unfortunately, no treatment outcomes reported from TMUs separately for  HIV-positive TB patients treated in 2020 for drug-susceptible. ",1,
+Andorra,AD,2020,1,1,2,2,,,,,100,0,,,,,,,0,,,,,,,0,,,,,,,,,,,,,,1,,1,
+Albania,AL,2020,1,1,240,213,0,14,12,1,89,0,0,0,0,0,0,,2,2,0,0,0,0,100,3,3,0,0,0,0,100,,,,,,,,1,,1,
+Armenia,AM,2020,1,1,303,244,14,24,19,2,81,10,5,1,1,3,,50,30,22,0,6,1,1,73,21,20,0,1,0,0,95,,,,,,,,0,"TB/HIV-positiv 39 new and relapse patients were registered in 2020, from which 9 patients were moved to the 2-nd line treatment.
+
+396 new and relapse and 50 retreatment (after failure, after LTFU) TB cases were registered in 2020, from which 93 new and relaps and 40 retreated cases were moved to the 2-nd line treatment.",1,"23 children aged 0-14 years were registered in 2020, from which 21 treated with 1-st line and 2 with 2-nd line drugs"
+Austria,AT,2020,1,1,380,266,0,40,4,70,70,6,2,0,1,0,3,33,,,,,,,,12,10,0,1,0,1,83,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Azerbaijan,AZ,2020,1,0,1180,973,51,62,86,8,82,1880,1361,138,135,198,48,72,,,,,,,,,,,,,,,,,,,,,,1,"in 2.48 data includes only new bacteriologically confirmed cases, excluded RR TB cases, enrolled to second line treatment. In 2020 number of bacteriologically confirmed new cases was 1331, out of them 151 RR RR cases enrolled to second-line treatment.
+In 2.49 data includes all previously treated cases, excluded RR TB cases, enrolled to second line treatment. Total number of previously treated cases notified in 2020 was 2430. Out of them 551 RR cases enrolled to second line treatment  ",1,
+Bosnia and Herzegovina,BA,2020,0,1,357,183,0,21,14,139,51,,,,,,,,,,,,,,,1,,,,,1,,,,,,,,,1,Answer provided to 2.47a refers to FBIH.,1,
+Belgium,BE,2020,1,1,759,511,1,43,37,167,67,49,35,0,2,5,7,71,29,19,0,1,4,5,66,48,39,0,0,0,9,81,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Bulgaria,BG,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Belarus,BY,2020,0,1,833,710,10,84,23,6,85,65,42,4,8,5,6,65,61,51,0,6,3,1,84,3,3,0,0,0,0,100,240,199,4,31,6,0,83,0,,0,
+Switzerland,CH,2020,1,1,342,254,0,12,21,55,74,,,,,,,,,,,,,,,18,17,0,0,0,1,94,,,,,,,,1,The difference to the total number reported in 2022 to the WHO (351) and reported here (342) is explained by the fact that in 9 cases tuberculosis was discarded later.,0,see previous comment on the total number of cases in 2020
+Cyprus,CY,2020,1,1,34,15,0,1,4,14,44,2,2,0,0,0,0,100,2,0,0,0,0,2,0,0,0,0,0,0,0,,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Czechia,CZ,2020,1,1,347,241,2,54,36,14,69,5,3,0,1,1,0,60,6,3,0,1,2,0,50,2,2,0,0,0,0,100,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Germany,DE,2020,1,1,3942,2582,0,364,93,903,65,111,68,0,4,9,30,61,,,,,,,,168,130,0,0,1,37,77,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Denmark,DK,2020,1,1,206,71,1,1,2,131,34,13,5,0,0,1,7,38,4,2,0,0,0,2,50,10,3,0,0,0,7,30,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Estonia,EE,2020,1,1,101,76,1,19,2,3,75,2,0,0,2,0,0,0,9,7,0,1,1,0,78,1,1,0,0,0,0,100,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Spain,ES,2020,1,1,3493,1864,3,191,57,1378,53,168,111,1,14,6,36,66,100,37,0,13,4,46,37,185,123,0,1,0,61,66,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Finland,FI,2020,1,1,173,44,2,1,1,125,25,0,0,0,0,0,0,,,,,,,,,5,2,0,0,0,3,40,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Faroe Islands,FO,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+France,FR,2020,1,1,4381,1636,0,125,146,2474,37,198,67,0,6,8,117,34,,,,,,,,193,82,0,1,1,109,42,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+United Kingdom of Great Britain and Northern Ireland,GB,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Georgia,GE,2020,1,1,1513,1314,35,66,80,18,87,129,87,5,5,29,3,67,23,19,0,1,3,0,83,47,45,0,1,0,1,96,,,,,,,,0,,0,
+Greenland,GL,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1,,1,
+Greece,GR,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Croatia,HR,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Hungary,HU,2020,1,1,376,250,17,39,38,32,66,19,12,0,2,3,2,63,2,0,0,0,2,0,0,5,4,0,0,0,1,80,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Ireland,IE,2020,1,1,223,14,0,7,4,198,6,12,1,0,0,0,11,8,5,1,0,0,0,4,20,6,0,0,0,0,6,0,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Israel,IL,2020,0,1,152,123,7,13,9,0,81,0,0,0,0,0,0,,14,12,2,0,0,0,86,4,4,0,0,0,0,100,,,,,,,,0,,0,
+Iceland,IS,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Italy,IT,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Kyrgyzstan,KG,2020,1,1,4241,2839,92,271,254,785,67,644,282,15,37,62,248,44,131,52,5,29,13,32,40,182,130,2,5,4,41,71,,,,,,,,0,,1,
+Kazakhstan,KZ,2020,1,1,5742,5043,171,461,54,13,88,53,36,6,7,3,1,68,242,167,10,55,7,3,69,227,224,3,0,0,0,99,2383,2149,55,162,14,3,90,0,,0,
+Lithuania,LT,2020,1,1,601,514,5,61,19,2,86,20,18,1,0,1,0,90,10,7,0,2,1,0,70,13,13,0,0,0,0,100,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Luxembourg,LU,2020,1,1,32,12,0,1,0,19,38,2,1,0,0,0,1,50,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Latvia,LV,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Monaco,MC,2020,1,1,0,,,,,,,0,,,,,,,0,,,,,,,0,,,,,,,,,,,,,,1,,1,aucun cas
+Republic of Moldova,MD,2020,1,1,1408,1117,53,186,33,19,79,115,67,9,15,18,6,58,162,99,7,50,4,2,61,56,56,0,0,0,0,100,427,364,9,47,6,1,85,0,,0,
+Montenegro,ME,2020,1,1,40,35,1,3,1,0,88,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,1,,1,
+North Macedonia,MK,2020,1,1,148,125,0,11,10,2,84,,,,,,,,1,,,1,,,,10,8,,,2,,80,,,,,,,,0,,0,
+Malta,MT,2020,1,1,137,136,0,0,1,0,99,0,0,0,0,0,0,,2,2,0,0,0,0,100,7,7,0,0,0,0,100,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Netherlands,NL,2020,1,1,601,499,0,25,29,48,83,9,6,0,1,1,1,67,14,13,0,0,0,1,93,19,17,0,2,0,0,89,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Norway,NO,2020,1,1,141,125,1,3,0,12,89,16,10,0,1,0,5,63,2,2,0,0,0,0,100,10,10,0,0,0,0,100,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Poland,PL,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Portugal,PT,2020,1,1,1461,1071,1,93,59,237,73,43,21,0,5,8,9,49,111,59,0,6,9,37,53,42,37,0,0,1,4,88,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Romania,RO,2020,1,1,7018,5723,126,789,309,71,82,415,203,60,50,96,6,49,129,75,2,37,11,4,58,258,245,0,6,6,1,95,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Serbia,RS,2020,1,1,434,347,3,19,60,5,80,1,1,0,0,0,0,100,0,0,0,0,0,0,,,,,,,,,,,,,,,,,,,
+Russian Federation,RU,2020,1,1,46389,28677,5570,6205,2543,3394,62,7409,3603,1486,675,826,819,49,11120,4538,2557,2261,909,855,41,1432,1365,26,4,8,29,95,,,,,,,,0,"2.48: Of the previously registered 58723 new and relapses, the diagnosis was canceled in 734, initially treatment was started according to the MDR regimen in 11604
+2.49: Of the previously declared 26233, 18739 were initially taken for the MDR regimen, the diagnosis was canceled in 112.
+2.50: 124 TB diagnoses were cancelled,  2262 were originally registered for MDR regimen.",1,"2.52: Of the previously registered 1627 children 0-14, 195 were treated with MDR regimen.
+"
+Sweden,SE,2020,1,1,307,218,0,10,0,79,71,11,8,0,0,0,3,73,,,,,,,,16,12,0,0,0,4,75,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Slovenia,SI,2020,1,1,74,55,0,16,0,3,74,2,1,0,1,0,0,50,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+Slovakia,SK,2020,1,1,152,130,0,12,3,7,86,5,2,0,1,2,0,40,2,1,0,1,0,0,50,35,34,0,0,1,0,97,,,,,,,,,Data extracted from ECDC/TESSy 2022-08-26,,Data extracted from ECDC/TESSy 2022-08-26
+San Marino,SM,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Tajikistan,TJ,2020,1,1,4148,3332,44,173,97,502,80,168,78,0,10,10,70,46,118,72,2,17,2,25,61,240,188,0,5,7,40,78,1955,1598,19,83,37,218,82,0,"2.48 Оценка результата лечения не проведена: Из 502 больных, начали лечение по 2 режиму-471, диагноз не подвержден-71
+2.49  Оценка результата лечения не проведена: Из 70 больных, начали лечение по 2 режиму-69, диагноз не подвержден-1
+2.50  Оценка результата лечения не проведена: Из 25 боль",0,"2.52 Оценка результата лечения не проведена: Из 40 больных, начали лечение по 2 режиму-39, диагноз не подвержден-1
+2.52b Оценка результата лечения не проведена: Из 218 больных, начали лечение по 2 режиму-203, диагноз не подвержден-15"
+Turkmenistan,TM,2020,0,1,1918,1599,131,86,53,49,83,692,560,36,39,35,22,81,,,,,,,,,,,,,,,,,,,,,,1,,1,
+Türkiye,TR,2020,1,1,8820,7125,25,806,182,682,81,95,45,1,6,14,29,47,83,53,0,15,1,14,64,390,314,2,12,4,58,81,,,,,,,,0,,0,
+Ukraine,UA,2020,1,1,13218,10232,852,1377,744,13,77,1635,1104,167,155,208,1,68,2720,1831,132,538,217,2,67,289,277,6,5,1,0,96,4078,3328,183,364,196,7,82,0,"2.48 - У 2020 році було зареєстровано 17533 випадки, впродовж 2021 року було зареєстровано після надання звітності 3 випадки, а 2 перереєстровані з інших випадків до рецидивів. З 17538 випадків було переведено на лікування препаратами 2 ряду 4320 випадків.
+2.49 - У 2020 році було зареєстрован",0,"В 2020 году было 384 детей, из них 95 переведены на лечение препаратами 2 ряда.
+В 2020 году было 5197 женщин, из них 1119 переведены на лечение препаратами 2 ряда."
+Uzbekistan,UZ,2020,1,1,10654,9644,147,484,180,199,91,1415,1190,28,116,34,47,84,,,,,,,,,,,,,,,,,,,,,,1,,0,
+Kosovo,XA,2020,1,1,434,347,3,19,60,5,80,1,1,0,0,0,0,100,0,0,0,0,0,0,,,,,,,,,,,,,,,,0,,1,
+American Samoa,AS,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Australia,AU,2020,1,1,1484,1332,3,57,17,75,90,1,1,0,0,0,0,100,19,14,0,2,1,2,74,31,29,,,,,94,,,,,,,,1,See general remarks,0,See general remarks
+Brunei Darussalam,BN,2020,1,1,300,216,0,44,0,40,72,0,0,0,0,0,0,,5,5,0,0,0,0,100,1,1,,,,,100,,,,,,,,0,,0,
+Cook Islands,CK,2020,0,0,1,1,0,0,0,0,100,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,,,,,,,0,"No new TB cases detected in 2021
+2.48 updated 2022-06-22 by Hazim Timimi (WHO/Geneva) based on response to question in the 'check' section.",1,No TB cases detected for children in Cook Islands
+China,CN,2020,0,1,608737,576286,3009,13970,10409,5063,95,7947,7109,111,360,289,78,89,5784,4996,57,411,59,261,86,6827,6583,,,,,96,193300,185233,608,2844,2710,1905,96,1,"2.49: The total number of cases registered [7947] is not the same as the number of previously treated (but not relapse) cases notified in 2020 [8441] as reported in section 2.4 of the 2021 report.The difference are those cases changed diagnosis (excluding TB) or transferred to drug resistant cohort during treatment course.
+On 2022-06-22 Hazim Timimi (WHO/Geneva) changed 2.47a to 'No' based on comment above and response to our question in the 'Check' section",0,
+Fiji,FJ,2020,1,1,443,240,2,63,73,65,54,5,3,0,1,0,1,60,5,4,0,0,1,0,80,128,46,,,,,36,,,,,,,,0,,0,
+Micronesia (Federated States of),FM,2020,1,1,92,72,0,5,1,14,78,2,2,0,0,0,0,100,0,0,0,0,0,0,,8,6,,,,,75,,,,,,,,0,,0,
+Guam,GU,2020,1,1,57,43,2,7,3,2,75,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,,,,,,,,,,,,,0,,0,
+"China, Hong Kong SAR",HK,2020,1,1,3610,2688,0,695,66,161,74,25,13,0,2,10,0,52,18,11,0,3,1,3,61,12,12,,,,,100,,,,,,,,0,"2.49 At time of first reporting in 2021, we only had data about past history of TB treatment or not for 2020 cases. It was only upon further completion of program record that we were able to divide the group into ""Relapse or Treatment after default"". Hence, all 2020 cases with past history of TB were reported under ""Relapse"" in 2021. After review, 25 of those with past history of TB belonged to the group ""Treatment after lost to follow-up"". 
+2.50  There was late reporting of 3 HIV cases.",0,
+Japan,JP,2020,0,1,12586,8225,14,3013,222,1112,65,,,,,,,,31,16,0,1,1,13,52,50,44,,,,,88,,,,,,,,1,,0,
+Cambodia,KH,2020,0,1,29325,28066,56,489,429,285,96,108,100,2,3,2,1,93,,,,,,,,,,,,,,,,,,,,,,1,,0,
+Kiribati,KI,2020,1,1,385,319,2,34,11,19,83,3,2,0,1,0,0,67,0,0,0,0,0,0,,75,72,,,,,96,,,,,,,,0,,0,
+Republic of Korea,KR,2020,0,1,22531,18282,7,3299,581,362,81,1529,1164,1,257,83,24,76,,,,,,,,54,49,,,,,91,,,,,,,,1,"2.48
+Among TB cases that reported last year, 1,037were excluded.(a case moved to second-line treatment, another changed other disease, drug resistance)
+
+2.49
+Among TB cases that reported last year, 173 were excluded.(a case moved to second-line treatment, another changed other disease, drug resistance)
+
+2.50
+Accodrding to Privacy Protection Act, TB & HIV registries cannot be merged.",0,
+Lao People's Democratic Republic,LA,2020,1,1,8002,7094,19,391,240,258,89,110,81,1,7,10,11,74,369,284,1,51,30,3,77,,,,,,,,,,,,,,,0,,1,
+Marshall Islands,MH,2020,1,1,147,126,,15,3,3,86,0,0,0,0,0,0,,0,0,0,0,0,0,,32,31,,,,,97,,,,,,,,0,no new hiv positive cases detected in 2020,1, a child who was 1 year old died in Ebeye
+Mongolia,MN,2020,1,1,3710,3333,63,129,155,30,90,230,167,11,18,24,10,73,4,4,0,0,0,0,100,441,426,,,,,97,,,,,,,,1,,1,
+"China, Macao SAR",MO,2020,0,1,359,300,1,35,3,20,84,2,1,0,1,0,0,50,2,2,0,0,0,0,100,3,3,,,,,100,,,,,,,,1,,1,
+Northern Mariana Islands,MP,2020,1,1,39,34,0,3,2,0,87,0,0,0,0,0,0,,0,0,0,0,0,0,,1,1,,,,,100,,,,,,,,0,"Under 2.49- there were 2 patients with TB who did not complete TB treatment. One patient refused treatment and the other patient had adverse reactions to TB medications and provider ordered to discontinue TB treatment as patient wanted to get medical treatment in the Philippines.
+
+The correct number of cases in 2020 is 39.
+",0,
+Malaysia,MY,2020,1,1,22973,17834,69,2800,1114,1156,78,671,305,5,79,142,140,45,1075,609,3,330,81,52,57,751,687,,,,,91,,,,,,,,0,,1,"2.52 Of 764 cases of TB Paeds in 2020, 13 cases treatment outcome of change diagnosis AND were excluded from the denominator"
+New Caledonia,NC,2020,1,1,34,8,0,4,0,22,24,0,,,,,,,0,,,,,,,3,1,,,,,33,,,,,,,,1,,1,
+Nauru,NR,2020,1,1,13,12,0,1,0,0,92,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,,,,,,,,,,,,,0," There is no PLWHIV that has TB
+ TB was not the cause of death in the case of the one reported death.
+ Checked the master register - Total New Cases - 13, BC - 10, CD - 3 = 13.",0, There was no one who was in the age 0 - 14 years category.
+Niue,NU,2020,0,0,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,0,0,0,0,,,,,,,,,,,,,,,,0,,0,
+New Zealand,NZ,2020,1,1,313,279,0,12,1,21,89,5,4,0,0,0,1,80,2,1,0,0,0,1,50,6,6,,,,,100,,,,,,,,0,"2.48 3 cases previously reported in 2020 have since been made 'not a case'.
+21 cases 'not evaluated' - 3 refused to complete treatment, 5 transferred to overseas medical care, 4 treatment stopped due to adverse effects, 3 treatment inappropriate, 1 treatment declined, 5 still on treatment.
+2.50 1 case 'not evaluated' was transferred to overseas medical care.",0,
+French Polynesia,PF,2020,1,1,64,58,0,4,1,1,91,,,,,,,,0,,,,,,,6,6,,,,,100,,,,,,,,1,"2.5 : concerne les patients traités en 2020
+2.35 : concerne les patients déclarés en 2021",0,"2.9 = chiffres 2021
+2.52 = chiffres 2020
+ils peuvent être différents"
+Papua New Guinea,PG,2020,0,1,27141,19962,197,902,3603,2477,74,1046,585,6,32,261,162,56,1351,896,21,86,139,209,66,6212,4527,,,,,73,13338,9670,88,463,1842,1275,72,1,,1,
+Philippines,PH,2020,1,1,270987,206635,612,5855,7322,50563,76,6011,4116,40,165,332,1358,68,991,801,7,86,60,37,81,19768,14625,,,,,74,90044,67235,179,1517,2254,18859,75,0,Some patients were initially treated as DS-TB but were eventually excluded from the cohort and moved to the DR-TB register.,0,
+Palau,PW,2020,1,1,10,9,1,0,0,0,90,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,,,,,,,,,,,,,0,,0,
+Solomon Islands,SB,2020,0,1,324,297,4,16,4,3,92,324,305,0,16,0,3,94,1,1,0,0,0,0,100,62,62,,,,,100,,,,,,,,0,,0,
+Singapore,SG,2020,1,1,2335,1853,5,177,1,299,79,5,2,0,0,0,3,40,21,18,0,0,0,3,86,8,7,,,,,88,,,,,,,,1,"The cases reported in 2020= 2362 cases (bacteriologically confirmed or clinically diagnosed, pulmonary or extrapulmonary including DR-TB & DS-TB)
+
+2.48: excluded Diagnosis changed case, n=4 and MDR case, n=18 from total reported cases(2357-22=2335 cases)
+
+-Not all deaths are due to TB 
+
+-Treatment failed n=5: permanently stopped treatment due to adverse drug reactions",0,
+Tokelau,TK,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Tonga,TO,2020,1,1,8,7,0,0,1,0,88,1,0,0,0,1,0,0,0,0,0,0,0,0,,1,1,,,,,100,,,,,,,,0,2.49 - Client refuses after 1 month of commencing treatment and was diagnosed EPTB spinal.,0,"Child was clinically diagnosed as PTB and completed treatment/cured in early 2021.
+
+      Age    0-14     20-24   40-44   45+   Total
+       F       1         1      1             3
+       M                 1             4      5"
+Tuvalu,TV,2020,1,1,30,23,1,4,2,0,77,1,0,1,0,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,,,0,,0,
+Viet Nam,VN,2020,0,1,99852,91029,461,2387,2476,3499,91,1853,1550,43,69,93,98,84,2751,2284,20,219,81,147,83,1395,987,,,,,71,22339,20691,87,478,479,604,93,0,"There are some patients who were referred to MDR treatment, we added to the last column ""not evaluated"":
+2.48: 690 patients referred to MDR
+2.49: 42 patients referred to MDR
+2.50: 29 patients referred to MDR",0,"There are some patients who were referred to MDR treatment, we added to the last column ""not evaluated"":
+2.52b: 164 patients referred to MDR
+2.52b: this number is lower than the number reported in 2.9, total number of cases notified in 2020 because this number is extracted from our case-based system, which was affected badly due to the Covid-19 in 2021. Provinces are still in progress to complete the case-based database. Our aggregated system cannot extract data for 2.52b"
+Vanuatu,VU,2020,1,1,76,73,0,2,1,0,96,0,0,0,0,0,0,,0,0,0,0,0,0,,8,8,,,,,100,,,,,,,,0,"Total Number of cases reported for 2020 is 76 and NOT 83 to which 2 died, 1 Lost to Follow up and the rest all have completed treatment/cured.",0,
+Wallis and Futuna Islands,WF,2020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Samoa,WS,2020,1,1,13,11,0,2,0,0,85,0,0,0,0,0,0,,0,0,0,0,0,0,,0,0,,,,,,,,,,,,,0,,0,

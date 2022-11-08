@@ -1,0 +1,121 @@
+country,measure,sex,age,cause,metric,year,val,upper,lower,iso3
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1990,612834.33,680963.27,542506.15,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1990,0,0,0,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1990,1164.2514,5219.378,75.779409,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1990,613998.58,681869.47,543512.49,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1991,635169.16,703994.23,564040.28,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1991,0,0,0,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1991,2146.9423,9526.694,143.10836,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1991,637316.1,706986.89,565054.26,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1992,653366.82,729642.86,575430.59,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1992,0,0,0,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1992,4147.9507,19198.033,298.92764,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1992,657514.77,731531.03,578919.81,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1993,618530.85,687755.11,550563.82,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1993,13.416314,60.141738,1.0034783,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1993,7159.9827,31230.524,565.31728,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1993,625704.25,691788.91,557628.76,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1994,589685.17,653858.16,517154.82,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1994,42.681313,184.44962,3.4522814,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1994,11380.726,46226.481,1008.9508,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1994,601108.57,660242.83,541359.98,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1995,571045.43,632149.49,496951.99,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1995,91.456114,395.66731,8.4183271,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1995,16252.458,65603.809,1618.883,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1995,587389.34,644794.33,532335.67,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1996,563315.83,624930.16,485746.86,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1996,158.19253,645.67118,18.286228,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1996,21064.709,77807.253,2543.1579,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1996,584538.73,638283.03,533906.32,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1997,577136.1,640282.74,493000.05,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1997,249.01625,968.50542,33.455767,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1997,26511.332,100472.53,3809.2171,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1997,603896.45,655581.64,546647.54,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1998,573114.87,635646.83,487880.23,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1998,357.91178,1263.548,59.676649,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1998,31710.092,109850.45,5568.316,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1998,605182.87,655492.99,553612.59,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,1999,564828.65,626920.09,474439.89,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,1999,492.23849,1547.7486,100.34225,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,1999,37348.624,113399.71,7866.6316,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,1999,602669.51,652825.31,554829.51,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2000,553158.57,617586.84,475696.73,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2000,632.12614,1725.8015,154.42758,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2000,41891.794,112271.7,10721.782,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2000,595682.49,643601.57,547591.46,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2001,530787.13,588489.18,459837.79,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2001,776.41719,2014.4977,209.80008,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2001,45681.091,106838.3,12522.549,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2001,577244.64,618902.62,527940.64,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2002,507587.98,563041.27,438719.49,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2002,906.49042,2127.7957,281.26959,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2002,47967.447,103775.25,15245.668,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2002,556461.92,598620.55,514484.08,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2003,483943.08,536529.55,423071.24,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2003,1019.6599,2250.0549,352.44966,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2003,49021.748,98885.071,17494.075,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2003,533984.48,574608.5,493490.01,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2004,452253.41,499967.44,397575.06,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2004,1099.8732,2307.2398,419.80764,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2004,48454.489,92313.743,19186.021,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2004,501807.77,541015.31,465433.92,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2005,447452.64,493010.03,395606.32,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2005,1235.4046,2409.5195,513.74765,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2005,50221.433,90341.45,22380.953,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2005,498909.48,537581.94,459282.99,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2006,438963.3,484563.77,390745.34,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2006,1362.3624,2533.5743,586.45054,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2006,51432.469,91368.505,23952.985,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2006,491758.13,529414.14,457064.72,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2007,437363.92,480338.16,385470.57,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2007,1475.8438,2862.1538,625.36421,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2007,52009.902,93410.236,22922.051,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2007,490849.66,526103.74,454335.26,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2008,437963.33,486760.79,381750.87,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2008,1596.8736,3180.8678,626.36925,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2008,52782.883,97914.514,21362.708,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2008,492343.09,530778.19,455937.19,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2009,420683.23,468686.14,363321.91,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2009,1674.8733,3481.3678,608.29545,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2009,52132.166,104684.22,19720.4,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2009,474490.27,508442.55,441811.56,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2010,406659.24,457470.86,338853.18,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2010,1752.4974,3776.0062,583.41176,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2010,51501.467,110003.61,17335.8,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2010,459913.2,495516.81,427496.29,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2011,399492.91,449822.46,329893.51,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2011,1869.8985,4167.8199,581.59609,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2011,52045.067,116956.03,16024.344,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2011,453407.88,487247.9,417842.5,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2012,405697.51,459411.38,330354.06,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2012,2040.3047,4687.7095,544.29132,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2012,53854.08,123623.53,15360.774,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2012,461591.89,495333.29,425246.86,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2013,408561.73,467819.96,329271.83,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2013,2228.924,5264.4129,532.2601,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2013,55931.304,127520.61,14050.752,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2013,466721.96,505145.34,431129.36,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2014,404245.97,462793.97,315548.19,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2014,2343.1995,5791.906,514.5698,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2014,56059.804,130727.81,12931.243,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2014,462648.98,501632,423943.65,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2015,388303.86,450902.31,300222.03,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2015,2412.5102,6171.7361,499.32562,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2015,55128.421,129547.46,12010.676,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2015,445844.79,487526.4,402679.93,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2016,381971.82,452459.81,292794.88,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2016,2547.5793,6746.1589,504.98099,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2016,55705.625,136834.38,11325.968,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2016,440225.03,487075,393860.8,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2017,381809.41,457965.44,288388.04,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2017,2690.9733,7258.6547,481.61532,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2017,56425.758,141725.49,10103.562,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2017,440926.15,499074.84,384109.77,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2018,375144.67,463643.02,280667.86,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2018,2791.4142,7462.879,482.87342,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2018,56220.98,142611.95,9677.1999,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2018,434157.06,503839.48,370118.22,IND
+India,Deaths,Both,All Ages,Drug-susceptible tuberculosis,Number,2019,364821.83,451198.85,269008.07,IND
+India,Deaths,Both,All Ages,Extensively drug-resistant tuberculosis,Number,2019,2835.0202,7251.363,471.29692,IND
+India,Deaths,Both,All Ages,Multidrug-resistant tuberculosis without extensive drug resistance,Number,2019,54976.907,140160.1,8949.409,IND
+India,Deaths,Both,All Ages,Tuberculosis,Number,2019,422633.76,498664.98,358351.32,IND

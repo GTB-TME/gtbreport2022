@@ -1,0 +1,312 @@
+---
+title: "Featured topics: Civil Society Engagement"
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    keep_md: true
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+    
+---
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+
+# Set up the running environment ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#source("io/set_environment.r")  # particular to each person so this file is in the ignore list
+# Load packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(dplyr)
+library(tidyr)
+library(here)
+library(stringr)
+library(jsonlite)
+
+# Load TB data ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+cse2 <- read.csv(here("./csv/cse_fig2.csv"))
+cse3 <- read.csv(here("./csv/cse_fig3.csv"))
+
+# cse_fig2$cat2 <- factor(cse_fig2$cat2,                                    
+#                         levels = c("No", "Yes"))
+# cse2$cat1 <- factor(cse2$cat1,                                    
+#                         levels = c("AVAILABILITY OF DOMESTIC FUNDING",
+#                                    "EXISTING LEGAL/POLICY FRAMEWORK FOR ENGAGEMENT OF COMMUNITIES/CSOs",
+#                                    "EXISTING NATIONAL COORDINATING BODY FOR COMMUNITY/CS ENGAGEMENT",
+#                                    "INCLUSION OF TB SERVICES IN CHW PROGRAMME",
+#                                    "EXISTANCE OF CHW PROGRAMME WITHIN MOH",
+#                                    "AVAILABILITY OF EXTERNAL FUNDING"))
+
+# cse3$cat1 <- factor(cse3$cat1,                                    
+#                         levels = c("TB-ASSOCIATED DISABILITY SUPPORT", 
+#                                    "ADDRESSING TB COMORBIDITIES", 
+#                                    "TPT INITIATION/PROVISION", 
+#                                    "MONITORING AVAILABILITY/QUALITY OF TB SERVICES",
+#                                    "DEMAND CREATION / RESOURCE MOBILIZATION",
+#                                    "HOUSEHOLD CONTACT TRACING",
+#                                    "TREATMENT LITERACY",
+#                                    "HEALTH PROMOTION",
+#                                    "FACILITATING ACCESS TO DIAGNOSIS",
+#                                    "TREATMENT ADHERENCE SUPPORT"))
+
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+  
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+### <span style="color:#F21905">Fig. 2</span> Components of engagement of communities and civil society in ending TB
+    
+<div id="fig_CSE2"></div>
+
+<BR>
+
+### <span style="color:#F21905">Fig. 3</span> Involvement and implementation of community engagement activities for ending TB
+    
+<div id="fig_CSE3"></div>
+
+<BR>
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_CSE2_data = `r cse2 %>% arrange(desc(value)) %>% pivot_wider(names_from = cat2,values_from = value) %>% mutate(cat1=str_wrap(cat1, width = 34,indent = 2)) %>% toJSON("rows") `; 
+
+var fig_CSE3_data = `r cse3 %>% pivot_wider(names_from = cat2,values_from = value) %>% mutate(cat1=str_wrap(cat1, width = 34,indent = 2)) %>% arrange(desc(Always))  %>% toJSON("rows") `; 
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+
+function tb_format_pct(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 99.5) {
+    return n.toPrecision(2)
+      } else {
+    return n.toPrecision(3)
+  } 
+}
+
+function tb_format_num(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 100) {
+    return Number(n.toPrecision(2))
+      } else {
+    return kendo.toString(n, 'n0').replace(/,/g, ' ');
+  } 
+}
+
+function createFig_CSE_2(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_CSE2_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar",
+        stack: {
+          type: "100%"
+        },       
+        gap: 0.2
+			},
+			series: [{
+        name: "Yes",
+				field: "Yes",
+				color: "#00a76d",
+        tooltip: {
+				visible: true,
+				template: "Yes: #= Number(value.toPrecision(2)) #"
+			}
+			},{
+        name: "No",
+				field: "No",
+				color: "#FC1C1E",
+        tooltip: {
+				visible: true,
+				template: "No: #= Number(value.toPrecision(2)) #"
+			}
+			},],
+			valueAxis: {
+
+				title: {
+//					text: "Percentage"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "cat1",
+				labels: {
+					rotation: 0
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+function createFig_CSE_3(fig_ID) {
+		$(fig_ID).kendoChart({
+			dataSource: fig_CSE3_data,
+			chartArea: {
+				height: 500
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar",
+        stack: {
+          type: "100%"
+        },       
+        gap: 0.2
+			},
+			series: [{
+        name: "Always",
+				field: "Always",
+				color: "#00a76d",
+        tooltip: {
+				visible: true,
+				template: "Always: #= Number(value.toPrecision(2)) #"
+			}
+			},{
+        name: "Sometimes",
+				field: "Sometimes",
+				color: "goldenrod",
+        tooltip: {
+				visible: true,
+				template: "Sometimes: #= Number(value.toPrecision(2)) #"
+			}
+			},{
+        name: "Never",
+				field: "Never",
+				color: "#FC1C1E",
+        tooltip: {
+				visible: true,
+				template: "Never: #= Number(value.toPrecision(2)) #"
+			}
+			},],
+			valueAxis: {
+
+				title: {
+//					text: "Percentage"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "cat1",
+				labels: {
+					rotation: 0
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+$(document).ready(function() {
+    createFig_CSE_2("#fig_CSE2",fig_CSE2_data);
+    createFig_CSE_3("#fig_CSE3",fig_CSE3_data);
+  
+});
+
+```

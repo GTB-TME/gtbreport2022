@@ -1,0 +1,905 @@
+---
+title: "Section 3.2 Diagnostic testing for TB, HIV and drug-resistant TB"
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # to save intermediate .png
+    keep_md: true 
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE    
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch3-2.rmd"), output_file = "ch3-2.html", output_dir = here::here("report/html_drafts/"))
+---
+
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(gtbreport)
+
+library(jsonlite)
+library(dplyr)
+library(here)
+
+# Get the data sets and computed values/statistics for section 3.2 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch3-2_prepare_data.r'))
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+
+# 3.2 Diagnosis of TB, HIV-associated TB and drug-resistant TB   
+
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+### <span class="red">Fig. 3.2.1</span> Percentage of people newly diagnosed with  pulmonary TB who were bacteriologically confirmed, globally and for WHO regions,^a^ 2000&#8211;`r report_year-1`
+
+<div id="fig_3_2_1_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_1_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_1_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_wpro"></div>
+</div>
+</div>
+
+
+### <span class="red">Fig. 3.2.2</span> Percentage of people newly diagnosed with pulmonary TB who were bacteriologically confirmed at country level,^a^ `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 3.2.3</span> The proportion of people newly diagnosed with pulmonary TB who were bacteriologically confirmed in `r report_year-1`,^a^ by country income group  
+
+<div id="fig_3_2_3"></div>
+
+
+### <span class="red">Fig. 3.2.4</span> Percentage of people newly diagnosed^a^ with pulmonary TB who were bacteriologically confirmed, 2000&#8211;`r report_year-1`, 30 high TB burden countries
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_BRA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_CHN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_COG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_COD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_ETH"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_GAB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_IND"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_IDN"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_KEN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_LSO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_LBR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_MOZ"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_MMR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_NGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_PAK"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_PNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_PHL"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_SLE"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_ZAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_THA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_UGA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_TZA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_ZMB"></div>
+</div>
+</div>
+
+
+### <span class="red">Fig. 3.2.5</span> Percentage of people newly diagnosed with TB who were initially tested with a WHO-recommended rapid test at country level,^a^ `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+<div class="footnote">^a^ Data are for notified cases.</div>
+
+<BR>
+
+### <span class="red">Fig. 3.2.6</span> Proportion of diagnostic sites for TB with access to WHO-recommended rapid tests at country level, `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+<BR>
+
+### <span class="red">Fig. 3.2.7</span> Number of WHO-recommended rapid tests used per 100 000 population, 30 high TB burden countries, WHO regions and globally, `r report_year-1`
+
+<div id="fig_3_2_7"></div>
+
+
+### <span class="red">Fig. 3.2.8</span> Percentage of people initially tested for TB with a WHO-recommended rapid test who had a positive test result, 30 high TB burden countries, WHO regions and globally,^a^ `r report_year-1`
+
+<div id="fig_3_2_8"></div>
+
+
+
+### <span class="red">Fig. 3.2.9</span> Number of WHO-recommended rapid diagnostic tests per person notified as a TB case (new and relapse cases, all forms), 30 high TB burden countries, `r report_year-1`
+  
+<div id="fig_3_2_9"></div>
+
+ 
+### <span class="red">Fig. 3.2.10</span> Percentage of new and relapse TB cases^a^ with documented HIV status, 2004&#8211;`r report_year-1`, globally and for WHO regions^b^
+
+
+<div id="fig_3_2_10_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_10_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_10_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_wpro"></div>
+</div>
+</div>
+
+
+### <span class="red">Fig. 3.2.11</span> Percentage of people newly diagnosed with TB whose HIV status was documented HIV status at country level, `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 3.2.12</span> Percentage of people diagnosed with bacteriologically confirmed TB who were tested for rifampicin-resistant TB (RR-TB^a^), globally and for WHO regions, 2009&#8211;`r report_year-1`
+
+<div id="fig_3_2_12_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_12_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_12_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_wpro"></div>
+</div>
+</div>
+
+
+### <span class="red">Fig. 3.2.13</span> Percentage of people diagnosed with bacteriologically confirmed TB who were tested for rifampicin-resistant TB  (RR-TB^a^) at country level, `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+<div class="footnote">^a^ Includes both new and previously treated cases; data are for pulmonary cases only.</div>
+
+<BR>
+
+### <span class="red">Fig. 3.2.14</span> Percentage of people diagnosed with rifampicin-resistant TB (RR-TB) who were tested for susceptibility to fluoroquinolones^a^, globally and for WHO regions, 2015&#8211;`r report_year-1`
+
+<div id="fig_3_2_14_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_14_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_14_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_wpro"></div>
+</div>
+</div>
+
+### <span class="red">Fig. 3.2.15</span> Percentage of people diagnosed with rifampicin-resistant TB (RR-TB) who were tested for susceptibility to fluoroquinolones at country level, `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 3.2.16</span> Percentage of people diagnosed with pre-XDR-TB^a^ who were tested for susceptibility to bedaquiline at country level, `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+<div class="footnote">^a^ Defined as MDR/RR-TB plus resistance to any fluoroquinolone.</div>
+
+<BR>
+
+### <span class="red">Fig. 3.2.17</span> Percentage of people diagnosed with pre-XDR-TB^a^ who were tested for susceptibility to linezolid at country level, `r report_year-1`
+
+<span class="red">**!static figure!**</span>
+
+<div class="footnote">^a^ Defined as MDR/RR-TB plus resistance to any fluoroquinolone.</div>
+
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_3_2_1_data = `r f3.2.1_data %>% select(year,entity,value=bacconf_pct) %>% toJSON("rows")`   ;  
+
+var fig_3_2_3_data = [{"income":"Low-income","lower":46.079,"q1":65.1627,"median":70.5893,"q3":81.0107,"upper":95.843,"color":"#66C2A5", "outliers": [38.3]},{"income":"Lower-middle-income","lower":36.3136,"q1":62.6421,"median":77.092,"q3":85.8785,"upper":100,"color":"#FC8D62"},{"income":"Upper-middle-income","lower":55.8426,"q1":69.1873,"median":76.7474,"q3":79.0273,"upper":88.0893,"color":"#8DA0CB", "outliers": [96.5,98.7,51.1,94.8,50.8]},{"income":"High-income","lower":72.3739,"q1":84.1652,"median":88.2377,"q3":92.656,"upper":96.6102,"color":"#E78AC3", "outliers": [67.2,58.2,56.1,67.1]}]   ;  
+
+var fig_3_2_4_data = `r f3.2.4_data  %>% toJSON("rows")` ;  
+
+var fig_3_2_7_data = `r f3.2.7b_data  %>% select(entity,median) %>% toJSON("rows")`   ;
+
+var fig_3_2_8_data = `r f3.2.8_data %>% toJSON("rows")`   ;
+
+var fig_3_2_9_data = `r f3.2.9b_data  %>% select(entity,median) %>% toJSON("rows")`   ;
+
+var fig_3_2_10_data = `r f3.2.10_data  %>% select(year, entity, value=hivstatus_pct) %>% toJSON("rows")`   ;  
+
+var fig_3_2_12_data = `r f3.2.12_data  %>% select(year, entity, value=dst_pcnt) %>% toJSON("rows")`   ;  
+
+var fig_3_2_14_data = `r f3.2.14_data  %>% select(year, entity, value=fqdst_pct) %>% toJSON("rows")`   ;  
+
+</script>
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+/* Functions to organize number with thousands separator */
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+
+function createFig_3_2_1(fig_ID, data, filter, x_axis_title = True, y_axis_title = True, color, y_axis_title_text) {
+  
+  		// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.entity == filter);
+  
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 250
+			},	
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "value",
+				color: color, 
+        markers: {
+          size: 3
+        },
+        tooltip: {
+				visible: true,
+				format: "{0:0.00}",
+				template: "#= category #: #= value.toPrecision(2) #%",
+			}
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: y_axis_title_text,
+					visible: y_axis_title,
+          font: "14px Arial,Helvetica,sans-serif"
+				},
+				line: {
+					visible: false
+				},
+        max: 100,
+        min: 0
+			},
+			categoryAxis: {
+				field: "year",
+        labels: {
+					rotation: 0,
+          step: 5
+          },
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+					visible: x_axis_title
+				}
+			}
+
+		});
+}
+
+function createFig_3_2_3() {
+		$("#fig_3_2_3").kendoChart({
+			dataSource: fig_3_2_3_data,
+			chartArea: {
+				height: 600
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "boxPlot",
+        color: "color",
+        lowerField: "lower",
+        q1Field: "q1",
+        medianField: "median",
+        q3Field: "q3",
+        upperField: "upper",
+        outliersField: "outliers",
+        categoryField: "income",
+                    tooltip: {
+                        visible: true,
+                        format: "<table>" +
+                            "<tr><th colspan='2'>{6:d}</th></tr>" +
+                            "<tr><td>Lower:</td><td>{0:n0}%</td></tr>" +
+                            "<tr><td>Q1:</td><td>{1:n0}%</td></tr>" +
+                            "<tr><td>Median:</td><td>{2:n0}%</td></tr>" +
+                            "<tr><td>Q3:</td><td>{3:n0}%</td></tr>" +
+                            "<tr><td>Upper:</td><td>{4:n0}%</td></tr>" +
+                            "</table>"
+                    }
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Percent confirmed"
+				},
+				line: {
+					visible: false
+				},
+				max: 100,
+				min: 30
+			},
+			categoryAxis: {
+				field: "income",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Income group"
+				}
+			},
+
+		});
+}
+
+function createFig_3_2_4(fig_ID, data, filter, x_axis_title = True, y_axis_title = True) {
+  
+  		// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.country == filter);
+  
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 250
+			},	
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "bacconf_pct",
+				color: "#2e8b57", 
+        markers: {
+          size: 3
+        },
+        tooltip: {
+				visible: true,
+				format: "{0:0.00}",
+				template: "#= category #: #= value.toPrecision(2) #%",
+			}
+			}],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Percentage\nbacterioloically confirmed",
+					visible: y_axis_title,
+          font: "14px Arial,Helvetica,sans-serif"
+				},
+				line: {
+					visible: false
+				},
+        max: 100,
+        min: 0
+			},
+			categoryAxis: {
+				field: "year",
+        labels: {
+					rotation: 0,
+          step: 5
+          },
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+					visible: x_axis_title
+				}
+			}
+
+		});
+}
+
+function createFig_3_2_7(fig_ID, data, color) {
+   
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 800
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "bar",
+				field: 0,
+				opacity: 0
+			}, {
+        type: "line",
+				field: "median",
+        opacity: 0,
+				color: color,
+        markers: {
+          visible: true,
+          background: color,
+          size: 10
+        },
+			tooltip: {
+				visible: true,
+        background: color,
+				template: "#= category #: #= num_spacer(value) # per 100 000"
+			}
+			}, 
+              ],
+			valueAxis: {
+				labels: {
+					template: "#= axis_spacer(value) #"
+				},
+				title: {
+					text: "Number"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "entity",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+
+function createFig_3_2_8(fig_ID, data, color) {
+   
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 900
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "bar",
+				field: 0,
+				opacity: 0
+			}, {
+        type: "line",
+				field: "median",
+        errorLowField: "q1",
+        errorHighField: "q3",
+        errorBars: {color: color, line: { width: 3 }},
+        opacity: 0,
+				color: color,
+        markers: {
+          visible: true,
+          background: color,
+          size: 10
+        },
+        
+			tooltip: {
+				visible: true,
+        background: color,
+				template: "#= category #: #= value.toPrecision(2) #%"
+			}
+			},{
+				type: "rangeArea",
+				fromField: "q1",
+				toField: "q3",
+				opacity: 0,
+        color: color,
+				tooltip: {
+					visible: true,
+          background: color,
+				format: "{0}",
+				template: "#= category # (interquartile range): #= value.from.toPrecision(2) #–#= value.to.toPrecision(2) #%"
+				}
+			}
+              ],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Proportion (%)"
+				},
+				line: {
+					visible: false
+				},
+        min: 0,
+        max: 100
+			},
+			categoryAxis: {
+				field: "entity",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+
+  function createFig_3_2_9(fig_ID, data, color) {
+   
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 800
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "bar",
+				field: 0,
+				opacity: 0
+			}, {
+        type: "line",
+				field: "median",
+        opacity: 0,
+				color: color,
+        markers: {
+          visible: true,
+          background: color,
+          size: 10
+        },
+			tooltip: {
+				visible: true,
+        background: color,
+				template: "#= category #: #= value.toPrecision(2) # per person notified as a TB case"
+			}
+			}, 
+              ],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Number"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "entity",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+```
+
+```{js, echo=FALSE}
+
+
+/* Create the figures after the document has been loaded */
+
+$(document).ready(function () {
+                 createFig_3_2_1("#fig_3_2_1_global",fig_3_2_1_data,"Global",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                 createFig_3_2_1("#fig_3_2_1_euro",fig_3_2_1_data,"European Region",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                 createFig_3_2_1("#fig_3_2_1_afro",fig_3_2_1_data,"African Region",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                  createFig_3_2_1("#fig_3_2_1_emro",fig_3_2_1_data,"Eastern Mediterranean Region",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                  createFig_3_2_1("#fig_3_2_1_amro",fig_3_2_1_data,"Region of the Americas",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                  createFig_3_2_1("#fig_3_2_1_wpro",fig_3_2_1_data,"Western Pacific Region",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                  createFig_3_2_1("#fig_3_2_1_searo",fig_3_2_1_data,"South-East Asia Region",true,true,"#2e8b57","Percentage\nbacterioloically confirmed");
+                  createFig_3_2_1("#fig_3_2_10_global",fig_3_2_10_data,"Global",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                 createFig_3_2_1("#fig_3_2_10_euro",fig_3_2_10_data,"European Region",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                 createFig_3_2_1("#fig_3_2_10_afro",fig_3_2_10_data,"African Region",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                  createFig_3_2_1("#fig_3_2_10_emro",fig_3_2_10_data,"Eastern Mediterranean Region",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                  createFig_3_2_1("#fig_3_2_10_amro",fig_3_2_10_data,"Region of the Americas",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                  createFig_3_2_1("#fig_3_2_10_wpro",fig_3_2_10_data,"Western Pacific Region",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                  createFig_3_2_1("#fig_3_2_10_searo",fig_3_2_10_data,"South-East Asia Region",true,true,"#FA4871","Percentage\nwith documented HIV status");
+                  createFig_3_2_1("#fig_3_2_12_global",fig_3_2_12_data,"Global",true,true,"#e52000","Percentage tested");
+                 createFig_3_2_1("#fig_3_2_12_euro",fig_3_2_12_data,"European Region",true,true,"#e52000","Percentage tested");
+                 createFig_3_2_1("#fig_3_2_12_afro",fig_3_2_12_data,"African Region",true,true,"#e52000","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_12_emro",fig_3_2_12_data,"Eastern Mediterranean Region",true,true,"#e52000","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_12_amro",fig_3_2_12_data,"Region of the Americas",true,true,"#e52000","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_12_wpro",fig_3_2_12_data,"Western Pacific Region",true,true,"#e52000","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_12_searo",fig_3_2_12_data,"South-East Asia Region",true,true,"#e52000","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_14_global",fig_3_2_14_data,"Global",true,true,"#277abe","Percentage tested");
+                 createFig_3_2_1("#fig_3_2_14_euro",fig_3_2_14_data,"European Region",true,true,"#277abe","Percentage tested");
+                 createFig_3_2_1("#fig_3_2_14_afro",fig_3_2_14_data,"African Region",true,true,"#277abe","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_14_emro",fig_3_2_14_data,"Eastern Mediterranean Region",true,true,"#277abe","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_14_amro",fig_3_2_14_data,"Region of the Americas",true,true,"#277abe","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_14_wpro",fig_3_2_14_data,"Western Pacific Region",true,true,"#277abe","Percentage tested");
+                  createFig_3_2_1("#fig_3_2_14_searo",fig_3_2_14_data,"South-East Asia Region",true,true,"#277abe","Percentage tested");
+                  createFig_3_2_3();
+                 createFig_3_2_4("#fig_3_2_4_AGO",fig_3_2_4_data,"Angola",true,true);
+                 createFig_3_2_4("#fig_3_2_4_COG",fig_3_2_4_data,"Congo",true,true);
+                 createFig_3_2_4("#fig_3_2_4_IND",fig_3_2_4_data,"India",true,true);
+                 createFig_3_2_4("#fig_3_2_4_MNG",fig_3_2_4_data,"Mongolia",true,true);
+                 createFig_3_2_4("#fig_3_2_4_PAK",fig_3_2_4_data,"Pakistan",true,true);
+                 createFig_3_2_4("#fig_3_2_4_THA",fig_3_2_4_data,"Thailand",true,true);
+                 createFig_3_2_4("#fig_3_2_4_BGD",fig_3_2_4_data,"Bangladesh",true,true);
+                 createFig_3_2_4("#fig_3_2_4_PRK",fig_3_2_4_data,"Democratic People's Republic of Korea",true,true);
+                 createFig_3_2_4("#fig_3_2_4_IDN",fig_3_2_4_data,"Indonesia",true,true);
+                 createFig_3_2_4("#fig_3_2_4_MOZ",fig_3_2_4_data,"Mozambique",true,true);
+                 createFig_3_2_4("#fig_3_2_4_PNG",fig_3_2_4_data,"Papua New Guinea",true,true);
+                 createFig_3_2_4("#fig_3_2_4_UGA",fig_3_2_4_data,"Uganda",true,true);
+                 createFig_3_2_4("#fig_3_2_4_BRA",fig_3_2_4_data,"Brazil",true,true);
+                 createFig_3_2_4("#fig_3_2_4_COD",fig_3_2_4_data,"Democratic Republic of the Congo",true,true);
+                 createFig_3_2_4("#fig_3_2_4_KEN",fig_3_2_4_data,"Kenya",true,true);
+                 createFig_3_2_4("#fig_3_2_4_MMR",fig_3_2_4_data,"Myanmar",true,true);
+                 createFig_3_2_4("#fig_3_2_4_PHL",fig_3_2_4_data,"Philippines",true,true);
+                 createFig_3_2_4("#fig_3_2_4_TZA",fig_3_2_4_data,"United Republic of Tanzania",true,true);
+                 createFig_3_2_4("#fig_3_2_4_CAF",fig_3_2_4_data,"Central African Republic",true,true);
+                 createFig_3_2_4("#fig_3_2_4_ETH",fig_3_2_4_data,"Ethiopia",true,true);
+                 createFig_3_2_4("#fig_3_2_4_LSO",fig_3_2_4_data,"Lesotho",true,true);
+                 createFig_3_2_4("#fig_3_2_4_NAM",fig_3_2_4_data,"Namibia",true,true);
+                 createFig_3_2_4("#fig_3_2_4_SLE",fig_3_2_4_data,"Sierra Leone",true,true);
+                 createFig_3_2_4("#fig_3_2_4_VNM",fig_3_2_4_data,"Viet Nam",true,true);
+                 createFig_3_2_4("#fig_3_2_4_CHN",fig_3_2_4_data,"China",true,true);
+                 createFig_3_2_4("#fig_3_2_4_GAB",fig_3_2_4_data,"Gabon",true,true);
+                 createFig_3_2_4("#fig_3_2_4_LBR",fig_3_2_4_data,"Liberia",true,true);
+                 createFig_3_2_4("#fig_3_2_4_NGA",fig_3_2_4_data,"Nigeria",true,true);
+                 createFig_3_2_4("#fig_3_2_4_ZAF",fig_3_2_4_data,"South Africa",true,true);
+                 createFig_3_2_4("#fig_3_2_4_ZMB",fig_3_2_4_data,"Zambia",true,true);
+                 createFig_3_2_7("#fig_3_2_7",fig_3_2_7_data,"dodgerblue");
+                 createFig_3_2_8("#fig_3_2_8",fig_3_2_8_data,"limegreen");
+                 createFig_3_2_9("#fig_3_2_9",fig_3_2_9_data,"goldenrod");
+
+});  
+  
+```

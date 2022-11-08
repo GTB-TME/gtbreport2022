@@ -1,0 +1,527 @@
+---
+title: "Section 2.3 Drug resistance - interactive charts"
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+    
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch2-3_kendo.Rmd"), output_file = "ch2-3_kendo.html", output_dir = here::here("report/html_drafts/"))    
+---
+
+
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+library(ggplot2)
+library(dplyr)
+library(gtbreport)
+library(here)
+
+library(tidyverse)
+library(jsonlite)
+
+# Get the data sets and computed values/statistics for section 2.3 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch2-3_prepare_data.r'))
+
+
+
+
+```
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.refs, .refs a {
+  color: #3c4245;  /* match SF normal text colour */
+  font-style: italic;
+}
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+
+# 2.3 Drug-resistant TB
+
+_Draft! &#8211; Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+
+### <span class="red">Fig. 2.3.1</span> Global trend in the estimated number of incident cases of MDR/RR-TB, 2015&#8211;`r report_year-1`
+
+
+<div id="fig_2_3_1"></div>
+
+
+
+### <span class="red">Fig. 2.3.2</span> Global percentage of TB cases with MDR/RR-TB, 2015&#8211;`r report_year-1`
+
+<div class="row">
+<div class="col-md-6">
+<div id="fig_2_3_2_new"></div>
+</div>
+<div class="col-md-6">
+<div id="fig_2_3_2_prev"></div>
+</div>
+</div>
+
+
+### <span class="red">Fig. 2.3.3</span> Regional trends in the estimated number of incident cases of MDR/RR-TB, 2015&#8211;`r report_year-1`
+
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_3_AFR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_3_AMR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_3_SEAR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_3_EUR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_3_EMR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_3_WPR"></div>
+</div>
+</div>
+
+
+
+### <span class="red">Fig. 2.3.4</span> Country-specific trends in the estimated number of incident cases of MDR/RR-TB, 2015&#8211;`r report_year-1`
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_AZE"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_BGD"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_BLR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_CHN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_PRK"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_COD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_IND"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_IDN"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_KAZ"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_KGZ"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_MNG"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_MOZ"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_MMR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_NPL"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_NGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_PAK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_PNG"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_PER"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_PHL"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_MDA"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_RUS"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_SOM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_ZAF"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_TJK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_UKR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_UZB"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_3_4_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_ZMB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_3_4_ZWE"></div>
+</div>
+</div>
+
+
+
+### <span class="red">Fig. 2.3.5</span> Estimated incidence of MDR/RR-TB in `r report_year-1`, for countries with at least 1000 incident cases
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 2.3.6</span> Percentage of new TB cases with MDR/RR-TB^a^
+
+<span class="red">**!static figure!**</span>
+
+
+
+### <span class="red">Fig. 2.3.7</span> Percentage of previously treated TB cases with MDR/RR-TB^a^
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 2.3.8</span> Source of data for rifampicin resistance among new cases, 1996&#8211;2022
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 2.3.9</span> Most recent year of data on rifampicin resistance among new cases, 1996&#8211;2022^a^
+
+<span class="red">**!static figure!**</span>
+
+
+### <span class="red">Fig. 2.3.10</span> Number of data points on rifampicin resistance among new cases, 1996&#8211;2022^a^
+
+<span class="red">**!static figure!**</span>
+
+
+<script type="text/javascript">
+
+/* JSON data objects for the figures */
+
+var fig_2_3_1_data = `r f2_3_01_data %>% toJSON("rows")`; 
+var fig_2_3_2_data = `r f2_3_02_data %>% toJSON("rows")`; 
+var fig_2_3_3_data = `r f2_3_03_data %>% toJSON("rows")`; 
+var fig_2_3_4_data = `r f2_3_04_data %>% rename(entity=country) %>% toJSON("rows")`;
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Round a number using GTB rounding rules */
+function rounder(n) { 
+  if (n < 100) {
+    return Number(n.toPrecision(2));
+      } else {
+    return Number(n.toPrecision(3));
+  } 
+}
+
+
+function createFig_2_3_1(fig_ID, data, filter, height) {
+ 
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.entity == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: height
+			},	      
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+				field: "e_inc_rr_num",
+				color: "#ED1D24",
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					template: "Estimated number of incident cases of MDR/RR-TB (#= category #): #= rounder(value/1e3) # thousand"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "e_inc_rr_num_lo",
+				toField: "e_inc_rr_num_hi",
+				color: "#ED1D24",
+				tooltip: {
+					visible: true,
+				format: "{0}",
+				template: "95% uncertainty interval (#= category #): #= rounder(value.from/1e3) #–#= rounder(value.to/1e3) #"
+				}
+			},],      
+      
+			valueAxis: {
+        labels: {
+					template: "#= value/1e3 #"
+				},
+				title: {
+					text: "Thousands per year",
+					visible: true
+				},
+       min: 0,
+				line: {
+					visible: false
+				}
+			},      
+
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				},
+
+				title: {
+					text: "Year",
+					visible: true
+				}
+			}
+
+		});
+}
+
+
+
+function createFig_2_3_2(fig_ID, data, filter) {
+ 
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.case_type == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 400
+			},	      
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+				field: "best",
+				color: "blue",
+        markers: { size: 4},
+				tooltip: {
+					visible: true,
+					template: "Proportion with MDR/RR-TB (#= category #): #= Number(value.toPrecision(2)) #%"
+				}
+			},{
+				type: "rangeArea",
+				fromField: "lo",
+				toField: "hi",
+				color: "blue",
+				tooltip: {
+					visible: true,
+				template: "95% uncertainty interval (#= category #): #= Number(value.from.toPrecision(2)) #–#= Number(value.to.toPrecision(2))  #%"
+				}
+			},],      
+      
+			valueAxis: {
+        labels: {
+					format: "{0}%"
+				},
+				title: {
+					text: "Proportion with MDR/RR-TB",
+					visible: true
+				},
+       min: 0,
+       max: 35,
+        majorUnit: 10,
+				line: {
+					visible: false
+				}
+			},      
+
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				},
+
+				title: {
+					text: "Year",
+					visible: true
+				}
+			}
+
+		});
+}
+ 
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+
+$(document).ready(function () {
+                 createFig_2_3_1("#fig_2_3_1",fig_2_3_1_data,"Global",400);
+                 createFig_2_3_1("#fig_2_3_3_EUR",fig_2_3_3_data,"European Region",250);
+                 createFig_2_3_1("#fig_2_3_3_AFR",fig_2_3_3_data,"African Region",250);
+                  createFig_2_3_1("#fig_2_3_3_EMR",fig_2_3_3_data,"Eastern Mediterranean Region",250);
+                  createFig_2_3_1("#fig_2_3_3_AMR",fig_2_3_3_data,"Region of the Americas",250);
+                  createFig_2_3_1("#fig_2_3_3_WPR",fig_2_3_3_data,"Western Pacific Region",250);
+                  createFig_2_3_1("#fig_2_3_3_SEAR",fig_2_3_3_data,"South-East Asia Region",250);
+                    createFig_2_3_1("#fig_2_3_4_AGO",fig_2_3_4_data,"Angola",250);
+                 createFig_2_3_1("#fig_2_3_4_PRK",fig_2_3_4_data,"Democratic People's Republic of Korea",250);
+                 createFig_2_3_1("#fig_2_3_4_KGZ",fig_2_3_4_data,"Kyrgyzstan",250);
+                 createFig_2_3_1("#fig_2_3_4_NGA",fig_2_3_4_data,"Nigeria",250);
+                 createFig_2_3_1("#fig_2_3_4_MDA",fig_2_3_4_data,"Republic of Moldova",250);
+                 createFig_2_3_1("#fig_2_3_4_UKR",fig_2_3_4_data,"Ukraine",250);
+                 
+                 createFig_2_3_1("#fig_2_3_4_AZE",fig_2_3_4_data,"Azerbaijan",250);
+                 createFig_2_3_1("#fig_2_3_4_COD",fig_2_3_4_data,"Democratic Republic of the Congo",250);
+                 createFig_2_3_1("#fig_2_3_4_MNG",fig_2_3_4_data,"Mongolia",250);
+                 createFig_2_3_1("#fig_2_3_4_PAK",fig_2_3_4_data,"Pakistan",250);
+                 createFig_2_3_1("#fig_2_3_4_RUS",fig_2_3_4_data,"Russian Federation",250);
+                 createFig_2_3_1("#fig_2_3_4_UZB",fig_2_3_4_data,"Uzbekistan",250);
+                 
+                 createFig_2_3_1("#fig_2_3_4_BGD",fig_2_3_4_data,"Bangladesh",250);
+                 createFig_2_3_1("#fig_2_3_4_IND",fig_2_3_4_data,"India",250);
+                 createFig_2_3_1("#fig_2_3_4_MOZ",fig_2_3_4_data,"Mozambique",250);
+                 createFig_2_3_1("#fig_2_3_4_PNG",fig_2_3_4_data,"Papua New Guinea",250);
+                 createFig_2_3_1("#fig_2_3_4_SOM",fig_2_3_4_data,"Somalia",250);
+                 createFig_2_3_1("#fig_2_3_4_VNM",fig_2_3_4_data,"Viet Nam",250);
+                 
+                 createFig_2_3_1("#fig_2_3_4_BLR",fig_2_3_4_data,"Belarus",250);
+                 createFig_2_3_1("#fig_2_3_4_IDN",fig_2_3_4_data,"Indonesia",250);
+                 createFig_2_3_1("#fig_2_3_4_MMR",fig_2_3_4_data,"Myanmar",250);
+                 createFig_2_3_1("#fig_2_3_4_PER",fig_2_3_4_data,"Peru",250);
+                 createFig_2_3_1("#fig_2_3_4_ZAF",fig_2_3_4_data,"South Africa",250);
+                 createFig_2_3_1("#fig_2_3_4_ZMB",fig_2_3_4_data,"Zambia",250);
+                 
+                 createFig_2_3_1("#fig_2_3_4_CHN",fig_2_3_4_data,"China",250);
+                 createFig_2_3_1("#fig_2_3_4_KAZ",fig_2_3_4_data,"Kazakhstan",250);
+                 createFig_2_3_1("#fig_2_3_4_NPL",fig_2_3_4_data,"Nepal",250);
+                 createFig_2_3_1("#fig_2_3_4_PHL",fig_2_3_4_data,"Philippines",250);
+                 createFig_2_3_1("#fig_2_3_4_TJK",fig_2_3_4_data,"Tajikistan",250);
+                 createFig_2_3_1("#fig_2_3_4_ZWE",fig_2_3_4_data,"Zimbabwe",250);
+                 
+                   createFig_2_3_2("#fig_2_3_2_new",fig_2_3_2_data,"New TB cases");
+  createFig_2_3_2("#fig_2_3_2_prev",fig_2_3_2_data,"Previously treated TB cases");
+
+});  
+
+```

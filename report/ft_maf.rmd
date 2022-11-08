@@ -1,0 +1,191 @@
+--- 
+title: "Featured topic - MAF" 
+author: "Monica Dias by Irwin Law" 
+date: "`r Sys.Date()`" 
+output:  
+  html_fragment: 
+    # Don’t include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    fig_width: 12 
+    # Don’t write figure captions 
+    fig_caption: FALSE 
+    
+    
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ft_maf.rmd"), output_file = "ft_maf.html", output_dir = here::here("report/html_drafts/"))
+--- 
+
+
+```{r setup, include=FALSE} 
+# Set options, load data, utility functions 
+
+knitr::opts_chunk$set(echo = FALSE,  
+                      results = "asis", 
+                      message = FALSE, 
+                      warning = FALSE) 
+library(gtbreport)
+library(here)
+library(ggplot2)
+library(readr)
+library(scales)
+
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+
+``` 
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.section.level3 {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #BCBCBC;
+  margin-bottom: 2em;
+}
+
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+```
+
+
+
+_Draft! Prepared `r Sys.Date()`_
+
+
+### <span class="red">Fig. 1 </span>Trends on the public availability of annual national TB reports from 2020 to 2022
+```{r fig_1, echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',  fig.alt="Trends on the public availability of annual national TB reports from 2020 to 2022"}
+
+#```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=7 }
+
+maf_fig1<- read_csv('html_drafts/maf_fig1.csv')
+
+p1<-ggplot(maf_fig1, aes(x = cat2, y = value, fill = year)) + 
+  geom_bar(position="dodge", stat = "identity", width = 0.60)  +
+  ylab("Percentage")  + 
+  theme(axis.title.x = element_blank()) +
+  scale_fill_discrete(
+                         breaks=c("a", "b", "c"),
+                         labels=c("2020", "2021", "2022"))+
+  scale_x_discrete(labels = c('High TB burden countries',
+                              'African Region',
+                              'Region of the Americas',
+                              'South-East Asia Region',
+                              'European Region',
+                              'Eastern Mediterranean Region',
+                              'Western Pacific Region',
+                              'Total'))+
+  theme_gtb() +
+  theme(axis.text = element_text(size = 8))  
+p1
+
+ggsave(here('report/html_drafts/fig1_maf.png'), width=12, height=5)
+
+
+```
+
+
+ <div class="footnote"> TB: tuberculosis; UN: United Nations; WHO: World Health Organization.
+Source: UN General Assembly (2020) (_7_).</div> 
+
+
+
+### <span class="red">Fig. 2 </span>Trends on the set up or strengthening of national multisectoral and multistakeholder accountability and review mechanisms, under high-level leadership available from 2020 to 2022
+ 
+```{r fig_2.4.2, echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',  fig.alt="Trends on the set up or strengthening of national multisectoral and multistakeholder accountability and review mechanisms, under high-level leadership available from 2020 to 2022"}
+
+#```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=7 }
+
+maf_fig2<- read_csv('html_drafts/maf_fig2.csv')
+
+p2<-ggplot(maf_fig2, aes(x = cat2, y = value, fill = year)) + 
+  geom_bar(position="dodge", stat = "identity", width = 0.60)  +
+  ylab("Percentage")  + 
+  theme(axis.title.x = element_blank()) +
+  scale_fill_discrete(
+                         breaks=c("a", "b", "c"),
+                         labels=c("2020", "2021", "2022"))+
+  scale_x_discrete(labels = c('High TB burden countries',
+                              'African Region',
+                              'Region of the Americas',
+                              'South-East Asia Region',
+                              'European Region',
+                              'Eastern Mediterranean Region',
+                              'Western Pacific Region',
+                              'Total'))+
+  theme_gtb() +
+  theme(axis.text = element_text(size = 8))  
+p2
+
+ggsave(here('report/html_drafts/fig2_maf.png'), width=12, height=5)
+
+
+
+
+```
+ <div class="footnote"> CHW: community health worker; CS: civil society; CSO: civil society organization; MOH: ministry of health; TB: tuberculosis.</div> 
+
+
+### <span class="red">Fig. 3 </span>Trends reported on the engagement of civil society and affected communities in the multisectoral accountability and review mechanism from 2020 to 2022
+```{r fig_3, echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',  fig.alt="Trends reported on the engagement of civil society and affected communities in the multisectoral accountability and review mechanism from 2020 to 2022"}
+
+#```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=7 }
+
+maf_fig3<- read_csv('html_drafts/maf_fig3.csv')
+
+p3<-ggplot(maf_fig3, aes(x = cat2, y = value, fill = year)) + 
+  geom_bar(position="dodge", stat = "identity", width = 0.60)  +
+  ylab("Percentage")  + 
+  theme(axis.title.x = element_blank()) +
+  scale_fill_discrete(
+                         breaks=c("a", "b", "c"),
+                         labels=c("2020", "2021", "2022"))+
+  scale_x_discrete(labels = c('High TB burden countries',
+                              'African Region',
+                              'Region of the Americas',
+                              'South-East Asia Region',
+                              'European Region',
+                              'Eastern Mediterranean Region',
+                              'Western Pacific Region',
+                              'Total'))+
+  theme_gtb() +
+  theme(axis.text = element_text(size = 8))  +
+  ylim(0, 100)
+p3
+
+ggsave(here('report/html_drafts/fig3_maf.png'), width=12, height=5)
+
+
+
+```
+
+

@@ -1,0 +1,113 @@
+option.id,optiontext.EN,optiontext.FR,optiontext.ES,optiontext.RU
+0,No,Non,No,Нет
+1,Yes,Oui,Sí,Да
+2,Not applicable,Sans objet,No aplica,Не применимо
+3,Don't know,Ne sais pas,No sabe,Не известно
+4,Other,Autres,Otros,Другое
+5,Not applicable (because there were no TB cases),Sans objet (parce qu'il n'y a pas eu de cas de TB),No se aplica (porque no hubo casos de TB),Не применимо (потому что нет случаев туберкулеза)
+10,Yes (all suspects),Oui (pour tous les cas suspects),Sí (todos los casos sospechosos),Да (все случаи с подозрением на ТБ)
+11,Yes (if TB is confirmed),Oui (si la TB est confirmée),Sí (caso de confirmarse la TB),Да (если ТБ подтвержден)
+12,Yes (for smear-positive TB),Oui (en cas de TB à frottis positif),Sí (en caso de TB bacilífera),Да (для ТБ с положительным результатом микроскопии мазка мокроты)
+13,Yes (for certain income groups),Oui (pour certaines catégories de revenus),Sí (para algunos grupos de ingresos),Да (для определенных групп доходов)
+14,Yes (other criteria),Oui (autres critères),Sí (otros criterios),Да (по другим критериям)
+15,Yes (most/all supervised patients),Oui (la plupart/tous les patients dont le traitement est supervisé),Sí (mayoría/todos los pacientes supervisados),Да (непосредственное наблюдение всех/большинства пациентов)
+16,Yes (some supervised patients),Oui (certains patients dont le traitement est supervisé),Sí (algunos pacientes supervisados),Да (непосредственное наблюдение некоторых пациентов )
+17,"Yes, national","Oui, nationale","Sí, nacional","Да, на национальном уровне"
+18,"Yes, subnational","Oui, sous-nationale","Sí, subnacional","Да, на субнациональном уровне"
+19,"Yes, web-based","Oui, sur le web","Sí, basado en la web","Да, доступна через веб-сеть"
+20,"Yes, stand-alone","Oui, mais pas sur le web","Sí, independiente","Да, автономно, не через веб-сеть"
+21,"Yes, including XDR-TB","Oui, y compris pour la TB-UR","Sí, incluida XDR","Да, включаи и ШЛУ-ТБ"
+22,"Yes, not including XDR-TB","Oui, sauf pour la TB-UR","Sí, excluida XDR","Да, но исключая ШЛУ-ТБ"
+23,"Yes, within the country","Oui, dans le pays","Sí, dentro del país","Да, в стране"
+24,"Yes, using laboratories in another country","Oui, dans les laboratoires d’un autre pays","Sí, usando laboratorios en otro país","Да, но в лаборатории/ях за пределеми страны"
+25,"Yes, using laboratories within and outside the country","Oui, dans les laboratoires du pays et d’autres pays","Sí, usando laboratorios en el propio país y en otros países","Да, в лаборатории/ях в стране и за ее пределеми"
+26,"Yes, all","Oui, tous","Sí, todos","Да, все"
+27,From certain countries,"Oui, ceux de certains pays",De algunos países,Для некоторых стран
+30,Some,Quelques,Algunos,Некоторые
+31,Yes (all supervised patients),Oui (tous les patients dont le traitement est supervisé),Sí (todos los pacientes supervisados),Да (непосредственное наблюдение за всеми пациентами)
+32,Yes (most supervised patients),Oui (la plupart des patients dont le traitement est supervisé),Sí (mayoría de los pacientes supervisados),Да (непосредственное наблюдение за большинством пациентов)
+33,Yes (few supervised patients),Oui (quelques-uns des patients dont le traitement est supervisé),Sí (unos pocos de los pacientes supervisados),Да (непосредственное наблюдение за некоторыми/несколькими пациентами)
+34,All units,Toutes les unités,Todas las unidades,Все единицы
+35,Some units,Quelques unités,Algunas unidades,Некоторые единицы
+36,All patients in all units,Tous les patients dans toutes les unités,Todos los pacientes en todas las unidades,Все пациенты во всех единицах
+37,Some patients in all units,Quelques patients dans toutes les unités,Algunos pacientes en todas las unidades,Некоторые пациенты во всех единицах
+38,All patients in some units,Tous les patients dans quelques unités,Todos los pacientes en algunas unidades,Все пациенты но в некоторых единицах
+39,Some patients in some units,Quelques patients dans quelques unités,Algunos pacientes en algunas unidades,Некоторые пациенты в некоторых единицах
+40,"Yes, all patients","Oui, tous les patients","Sí, todos los pacientes","Да, все пациенты"
+41,"Yes, MDR-TB patients only","Oui, uniquement pour les patients atteints d'une tuberculose multi-résistante","Sí, unicamente para los pacientes TB-MDR","Да, только пациенты с МЛУ-ТБ"
+42,"Yes, all TB patients in the country","Oui, tous les patients tuberculeux dans le pays","Sí, todos los pacientes con tuberculosis en el país","Да, всех больных туберкулезом в стране"
+43,"Yes, but only for MDR-TB patients countrywide","Oui, mais uniquement pour les patients TB-MR dans tout le pays","Sí,  pero únicamente para pacientes TB-MDR en todo el país","Да, но только для больных МЛУ-ТБ по всей стране"
+44,Partially (transition to a case-based system is under way),Partiellement (actuellement en train de passer à un système basé au niveau des cas),Parcialmente (se está realizando la transición a un sistema nominal (basado en casos)),Частично (идет переход на прецедентную систему)
+50,Ongoing,En cours,En curso,Происходит в настоящее время
+55,Under preparation,En préparation,En preparación,В процессе разработки
+60,"Yes, available from our routine surveillance system","Oui, disponible de notre système de surveillance de routine","Sí, disponible en nuestro sistema de vigilancia rutinaria","Да, данные доступны из рутинной системы эпиднадзора"
+61,"Yes, estimated from a review of a random sample of medical records or treatment cards of TB patients, representative of the national TB patient population","Oui, estimée à partir de l'examen d'un échantillon aléatoire de dossiers médicaux ou de cartes de traitement de patients atteints de tuberculose, représentatif de la population nationale de patients tuberculeux","Sí, estimado a partir de la revisión de una muestra aleatoria de registros médicos o tarjetas de tratamiento de pacientes con tuberculosis, representativa de la población nacional de pacientes con tuberculosis","Да, оценено по результатам изучения случайной выборки медицинских карт или карточек лечения больных туберкулезом, репрезентативной для н"
+70,Monthly,Mensuel,Mensual,Ежемесячно
+71,Quarterly,Trimestriel,Trimestral,Ежеквартальный сайт
+100,Smear,Microscopie des crachats,Baciloscopia,по мазок
+101,Culture,Culture,Cultivo,по посеву
+102,Smear or culture,Microscopie des crachats ou  culture,Baciloscopia o cultivo,по мазоку или посеву
+103,Hospital,Hôpital,Hospital,Госпиталь/больница/клиника
+104,Health centre (or equivalent),Dispensaire (ou équivalent),Centro de salud (o equivalente),Центр здоровья/поликлиника (или равнозначный этому)
+105,Health post (or equivalent),Poste de santé (ou équivalent),Puesto de salud (o equivalente),Пункт здоровья/амбулатория/ФАП (или равнозначный этому)
+106,2HRZE,2HRZE,2HRZE,2HRZE
+107,2(HR)ZE,2(HR)ZE,2(HR)ZE,2(HR)ZE
+108,2(HRZ)E,2(HRZ)E,2(HRZ)E,2(HRZ)E
+109,2(HRZE),2(HRZE),2(HRZE),2(HRZE)
+110,2HRZ,2HRZ,2HRZ,2HRZ
+111,4HR,4HR,4HR,4HR
+112,4(HR),4(HR),4(HR),4(HR)
+113,6HE,6HE,6HE,6HE
+114,6(HE),6(HE),6(HE),6(HE)
+115,5HRE,5HRE,5HRE,5HRE
+116,5(HRE),5(HRE),5(HRE),5(HRE)
+117,2,2,2,2
+118,3-6,3-6,3-6,3-6
+119,7,7,7,7
+120,Same treatment as non-immigrants,Le même traitement que les non immigrés,Tratamiento idéntico al de los no inmigrantes,Такое же лечение/уход как и для не-иммигрантов
+121,Patient must pay for treatment,Le coût du traitement est à la charge du patient,El paciente debe pagar por el tratamiento,Пациент должен оплачивать лечение
+122,Treatment for initial phase followed by repatriation,Traitement pendant la phase initiale puis rapatriement,Tratamiento de la fase inicial seguido de repatriación,Репатриация после окончания интенсивной фазы/после абацилирования
+123,Immediate repatriation,Rapatriement immédiat,Repatriación inmediata,Немедленная репатриация
+126,2HRZES,2HRZES,2HRZES,2HRZES
+127,2(HR)ZES,2(HR)ZES,2(HR)ZES,2(HR)ZES
+128,2(HRZ)ES,2(HRZ)ES,2(HRZ)ES,2(HRZ)ES
+129,2(HRZE)S,2(HRZE)S,2(HRZE)S,2(HRZE)S
+130,All diagnostic centres,Toutes les centres diagnostiques,Todos los centros de diagnóstico,Все центры диагностики
+131,Cluster sampling,L'échantillonnage en grappes,Muestreo por conglomerado,Кластерная выборка
+140,Primary-level hospital,Hôpital de niveau primaire,Hospital de primer nivel,Учреждение первичной медицинской помощи
+141,Secondary-level hospital,Hôpital de niveau secondaire,Hospital de segundo nivel,Медицинское учреждение второго уровня
+142,Tertiary-level hospital,Hôpital de niveau tertiaire,Hospital de tercer nivel,Медицинское учреждение третьего уровня (учреждение специализированной медицинской помощи)
+150,Birthplace,Lieu de naissance,Lugar de nacimiento,По месту рождения
+151,Citizenship / nationality,Citoyenneté / nationalité,Ciudadanía / nacionalidad,По гражданству / нициональности (гражданин страны или иностранец)
+152,Both (birthplace and citizenship / nationality),Les deux (lieu de naissance et nationalité),Ambos (lugar de nacimiento y ciudadanía / nacionalidad),Учитываются оба критерия (место рождения и гражданство)
+160,National,Nationale,Nacional,Охватывает всю страну
+161,Partial,Partielle,Parcial,Частичный охват
+170,SRL only,LSR seulement,LSR  sólamente,Только супранациональная референс лаборатория
+171,NRL only,LNR seulement,LNR  sólamente,Только национальная референс лаборатория
+172,All laboratories performing DST,Tous les laboratoires qui effectuent des tests de pharmacosensibilité,Todos los laboratorios que realizan el antibiograma,Все лаборатории проводят ТЧСЛ
+173,Network of selected laboratories,Réseau des laboratoires sélectionnés,Red de laboratorios seleccionados,Сеть отобранных лабораторий
+175,Interferon Gamma Release Assays (IGRA),Tests de libération d’interféron-gamma (TLIG(IGRA)),Prueba de liberación de Interferon Gamma (IGRA),Интерфероновый тест на туберкулез (ИФН-гамма тест)
+176,Tuberculin Skin Test (TST),Test cutané à la tuberculine (TCT),Prueba cutánea de tuberculina (PPD),Туберкулиновая кожная проба
+177,IGRA and TST,TLIG(IGRA) et TCT,IGRA y PPD,Оба ИФН-гамма тест и Туберкулиновая кожная проба
+180,A standardized regimen (same combination of drugs for all patients),Un schéma thérapeutique standardisé (même combinaison de médicaments pour tous les patients),Un régimen estandarizado (misma combinación de medicamentos para todos los pacientes),Стандартизированный режим (такой же комбинации препаратов для всех больных)
+181,An individualized regimen (variable composition depending on patient),Un régime individualisé (composition variable selon le patient),Un régimen individualizado (composición variable dependiendo del paciente),Индивидуальный режим лечения (переменный состава в зависимости от пациента)
+182,An empirical regimen (composition based on surveillance data and patient’s treatment history),Un régime empirique (composition en fonction d'antécédents de traitement du patient et résultats de la surveillance de pharmaco-sensibilité),Un régimen empírico (composición basada en los datos de vigilancia y el historial de tratamiento del paciente),Эмпирический режим лечения (основанный на дынных эпиднадзора с стране и истории предыдущего лечения пациента)
+183,An individualized regimen (composition based on patient’s treatment history and drug-susceptibility results),Un régime individualisé (composition en fonction des tests de pharmaco-sensibilité du patient et ses antécédents de traitement),Un régimen individualizado (composición basada en la historia de tratamiento del paciente y los resultados de antibiograma),Индивидуализированный режим лечения (основанный истории предыдущего лечения пациента и результатов ТЧЛ)
+190,All drugs in use conform to international norms,Tous les médicaments en cours d'utilisation conformes aux normes internationales,Todos los medicamentos en uso cumplen con las normas internacionales,Все препараты в использовании соответствуют международным нормам прозводственной практики
+191,Some drugs in use conform to international norms,Certains médicaments utilisés sont conformes aux normes internationales,Algunos medicamentos en uso cumplen con las normas internacionales,Некоторые препараты в использовании соответствуют международным нормам производственной практики
+192,All drugs in use conform to national regulatory norms only,Tous les médicaments en cours d'utilisation sont conformes uniquement aux normes nationales de réglementation,Todos los medicamentos en uso cumplen con las normas regulatorias nacionales solamente,Все препараты в использовании соответствуют только национальным нормам производственной практики
+193,Drugs used do not conform to national or international norms,Les médicaments utilisés ne sont pas conformes aux normes nationales ou internationales,Los medicamentos usados no cumplen con las normas nacionales o internacionales,Препараты в использовании не соответствуют национальным нормам производственной практики
+194,Not used,Non utilisé,No utilizado,Не используются
+200,Data have been amended,Les données ont été modifiées,Los datos fueron modificados,Данным были изменены
+201,Data have not been amended,Les données n'ont pas été modifiées,Los datos no fueron modificados,Данные не были изменены
+205,Given name - family name,Prénom - Nom,Nombre - Apellido,Имя - Фамилия
+206,Family name - given name,Nom - Prénom,Apellido - Nombre,Фамилия - Имя
+210,Not used by any treatment centre,Non utilisé par aucun centre de traitement,No utilizado por ningún centro de tratamiento,Не используется ни одним лечебным центром
+211,Used only by public sector treatment centres,Utilisé uniquement par les centres de traitement du secteur public,Utilizado sólo por los centros de tratamiento del sector público,Используется только лечебными центрами в государственном секторе
+212,Used only by private sector treatment centres,Utilisé uniquement par les centres de traitement du secteur privé,Utilizado sólo por centros de tratamiento del sector privado,Используется только лечебными центрами в частном секторе
+213,Used by public and private  sector treatment centres,Utilisé par les centres de traitement des secteurs public et privé,Utilizado por centros de tratamiento del sector público y privado,Используется государственными и частными лечебными центрами
+220,"0-4, 5-9, 10-14, 15-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65+  (only if you have a national electronic case-based database holding separate records for each individual TB case)","0-4, 5-9, 10-14. 15-19. 20-4. 25-34, 35-44, 45-54, 55-64, 65+ (uniquement si vous avez une base de données électronique au niveau individuel où chaque entrée correspond à un cas de TB)","0-4, 5-9, 10-14, 15-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65+ (solo si tiene una base de datos electrónica nacional basada en casos que contiene registros nominales para cada caso individual de TB)","0-4, 5-9, 10-14, 15-19, 20-24, 25-34, 35-44, 45-54, 55-64, 65+ (только в том случае, если у вас имеется национальная электронная база данных, в которой содержатся  запи"
+221,"0-4, 5-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+","0-4, 5-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+","0-4, 5-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+","0-4, 5-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+"
+222,"0-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+","0-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+","0-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+","0-14, 15-24, 25-34, 35-44, 45-54, 55-64, 65+"
+223,"0-4, 5-14, 15+","0-4, 5-14, 15+","0-4, 5-14, 15+","0-4, 5-14, 15+"
+224,"0-14, 15+","0-14, 15+","0-14, 15+","0-14, 15+"

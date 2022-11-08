@@ -1,0 +1,79 @@
+iso3,country,cat,value
+LSO,Lesotho,p_med,3.9
+LSO,Lesotho,p_nmed,46.1
+LSO,Lesotho,p_indirect,50
+ZAF,South Africa,p_med,6.3
+ZAF,South Africa,p_nmed,25
+ZAF,South Africa,p_indirect,68.7
+TLS,Timor-Leste,p_med,8.4
+TLS,Timor-Leste,p_nmed,52.8
+TLS,Timor-Leste,p_indirect,38.8
+NER,Niger,p_med,14.8
+NER,Niger,p_nmed,44.6
+NER,Niger,p_indirect,40.4
+SLV,El Salvador,p_med,15.36624203821656
+SLV,El Salvador,p_nmed,57.82908704883227
+SLV,El Salvador,p_indirect,26.804670912951167
+COL,Colombia,p_med,27.8
+COL,Colombia,p_nmed,70.7
+COL,Colombia,p_indirect,1.5
+BFA,Burkina Faso,p_med,12.707775862913401
+BRA,Brazil,p_med,7.757809387094171
+COD,Democratic Republic of the Congo,p_med,13.50741546149452
+FJI,Fiji,p_med,10.34358387731977
+GHA,Ghana,p_med,18.525160122470847
+IDN,Indonesia,p_med,12.76881183741238
+KEN,Kenya,p_med,22.60104994529572
+LAO,Lao People's Democratic Republic,p_med,15.777959516192611
+MLI,Mali,p_med,41.27581030399425
+MMR,Myanmar,p_med,17.13571323940807
+MNG,Mongolia,p_med,18.59694236151015
+NGA,Nigeria,p_med,9.128171540850474
+PHL,Philippines,p_med,16.90991009700758
+PNG,Papua New Guinea,p_med,5.191790034405907
+SLB,Solomon Islands,p_med,6.347052538671559
+THA,Thailand,p_med,11.87369464223843
+TZA,United Republic of Tanzania,p_med,15.14699567790207
+UGA,Uganda,p_med,4.948291019994213
+VNM,Viet Nam,p_med,14.060360719359972
+ZWE,Zimbabwe,p_med,14.99379263515782
+BFA,Burkina Faso,p_nmed,10.24625849837091
+BRA,Brazil,p_nmed,26.80645673574646
+COD,Democratic Republic of the Congo,p_nmed,44.75619230996155
+FJI,Fiji,p_nmed,73.22055885591756
+GHA,Ghana,p_nmed,47.41377383144744
+IDN,Indonesia,p_nmed,40.30091569040134
+KEN,Kenya,p_nmed,54.10149489168655
+LAO,Lao People's Democratic Republic,p_nmed,46.62096605230962
+MLI,Mali,p_nmed,54.22341910397611
+MMR,Myanmar,p_nmed,34.839258532141336
+MNG,Mongolia,p_nmed,24.03664852896953
+NGA,Nigeria,p_nmed,44.07594806489546
+PHL,Philippines,p_nmed,42.69644297581008
+PNG,Papua New Guinea,p_nmed,35.92481878346719
+SLB,Solomon Islands,p_nmed,79.45813841547601
+THA,Thailand,p_nmed,44.54112943093052
+TZA,United Republic of Tanzania,p_nmed,51.292688178860345
+UGA,Uganda,p_nmed,53.92025267700845
+VNM,Viet Nam,p_nmed,41.82812739932213
+ZWE,Zimbabwe,p_nmed,41.2273592166362
+BFA,Burkina Faso,p_indirect,77.0459656387157
+BRA,Brazil,p_indirect,65.43573387715936
+COD,Democratic Republic of the Congo,p_indirect,41.73639222854392
+FJI,Fiji,p_indirect,16.43585726676267
+GHA,Ghana,p_indirect,34.06106604608171
+IDN,Indonesia,p_indirect,46.93027247218629
+KEN,Kenya,p_indirect,23.29745516301773
+LAO,Lao People's Democratic Republic,p_indirect,37.60107443149778
+MLI,Mali,p_indirect,4.5007705920296415
+MMR,Myanmar,p_indirect,48.02502822845059
+MNG,Mongolia,p_indirect,57.36640910952031
+NGA,Nigeria,p_indirect,46.795880394254056
+PHL,Philippines,p_indirect,40.39364692718234
+PNG,Papua New Guinea,p_indirect,58.88339118212691
+SLB,Solomon Islands,p_indirect,14.19480904585243
+THA,Thailand,p_indirect,43.58517592683106
+TZA,United Republic of Tanzania,p_indirect,33.56031614323758
+UGA,Uganda,p_indirect,41.131456302997336
+VNM,Viet Nam,p_indirect,44.11151188131791
+ZWE,Zimbabwe,p_indirect,43.77884814820597

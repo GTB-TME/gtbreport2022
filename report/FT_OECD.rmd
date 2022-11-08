@@ -1,0 +1,256 @@
+---
+title: "Featured topic: International donor funding for tuberculosis: an analysis of donor reports to the Organisation for Economic Co-operation and Development"
+author: "Peter Nguhiu, Ines Garcia Baena, Katherine Floyd"
+date: "`r Sys.Date()`"
+output:
+   html_fragment: 
+    # Don’t include a table of contents
+    # Set standard figure width to 12 inches
+    # Don’t write figure captions
+    toc: no
+    fig_width: 12
+    fig_caption: FALSE
+    fig.align: center
+    number_sections: FALSE
+   bookdown::pdf_document2: 
+    number_sections: FALSE
+    toc: no
+---
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+outputs_folder_name = "Outputs_R" #in PN's local machine this was just "Outputs_R"
+csv_folder_name = "Outputs_R/CSV"
+
+
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+# Set output folder -- can only do this if not using the 
+# RStudio knit button and instead doing the following from the 
+# command line:
+# rmarkdown::render("ch5_txt.rmd", output_file = "ch5.html")
+# Establish the report year ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+report_year <- 2022
+# And the latest year for which OECD data are being displayed in graphics
+latest_year <- 2020
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Set up the running environment ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#source("io/set_environment.r")  # particular to each person so this file is in the ignore list
+# Load packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+# library(scales)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(RColorBrewer)
+# library(whomap)
+library(gridExtra)
+# library("Cairo")
+library(gtbreport) # TO
+# Load TB data ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#source(here::here("Ch_5_Figures.R")) # Prefer to load from a common folder
+# source(here::here("Markdown","theme_gtb.R"))
+# source(here::here("Markdown","palette_gtb.R"))
+
+# TEMP! TO BE MOEVD TO gtbreport package
+# Simple rounding function that returns a string rounded to the nearest integer and
+# uses a space as the thousands separator as per WHO standard.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+rounder <- function(x) {
+    ifelse(is.na(x), NA,
+           formatC(round(x,0), big.mark=" ", format="d")
+           )
+}
+
+wrapper <- function(x, ...) 
+{
+  # this function allows long titles and labels to be wrapped. From Stackoverflow.com
+  paste(strwrap(x, ...), collapse = "\n")
+}
+
+# Quick functions for callouts in the text to the figures/tables:
+
+# 1. lnk() Creates a link from text to a named anchor
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+# Load needed data objects (light summary data)
+
+Fig1 <- readRDS(here::here(outputs_folder_name,"FigB5_1.rds"))
+# Fig2 <- readRDS(here::here(outputs_folder_name,"FigB5_2.rds")) 
+Fig3 <- readRDS(here::here(outputs_folder_name,"FigB5_3.rds"))
+
+```
+<style>
+#img_jpg {  
+ width: 12in;  height: auto; }
+body {
+ text-align: justify}
+</style>
+
+# International donor funding for tuberculosis: an analysis of donor reports to the Organisation for Economic Co-operation and Development
+
+In 2002, the World Health Organization (WHO) started annual monitoring of funding for tuberculosis (TB) prevention, diagnostic and treatment services, based on data reported by national TB programmes (NTPs) in annual rounds of global TB data collection. Findings have been published in global TB reports and peer-reviewed publications (_1-3_). However, not all international donor funding for TB is captured in the data reported to WHO. Therefore, each year WHO complements its analysis of data reported by NTPs with an assessment of international donor funding for TB, based on donor reports to the Organisation for Economic Co-operation and Development (OECD).
+
+The OECD’s creditor reporting system (CRS) (_4_) is the most comprehensive source of information about international donor funding. The CRS Aid Activity database enables analysis of where aid goes, what purposes it serves and what policies it aims to support, on a comparable basis for all members of the OECD Development Assistance Committee (DAC). Data are for developing countries or territories eligible to receive official development assistance (ODA); they are collected for individual projects and programmes, with a focus on financial data (_4_). 
+
+As of `r report_year`, funding data (both commitments and disbursements) were provided by 37 multilateral donor organizations, members of the OECD’s DAC (29 individual countries and the European Union) and a further 20 countries beyond the DAC that report to the OECD. Disbursement data include both direct transfers to countries and the provision of goods and services (e.g. in-kind transfers or technical assistance). 
+
+Data were analysed on gross total official disbursements for TB (code 12263: Tuberculosis control) received by non-OECD countries during 2010–`r latest_year` (as of September `r report_year`, the latest year for which data have been reported is `r latest_year`). The CRS does not capture funding for TB that flows from one OECD member to an institution or government within the OECD. In addition, government contributions that are channelled through multilateral organizations - such as the Global Fund to Fight AIDS, Tuberculosis and Malaria (the Global Fund) - are attributed to the multilateral organization and not to the government of origin.
+
+`r lnk("Fig. 1")` shows trends in international donor funding between 2010 and `r latest_year` for the six WHO regions and for all low- and middle-income countries (LMICs). The total for LMICs from all sources in `r latest_year` was US\$ 921 million.
+
+
+
+### `r anch("Fig. 1")`<span class="fig" style="color:#F21905">Fig. 1</span> International donor funding for TB prevention, diagnosis and treatment by source, globally and by WHO region, 2010&ndash;`r latest_year`
+
+
+
+``` {r fig1, fig.alt="International donor funding for TB prevention, diagnosis and treatment by source, globally and by WHO region", fig.height = 6}
+
+Fig1 %>%
+ filter(donor != "Official Donors, Total") %>%
+ filter(recipient == "Developing Countries, Total" | !is.na(g_whoregion)) %>%
+ filter(year >= 2010) %>% 
+ # Prepare faceting variable, in factor form
+ mutate(g_whoregion = ifelse(is.na(g_whoregion),"LMICs",g_whoregion)) %>% 
+ mutate(g_whoregion = stringr::str_to_lower(g_whoregion)) %>% 
+ mutate(g_whoregion = factor(g_whoregion,
+                             levels = c(
+                              "lmics", "afr","amr", "sea",
+                              "eur","emr","wpr"),
+                             labels = c( "Low- and middle-income countries",
+                              "WHO African Region","WHO Region of the Americas", 
+                              "WHO South-East Asia Region","WHO European Region", 
+                              "WHO Eastern Mediterranean Region","WHO Western Pacific Region" ))) %>% 
+ #Prepare series variable in factor format, ordered
+ mutate(donor = factor(stringr::str_to_lower(donor),
+                       levels = c("global fund","united states","united kingdom","other"),
+                       labels = c("Global Fund","United States of America","United Kingdom","Other"))) %>% 
+ group_by(year, donor, g_whoregion) %>% 
+ summarise_at(.vars = "value", sum, na.rm = TRUE) %>% 
+
+
+
+ 
+ # summarise_at(.vars = "value", sum, na.rm = TRUE) %>% 
+ ggplot(aes(x=year, y = value, col = donor)) +
+ geom_line(size=1, alpha=.85) +
+ facet_wrap(~g_whoregion, scales = 'free_y', strip.position = "top" , 
+            labeller = label_wrap_gen(width = 25))+
+ scale_y_continuous(name = paste0("Millions (constant ", report_year-1," US$)")) +
+ scale_x_continuous("", breaks=seq(2010,latest_year,2)) +
+ scale_color_manual(values = c("#4ABAFC","#E63E13","#37F546", "#000000"),
+                    show)+
+ theme_gtb()
+
+```
+<div class="footnote">Global Fund: Global Fund to Fight AIDS, Tuberculosis and Malaria; TB: Tuberculosis; United Kingdom: United Kingdom of Great Britain and Northern Ireland; WHO: World Health Organization.</div>
+
+From 2010 to `r latest_year`, the Global Fund was consistently the largest provider of international donor funding, with its share averaging 64% in this period. In `r latest_year`, the total was US\$ 616 million (67% of the global total of US$ 921 million). 
+
+The disbursements from the US Government captured in the OECD database are lower than official US congressional allocations, as reported by the Kaiser Family Foundation (_5_), based on data from the US foreign assistance dashboard (_6_). These disbursements increased from US\$ 272 million in 2018 to US\$ 313 million in 2019 and US\$ 321 million in 2020.
+
+`r lnk("Fig. 2")` shows the proportion and amounts of funding from 2010 to 2020 that were provided by individual DAC countries to non-OECD countries, including their estimated funding for TB via contributions to the Global Fund. During this period, 55% of funding came from the US Government. The next largest individual country contributors were the United Kingdom of Great Britain and Northern Ireland  (11%), France (7%), Canada (6%), Japan (6%) and Germany (5%).
+
+
+
+
+### `r anch("Fig. 2")`<span class="fig" style="color:#F21905">Fig. 2</span> International donor funding (in `r latest_year` US\$ millions) for TB prevention, diagnosis and treatment from individual countries,^a^ 2010&ndash;`r latest_year`
+
+<img src= "../Outputs_R/FigB5.2.JPG" alt="International donor funding (in US$ millions) for TB prevention, diagnosis and treatment from individual countries" id="img_jpg">
+
+``` {r fig2 , fig.alt="International donor funding (in US$ millions) for TB prevention, diagnosis and treatment from individual countries"}
+
+# Fig2 %>% 
+#  mutate(perc = round(prop.table(Total)*100,1),
+#         ln_tot = log10(Total)) %>% 
+#  ggplot(aes(x=reorder(country,Total), y = perc, fill=ln_tot)) +
+#  geom_col()+
+#  scale_y_log10()+
+#  scale_fill_gradient(low="dark red", high="white", lim=c(0,4.5))+
+#  coord_polar()+
+#  theme_gtb() +
+#  theme(legend.position = "none")
+```
+<div class="footnote">Global Fund: Global Fund to Fight AIDS, Tuberculosis and Malaria; TB: Tuberculosis; United Kingdom: United Kingdom of Great Britain and Northern Ireland; WHO: World Health Organization.<br>
+^a^ Funding amounts include bilateral funding as well as estimated funding for TB via contributions to the Global Fund. A country’s contribution to TB funding provided by the Global Fund is assumed to be the same as its share of total contributions to the Global Fund (e.g. if a country provided 5% of the total contributions to the Global Fund, it was assumed to provide 5% of the TB funding attributed to the Global Fund).</div>
+
+`r lnk("Fig. 3")` shows that international funding for TB (US\$ 921 million in `r latest_year`) is about a third of that for malaria (US\$ 2.2 billion in `r latest_year`) and about 12% of that for HIV (US\$ 7.6 billion in `r latest_year`). Overall, TB funding constitutes 3.2% of total ODA funding for health and population programmes (US$ 29 billion in `r latest_year`).
+
+
+
+### `r anch("Fig. 3")`<span class="fig" style="color:#F21905">Fig. 3</span> International donor funding for Health and Population programmes, TB, HIV and malaria, 2010&ndash;`r latest_year`
+ 
+
+``` {r fig3 , fig.alt="Funding for TB compared with global target"}
+
+# Create a label dataset (since the graph is faceted and easiest way to label is to create this)
+# graph_labels <- FigB5.3 %>% select(x=year, y = value, name) %>% 
+#  filter(x %in% c(2010, 2013, 2017, latest_year))
+
+
+Fig3   %>% 
+ filter(year >= 2010) %>% 
+ ggplot(aes(x=year, y = value, col = name)) +
+ geom_line(size=1, alpha=.85) +
+ # geom_text(data = graph_labels, aes(x,y=y+1,label=signif(y,2)), 
+ #           col = "#222222",vjust = "top", hjust = "middle") +
+ scale_y_continuous(name = paste0("Billions (constant ", report_year-1," US$)")) +
+ scale_x_continuous("", breaks=seq(2002,latest_year,2)) +
+ scale_color_manual(values = c("#4ABAFC","#E63E13","#37F546", "#000000"),
+                    show)+
+ theme_gtb(
+  #base_size = 16, axis_text_size = 12, axis_text_face = "bold"
+ )+
+ # theme(legend.position = "none") +
+ # Add line labels
+ # annotate("text", x = latest_year-1, y = 0, label = "TB", col="#4ABAFC") +
+ # annotate("text", x = latest_year-1, y = 5, label = "HIV", col="#E63E13") +
+ # annotate("text", x = latest_year-1, y = 3, label = "Malaria", col="#37F546") +
+ # annotate("text", x = latest_year-1, y = 21, label = "Health", col="#000000") +
+ # 
+ annotate("segment", x=-Inf, 
+          xend=Inf, 
+          y=-Inf, 
+          yend=-Inf, 
+          colour = "#BCBCBC") 
+
+
+```
+
+<div class = "footnote">HIV: human immunodeficiency virus; STD: sexually transmitted disease; TB: tuberculosis. </div>
+
+## References
+
+1. Floyd K, Fitzpatrick C, Pantoja A, Raviglione M. Domestic and donor financing for tuberculosis care and control in low-income and middle-income countries: an analysis of trends, 2002–11, and requirements to meet 2015 targets. Lancet Glob Health. 2013;1(2):e105–15. doi: 10.1016/S2214-109X(13)70032-9.
+2. Floyd K, Pantoja A, Dye C. Financing tuberculosis control: the role of a global financial monitoring system. Bull World Health Organ. 2007;85(5):334–40. doi: 10.2471/blt.06.034942.
+3. Su Y, Baena IG, Harle AC, Crosby SW, Micah AE, Siroka A et al. Tracking total spending on tuberculosis by source and function in 135 low-income and middle-income countries, 2000–17: a financial modelling study. Lancet Infect Dis. 2020;20(8):929–42. doi: https://doi.org/10.1016/S1473-3099(20)30124-9.
+4. OECD.Stat [website]. Paris: Organisation for Economic Co-operation and Development; 2022 (https://stats.oecd.org).
+5. The US government and global tuberculosis efforts. San Francisco: Kaiser Family Foundation; 2021 (https://www.kff.org/global-health-policy/fact-sheet/the-u-s-government-and-global-tuberculosis-efforts/?msclkid=2a614d82caf311ecb251baaa5c42217b).
+6. US foreign assistance dashboard [website]. Washington, DC: Office of Management and Budget, Agency Congressional Budget Justifications, Congressional Appropriation Bills; 2022 (https://www.foreignassistance.gov/).
+
+
+

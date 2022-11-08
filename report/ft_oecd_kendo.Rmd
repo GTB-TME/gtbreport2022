@@ -1,0 +1,387 @@
+---
+title: "Featured topics: International funding"
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    keep_md: true
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+    
+---
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+
+# Set up the running environment ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#source("io/set_environment.r")  # particular to each person so this file is in the ignore list
+# Load packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(dplyr)
+library(tidyr)
+library(here)
+library(stringr)
+library(jsonlite)
+
+# Load TB data ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+report_year <- 2022
+
+oecd1_data <- readRDS(here('report/ft_OECD_data/FigB5_1.rds')) %>%
+  filter(donor != "Official Donors, Total") %>%
+  filter(recipient == "Developing Countries, Total" | !is.na(g_whoregion)) %>%
+  filter(year >= 2010) %>% 
+ # Prepare faceting variable, in factor form
+  mutate(g_whoregion = ifelse(is.na(g_whoregion),"LMICs",g_whoregion)) %>%
+   mutate(g_whoregion = stringr::str_to_lower(g_whoregion)) %>% 
+ mutate(g_whoregion = factor(g_whoregion,
+                             levels = c(
+                              "lmics", "afr","amr", "sea",
+                              "eur","emr","wpr"),
+                             labels = c( "Low- and middle-income\ncountriesᵃ",
+                              "WHO African Region","WHO Region of\nthe Americas", 
+                              "WHO South-East Asia\nRegion","WHO European Region", 
+                              "WHO Eastern Mediterranean\nRegion","WHO Western Pacific\nRegion" ))) %>% 
+   #Prepare series variable in factor format, ordered
+ group_by(year, donor, g_whoregion) %>% 
+ summarise_at(.vars = "value", sum, na.rm = TRUE)
+  
+oecd3_data <- readRDS(here('report/ft_OECD_data/FigB5_3.rds')) %>%
+   filter(year >= 2010) 
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+  
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+### <span style="color:#F21905">Fig. 1</span> International donor funding for TB prevention, diagnosis and treatment by source, globally and by WHO region, 2010&#8211;`r report_year-2`
+    
+<div id="fig_OECD1a"></div>
+<div class="row">
+<div class="col-md-4">
+<div id="fig_OECD1b"></div>
+<div id="fig_OECD1e"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_OECD1c"></div>
+<div id="fig_OECD1f"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_OECD1d"></div>
+<div id="fig_OECD1g"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ As per the 2022 World Bank classification.</div>
+
+<BR>
+
+### <span style="color:#F21905">Fig. 3</span> International donor funding for Health and Population programmes, TB, HIV and malaria, 2010&#8211;`r report_year-2`
+    
+<div id="fig_OECD3"></div>
+
+<BR>
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_OECD1_data = `r oecd1_data %>% pivot_wider(names_from = donor, values_from = value) %>% rename(gf=3,uk=5,us=6) %>% toJSON("rows") `; 
+
+var fig_OECD3_data = `r oecd3_data %>% pivot_wider(names_from = name, values_from = value) %>% rename(tb=2,std=3,malaria=4,total=5) %>% toJSON("rows") `; 
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+
+function tb_format_pct(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 99.5) {
+    return n.toPrecision(2)
+      } else {
+    return n.toPrecision(3)
+  } 
+}
+
+function tb_format_num(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 100) {
+    return Number(n.toPrecision(2))
+      } else {
+    return kendo.toString(n, 'n0').replace(/,/g, ' ');
+  } 
+}
+
+function createFig_OECD1(fig_ID,data,filter) {
+  	// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.g_whoregion == filter);
+  
+		$(fig_ID).kendoChart({		
+      dataSource: dataJSON,			
+			chartArea: {
+				height: 400
+			},	     
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	  
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "Global Fund",
+				field: "gf",
+				color: "#4ABAFC",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Global Fund (#= category #): #= tb_format_num(value) # million"
+			}
+			},{
+        name: "United States of America",
+				field: "us",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "United States of America (#= category #): #= tb_format_num(value) # million"
+			}
+			},{
+        name: "United Kingdom",
+				field: "uk",
+				color: "#37F546",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "United Kingdom (#= category #): #= tb_format_num(value) # million"
+			}
+			},{
+        name: "Other",
+				field: "Other",
+				color: "#000000",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Other (#= category #): #= tb_format_num(value) # million"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "Millions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+function createFig_OECD3(fig_ID,data) {
+  	// Filter the dataset on the country variable
+
+		$(fig_ID).kendoChart({		
+      dataSource: data,			
+			chartArea: {
+				height: 600
+			},	     
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line",
+			},
+			series: [{
+        name: "TB control",
+				field: "tb",
+				color: "#4ABAFC",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "TB control (#= category #): #= value.toPrecision(2) # million"
+			}
+			},{
+        name: "STD control including HIV",
+				field: "std",
+				color: "#E63E13",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "STD control including HIV (#= category #): #= value.toPrecision(2) # million"
+			}
+			},{
+        name: "Malaria control",
+				field: "malaria",
+				color: "#37F546",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Malaria control (#= category #): #= value.toPrecision(2) # million"
+			}
+			},{
+        name: "Total health and population programmes",
+				field: "total",
+				color: "#000000",
+        markers: {
+          size: 5
+        },
+        tooltip: {
+				visible: true,
+				template: "Total health and population programmes (#= category #): #= value.toPrecision(2) # million"
+			}
+			},],
+			valueAxis: {
+				labels: {
+				template: "#= kendo.format('{0}',value) #",
+				},
+				title: {
+					text: "billions (constant 2021 US$)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+					step: 2
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+$(document).ready(function() {
+    createFig_OECD1("#fig_OECD1a",fig_OECD1_data,"Low- and middle-income\ncountriesᵃ");
+  createFig_OECD1("#fig_OECD1b",fig_OECD1_data,"WHO African Region");
+  createFig_OECD1("#fig_OECD1c",fig_OECD1_data,"WHO Region of\nthe Americas");
+  createFig_OECD1("#fig_OECD1d",fig_OECD1_data,"WHO South-East Asia\nRegion");
+  createFig_OECD1("#fig_OECD1e",fig_OECD1_data,"WHO European Region");
+  createFig_OECD1("#fig_OECD1f",fig_OECD1_data,"WHO Eastern Mediterranean\nRegion");
+  createFig_OECD1("#fig_OECD1g",fig_OECD1_data,"WHO Western Pacific\nRegion");
+  createFig_OECD3("#fig_OECD3",fig_OECD3_data);
+  
+});
+
+```

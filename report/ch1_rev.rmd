@@ -1,0 +1,594 @@
+---
+title: "Chapter 1 COVID-19 & TB" 
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    keep_md: true
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch1_rev.rmd"), output_file = "ch1_rev.html", output_dir = here::here("report/html_drafts/"))
+---
+  
+  
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(RColorBrewer)
+library(whomap)
+library(gtbreport)
+library(here)
+library(ggrepel)
+library(readr)
+library(Cairo)
+
+# Get the data sets and computed values/statistics for section 3.1 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch1_prepare_data.r'))
+
+# Save PDF
+save_pdf = F
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+```
+
+# 1. COVID-19 and TB  
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+The coronavirus (COVID-19) pandemic has caused enormous health, social and economic impacts since 2020. This includes impacts on the provision of and access to essential tuberculosis (TB) services, the number of people diagnosed with TB and notified as TB cases through national disease surveillance systems, and TB disease burden (incidence and mortality). 
+
+One of the most widely available indicators that can be used to assess the impact of COVID-related disruptions on essential TB services at global, regional and country levels is the number of notifications of people diagnosed with TB. This indicator reflects impacts on access to diagnosis and treatment on both the supply side (e.g. capacity to continue to provide services) and the demand side (e.g. ability to seek care in the context of lockdowns and associated restrictions on movement, concerns about the risks of going to health care facilities during a pandemic, and stigma associated with similarities in symptoms related to TB and COVID-19).
+
+Globally in 2020, there was a substantial fall (`r round(f1.1_txt$pct_dif, 0)`%) in the number of people newly diagnosed with TB and reported to national authorities (notified cases) compared with 2019, in marked contrast to large increases between 2017 and 2019 (`r lnk("Fig. 1.1")`). There has been a partial recovery in 2021.  
+
+
+### `r anch("Fig. 1.1")`<span style="color:#F21905">Fig. 1.1</span> Global trend in case notifications of people newly diagnosed with TB, 2015&#8211;`r report_year-1`
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.1, fig.alt="Global trend in notifications of new and relapse TB cases, 2016-2021"} 
+
+ f1.1_plot <- f1.1_data %>% 
+  
+  ggplot(aes(x=year, y=c_newinc)) +
+  
+  geom_line(size=1, color="darkblue") +
+  
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) + expand_limits(y = c(5.5e6,7.5e6)) +
+
+  # display y-axis scale in millions
+  scale_y_continuous(name = "Notifications per year (millions)", 
+                     # Use the remainder operator in the labeller function to make sure we don't get weird effects
+                     # when plotting small numbers
+                     labels = function(i){ifelse((i/1e6) %% 1 == 0, round(i/1e6), round(i/1e6, 1))}) +
+
+  theme_gtb()  +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+  
+print(f1.1_plot)
+
+```
+
+<br />
+A similar pattern of increases in notifications of people newly diagnosed with TB up to 2019 followed by a sharp fall in 2020 and some recovery in 2021 is evident in two of the six WHO regions: the Americas and South-East Asia (`r lnk("Fig. 1.2")`). In the Eastern Mediterranean Region, there was a marked drop in notifications between 2019 and 2020 followed by an almost complete recovery in 2021. In the European Region, there was a clear negative impact in 2020, but the reduction from 2020–2021 was consistent with the pre-2020 trend. In the Western Pacific Region, there was no recovery in 2021. The African Region stands out as experiencing only a modest negative impact in 2020 (`r round(f1.2_txt$pct_dif, 1)`%), and notifications in 2021 were above the 2019 level. 
+
+
+
+
+### `r anch("Fig. 1.2")`<span style="color:#F21905">Fig. 1.2</span> Trends in case notifications of people newly diagnosed with TB by WHO region, 2015&#8211;`r report_year-1`
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.2, fig.alt="Trends in notifications of new and relapse TB cases by WHO region, 2017-2021",fig.height=6} 
+
+ f1.2_plot <- f1.2_data %>% 
+  
+  ggplot(aes(x=year, y=c_newinc)) +
+  
+  geom_line(size=1, color="darkblue") +
+  
+  facet_wrap( ~ entity, ncol = 3, scales="free_y") + #expand_limits(y = 0) +
+  
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+
+  # display y-axis scale in millions
+  scale_y_continuous(name = "Notifications per year (millions)", 
+                     # Use the remainder operator in the labeller function to make sure we don't get weird effects
+                     # when plotting small numbers
+                     # labels = function(i){ifelse((i/1e6) %% 1 == 0, sprintf("%0.1f", i/1e6), sprintf("%0.2f", i/1e6))}) +
+                     # labels = function(i){ifelse((i/1e6) > 1, sprintf("%0.1f", i/1e6), sprintf("%0.2f", i/1e6))}) +
+                     labels = function(i){sprintf("%0.2f", i/1e6)}) +
+  
+  geom_blank(aes(y = y_min)) +
+  geom_blank(aes(y = y_max)) +
+
+  theme_gtb()  +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+  
+
+print(f1.2_plot)
+
+```
+
+<br />
+Almost all (90%) of the global drop in the number of people newly diagnosed with TB and reported (notified) between 2019 and 2020 was accounted for by 10 countries (`r lnk("Fig. 1.3a")`); the top three, India, Indonesia and the Philippines, accounted for `r ftb(min(f1.3a_txt$cumsum))`%. In 2021, 90% of the reduction compared with 2019 was accounted for by only five countries (`r lnk("Fig. 1.3b")`). 
+
+
+
+
+### `r anch("Fig. 1.3a")`<span style="color:#F21905">Fig. 1.3</span> The top 10 countries that accounted for ≥90% of the global reduction in case notifications of people newly diagnosed with TB in 2020 and 2021, compared with 2019
+#### Countries that accounted for 90% of the reduction are shown in <span style="color:#F21905">red</span>.
+#### (a) Reduction in 2020 compared with 2019
+```{r fig_1.3a, fig.alt="Countries with the largest contributions to global shortfalls 2020",fig.height=8}
+
+f1.3a_plot <- f1.3a_data %>%
+  mutate(country = factor(country, levels = f1.3a_sel_order$country, ordered = TRUE)) %>% 
+  ggplot(aes(x=country, y=pct_contribute2020*100, fill=hit90)) + 
+  geom_bar(stat="identity", position=position_dodge()) +
+  scale_fill_manual(values = c("firebrick3")) +
+  # geom_line(aes(x=country,y=cumsum*100,group=1),color="dodgerblue3",size=1) +
+  xlab("")+ ylab("Share of reduction (%)") + 
+  expand_limits(y = 50) +
+  scale_y_continuous(breaks = seq(0, 50, by = 10)) +
+  # geom_segment(aes(x=0,y=90, yend = 90, xend = 21),linetype = "dashed",color = "grey20",size=0.9) +
+  # geom_segment(aes(x=21,y=2, yend = 90, xend = 21),linetype = "dashed",color = "grey20",size=0.9) +
+  theme_gtb() +
+  theme(legend.position = "none") +
+  coord_flip() 
+
+print(f1.3a_plot)
+
+```
+
+
+
+#### `r anch("Fig. 1.3b")`(b) Reduction in 2021 compared with 2019
+```{r fig_1.3b, fig.alt="Countries with the largest contributions to global shortfalls 2021",fig.height=8}
+
+f1.3b_plot <- f1.3b_data %>%
+  mutate(country = factor(country, levels = f1.3b_sel_order$country, ordered = TRUE)) %>% 
+  ggplot(aes(x=country, y=pct_contribute2021*100, fill=hit90)) + 
+  geom_bar(stat="identity", position=position_dodge()) +
+  scale_fill_manual(values = c("grey30","firebrick3")) +
+  # geom_line(aes(x=country,y=cumsum*100,group=1),color="dodgerblue3",size=1) +
+  xlab("")+ ylab("Share of reduction (%)") + 
+  expand_limits(y = 50) +
+  scale_y_continuous(breaks = seq(0, 50, by = 10)) +
+  # geom_segment(aes(x=0,y=90, yend = 90, xend = 26),linetype = "dashed",color = "grey20",size=0.9) +
+  # geom_segment(aes(x=26,y=11, yend = 90, xend = 26),linetype = "dashed",color = "grey20",size=0.9) +
+  theme_gtb() +
+  theme(legend.position = "none") +
+  coord_flip() 
+  
+print(f1.3b_plot)
+
+```
+<div class="footnote"> ^a^ Reductions in China and South Africa were consistent with, or a limited departure from, pre-2020 downward trends. See <span class="red">Fig. 1.6 (f)</span>.</div> 
+
+
+<br />
+Relative reductions in notifications from 2019–2020 and 2020–2021 vary considerably by country (`r lnk("Fig. 1.4")`). 
+
+
+
+### `r anch("Fig. 1.4")`<span style="color:#F21905">Fig. 1.4</span> Changes in national case notifications^a^ of people newly diagnosed with TB (%), 2019&#8211;2020 and 2019&#8211;2021 
+<span class="subhead"><span style="color:#CC0000">Red dots</span> indicate the 30 high TB burden and 3 global TB watchlist countries, <span style="color:#0000CC">blue dots</span> indicate other countries; the size of each dot is proportional to the number of national TB notifications in 2021.</span>
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=8, fig.width=14,  fig_1.4, fig.alt="Trends in monthly or quarterly notifications of TB cases from January 2020 to June 2022, selected high TB burden countries"} 
+
+f1.4_plot <- ggplot() +
+  geom_vline(aes(xintercept = 0),linetype = "dashed",color = "grey25",size=0.7) +
+  geom_hline(aes(yintercept = 0),linetype = "dashed",color = "grey25",size=0.7) +
+  # geom_abline(slope=1, intercept=0, linetype = "dashed") +
+  geom_point(data=f1.4_data,
+             aes(x=pct1920*100,y=pct1921*100,size=cn2021,color=as.factor(hbc))) +
+  scale_color_manual(values=c("dodgerblue3", "firebrick3")) +
+  geom_text_repel(
+    data = segmentation %>% filter(!is.na(country_hbc)),
+    aes(x=pct1920*100,y=pct1921*100,label = country_hbc),
+    colour = 'black', 
+    segment.alpha = 0.5, 
+    segment.linetype =3,
+    size = 3, 
+    box.padding = 0.5,
+    nudge_x = 2, hjust = "left") + 
+  # xlim(min(f1.6_data$pct1920)*100-5,max(f1.6_data$pct1920)*100+5) +
+  # ylim(min(f1.6_data$pct2021,na.rm = T)*100-5,max(f1.6_data$pct2021,na.rm = T)*100+5) +
+  scale_x_continuous(name="Change between 2019 and 2020 (%)", 
+                     breaks = seq(-70,35, by = 10)) +
+  scale_y_continuous(name="Change between 2019 and 2021 (%)",
+                     breaks = seq(-60,100, by = 10)) +
+  #   xlab('Percentage of change in TB notifications between 2019 and 2020') +
+  # ylab('Percentage of change in TB notifications between 2020 and 2021') +
+  theme_minimal() +
+  geom_rect(data = data_breaks2,
+            aes(xmin = xstart,
+                xmax = xend,
+                ymin = ystart,
+                ymax = yend,
+                fill = colors),
+            alpha = 0.1) +
+  theme(legend.position = "none")
+ 
+print(f1.4_plot)
+```
+<div class="footnote"> ^a^ Data are shown for countries that notified more than 100 TB cases in 2019.</div> 
+
+
+<br />
+Among the 30 high TB burden and 3 global TB watchlist countries (`r lnk("Fig. 1.5")`), the largest relative reductions in annual notifications between 2019 and 2020 were (ordered according to the size of the relative reduction) in `r sub("Democratic", "the Democratic", knitr::combine_words(f1.5_txt$country, oxford_comma=FALSE))` (all>20%). In 2021, there was considerable recovery in India, Indonesia and the Philippines, although not to 2019 levels. In Myanmar, the reduction in TB notifications in 2021 was even larger than in 2020. Other countries with large reductions between 2020 and 2021 included Mongolia and three other Asian countries that had been relatively unaffected in 2020: Cambodia, Thailand and Viet Nam. In several African countries, notifications in both 2020 and 2021 were higher than in 2019; Nigeria was the most striking example. Countries in which 2021 notifications recovered to above 2019 levels included Bangladesh, the Congo, Pakistan and Uganda.   
+
+
+
+### `r anch("Fig. 1.5")`<span style="color:#F21905">Fig. 1.5</span> Case notifications of people newly diagnosed with TB in 2020 and 2021 compared with 2019, 30 high TB burden and 3 global TB watchlist countries^a^
+#### The vertical dashed line marks the level of 2019.
+```{r fig_1.5, fig.alt="TB notifications in 2020 and 2021 compared with 2019",fig.height=8}
+
+f1.5_plot <- f1.5_data %>%
+  mutate(country = factor(country, levels = rev(f1.5_sel_order$country), ordered = TRUE)) %>% 
+  mutate(shortfall = factor(shortfall, labels = c("2020","2021"))) %>% 
+  ggplot(aes(x=country, y=value*100, group=shortfall)) + 
+  geom_hline(yintercept = 100,linetype = "dashed",color = "grey20",size=0.9) +
+  # geom_segment(aes(x=0,y=100, yend = 100, xend = Inf),linetype = "dashed",color = "grey20",size=0.9) +
+  geom_point(aes(col=shortfall),size=3) +
+  # facet_wrap(~ country,strip.position="bottom",ncol=20)+
+  scale_color_manual(values=c("dodgerblue3","goldenrod3")) +
+  xlab("")+ ylab("Number in 2020 and 2021 as a percentage of 2019") + 
+  scale_y_continuous(breaks = seq(0, 200, by = 10)) +
+  theme_gtb() +
+  coord_flip() +
+  theme(legend.position = "top",
+        legend.title = element_blank()) + guides(color = guide_legend(reverse = F))
+
+print(f1.5_plot)
+```
+<div class="footnote"> ^a^ The three global TB watchlist countries are Cambodia, Russian Federation and Zimbabwe (`r lnk("Annex 3")` of main report).</div> 
+
+<br />
+The 30 high TB burden and 3 global TB watchlist countries can be categorized into six groups, according to the timing and degree of disruptions to TB notifications during the COVID-19 pandemic (`r lnk("Fig. 1.6")`).
+TB detection in all countries in the first four groups has been negatively impacted by COVID-related disruptions in one or both of 2020 and 2021. Disruptions to TB detection in countries in the fifth and sixth groups appear non-existent or limited; there were either increasing TB notifications in both 2020 and 2021, or declines in both years that were consistent with, or limited departures from, pre-2020 downward trends. The countries in these two groups are mostly in the African Region, consistent with the regional data shown in `r lnk("Fig. 1.2")`. 
+
+
+
+### `r anch("Fig. 1.6")`<span style="color:#F21905">Fig. 1.6</span> Case notifications of people newly diagnosed with TB in the 30 high TB burden and 3 global TB watchlist countries, categorized according to the timing and degree of disruptions during the COVID-19 pandemic
+#### (a) Negative impact in 2020,^a^ partial recovery in 2021
+```{r fig_1.6a, fig.alt="Trends in notification - a",fig.height=9}
+f1.6a_plot <- f1.6_data %>%
+  mutate(country = factor(country, levels = f1.6a_sel_order$country, ordered = TRUE)) %>% 
+  filter(col=="a") %>%
+  ggplot(aes(x = year, y = c_newinc, group=country)) +
+  # Add shaded box to highlight the covid years
+  annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 0, ymax = Inf, 
+           colour = "#EEEEEE", alpha = 0.1) +
+  geom_line( size = 1.2, color="limegreen"
+  ) +
+  # geom_point(size = 3, color = "limegreen") +
+  # geom_point(size = 1.5, color = "white") +
+  facet_wrap(~ country,strip.position="top",ncol=3, scales="free",drop = FALSE,labeller = label_wrap_gen(width = 20))+
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+  ylab("Notifications per year") + 
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                             scientific = FALSE),
+                                 limits = function(x){c(0, max(0.1, x))}) +
+  theme_gtb() +
+  theme(strip.text.y.left = element_text(hjust=1,vjust = 1,angle=0,face="bold"),
+        strip.placement = "outside",strip.background = element_blank()
+  )
+
+print(f1.6a_plot)
+```
+<div class="footnote">^a^ Countries are shown in descending order of the relative decline (%) between 2019 and 2020, which ranged from `r ftb(max(abs(f1.6a_txt$pct_change)))`% to `r ftb(min(abs(f1.6a_txt$pct_change)))`%.</div>
+
+#### (b) Negative impact in 2020,^a^ recovery to 2019 levels or beyond in 2021
+```{r fig_1.6b, fig.alt="Trends in notification - b",fig.height=6}
+f1.6b_plot <- f1.6_data %>%
+  mutate(country = factor(country, levels = f1.6b_sel_order$country, ordered = TRUE)) %>% 
+  filter(col=="b") %>%
+  ggplot(aes(x = year, y = c_newinc, group=country)) +
+  # Add shaded box to highlight the covid years
+  annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 0, ymax = Inf, 
+           colour = "#EEEEEE", alpha = 0.1) +
+  geom_line( size = 1.2, color="limegreen"
+  ) +
+  # geom_point(size = 3, color = "limegreen") +
+  # geom_point(size = 1.5, color = "white") +
+ facet_wrap(~ country,strip.position="top",ncol=3, scales="free",drop = FALSE,labeller = label_wrap_gen(width = 20))+
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+
+  ylab("Notifications per year") + 
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                             scientific = FALSE),
+                                 limits = function(x){c(0, max(0.1, x))}) +
+  theme_gtb() +
+  theme(strip.text.y.left = element_text(hjust=1,vjust = 1,angle=0,face="bold"),
+        strip.placement = "outside",strip.background = element_blank()
+  )
+
+print(f1.6b_plot)
+```
+<div class="footnote">^a^ Countries are shown in descending order of the relative decline (%) between 2019 and 2020, which ranged from `r ftb(max(abs(f1.6b_txt$pct_change)))`% to `r ftb(min(abs(f1.6b_txt$pct_change)))`%.</div>
+
+#### (c) Negative impact in 2020,^a^ further decline in 2021
+```{r fig_1.6c, fig.alt="Trends in notification - c",fig.height=6}
+f1.6c_plot <- f1.6_data %>%
+  mutate(country = factor(country, levels = f1.6c_sel_order$country, ordered = TRUE)) %>% 
+  filter(col=="c") %>%
+  ggplot(aes(x = year, y = c_newinc, group=country)) +
+  # Add shaded box to highlight the covid years
+  annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 0, ymax = Inf, 
+           colour = "#EEEEEE", alpha = 0.1) +
+  geom_line( size = 1.2, color="limegreen"
+  ) +
+  # geom_point(size = 3, color = "limegreen") +
+  # geom_point(size = 1.5, color = "white") +
+  facet_wrap(~ country,strip.position="top",ncol=3, scales="free",drop = FALSE,labeller = label_wrap_gen(width = 20))+
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+    ylab("Notifications per year") + 
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                             scientific = FALSE),
+                                 limits = function(x){c(0, max(0.1, x))}) +
+  theme_gtb() +
+  theme(strip.text.y.left = element_text(hjust=1,vjust = 1,angle=0,face="bold"),
+        strip.placement = "outside",strip.background = element_blank()
+  )
+
+print(f1.6c_plot)
+```
+<div class="footnote">^a^ Countries are shown in descending order of the relative decline (%) between 2019 and 2020, which ranged from `r ftb(max(abs(f1.6c_txt$pct_change)))`% to `r ftb(min(abs(f1.6c_txt$pct_change)))`%.<BR>
+^b^ The Russian Federation is included here rather than group (f) because there was a clear discontinuity in the historic trend between 2019 and 2020: the decrease was `r ftb((f1.6c_txt_RUS_2020$pct_change)*(-1))`%, compared with an annual decline that ranged from `r ftb(max(f1.6c_txt_RUS$pct_change,na.rm = T)*(-1))`% to `r ftb(min(f1.6c_txt_RUS$pct_change,na.rm = T)*(-1))`% between 2015 and 2019.</div>
+
+#### (d) No or minimal negative impact in 2020,^a^ negative impact in 2021^b^ 
+```{r fig_1.6d, fig.alt="Trends in notification - d",fig.height=3.5}
+f1.6d_plot <- f1.6_data %>%
+  mutate(country = factor(country, levels = f1.6d_sel_order$country, ordered = TRUE)) %>% 
+  filter(col=="d") %>%
+  ggplot(aes(x = year, y = c_newinc, group=country)) +
+  # Add shaded box to highlight the covid years
+  annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 0, ymax = Inf, 
+           colour = "#EEEEEE", alpha = 0.1) +
+  geom_line( size = 1.2, color="limegreen"
+  ) +
+  # geom_point(size = 3, color = "limegreen") +
+  # geom_point(size = 1.5, color = "white") +
+  facet_wrap(~ country,strip.position="top",ncol=3, scales="free",drop = FALSE,labeller = label_wrap_gen(width = 20))+
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+  ylab("Notifications per year") + 
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                             scientific = FALSE),
+                                 limits = function(x){c(0, max(0.1, x))}) +
+  theme_gtb() +
+  theme(strip.text.y.left = element_text(hjust=1,vjust = 1,angle=0,face="bold"),
+        strip.placement = "outside",strip.background = element_blank()
+  )
+
+print(f1.6d_plot)
+```
+<div class="footnote">^a^ <5% decline between 2019 and 2020.<BR>
+^b^ Countries are shown in descending order of the relative decline (%) between 2019 and 2020, which ranged from `r ftb(max(f1.6d_txt$pct_change))`% to `r ftb(min(f1.6d_txt$pct_change))`%.</div>
+
+#### (e) Increases in notifications in 2020 and 2021
+```{r fig_1.6e, fig.alt="Trends in notification - e",fig.height=6}
+f1.6e_plot <- f1.6_data %>%
+  filter(col=="e") %>%
+  ggplot(aes(x = year, y = c_newinc, group=country)) +
+  # Add shaded box to highlight the covid years
+  annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 0, ymax = Inf, 
+           colour = "#EEEEEE", alpha = 0.1) +
+  geom_line( size = 1.2, color="limegreen"
+  ) +
+  # geom_point(size = 3, color = "limegreen") +
+  # geom_point(size = 1.5, color = "white") +
+  facet_wrap(~ country,strip.position="top",ncol=3, scales="free",drop = FALSE,labeller = label_wrap_gen(width = 20))+
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+   ylab("Notifications per year") + 
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                             scientific = FALSE),
+                                 limits = function(x){c(0, max(0.1, x))}) +
+  theme_gtb() +
+  theme(strip.text.y.left = element_text(hjust=1,vjust = 1,angle=0,face="bold"),
+        strip.placement = "outside",strip.background = element_blank()
+  )
+
+print(f1.6e_plot)
+```
+
+#### (f) No or limited departure from pre-2020 downward trend
+```{r fig_1.6f, fig.alt="Trends in notification - f",fig.height=6}
+f1.6f_plot <- f1.6_data %>%
+  filter(col=="f") %>%
+  ggplot(aes(x = year, y = c_newinc, group=country)) +
+  # Add shaded box to highlight the covid years
+  # annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 0, ymax = Inf, 
+  #          colour = "#EEEEEE", alpha = 0.1) +
+  geom_line( size = 1.2, color="limegreen"
+  ) +
+  # geom_point(size = 3, color = "limegreen") +
+  # geom_point(size = 1.5, color = "white") +
+  facet_wrap(~ country,strip.position="top",ncol=3, scales="free",drop = FALSE,labeller = label_wrap_gen(width = 20))+
+  scale_x_continuous(name="Year",
+                     breaks = seq(0, report_year-1, by = 1)) +
+    ylab("Notifications per year") + 
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                             scientific = FALSE),
+                                 limits = function(x){c(0, max(0.1, x))}) +
+  theme_gtb() +
+  theme(strip.text.y.left = element_text(hjust=1,vjust = 1,angle=0,face="bold"),
+        strip.placement = "outside",strip.background = element_blank()
+  )
+
+print(f1.6f_plot)
+```
+<div class="footnote"><BR>^a^ China is included here rather than group (c) because although there was some departure from the historic trend between 2019 and 2020 (a `r ftb((f1.6f_txt_CHN_2020$pct_change)*(-1))`% decline compared with a decline of `r ftb((f1.6f_txt_CHN_2019$pct_change)*(-1))`% between 2018 and 2019), there were also efforts during this period to reduce over-diagnosis. The proportion of pulmonary cases that were bacteriologically confirmed increased from 47% in 2019 to 55% in 2020 and 58% in 2021 (`r lnk("Fig 3.2.4")`). Year-to-year changes in Namibia also appear related to the proportion of cases that were bacteriologically confirmed.</div>
+
+
+<br />
+In addition to annual data, WHO is collecting monthly and quarterly national TB case notification data from more than 100 countries on an ongoing basis, to facilitate timely action in response to disruptions. These data (which are provisional) and associated visualizations are made publicly available as soon as data are reported (see https://worldhealthorg.shinyapps.io/tb_pronto/). A country example is shown in `r lnk("Fig. 1.7")`, based on data reported for India as of 3 October 2022. 
+
+
+
+### `r anch("Fig. 1.7")`<span style="color:#F21905">Fig. 1.7</span> Provisional^a^ number of monthly TB case notifications in India, 2020&#8211;`r report_year`
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_1.7, fig.alt="provisional monthly case notification in India"} 
+
+f1.7_plot <- f1.7_data %>%
+  ggplot(aes(x = month, y = value, group=year, col=as.factor(year))) +
+  geom_line( size = 1) +
+  geom_hline(yintercept = f1.7_data$ave_2019,linetype = "dashed",color = "grey20",size=0.9) +
+  annotate("text", x = 11, y = f1.7_data$ave_2019*1.05, label = "Monthly average in 2019") +
+  scale_color_manual(values=c("dodgerblue3", "limegreen","goldenrod3")) +
+  # scale_x_continuous(name="Month",
+  #                    breaks = seq(0, 12, by = 1)) +
+  ylab("Monthly notifications") + 
+  ylim(0,250000) + theme_gtb() + 
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank()) +
+  scale_y_continuous(labels = function(x) format(x, big.mark = " ",
+                                                 scientific = FALSE),
+                     limits = function(x){c(0, max(0.1, x))}) 
+
+print(f1.7_plot)
+
+```
+<div class="footnote">^a^ Monthly data are provisional and based on those reported via the WHO online system as of 6 October 2022. They may not exactly match the final annual totals that are reported.</div>
+
+<br />
+On the assumption that reductions in TB notifications reflect reductions in TB case detection (when these depart from pre-2020 trends), the disruptions to TB services evident in TB case notification data (`r lnk("Fig. 1.1")`–`r lnk("Fig. 1.6")`) are estimated to have had a major impact on TB disease burden, reversing years of progress up to 2019. The global number of TB deaths is estimated to have increased in both 2020 and 2021 (`r lnk("Section 2.1")`), while the historic decline in the TB incidence rate (new cases per 100 000 population per year) slowed in 2020 and then reversed in 2021 (`r lnk("Section 2.2")`). Negative impacts of broader TB determinants on TB incidence during the COVID-19 pandemic, such as poverty, income per capita and undernourishment (`r lnk("Section 6.3")`), are likely. However, estimation of the nature and size of such impacts requires further evidence and analysis. 
+
+Other impacts associated with the COVID-19 pandemic include a 15% decline in the number of people enrolled on treatment for drug-resistant TB in 2020 followed by a partial recovery in 2021 (`r lnk("Section 3.4")`); reductions in spending on TB prevention, diagnostic and treatment services in both 2020 and 2021, compared with 2019 (`r lnk("Section 5")`); and worsening of the global coverage of the bacille Calmette-Guérin (BCG) vaccine among children in both 2020 and 2021, with particularly noticeable reductions in the WHO regions of the Americas, South-East Asia and the Western Pacific (`r lnk("Section 4")`). This is consistent with a general fall in the coverage of childhood immunization during the COVID-19 pandemic (1). There was also a downturn in the number of people initiated on TB preventive treatment between 2019 and 2020, but the number in 2021 exceeded 2019 levels (`r lnk("Section 4")`).
+
+Other sources of information about the impact of the COVID-19 pandemic on TB include a review of data published between January 2020 and March 2021 (2), a study of changes in TB services provided in 19 countries between 2019 and 2020 (3) and a compendium of research studies related to TB and COVID-19 (4). 
+
+Data shown on this webpage are as of `r format(as.Date(csv_datestamp), format="%d %B %Y")` (see <span class="red">Annex 2</span> of the main report for more details).
+
+<hr style="border:1px solid gray20">
+
+<p><strong>References</strong></p>
+  
+<ol style="font-size:80%;text-align:left;">
+
+  <li> https://www.who.int/news-room/fact-sheets/detail/immunization-coverage.</li>
+  
+  <li> McQuaid CF, Vassall A, Cohen T, Fiekert K, White RG. The impact of COVID-19 on TB: a review of the data. Int J Tuberc Lung Dis. 2021;25(6):436–446. (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8171247).</li>
+  
+  <li> Migliori GB, Thong PM, Alffenaar J-W, Denholm J, Tadolini M, Alyaquobi F, et al. Gauging the impact of the COVID-19 pandemic on tuberculosis services: a global study. Eur Respir J. 2021 Aug 26:2101786. (https://doi.org/10.1183/13993003.01786-2021).</li>
+  
+  <li> Compendium of TB/COVID-19 studies. Geneva: World Health Organization; 2022 (https://www.who.int/teams/global-tuberculosis-programme/covid-19/compendium).</li>
+  
+</ol>
+</p>
+
+```{r eval=save_pdf}
+# this section is for saving .pdf and .csv for graphic design for PDF report - not web version!
+# fig 1
+# f1.1_data %>% write_csv(here("./report/pdf/fig01.csv"))   # write csv for Sue
+# ggsave(here('report/pdf/fig01.pdf'), plot=f1.1_plot, width=12, height=8)
+# 
+# # fig 2
+# f1.2_data %>% write_csv(here("./report/pdf/fig02.csv"))
+# ggsave(here('report/pdf/fig02.pdf'), plot=f1.2_plot, width=12, height=8)
+# 
+# # fig 3
+# f1.3a_data %>% write_csv(here("./report/pdf/fig03a.csv"))   
+# ggsave(here('report/pdf/fig03a.pdf'), plot=f1.3a_plot, width=12, height=8)
+# 
+# f1.3b_data %>% write_csv(here("./report/pdf/fig03b.csv"))   
+# ggsave(here('report/pdf/fig03b.pdf'), plot=f1.3b_plot, width=12, height=8)
+
+# fig 4
+# f1.5_data %>% write_csv(here("./report/pdf/fig04.csv"))
+# ggsave(here('report/pdf/fig04.pdf'), plot=f1.5_plot, width=12, height=8)
+
+# # fig 5
+# f1.6_data %>% write_csv(here("./report/pdf/fig05.csv"))
+# ggsave(here('report/pdf/fig05a.pdf'), plot=f1.6a_plot, width=12, height=8)
+# 
+# ggsave(here('report/pdf/fig05b.pdf'), plot=f1.6b_plot, width=12, height=8)
+# 
+# 
+# ggsave(here('report/pdf/fig05d.pdf'), plot=f1.6d_plot, width=12, height=8)
+# 
+# ggsave(here('report/pdf/fig05e.pdf'), plot=f1.6e_plot, width=12, height=8)
+# 
+# CairoPDF(here('report/pdf/fig05c.pdf'), #plot=f6.2.3_plot, 
+#          width=12, height=8)
+# f1.6c_plot
+# dev.off()
+# 
+# CairoPDF(here('report/pdf/fig05f.pdf'), #plot=f6.2.3_plot, 
+#          width=12, height=8)
+# f1.6f_plot
+# dev.off()
+
+
+```

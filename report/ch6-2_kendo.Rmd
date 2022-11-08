@@ -1,0 +1,350 @@
+---
+title: "Chapter 6.2"
+author: "Takuya Yamanaka" # Based on the test version of Chapter 5 "chapter_5_test" by Hazim 
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    css: columns.css
+    # to save intermediate .png
+    keep_md: true    
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+   
+---
+
+```{r setup, include=FALSE}
+
+# Set chunk options.
+# Results "asis" is needed to avoid xtable output being html encoded
+# Suppress messages, warnings and also the ## at the beginning of printed text
+# Set a default figure width too.
+
+knitr::opts_chunk$set(echo = FALSE,
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      fig.width = 12)
+
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(gtbreport)
+
+library(jsonlite)
+library(dplyr)
+library(here)
+
+# Get the data sets and computed values/statistics for section 6.1 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch6-2_prepare_data.r'))
+
+```
+
+```{r setup2, include=FALSE}
+# Chapter 1
+# Set options, load data, utility functions
+knitr::opts_chunk$set(echo = FALSE,
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+
+```
+
+```{css, echo=FALSE}
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+
+# 6.2 National surveys of costs faced by TB patients and their households   
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp`_  
+
+
+### <span style="color:#F21905">Fig. 6.2.1</span> National surveys of costs faced by TB patients and their households since 2015: progress and plans (as of September `r report_year`)
+
+<span class="red">**!static figure!**</span>
+
+
+
+### <span style="color:#F21905">Fig. 6.2.2</span> Timeline of national TB patient cost surveys implemented since 2015 (as of September `r report_year`)
+
+
+### <span style="color:#F21905">Fig. 6.2.3</span> Estimates of the percentage of TB patients and their households facing catastrophic costs,^a^ national surveys completed 2016&#8211;`r report_year` 
+
+<div id="fig_6_2_3a"></div>
+
+<div class="row">
+<div class="col-md-6">
+<div id="fig_6_2_3b"></div>
+</div>
+<div class="col-md-6">
+<div id="fig_6_2_3c"></div>
+</div>
+</div>
+
+
+### <span style="color:#F21905">Fig. 6.2.4</span> Distribution of costs faced by TB patients and their households in national surveys^a^ completed 2016&#8211;`r report_year`  
+
+<div id="fig_6_2_4"></div>
+
+
+
+
+### <span style="color:#F21905">Table 6.2.1</span> Status of social protection for people with TB, 30 high TB burden countries 
+
+<span class="red">**!static figure!**</span>
+
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_6_2_3a_data = `r f6.2.3a_data %>% filter(iso3!="AVE") %>% arrange(desc(catast_pct)) %>% add_row() %>% rbind.data.frame(filter(f6.2.3a_data, iso3=="AVE"))  %>% toJSON("rows")`   ;
+
+var fig_6_2_3b_data = `r f6.2.3b_data %>% arrange(desc(factor(country, levels = f6.2.3_sel_order$country, ordered = TRUE)))  %>% filter(iso3!="AVE") %>% add_row() %>% rbind.data.frame(filter(f6.2.3b_data, iso3=="AVE"))  %>% toJSON("rows")`   ;
+
+var fig_6_2_3c_data = `r f6.2.3c_data %>% arrange(desc(factor(country, levels = f6.2.3_sel_order$country, ordered = TRUE)))  %>% filter(iso3!="AVE") %>% add_row() %>% rbind.data.frame(filter(f6.2.3c_data, iso3=="AVE"))  %>% toJSON("rows")`   ;
+
+var fig_6_2_4_data = `r f6.2.4_data %>% pivot_wider(names_from = cat, values_from = value) %>% arrange(desc(p_med)) %>% toJSON("rows")`   ;
+
+</script>
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+
+/* Functions to organize number with thousands separator */
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+function tb_format_pct(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 99.9) {
+    return n.toPrecision(2)
+      } else {
+    return n.toPrecision(3)
+  } 
+}
+  
+/* Functions to create the figures */
+
+function createFig_6_2_3(fig_ID, data, color, title) {
+   
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 900
+			},	
+			title: {
+				text: title,
+				color: "black",
+				font: "bold 16px  Arial,Helvetica,sans-serif",
+        align: "left"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "bar",
+				field: 0,
+				opacity: 0
+			}, {
+        type: "line",
+				field: "catast_pct",
+        errorLowField: "catast_pct_lo",
+        errorHighField: "catast_pct_hi",
+        errorBars: {color: color, line: { width: 3 }},
+        opacity: 0,
+				color: color,
+        markers: {
+          visible: true,
+          background: color,
+          size: 10
+        },
+        
+			tooltip: {
+				visible: true,
+        background: color,
+				template: "#= category #: #= tb_format_pct(value)#%"
+			}
+			},{
+				type: "rangeArea",
+				fromField: "catast_pct_lo",
+				toField: "catast_pct_hi",
+				opacity: 0,
+        color: color,
+				tooltip: {
+					visible: true,
+          background: color,
+				format: "{0}",
+				template: "95% confidence interval (#= category #): #= tb_format_pct(value.from) #–#= tb_format_pct(value.to) #%"
+				}
+			}
+              ],
+			valueAxis: {
+				labels: {
+					format: "{0}"
+				},
+				title: {
+					text: "Percentage (%)"
+				},
+				line: {
+					visible: false
+				},
+        min: 0,
+        max: 100,
+        majorUnit: 25,
+			},
+			categoryAxis: {
+				field: "country",
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+
+
+function createFig_6_2_4(fig_ID, data, y_axis_title_text) {
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 600
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bar",
+        stack: {
+          type: "100%"
+        },
+        gap: 0.2
+			},
+			series: [{
+        name: "Direct medical",
+				field: "p_med",
+				color: "darkblue",
+        tooltip: {
+				visible: true,
+				template: "Direct medical (#= category #): #= value.toPrecision(2) #%"
+			}
+			},{
+        name: "Direct nonmedical",
+				field: "p_nmed",
+				color: "dodgerblue",
+        tooltip: {
+				visible: true,
+				template: "Direct nonmedical (#= category #): #= value.toPrecision(2) #%"
+			}
+			},{
+        name: "Indirect",
+				field: "p_indirect",
+				color: "goldenrod",
+        tooltip: {
+				visible: true,
+				template: "Indirect (#= category #): #= value.toPrecision(2) #%"
+			}
+			},
+              ],
+			valueAxis: {
+
+				title: {
+					text: "Cost breakdown (%)"
+				},
+				line: {
+					visible: false
+				},
+			},
+			categoryAxis: {
+				field: "country",
+				title: {
+					text: y_axis_title_text
+				},
+				labels: {
+					rotation: "auto"
+				},
+				majorGridLines: {
+					visible: false
+				}			}
+		});
+}
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+
+$(document).ready(function () {
+  createFig_6_2_3("#fig_6_2_3a",fig_6_2_3a_data,"dodgerblue","All TB");
+  createFig_6_2_3("#fig_6_2_3b",fig_6_2_3b_data,"green","TB (first-line treatment)ᵇ");
+  createFig_6_2_3("#fig_6_2_3c",fig_6_2_3c_data,"firebrick","Drug-resistant TBᵇ");
+  createFig_6_2_4("#fig_6_2_4",fig_6_2_4_data,"");
+
+ });  
+
+
+```

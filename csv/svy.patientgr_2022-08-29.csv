@@ -1,0 +1,5 @@
+patient.group,description
+all,All patients
+dr,Patients with drug-resistant TB
+ds,Patients with drug-sensitive TB
+hiv,HIV-positive TB patients

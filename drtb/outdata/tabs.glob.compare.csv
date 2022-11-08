@@ -1,0 +1,85 @@
+year,RR-TB incidence,RR as % TB incidence,model
+2015,515 000 (429 000 - 600 000),4.7 (3.6 - 5.7),separate_global_2
+2015,533 000 (441 000 - 625 000),4.8 (3.7 - 5.9),separate_global_4
+2015,516 000 (430 000 - 601 000),4.7 (3.6 - 5.7),separate_globalH_2
+2015,533 000 (441 000 - 625 000),4.8 (3.7 - 5.9),separate_globalH_4
+2015,516 000 (430 000 - 602 000),4.7 (3.6 - 5.7),separate_LerouxIntercept_2
+2015,536 000 (443 000 - 628 000),4.8 (3.7 - 6.0),separate_LerouxIntercept_4
+2015,517 000 (431 000 - 603 000),4.7 (3.6 - 5.7),separate_LerouxInterceptLerouxSlope_2
+2015,1 810 000 (1 620 000 - 2 000 000),16 (13 - 19),separate_LerouxInterceptLerouxSlope_4
+2015,520 000 (434 000 - 606 000),4.7 (3.6 - 5.8),together_LerouxIntercept_2
+2015,538 000 (445 000 - 631 000),4.9 (3.7 - 6.0),together_LerouxIntercept_4
+2015,519 000 (433 000 - 604 000),4.7 (3.6 - 5.7),together_LerouxInterceptLerouxSlope_2
+2015,711 000 (521 000 - 902 000),6.4 (4.4 - 8.4),together_LerouxInterceptLerouxSlope_4
+2016,496 000 (422 000 - 570 000),4.6 (3.7 - 5.5),separate_global_2
+2016,510 000 (433 000 - 588 000),4.7 (3.7 - 5.6),separate_global_4
+2016,497 000 (423 000 - 571 000),4.6 (3.7 - 5.5),separate_globalH_2
+2016,509 000 (432 000 - 587 000),4.7 (3.7 - 5.6),separate_globalH_4
+2016,497 000 (423 000 - 571 000),4.6 (3.7 - 5.5),separate_LerouxIntercept_2
+2016,512 000 (434 000 - 591 000),4.7 (3.8 - 5.7),separate_LerouxIntercept_4
+2016,499 000 (424 000 - 573 000),4.6 (3.7 - 5.5),separate_LerouxInterceptLerouxSlope_2
+2016,1 800 000 (1 610 000 - 1 980 000),16 (14 - 19),separate_LerouxInterceptLerouxSlope_4
+2016,502 000 (427 000 - 576 000),4.6 (3.7 - 5.5),together_LerouxIntercept_2
+2016,515 000 (437 000 - 594 000),4.7 (3.8 - 5.7),together_LerouxIntercept_4
+2016,501 000 (427 000 - 575 000),4.6 (3.7 - 5.5),together_LerouxInterceptLerouxSlope_2
+2016,689 000 (502 000 - 876 000),6.3 (4.4 - 8.2),together_LerouxInterceptLerouxSlope_4
+2017,478 000 (412 000 - 543 000),4.5 (3.7 - 5.3),separate_global_2
+2017,487 000 (420 000 - 555 000),4.6 (3.7 - 5.4),separate_global_4
+2017,479 000 (413 000 - 545 000),4.5 (3.7 - 5.3),separate_globalH_2
+2017,486 000 (419 000 - 554 000),4.6 (3.7 - 5.4),separate_globalH_4
+2017,478 000 (412 000 - 545 000),4.5 (3.7 - 5.3),separate_LerouxIntercept_2
+2017,489 000 (420 000 - 558 000),4.6 (3.7 - 5.4),separate_LerouxIntercept_4
+2017,480 000 (414 000 - 547 000),4.5 (3.7 - 5.3),separate_LerouxInterceptLerouxSlope_2
+2017,1 780 000 (1 600 000 - 1 960 000),17 (14 - 19),separate_LerouxInterceptLerouxSlope_4
+2017,483 000 (417 000 - 550 000),4.5 (3.7 - 5.4),together_LerouxIntercept_2
+2017,493 000 (424 000 - 562 000),4.6 (3.8 - 5.5),together_LerouxIntercept_4
+2017,484 000 (417 000 - 550 000),4.5 (3.7 - 5.4),together_LerouxInterceptLerouxSlope_2
+2017,667 000 (481 000 - 853 000),6.2 (4.4 - 8.1),together_LerouxInterceptLerouxSlope_4
+2018,462 000 (400 000 - 524 000),4.4 (3.6 - 5.2),separate_global_2
+2018,469 000 (406 000 - 531 000),4.5 (3.7 - 5.2),separate_global_4
+2018,464 000 (402 000 - 526 000),4.4 (3.6 - 5.2),separate_globalH_2
+2018,468 000 (406 000 - 529 000),4.4 (3.7 - 5.2),separate_globalH_4
+2018,463 000 (400 000 - 525 000),4.4 (3.6 - 5.2),separate_LerouxIntercept_2
+2018,470 000 (407 000 - 534 000),4.5 (3.7 - 5.3),separate_LerouxIntercept_4
+2018,465 000 (402 000 - 529 000),4.4 (3.6 - 5.2),separate_LerouxInterceptLerouxSlope_2
+2018,1 760 000 (1 580 000 - 1 950 000),17 (14 - 19),separate_LerouxInterceptLerouxSlope_4
+2018,468 000 (406 000 - 530 000),4.4 (3.7 - 5.2),together_LerouxIntercept_2
+2018,475 000 (411 000 - 539 000),4.5 (3.7 - 5.3),together_LerouxIntercept_4
+2018,469 000 (407 000 - 532 000),4.5 (3.7 - 5.2),together_LerouxInterceptLerouxSlope_2
+2018,648 000 (462 000 - 835 000),6.2 (4.3 - 8.1),together_LerouxInterceptLerouxSlope_4
+2019,446 000 (388 000 - 505 000),4.3 (3.6 - 5.1),separate_global_2
+2019,451 000 (393 000 - 509 000),4.4 (3.6 - 5.1),separate_global_4
+2019,448 000 (389 000 - 508 000),4.3 (3.6 - 5.1),separate_globalH_2
+2019,449 000 (392 000 - 507 000),4.3 (3.6 - 5.1),separate_globalH_4
+2019,447 000 (388 000 - 507 000),4.3 (3.6 - 5.1),separate_LerouxIntercept_2
+2019,452 000 (392 000 - 511 000),4.4 (3.6 - 5.1),separate_LerouxIntercept_4
+2019,450 000 (389 000 - 511 000),4.4 (3.6 - 5.1),separate_LerouxInterceptLerouxSlope_2
+2019,1 750 000 (1 570 000 - 1 930 000),17 (14 - 20),separate_LerouxInterceptLerouxSlope_4
+2019,452 000 (393 000 - 512 000),4.4 (3.6 - 5.1),together_LerouxIntercept_2
+2019,458 000 (398 000 - 517 000),4.4 (3.7 - 5.2),together_LerouxIntercept_4
+2019,455 000 (395 000 - 515 000),4.4 (3.6 - 5.2),together_LerouxInterceptLerouxSlope_2
+2019,629 000 (442 000 - 817 000),6.1 (4.2 - 8.0),together_LerouxInterceptLerouxSlope_4
+2020,432 000 (389 000 - 476 000),4.3 (3.8 - 4.8),separate_global_2
+2020,435 000 (392 000 - 477 000),4.3 (3.8 - 4.8),separate_global_4
+2020,434 000 (390 000 - 479 000),4.3 (3.8 - 4.8),separate_globalH_2
+2020,433 000 (392 000 - 474 000),4.3 (3.8 - 4.8),separate_globalH_4
+2020,433 000 (388 000 - 478 000),4.3 (3.8 - 4.8),separate_LerouxIntercept_2
+2020,435 000 (391 000 - 480 000),4.3 (3.8 - 4.8),separate_LerouxIntercept_4
+2020,437 000 (389 000 - 484 000),4.3 (3.8 - 4.9),separate_LerouxInterceptLerouxSlope_2
+2020,1 710 000 (1 530 000 - 1 900 000),17 (15 - 19),separate_LerouxInterceptLerouxSlope_4
+2020,438 000 (394 000 - 482 000),4.3 (3.8 - 4.8),together_LerouxIntercept_2
+2020,442 000 (398 000 - 486 000),4.4 (3.9 - 4.9),together_LerouxIntercept_4
+2020,442 000 (397 000 - 487 000),4.4 (3.9 - 4.9),together_LerouxInterceptLerouxSlope_2
+2020,611 000 (426 000 - 795 000),6.0 (4.2 - 7.9),together_LerouxInterceptLerouxSlope_4
+2021,445 000 (398 000 - 492 000),4.2 (3.7 - 4.7),separate_global_2
+2021,447 000 (401 000 - 493 000),4.2 (3.7 - 4.8),separate_global_4
+2021,447 000 (399 000 - 496 000),4.2 (3.7 - 4.8),separate_globalH_2
+2021,445 000 (400 000 - 489 000),4.2 (3.7 - 4.7),separate_globalH_4
+2021,446 000 (396 000 - 495 000),4.2 (3.7 - 4.8),separate_LerouxIntercept_2
+2021,447 000 (399 000 - 494 000),4.2 (3.7 - 4.8),separate_LerouxIntercept_4
+2021,450 000 (398 000 - 502 000),4.3 (3.7 - 4.8),separate_LerouxInterceptLerouxSlope_2
+2021,1 890 000 (1 680 000 - 2 100 000),18 (16 - 20),separate_LerouxInterceptLerouxSlope_4
+2021,451 000 (404 000 - 498 000),4.3 (3.7 - 4.8),together_LerouxIntercept_2
+2021,455 000 (408 000 - 502 000),4.3 (3.8 - 4.8),together_LerouxIntercept_4
+2021,457 000 (408 000 - 506 000),4.3 (3.8 - 4.9),together_LerouxInterceptLerouxSlope_2
+2021,619 000 (433 000 - 805 000),5.9 (4.1 - 7.7),together_LerouxInterceptLerouxSlope_4

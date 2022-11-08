@@ -1,0 +1,855 @@
+---
+title: "Section 3.2 Diagnostic testing for TB, HIV and drug-resistant TB"
+author: "Hazim Timimi"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # to save intermediate .png
+    keep_md: true 
+
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch3-2.rmd"), output_file = "ch3-2.html", output_dir = here::here("report/html_drafts/"))
+---
+
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(RColorBrewer)
+library(whomap)
+library(gtbreport)
+library(here)
+library(readr)
+
+
+# Get the data sets and computed values/statistics for section 3.2 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch3-2_prepare_data.r'))
+source(here('report/ch3-1_prepare_data.r')) # for a text to refer nummbers from table 3.1.1
+
+#source("https://gist.githubusercontent.com/hack-r/22104543e2151519c41a8f0ce042b31c/raw/01731f3176b4ee471785639533d38eda4790ab77/numbers2words.r")
+# Save PDF
+save_pdf = F
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+# 3. ref_lnk() creates a link from text to the references in the WHO style (black, italic)
+ref_lnk <- function(display_name){
+  return(paste0('<span class="refs">[', 
+                display_name, 
+                '](#refs)</span>'))
+}
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.subhead {
+  margin-top: -15px; /* Bring subheadings closer to figure headings */
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+
+
+# 3.2 Diagnosis of TB, HIV-associated TB and drug-resistant TB   
+
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+An essential step in the pathway of tuberculosis (TB) care is rapid and accurate testing to diagnose TB. In recent years, rapid molecular tests that are highly specific and sensitive have revolutionized the TB diagnostic landscape, which previously relied upon more traditional microscopy and culture methods. 
+
+People diagnosed with TB using culture, rapid molecular tests recommended by WHO, lateral flow urine LAM or sputum smear microscopy are defined as "bacteriologically confirmed" cases of TB. The microbiological detection of TB is critical because it allows people to be correctly diagnosed and started on the most effective treatment regimen as early as possible. People diagnosed with TB in the absence of bacteriological confirmation are classified as "clinically diagnosed" cases of TB. Bacteriological confirmation of TB is necessary to test for resistance to first-line and second-line anti-TB drugs; such testing can be done using rapid molecular tests, phenotypic susceptibility testing or genetic sequencing at reference-level laboratories.
+
+
+A global total of `r ftb(f3.2.1_txt$c_newinc/1e6)` million people were newly diagnosed with TB and notified as a TB case in `r report_year-1`; of these `r ftb(f3.2.1_txt$pulm/1e6)` million (`r ftb(f3.2.1_txt$pulm_pct)`%) had pulmonary TB                   (<span style="red">Table 3.1.1</span>). Worldwide, there has been an improvement in the percentage with bacteriological confirmation in recent years, including an increase from `r ftb(f3.2.1_txt$bc_pct_2020)`% in `r report_year-2` to `r ftb(f3.2.1_txt$bc_pct_2021)`% in `r report_year-1` (`r lnk("Fig. 3.2.1")`). The highest percentages are in the European Region and the Region of the Americas, with improvements to comparable levels still needed in other regions. 
+
+
+### `r anch("Fig. 3.2.1")`<span class="red">Fig. 3.2.1</span> Percentage of people newly diagnosed with  pulmonary TB who were bacteriologically confirmed, globally and for WHO regions,^a^ 2000&#8211;`r report_year-1`
+
+
+```{r fig_3.2.1, fig.alt="Panel plot of TB cases with bacteriological confirmation by WHO region and globally since 2000"}
+
+f3.2.1_plot <- f3.2.1_data %>% 
+  
+  ggplot(aes(x=year, y=bacconf_pct)) +
+    geom_line(size = 1.5, colour = "seagreen4") +
+    scale_x_continuous(name="Year",
+                       breaks = c(2000, 2005, 2010, 2015, report_year-1)) +
+    scale_y_continuous(name = "Percentage bacteriologically confirmed") +
+    expand_limits(y=c(0,100)) +
+    facet_wrap( ~ entity, ncol = 4) +
+
+    theme_gtb() +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+
+print(f3.2.1_plot)
+
+```
+<div id="fig_3_2_1_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_1_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_1_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_1_wpro"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ The calculation for years prior to 2013 is based on smear results, except for the European Region where data on confirmation by culture was also available for the period 2002&#8211;2012.</div>
+
+
+
+<br />
+There is considerable country variation (`r lnk("Fig. 3.2.2")`) in the proportion of people diagnosed with a new episode of pulmonary TB who were bacteriologically confirmed in `r report_year-1`. 
+
+### `r anch("Fig. 3.2.2")`<span class="red">Fig. 3.2.2</span> Percentage of people newly diagnosed with pulmonary TB who were bacteriologically confirmed at country level,^a^ `r report_year-1`
+
+```{r fig_3.2.2, fig.alt="World map showing percent of TB cases with bacteriological confirmation"}
+
+f3.2.2_plot <- f3.2.2_data %>% 
+
+  whomap(colours = brewer.pal(4, "Greens"),
+         legend.title = "Percentage (%)",
+         na.col = "white",
+         water.col = "white")
+
+
+print(f3.2.2_plot)
+
+```
+
+
+
+<br />
+In general, levels of confirmation are lowest in low-income countries and highest in high-income countries (`r lnk("Fig. 3.2.3")`), where there is wide access to the most sensitive diagnostic tests. Over-reliance on direct sputum smear microscopy is inherently associated with a relatively high proportion of pulmonary TB cases that are clinically diagnosed, as opposed to bacteriologically confirmed. 
+
+### `r anch("Fig. 3.2.3")`<span class="red">Fig. 3.2.3</span> The proportion of people newly diagnosed with pulmonary TB who were bacteriologically confirmed in `r report_year-1`,^a^ by country income group  
+<div class="subhead">Boxes indicate the first, second (median) and third quartiles weighted by a country’s number of notified cases of pulmonary TB; vertical lines extend to the minimum and maximum values. Countries with less than 100 cases are excluded.</div> 
+
+```{r fig_3.2.3, fig.height=8, fig.alt="Boxplot showing proportion of pulmonary TB cases that were bacteriologically confirmed by World Bank country income group. "} 
+
+f3.2.3_plot <- f3.2.3_data %>%
+  filter(year == report_year-1 & !is.na(income) & bacconf_pct_denominator>=100) %>%
+  ggplot(aes(x=income, y=bacconf_pct*100, fill=income)) + 
+  geom_boxplot() +
+  scale_fill_brewer(palette="Blues")+
+  xlab('Income group') + ylab('Percent confirmed') +
+  theme_gtb()
+
+print(f3.2.3_plot)
+
+# ggplot(filter(conf, year == report_year-1 & !is.na(income)) +
+#   geom_boxplot(
+#     aes(
+#       x = income,
+#       y = bacconf_pct*100,
+#       ymin = conf.min * 100,
+#       lower = conf.q1 * 100,
+#       middle = conf.med * 100,
+#       upper = conf.q3 * 100,
+#       ymax = conf.max * 100,
+#       group = income,
+#       fill=income
+#     ),
+#     stat = 'identity',
+#   ) +
+#     scale_fill_brewer()+
+#     xlab('Income group') + ylab('Percent confirmed') +
+#     theme_gtb()
+
+```
+<div id="fig_3_2_3"></div>
+
+<div class="footnote">^a^ Data are for notified cases.</div>
+
+
+
+<br />
+In the 30 high TB burden countries (`r lnk("Fig. 3.2.4")`), variation in the proportion of people diagnosed with pulmonary TB who were bacteriologically confirmed likely reflects differences in diagnostic and reporting practices. Countries with relatively high levels of bacteriological confirmation (around 75%) include `r sub("Democratic", "the Democratic", knitr::combine_words(f3.2.4_txt_list_hi$country, oxford_comma=FALSE))`. There is clear scope for improvement in most other countries; this is particularly needed in countries such as Mozambique and Philippines, where worrying declines have been reported in recent years. These declines show overdependence on clinical diagnosis of TB and potentially over-diagnosis. When the proportion of people diagnosed with pulmonary TB based on bacteriological confirmation falls below 50%, a review of the diagnostic tests in use and the validity of clinical diagnoses is warranted (e.g. via a clinical audit).
+
+### `r anch("Fig. 3.2.4")`<span class="red">Fig. 3.2.4</span> Percentage of people newly diagnosed^a^ with pulmonary TB who were bacteriologically confirmed, 30 high TB burden countries, 2000&#8211;`r report_year-1`
+
+
+```{r fig_3.2.4, fig.alt="Panel plot of TB cases with bacteriological confirmation for 30 countries since 2000", fig.height=12}
+
+f3.2.4_plot <- f3.2.4_data %>% 
+  
+  ggplot(aes(x=year, y=bacconf_pct)) +
+  geom_line(size = 1.5, colour = "seagreen4") +
+  scale_x_continuous(name="Year",
+                     breaks = c(2000, 2010, report_year-1)) +
+  scale_y_continuous(name = "Percentage bacteriologically confirmed") +
+  expand_limits(y=c(0,100)) +
+  facet_wrap( ~ country, 
+              scales="free_y",
+              ncol = 5,
+              # Use the labeller function to make sure long country names are wrapped in panel headers
+              labeller = label_wrap_gen(width = 20)) +
+
+  theme_gtb() +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+print(f3.2.4_plot)
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_BRA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_CHN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_COG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_COD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_ETH"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_GAB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_IND"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_IDN"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_KEN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_LSO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_LBR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_MOZ"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_MMR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_NGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_PAK"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_PNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_PHL"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_SLE"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_ZAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_THA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_UGA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_4_TZA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_4_ZMB"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ Data are for notified cases.</div>
+
+
+
+<br />
+Globally in `r report_year-1`, a WHO-recommended rapid diagnostic test was used as the initial diagnostic test for `r ftb(f3.2.5_txt$newinc_rdx_2021/1e6)` million (`r ftb(f3.2.5_txt$wrd_pct_2021)`%) of the `r ftb(f3.2.1_txt$c_newinc/1e6)` million people newly diagnosed with TB in `r report_year-1`. This was an improvement from `r ftb(f3.2.5_txt$wrd_pct_2020)`% in `r report_year-2` and `r ftb(f3.2.5_txt$wrd_pct_2019)`% in  `r report_year-3`. There was substantial variation among countries (`r lnk("Fig. 3.2.5")`). Among the 30 high TB burden countries, those with very high proportions (above 90%) included `r sub("Democratic", "the Democratic", knitr::combine_words(f3.2.5_txt_list$country, oxford_comma=FALSE))`. Among the 49 countries in one of the three global lists of high burden countries (for TB, HIV-associated TB and MDR/RR-TB) being used by WHO in the period 2021&#8211;2025 (<span class="red">Annex 3</span>), `r f3.2.5_txt$hbcs_2021` reported that a WHO-recommended rapid diagnostic test had been used as the initial test for more than half of their notified TB cases in `r report_year-1`, up from `r f3.2.5_txt$hbcs_2020` in `r report_year-2` and `r f3.2.5_txt$hbcs_2019` in `r report_year-3`. 
+
+### `r anch("Fig. 3.2.5")`<span class="red">Fig. 3.2.5</span> Percentage of people newly diagnosed with TB who were initially tested with a WHO-recommended rapid test at country level,^a^ `r report_year-1`
+
+```{r fig_3.2.5, fig.alt="World map showing percent of TB cases tested with rapid diagnostics"}
+
+f3.2.5_plot <- f3.2.5_data %>% 
+  
+  whomap(colours = brewer.pal(5, "Purples"),
+         legend.title = "Percentage (%)",
+         na.col = "white",
+         water.col = "white")
+
+print(f3.2.5_plot)
+
+```
+<div class="footnote">^a^ Data are for notified cases.</div>
+
+
+
+<br />
+In `r report_year-1`, the proportion of TB diagnostic sites with access to WHO-recommended rapid diagnostic tests varied considerably by country (`r lnk("Fig. 3.2.6")`). Globally, the median was at `r ftb(f3.2.6_txt$median)`% (Interquartile range (IQR): `r ftb(f3.2.6_txt$q1)`&#8211;`r ftb(f3.2.6_txt$q3)`%). Only `r f3.2.6_txt$hbc_wrd50over` of the 30 high TB burden countries reported that more than 50% of their TB diagnostic sites had access to WHO-recommended rapid diagnostic tests.
+
+### `r anch("Fig. 3.2.6")`<span class="red">Fig. 3.2.6</span> Proportion of diagnostic sites for TB with access to WHO-recommended rapid tests at country level, `r report_year-1`
+
+```{r fig_3.2.6, fig.alt="World map showing proportion of diagnostic sites with WRDs"}
+
+f3.2.6_plot <- f3.2.6_data %>% 
+  
+  whomap(colours = brewer.pal(5, "Blues"),
+         legend.title = "Proportion (%)",
+         na.col = "white",
+         water.col = "white")
+
+print(f3.2.6_plot)
+
+```
+
+
+
+<br />
+The number of WHO-recommended rapid TB diagnostic tests used per capita also provides an indication of the reach of rapid testing. There is substantial variation among the 30 high TB burden countries (`r lnk("Fig. 3.2.7")`). The `r int2word(f3.2.7_txt$hbc_wrd1000over)` countries that exceeded 1000 tests per 100 000 population were all in the African Region :`r sub("Democratic", "the Democratic", knitr::combine_words(f3.2.7_txt_list$country, oxford_comma=FALSE))`.
+
+### `r anch("Fig. 3.2.7")`<span class="red">Fig. 3.2.7</span> Number of WHO-recommended rapid tests used per 100 000 population, 30 high TB burden countries, WHO regions and globally, `r report_year-1`
+
+```{r fig_3.2.7b, fig.alt="plot showing number of WHO-recommended rapid diagnostic tests - a", fig.asp=1}
+f3.2.7b_plot <- f3.2.7b_data %>%
+
+  # mutate(entity = factor(entity, levels = rev(f3.2.9b_data$entity), ordered = TRUE)) %>%
+
+  ggplot(aes(x=entity,
+             y=median)) +
+  geom_point(size=4,
+             colour="dodgerblue3") +
+
+  labs(x="",
+       y="Number") +
+
+  # geom_pointrange(aes(ymin=q1,
+  #                     ymax=q3),
+  #                 size=1,
+  #                 colour="dodgerblue3") +
+
+  expand_limits(y=0) + ylim(0,3500) +
+  coord_flip() +
+  theme_gtb() 
+
+print(f3.2.7b_plot)
+
+```
+<div id="fig_3_2_7"></div>
+
+
+<br />
+The percentage of people initially tested with a WHO-recommended rapid test who had a positive test result provides an indication of the level of case-finding efforts (`r lnk("Fig. 3.2.8")`). A low percentage suggests a lack of precision in deciding who to test, while a high percentage suggests suboptimal efforts to detect people with TB. In `r report_year-1`, there was considerable variation among the 30 high TB burden countries and WHO regions.
+
+### `r anch("Fig. 3.2.8")`<span class="red">Fig. 3.2.8</span> Percentage of people initially tested for TB with a WHO-recommended rapid test who had a positive test result, 30 high TB burden countries, WHO regions and globally,^a^ `r report_year-1`
+```{r fig_3.2.8, fig.alt="Forest plot showing proportion of positive WHO-recommended rapid diagnostic tests", fig.asp=1}
+
+f3.2.8_plot <- f3.2.8_data %>% 
+
+  ggplot(aes(x=entity,
+             y=median)) +
+  geom_point() +
+  
+  labs(x="",
+       y="Proportion (%)") +
+  
+  geom_pointrange(aes(ymin=q1,
+                      ymax=q3),
+                  size=1,
+                  colour="limegreen") +
+  
+  expand_limits(y=0) +
+  coord_flip() +
+  theme_gtb() 
+  
+print(f3.2.8_plot)
+# 
+# f3.2.8c_plot <- ggdraw() +
+#   draw_plot(f3.2.8b_plot, x=0,   y=0, width=0.60, height=1) +
+#   draw_plot(f3.2.7b_plot, x=0.60, y=0, width=0.40, height=1) 
+# print(f3.2.8c_plot)
+
+```
+<div id="fig_3_2_8"></div>
+
+<div class="footnote">^a^ Median and interquartile range are shown for WHO regions and globally.</div>
+
+
+
+<br />
+The number of WHO-recommended rapid tests used per person notified as a TB case also provides an indication of the level of diagnostic effort based on rapid tests. In `r report_year-1`, the number of rapid tests per notified case varied widely in the 30 high TB burden countries, from under 2 in `r f3.2.9b_txt` countries to a high of `r ftb(f3.2.9b_txt_list$median)` in `r f3.2.9b_txt_list$entity` (`r lnk("Fig. 3.2.9")`).
+
+### `r anch("Fig. 3.2.9")`<span class="red">Fig. 3.2.9</span> Number of WHO-recommended rapid diagnostic tests per person notified as a TB case (new and relapse cases, all forms), 30 high TB burden countries, `r report_year-1`
+```{r fig_3.2.9b, fig.alt="Forest plot showing WHO-recommended rapid diagnostic tests per notification", fig.asp=1}
+
+f3.2.9b_plot <- f3.2.9b_data %>%
+
+  # mutate(entity = factor(entity, levels = rev(f3.2.9b_data$entity), ordered = TRUE)) %>%
+
+  ggplot(aes(x=entity,
+             y=median)) +
+  geom_point(colour="goldenrod3", size = 4) +
+
+  labs(x="",
+       y="Number") +
+
+  # geom_pointrange(aes(ymin=q1,
+  #                     ymax=q3),
+  #                 size=1,
+  #                 colour="goldenrod3") +
+
+  expand_limits(y=0) + ylim(0,15) +
+  coord_flip() +
+  theme_gtb() 
+
+print(f3.2.9b_plot)
+```
+<div id="fig_3_2_9"></div>
+
+
+<br />
+Of the `r ftb(f3.2.1_txt$c_newinc/1e6)` million people newly diagnosed with TB globally in `r report_year-1`, `r ftb(f3.2.10_txt$Global_2021)`% had a documented HIV test result, up from `r ftb(f3.2.10_txt$Global_2020)`% in `r report_year-2` (`r lnk("Fig. 3.2.10")`). At regional level, the highest percentages were achieved in the WHO African and European regions.
+
+### `r anch("Fig. 3.2.10")`<span class="red">Fig. 3.2.10</span> Percentage of new and relapse TB cases^a^ with documented HIV status, globally and for WHO regions^b^, 2004&#8211;`r report_year-1`
+
+```{r fig_3.2.10, fig.alt="Panel plot of TB cases with known HIV status by WHO region and globally since 2004"}
+
+f3.2.10_plot <- f3.2.10_data %>% 
+  
+  ggplot(aes(x=year, y=hivstatus_pct)) +
+  
+  geom_line(size = 1.5, colour = "#FA4871") +
+  
+  scale_x_continuous(name= "Year", breaks = c(2004, 2008, 2012, 2016, report_year-1)) +
+  scale_y_continuous(name = "Percentage with documented HIV status") +
+  expand_limits(y=c(0,100)) +
+  facet_wrap( ~ entity, ncol = 4) +
+  
+  theme_gtb() +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+  
+
+print(f3.2.10_plot)
+
+```
+<div id="fig_3_2_10_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_10_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_10_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_10_wpro"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ The calculation is for all cases in years prior to 2015.  
+^b^ Countries were excluded if the number with documented HIV status was not reported to WHO.</div>
+
+
+
+<br />
+There was considerable variation at national level (`r lnk("Fig. 3.2.11")`). In `r f3.2.11_txt$over_90` countries and territories, at least 90% of people diagnosed with TB knew their HIV status. In most countries, the percentage was above 50%, but in a small number of countries it is still the case that fewer than half of the people diagnosed with TB know their HIV status.
+
+### `r anch("Fig. 3.2.11")`<span class="red">Fig. 3.2.11</span> Percentage of people newly diagnosed with TB whose HIV status was documented at country level, `r report_year-1`
+
+```{r fig_3.2.11, fig.alt="World map showing percent of TB cases with known HIV status"}
+
+f3.2.11_plot <- f3.2.11_data %>% 
+  
+  whomap(colours = brewer.pal(4, "RdPu"),
+         legend.title = "Percentage (%)",
+         na.col = "white",
+         water.col = "white")
+
+print(f3.2.11_plot)
+
+```
+
+<br />
+Worldwide, a total of `r int_spacer(t3.1.1_txt$newrel_hivpos)` cases of TB among people living with HIV were notified in `r report_year-1` (<span class="red">Table 3.1.1</span>), equivalent to `r ftb(f3.2.10_txt$hivtest_pos_pct)`% of the `r ftb(f3.2.10_txt$hivtest_pos_pct_denominator/1e6)` million people diagnosed with TB who had an HIV test result. Overall, the percentage of people diagnosed with TB who had an HIV-positive test result has fallen globally over the past 10 years. 
+
+Bacteriological confirmation of TB is necessary to test for drug-resistant TB. In `r report_year-1`, `r ftb(f3.2.12_txt$dst_pct_Global_2021)`% of people with bacteriologically confirmed TB were tested for resistance to rifampicin (the most effective first-line anti-TB drug), the same level as in in `r report_year-2` (`r lnk("Fig. 3.2.12")`). There were declines in the WHO South-East Asia and Western Pacific regions, which contrasted with improvements in the WHO regions of Africa, the Americas and the Eastern Mediterranean. 
+
+### `r anch("Fig. 3.2.12")`<span class="red">Fig. 3.2.12</span> Percentage of people diagnosed with bacteriologically confirmed TB who were tested for rifampicin-resistant TB (RR-TB^a^), globally and for WHO regions, 2009&#8211;`r report_year-1`
+
+```{r fig_3.2.12, fig.alt="Panel plot of TB cases tested for susceptibility to rifampicin by WHO region and globally since 2009"}
+
+f3.2.12_plot <- f3.2.12_data %>% 
+  
+  ggplot(aes(x=year, y=dst_pcnt, ymin=0)) +
+  geom_line(size = 1.5, colour = "#e52000") +
+
+  facet_wrap( ~ entity, ncol = 4, scales="fixed") +
+  scale_x_continuous(breaks = c(2009, 2015, report_year-1)) +
+  scale_y_continuous(name = "Percentage tested") +
+  expand_limits(y=c(0,100)) +
+  xlab("Year") +
+
+  theme_gtb() +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+print(f3.2.12_plot)
+
+```
+<div id="fig_3_2_12_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_12_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_12_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_12_wpro"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ Includes both new and previously treated cases; data for 2017 onwards are for pulmonary cases only.</div>
+
+<br />
+There was considerable variation in the coverage of testing for rifampicin-resistant TB (RR-TB) among countries (`r lnk("Fig. 3.2.13")`). There are 30 countries (see <span class="red">Annex 3</span> of the main report PDF) that WHO has defined as high burden for multidrug-resistant/RR-TB (MDR/RR-TB; MDR-TB is defined as resistance to both rifampicin and isoniazid). Of these, `r nrow(f3.2.13_txt)` reached coverage of testing for RR-TB of more than 80% in `r report_year-1`: `r gsub("(Philip)|(Republic)|(Russian)", "the \\1\\2\\3", knitr::combine_words(f3.2.13_txt$country, oxford_comma=FALSE))`.
+
+### `r anch("Fig. 3.2.13")`<span class="red">Fig. 3.2.13</span> Percentage of people diagnosed with bacteriologically confirmed TB who were tested for rifampicin-resistant TB  (RR-TB^a^) at country level, `r report_year-1`
+
+```{r fig_3.2.13, fig.alt="World map showing percent of TB cases tested for susceptibility to rifampicin"}
+
+f3.2.13_plot <- f3.2.13_data %>% 
+  
+  whomap(colours = brewer.pal(4, "Reds"),
+         legend.title = "Percentage (%)",
+         na.col = "White",
+         water.col = "white")
+
+print(f3.2.13_plot)
+
+```
+<div class="footnote">^a^ Includes both new and previously treated cases; data are for pulmonary cases only.</div>
+
+
+
+<br />
+Among people tested for RR-TB, a total of `r int_spacer(f3.2.14_txt$conf_rr_nfqr_2021)` cases of MDR/RR-TB and `r int_spacer(f3.2.14_txt$conf_rr_fqr_2021)` cases of pre-XDR-TB or XDR-TB were detected (<span class="red">Table 3.1.1</span>), for a combined total of `r int_spacer(f3.2.14_txt$rr_nfqr_fqr_2021)`. This was a small increase (`r ftb(f3.2.14_txt$rr_nfqr_pct_dif_2021)`%) from a combined total of `r int_spacer(f3.2.14_txt$rr_nfqr_fqr_2020)` in `r report_year-2`, and smaller than the `r ftb(f3.2.14_txt$c_newinc_pct_dif_2021)`% increase in the number of people diagnosed and reported with TB between `r report_year-2` and `r report_year-1` (<span class="red">Section 3.1</span>).
+
+The global and regional coverage of testing for susceptibility to fluoroquinolones, which is necessary to determine the most appropriate treatment regimen for people with RR-TB, is lower than the coverage of testing for RR-TB (`r lnk("Fig. 3.2.14")`). The highest coverage in `r report_year-1` was in the WHO European Region.
+
+### `r anch("Fig. 3.2.14")`<span class="red">Fig. 3.2.14</span> Percentage of people diagnosed with rifampicin-resistant TB (RR-TB) who were tested for susceptibility to fluoroquinolones^a^, globally and for WHO regions, 2015&#8211;`r report_year-1`
+
+```{r fig_3.2.14, fig.alt="Panel plot of RR-TB cases tested for susceptibility to fluoroquinolones by WHO region and globally since 2015"}
+
+f3.2.14_plot <- f3.2.14_data %>% 
+  
+  ggplot(aes(x=year, y=fqdst_pct, ymin=0)) +
+  geom_line(size = 1.5, colour = "#277abe") +
+  
+  scale_x_continuous(name="Year",
+                     breaks = seq(2015, report_year-1)) +
+  scale_y_continuous(name = "Percentage tested") +
+  expand_limits(y=c(0,100)) +
+  facet_wrap( ~ entity, ncol = 4) +
+
+  theme_gtb() +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+
+print(f3.2.14_plot)
+
+```
+<div id="fig_3_2_14_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_14_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_3_2_14_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_3_2_14_wpro"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ Testing in years prior to 2019 also included susceptibility to second-line injectables.</div>
+
+
+
+<br />
+There is considerable country variation in the proportion of people diagnosed with RR-TB who were tested for susceptibility to fluoroquinolones (`r lnk("Fig. 3.2.15")`).
+
+### `r anch("Fig. 3.2.15")`<span class="red">Fig. 3.2.15</span> Percentage of people diagnosed with rifampicin-resistant TB (RR-TB) who were tested for susceptibility to fluoroquinolones at country level, `r report_year-1`
+
+```{r fig_3.2.15, fig.alt="World map showing percent of MDR/RR-TB cases tested for susceptibility to fluoroquinolones"}
+
+f3.2.15_plot <- f3.2.15_data %>% 
+  
+  whomap(colours = brewer.pal(4, "Blues"),
+         legend.title = "Percentage (%)",
+         na.col = "White",
+         water.col = "white")
+
+print(f3.2.15_plot)
+
+```
+
+
+<br />
+Bedaquiline is recommended by WHO as part of treatment regimens for people with MDR/RR-TB and pre-extensively-resistant TB (pre-XDR-TB). Since 2021, pre-XDR-TB is defined as MDR/RR-TB plus resistance to any fluoroquinolone. The percentage of people with pre-XDR-TB tested for susceptibility to bedaquiline remains low in most parts of the world (`r lnk("Fig. 3.2.16")`).
+
+
+### `r anch("Fig. 3.2.16")`<span class="red">Fig. 3.2.16</span> Percentage of people diagnosed with pre-XDR-TB^a^ who were tested for susceptibility to bedaquiline at country level, `r report_year-1`
+
+```{r fig_3.2.16, fig.alt="World map showing percent of pre-XDR-TB cases tested for susceptibility to bedaquiline"}
+
+f3.2.16_plot <- f3.2.16_data %>% 
+  
+  whomap(colours = brewer.pal(4, "Greens"),
+         legend.title = "Percentage (%)",
+         na.col = "White",
+         water.col = "white")
+
+print(f3.2.16_plot)
+
+```
+<div class="footnote">^a^ Defined as MDR/RR-TB plus resistance to any fluoroquinolone.</div>
+
+
+<br />
+Linezolid is also recommended by WHO as part of treatment regimens for MDR/RR-TB as well as pre-XDR-TB. The percentage of people with pre-XDR-TB tested for susceptibility to linezolid remains low in most parts of the world (`r lnk("Fig. 3.2.17")`).
+
+
+### `r anch("Fig. 3.2.17")`<span class="red">Fig. 3.2.17</span> Percentage of people diagnosed with pre-XDR-TB^a^ who were tested for susceptibility to linezolid at country level, `r report_year-1`
+
+```{r fig_3.2.17, fig.alt="World map showing percent of pre-XDR-TB cases tested for susceptibility to linezolid"}
+
+f3.2.17_plot <- f3.2.17_data %>% 
+  
+  whomap(colours = brewer.pal(4, "Oranges"),
+         legend.title = "Percentage (%)",
+         na.col = "White",
+         water.col = "white")
+
+print(f3.2.17_plot)
+
+```
+<div class="footnote">^a^ Defined as MDR/RR-TB plus resistance to any fluoroquinolone.</div>
+
+
+Further country-specific details about diagnostic testing for TB, HIV-associated TB and anti-TB drug resistance are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data#app) and [country profiles](https://worldhealthorg.shinyapps.io/tb_profiles/).
+
+Data shown on this webpage are as of `r format(as.Date(csv_datestamp), format="%d %B %Y")` (see <span class="red">Annex 2</span> of the main report for more details).
+
+`r anch("refs")`
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+1. WHO consolidated guidelines on tuberculosis. Module 3: Diagnosis – rapid diagnostics for tuberculosis detection 2021 update. Geneva: World Health Organization; 2021 (https://www.who.int/publications/i/item/9789240029415).
+  
+2. Definitions and reporting framework for tuberculosis – 2013 revision (updated December 2014) (WHO/HTM/TB/2013.2). Geneva: World Health Organization; 2013 (https://apps.who.int/iris/bitstream/handle/10665/79199/9789241505345_eng.pdf).
+  
+3. WHO policy on collaborative TB/HIV activities – guidelines for national programmes and other stakeholders. Geneva: World Health Organization; 2012 (http://apps.who.int/iris/bitstream/handle/10665/44789/9789241503006_eng.pdf).
+  
+4. WHO consolidated guidelines on tuberculosis. Module 4: Treatment – drug-resistant tuberculosis treatment. Geneva: World Health Organization; 2021 (https://www.who.int/publications/i/item/9789240007048).
+  
+5.  Meeting report of the WHO expert consultation on the definition of extensively drug-resistant tuberculosis, Geneva: World Health Organization; 2021 (https://www.who.int/publications/i/item/meeting-report-of-the-who-expert-consultation-on-the-definition-of-extensively-drug-resistant-tuberculosis).
+  
+</div>
+
+```{r eval=save_pdf}
+# this section is for saving .pdf and .csv for graphic design for PDF report - not web version!
+# fig 26
+f3.2.1_data %>% write_csv(here("./report/pdf/fig26.csv"))   # write csv for Sue
+ggsave(here('report/pdf/fig26.pdf'), plot=f3.2.1_plot, width=12, height=8)
+
+# fig 27
+f3.2.5_data %>% write_csv(here("./report/pdf/fig27.csv"))   # write csv for Sue
+ggsave(here('report/pdf/fig27.pdf'), plot=f3.2.5_plot, width=12, height=8)
+
+
+```

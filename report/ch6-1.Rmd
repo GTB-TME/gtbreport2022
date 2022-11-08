@@ -1,0 +1,483 @@
+---
+title: "Chapter 6.1"
+author: "Takuya Yamanaka" # Based on the test version of Chapter 5 "chapter_5_test" by Hazim 
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # to save intermediate .png
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is needed to avoid xtable output being html encoded
+# Suppress messages, warnings and also the ## at the beginning of printed text
+# Set a default figure width too.
+
+knitr::opts_chunk$set(echo = FALSE,
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      fig.width = 12)
+
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(RColorBrewer)
+library(whomap)
+library(gtbreport)
+library(ggrepel)
+library(here)
+
+# Get the data sets and computed values/statistics for section 6.1 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch6-1_prepare_data.r'))
+
+# Save PDF
+save_pdf = FALSE
+
+# Quick functions for callouts in the text to the figures/tables:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[', 
+                display_name, 
+                '](#', 
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="', 
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+# 3. ref_lnk() creates a link from text to the references in the WHO style (black, italic)
+ref_lnk <- function(display_name){
+  return(paste0('<span class="refs">[', 
+                display_name, 
+                '](#refs)</span>'))
+}
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+  
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.subhead {
+  margin-top: -15px; /* Bring subheadings closer to figure headings */
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+.refs, .refs a {
+  color: #3c4245;  /* match SF normal text colour */
+  font-style: italic;
+}
+
+```
+
+
+# 6.1 Universal Health Coverage and TB determinants  
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+Universal health coverage (UHC) means that everyone can obtain the health services they need without suffering financial hardship (`r ref_lnk("1")`). Target 3.8 of the United Nations (UN) Sustainable Development Goals (SDGs) is to achieve UHC by 2030 (`r ref_lnk("2")`). The milestones and targets for reductions in TB incidence and TB mortality set in the World Health Organization (WHO) End TB Strategy can only be achieved if everyone who develops TB disease can access high-quality treatment. 
+
+The SDGs include two UHC indicators: (i) a health service coverage index (SCI) and (ii) the proportion of the population with large household expenditures on health as a proportion of household income of expenditure.
+
+Data for the SCI are currently available for 2000–`r report_year-3` (`r lnk("Fig. 6.1.1")`). Globally, there have been steady improvements in the SCI, from `r ftb(f6.1.1a_txt$sci_2000)` (out of 100) in 2000 to `r ftb(f6.1.1a_txt$sci_2019)` in `r report_year-3`. Improvements have been made in all WHO regions (especially in the WHO South-East Asia and Western Pacific Regions) and all World Bank income groups. 
+
+### `r anch("Fig. 6.1.1")`<span style="color:#F21905">Fig. 6.1.1</span> Trends in the UHC service coverage index in WHO regions and World Bank income groups, 2000–2019     
+  
+#### (a) By region  
+```{r fig_6.1.1a, fig.alt="Trends in the UHC service coverage index by WHO region"}
+
+f6.1.1a_plot <- 
+  f6.1.1a_data %>%
+  ggplot(aes(x=year,y=SCI,group=who_reg,col=who_reg,size=who_reg)) + 
+  geom_line() + geom_point(size=2) +
+  scale_colour_manual(values=palatte_fig6.1.1a) +
+  scale_size_manual(values=c(0.7,0.7,0.7,0.7,0.7,0.7,1.4)) +
+  theme_gtb() +
+  theme(legend.position = "none",
+        panel.grid.major.y = element_blank(),
+        axis.line.y.left = element_line(size = 0.5),
+        axis.ticks.y.left = element_line(),
+        axis.line.x = element_line(size = 0.5)) +
+  ylim(0,85) + xlab("") +
+  ylab("UHC service coverage index") +
+  geom_text_repel(
+    data = f6.1.1a_data %>% filter(year==max(year)),
+    aes(label = who_reg, segment.color=palatte_fig6.1.1a),
+    colour = 'black', 
+    segment.alpha = 0.5, 
+    segment.linetype =3,
+    size = 3, 
+    box.padding = 0.5,
+    nudge_x = 2, direction = "y", hjust = "left") + 
+  expand_limits(x=2025) +
+  scale_x_continuous(breaks = c(2000,2005,2010,2015,2020))
+
+print(f6.1.1a_plot)
+
+
+```
+<div id="fig_6_1_1a"></div>
+
+#### (b) By income group  
+```{r fig_6.1.1b, fig.alt="Trends in the UHC service coverage index by WB income group"}
+
+f6.1.1b_plot <- 
+  f6.1.1b_data %>%
+  ggplot(aes(x=year,y=SCI,group=income_group,col=income_group,size=income_group)) + 
+  geom_line() + geom_point(size=2) +
+  scale_colour_manual(values=palatte_fig6.1.1b) +
+  scale_size_manual(values=c(0.7,0.7,0.7,0.7,1.4)) +
+  theme_gtb() +
+  theme(legend.position = "none",
+        panel.grid.major.y = element_blank(),
+        axis.line.y.left = element_line(size = 0.5),
+        axis.ticks.y.left = element_line(),
+        axis.line.x = element_line(size = 0.5)) +
+  ylim(0,85) + xlab("") +
+  ylab("UHC service coverage index") +
+  geom_text_repel(
+    data = f6.1.1b_data %>% filter(year==max(year)),
+    aes(label = income_group, segment.color=palatte_fig6.1.1b),
+    colour = 'black', 
+    segment.alpha = 0.5, 
+    segment.linetype =3,
+    size = 3, 
+    box.padding = 0.5,
+    nudge_x = 2, direction = "y", hjust = "left") + 
+  expand_limits(x=2025) +
+  scale_x_continuous(breaks = c(2000,2005,2010,2015,2020))
+
+print(f6.1.1b_plot)
+
+```
+<div id="fig_6_1_1b"></div>
+<div class="footnote">Source: Global Health Observatory (https://www.who.int/data/gho)</div>
+
+
+
+
+<br />
+There is a great deal of variation in the SCI among countries (`r lnk("Fig. 6.1.2")`). In `r report_year-3`, the highest values were in high-income countries in Asia, Europe and North America, whereas the lowest values were predominantly in countries in the WHO African Region. 
+
+### `r anch("Fig. 6.1.2")`<span style="color:#F21905">Fig. 6.1.2</span> UHC service coverage index by country, 2019  
+
+```{r fig_6.1.2, fig.alt="Map of UHC service coverage index"}
+
+  whomap(f6.1.2_data,
+         colours = palatte_fig6.1.2,
+         legend.title = "Index", 
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+
+
+```
+<div class="footnote">Source: Global Health Observatory (https://www.who.int/data/gho)</div>
+
+
+
+<br />
+In contrast to improvements in the SCI, the level of financial protection for expenditures on health has been worsening globally, at least between 2010 and `r report_year-3` (global estimates for later years are not currently available). Worldwide, the proportion of the general population facing catastrophic expenditures on health (using a threshold of >10% annual household income or expenditure) rose from 9.4% in 2000 to 13% (996 million people) in 2017 (`r ref_lnk("3")`). National values are available for different years and there is more geographical variability compared with the SCI, including within regions (`r lnk("Fig. 6.1.3")`). 
+
+### `r anch("Fig. 6.1.3")`<span style="color:#F21905">Fig. 6.1.3</span> Percentage of the general population facing catastrophic health expenditure^a^ at country level, latest available year of data^b^  
+
+```{r fig_6.1.3, fig.alt="Map of Percentage of the general population facing catastrophic health expenditure"}
+
+  whomap(f6.1.3_data,
+         colours = palatte_fig6.1.3,
+         legend.title = "Percentage (%)",
+         na.col = "white",water.col = "white",
+         legend.pos = c(0.14,0.40))
+
+```
+<div class="footnote">^a^ Defined as ≥10% of total household consumption or income.<BR>^b^ The latest available year ranges from 2000 to 2019.<BR>Source: Global Health Observatory (https://www.who.int/data/gho)</div>
+
+
+
+
+<br />
+The distribution of the two UHC indicators in the 30 high TB burden countries and three global TB watchlist countries shows that, in general, values improve with income level; this is especially evident for the SCI (`r lnk("Fig. 6.1.4")`). Nonetheless, the risk of catastrophic health expenditures is high (15 or above) in several middle-income countries, including Angola, Bangladesh, Cambodia, China, India, and Nigeria. Thailand stands out as a high TB burden country with both a high SCI (80 or above) and a high level of financial protection (2% of households facing catastrophic health expenditures). A UHC scheme was established in 2002, supported by domestic funding and a strong primary health care system (`r ref_lnk("4")`). Although data post-2019 are not yet available, the COVID-19 pandemic is likely to have caused progress towards UHC to stall or reverse since 2020 in many countries.
+
+### `r anch("Fig. 6.1.4")` <span style="color:#F21905">Fig. 6.1.4</span> UHC service coverage index (SDG 3.8.1)^a^ and percentage of the general population facing catastrophic health expenditures (SDG 3.8.2),^b^ 30 high TB burden countries and three global TB watchlist countries,^c^ stratified by income group^d^
+
+```{r fig_6.1.4, fig.height=9}
+
+
+f6.1.4_plot <- f6.1.4_data %>% 
+  ggplot() +
+  geom_point(aes(x=uhc_index,y=uhc_ce10,col=g_income), size=2) +
+  facet_wrap(~g_income,ncol=1, scales="free",
+             labeller = labeller(g_income=label_income)) +
+  theme(strip.text = element_text(angle = 0, hjust = 0.001)) +
+  theme_gtb() +
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=0.5)) +
+  geom_text_repel(aes(x=uhc_index,y=uhc_ce10,label = country,col=g_income), 
+                  col='black',size=3,segment.alpha = 0.4, max.overlaps = Inf,
+                  min.segment.length = 0,
+                  point.padding = 1, box.padding = 0.5,force_pull=0.1,
+                  max.time = 10, max.iter=1000000) +
+  xlim(c(20,85)) +
+  expand_limits(y=c(-5,38)) +   xlab("UHC service coverage index (SDG 3.8.1)") + 
+  ylab("Percentage of the general population facing catastrophic health expenditure (SDG 3.8.2)")+
+  scale_color_brewer(palette="Set1") +
+  theme(legend.position = "none")
+
+print(f6.1.4_plot)
+
+```
+<div id="fig_6_1_4_LIC"></div>
+<div id="fig_6_1_4_LMIC"></div>
+<div id="fig_6_1_4_UMIC"></div>
+<div class="footnote">^a^ The SCI can take values from 0 (worst) to 100 (best) and is calculated using 16 tracer indicators, one of which is the coverage of TB treatment. Values shown for the SCI are estimates for the latest year for which data for SDG 3.8.2 are available.<br />
+^b^ Defined as ≥10% of total household consumption or income. The latest available year ranges from 2007 to 2019 for the 30 high TB burden countries.<br />
+^c^ The three global TB watchlist countries are Cambodia, Russian Federation and Zimbabwe. Data were not available for Congo, Democratic People’s Republic of Korea and Papua New Guinea.<br />
+^d^ The classification is for the latest year for which data for SDG 3.8.2 are available.<br />
+Source: Global Health Observatory (https://www.who.int/data/gho)</div>
+
+
+
+<br />
+To achieve UHC, substantial increases in investment in health are critical. From 2000 to `r report_year-3` there was a striking increase in health expenditure (from all sources) per capita in a few high TB burden countries, especially the upper-middle-income countries of Brazil, China, South Africa and Thailand (`r lnk("Fig. 6.1.5")`). A steady upward trend was evident in Bangladesh, Ethiopia, India, Indonesia, Lesotho, Mongolia, Mozambique, the Philippines and Viet Nam, and there was a noticeable rise from 2012 to 2017 in Myanmar. Elsewhere, however, levels of spending have been relatively stable, and at generally much lower levels.
+
+### `r anch("Fig. 6.1.5")`<span style="color:#F21905">Fig. 6.1.5</span> Current health expenditure per capita, 30 high TB burden countries, 2000–2019  
+#### (a) Low-income countries
+
+```{r fig_6.1.5a,fig.alt="Panel plot Current health expenditure per capita, 30 high TB burden countries, 2000–2019",fig.height=7.5}
+
+f6.1.5_data %>%
+  add_row(dummydf) %>% # to add dummy date for all 30 HBCs to avoid missing panel 
+  filter(g_income=='LIC') %>% 
+  ggplot(aes(x=year, y=value)) +
+  geom_line(size=1, colour= "#3B53A4") +
+  scale_x_continuous(name="Year", breaks = c(2000, 2010, 2020), limits=c(2000,2020)) +
+  scale_y_continuous(name = "International $") +
+  expand_limits(y=c(0,550)) + 
+  facet_wrap( ~ country, scales="free_y",ncol = 4,labeller = label_wrap_gen(width = 20)) +
+  theme_gtb() +
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf, colour = "#BCBCBC")
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_COD"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_ETH"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_LBR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_MOZ"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_SLE"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_UGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_ZMB"></div>
+</div>
+</div>
+
+  
+#### (b) Lower-middle-income countries   
+```{r fig_6.1.5b, fig.height=8 ,fig.alt="Panel plot Current health expenditure per capita, 30 high TB burden countries, 2000–2019",fig.height=10}
+
+f6.1.5_data %>%
+  add_row(dummydf) %>% # to add dummy date for all 30 HBCs to avoid missing panel 
+  filter(g_income=='LMC') %>% 
+  ggplot(aes(x=year, y=value)) +
+  geom_line(size=1, colour= "#3B53A4") +
+  scale_x_continuous(name="Year", breaks = c(2000, 2010, 2020), limits=c(2000,2020)) +
+  scale_y_continuous(name = "International $") +
+  expand_limits(y=c(0,550)) + 
+  facet_wrap( ~ country, scales="free_y",ncol = 4,labeller = label_wrap_gen(width = 20)) +
+  theme_gtb() +
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf, colour = "#BCBCBC")
+
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_COG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_IND"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_IDN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_KEN"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_LSO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_MMR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_NGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_PAK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_PNG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_PHL"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_TZA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_VNM"></div>
+</div>
+</div>
+
+#### (c) Upper-middle-income countries    
+```{r fig_6.1.5c,fig.alt="Panel plot Current health expenditure per capita, 30 high TB burden countries, 2000–2019",fig.height=5}
+
+f6.1.5_data %>%
+  add_row(dummydf) %>% # to add dummy date for all 30 HBCs to avoid missing panel 
+  filter(g_income=='UMC') %>% 
+  ggplot(aes(x=year, y=value)) +
+  geom_line(size=1, colour= "#3B53A4") +
+  scale_x_continuous(name="Year", breaks = c(2000, 2010, 2020), limits=c(2000,2020)) +
+  scale_y_continuous(name = "International $") +
+  expand_limits(y=c(0,1500)) + 
+  facet_wrap( ~ country, scales="free_y",ncol = 4,labeller = label_wrap_gen(width = 20)) +
+  theme_gtb() +
+  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf, colour = "#BCBCBC")
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_BRA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_CHN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_GAB"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_ZAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_THA"></div>
+</div>
+</div>
+<div class="footnote">Sources: WHO Global Health Expenditure Database (http://apps.who.int/nha/database/ViewData/Indicators/en)</div>
+
+
+
+`r anch("refs")`
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+1. World Health Organization/World Bank.  Tracking Universal Health Coverage: 2021 Global monitoring report. Geneva: World Health Organization; 2021 (https://cdn.who.int/media/docs/default-source/world-health-data-platform/events/tracking-universal-health-coverage-2021-global-monitoring-report_uhc-day.pdf).
+  
+2. Sustainable development goals [website]. New York: United Nations (https://sustainabledevelopment.un.org/topics/sustainabledevelopmentgoals).
+  
+3. World Health Organization/World Bank. Global monitoring report on financial protection in health 2019. Geneva: World Health Organization; 2020 (https://apps.who.int/iris/bitstream/handle/10665/331748/9789240003958-eng.pdf).
+  
+4. Tangcharoensathien V, Witthayapipopsakul W, Panichkriangkrai W, Patcharanarumol W, Mills A. Health systems development in Thailand: a solid platform for successful implementation of universal health coverage. Lancet. 2018;391(10126):1205–23 (https://pubmed.ncbi.nlm.nih.gov/29397200/).
+
+</div>
+
+  
+
+```{r eval=save_pdf}
+# this section is for saving .pdf and .csv for graphic design for PDF report - not web version!
+
+# fig 34
+f6.1.4_data %>% write_csv(here("./report/pdf/fig34.csv"))   # write csv
+ggsave(here('report/pdf/fig34.pdf'), plot=f6.1.4_plot, width=12, height=8)
+
+```
+
+
