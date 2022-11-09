@@ -48,7 +48,7 @@ f6.3.1b_data <-
 # (Global estimates of the number of TB cases attributable to selected risk factors)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-f6.3.2_data <- att_agg %>%
+f6.3.2_data <- rf_global %>%
   filter(group_type=="global",sex=="a",risk_factor!="all") %>%
   mutate(risk_factor=factor(risk_factor, labels=c("Alcohol use disorders","Diabetes","HIV infection","Smoking","Undernourishment")))%>%
   mutate(risk_factor=fct_rev(risk_factor)) 
@@ -57,7 +57,7 @@ f6.3.2_data <- att_agg %>%
 f6.3.2_data$risk_factor <- forcats::fct_reorder(f6.3.2_data$risk_factor,f6.3.2_data$best,min) 
   
 f6.3.2_txt <- f6.3.2_data %>%
-  select(group_description, risk_factor, best) %>%
+  select(group_type, risk_factor, best) %>%
   pivot_wider(names_from = risk_factor, values_from = best) %>%
   rename(alcohol = `Alcohol use disorders`, hiv = `HIV infection`)
 
@@ -67,8 +67,8 @@ f6.3.2_txt <- f6.3.2_data %>%
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # merge pop to att
 
-att2 <- att %>%
-  subset((age_group=="15plus"|age_group=="18plus"|age_group=="all")&sex=="a"&risk_factor!="all")
+att2 <- rf_country %>%
+  subset((age=="15+"|age=="18+"|age=="a")&sex=="a")
 
 # pop %>%
 #   subset(year==report_year-1) %>%
@@ -82,12 +82,13 @@ db_estimates_country %>%
   right_join(att2,by="iso3") -> att2
 
 att2 <- att2 %>%
-  mutate(paf_pct=ifelse(age_group=="all",best/all*100,best/adult*100))
+  mutate(paf_pct=ifelse(age=="a",best/all*100,best/adult*100)) %>%
+  right_join(list_iso3_country,by="iso3")
 
 f6.3.3_data <- 
   att2 %>% #subset(sex=="a"&risk_factor!="all") %>% 
   # slice_max(year) %>% 
-  select(country,iso3,year,age_group,risk_factor,best,paf_pct) 
+  select(country,iso3,year,age,risk_factor,best,paf_pct) 
 
 #### subset for malnutrition
 palatte_fig6.3.3a = c(#"#FFEDA0",
@@ -95,7 +96,7 @@ palatte_fig6.3.3a = c(#"#FFEDA0",
   "#E31A1C") 
 
 f6.3.3a_data <- 
-  f6.3.3_data %>% subset(risk_factor=="und") %>%
+  f6.3.3_data %>% subset(risk_factor=="undernutrition") %>%
   mutate(var=cut(paf_pct,breaks=c(0,10,15,20,Inf),right = FALSE,labels=c("<10","10\u201314","15\u201319","\u226520"))
   )
 
@@ -106,7 +107,7 @@ palatte_fig6.3.3b = c(#"#ECE7F2",
   "#0570B0") 
 
 f6.3.3b_data <- 
-  f6.3.3_data %>% subset(risk_factor=="alc") %>%
+  f6.3.3_data %>% subset(risk_factor=="alcohol") %>%
   mutate(var=cut(paf_pct,breaks=c(0,5,10,15,Inf),right = FALSE,labels=c("<5","5\u20139","10\u201314","\u226515"))
 )
 
@@ -125,7 +126,7 @@ palatte_fig6.3.3d = c(#"#FDE0DD",
   "#FCC5C0","#FA9FB5","#F768A1",#"#DD3497",
   "#AE017E") 
 f6.3.3d_data <- 
-  f6.3.3_data %>% subset(risk_factor=="dia") %>%
+  f6.3.3_data %>% subset(risk_factor=="diabetes") %>%
   mutate(var=cut(paf_pct,breaks=c(0,3,4,5,Inf),right = FALSE,labels=c("<3","3\u20134","4\u20135","\u22655"))
   )
 
@@ -134,7 +135,7 @@ palatte_fig6.3.3e = c(#"#EFEDF5",
   "#DADAEB","#BCBDDC","#9E9AC8",#"#807DBA",
   "#6A51A3") 
 f6.3.3e_data <- 
-  f6.3.3_data %>% subset(risk_factor=="smk") %>%
+  f6.3.3_data %>% subset(risk_factor=="smoking") %>%
   mutate(var=cut(paf_pct,breaks=c(0,5,10,15,Inf),right = FALSE,labels=c("<5","5\u20139","10\u201314","\u226515"))
   )
 
@@ -159,14 +160,15 @@ palatte_f6.3.4 = c("#084EA2","#0491D1","#ED1D24","#B92270","#91A93E")
 # rr.hiv <- c(19.2,1.5)
 
 f6.3.4_data <- 
-  att %>% subset(sex=="a"&risk_factor!="all") %>% 
+  rf_country %>% subset(sex=="a"&risk_factor!="all") %>% 
+  right_join(list_iso3_country,by="iso3") %>%
   filter(iso3 %in% iso3_hbc_plus_wl, sex=='a') %>%
-  select(country,iso3,year,age_group,risk_factor,best,lo,hi) %>%
+  select(country,iso3,year,age,risk_factor,best,lo,hi) %>%
   # mutate(across(6:8, ~./1000)) %>% 
-  mutate(riskgrp=factor(risk_factor,levels=c('alc','dia','hiv','smk','und'))) %>% 
+  mutate(riskgrp=factor(risk_factor,levels=c('alcohol','diabetes','hiv','smoking','undernutrition'))) %>% 
   left_join(list_hbcs_plus_wl) %>% 
-  mutate(risk_factor=fct_recode(risk_factor,'Alcohol use disorders'='alc',Smoking='smk',Diabetes='dia',
-                                HIV='hiv',Undernourishment='und')) %>%
+  mutate(risk_factor=fct_recode(risk_factor,'Alcohol use disorders'='alcohol',Smoking='smoking',Diabetes='diabetes',
+                                HIV='hiv',Undernourishment='undernutrition')) %>%
   arrange(country,risk_factor)
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

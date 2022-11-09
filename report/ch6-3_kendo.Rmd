@@ -265,10 +265,6 @@ _Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r c
 ### <span style="color:#F21905">Fig. 6.3.6</span> Status of selected SDG indicators beyond SDG 3 in 30 high TB burden and 3 global TB watchlist countries, latest available year
 
 
-<span class="red">**!Cannot find a function to have color gradient by value for a circular bar chart!**</span><BR>
-<span class="red">**!As an alternative, suggest using a radar chart for interactive chart!**</span>
- 
-
 <div class="row">
 <div class="col-md-4">
 <div id="fig_6_3_6_v2_AGO"></div>
@@ -396,7 +392,7 @@ _Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r c
 
 var fig_6_3_2_data = `r f6.3.2_data %>% select(risk_factor,best,lo,hi) %>% mutate(color = c("dodgerblue","deeppink","goldenrod","firebrick","green")) %>% arrange(desc(best)) %>% toJSON("rows")`   ;
 
-var fig_6_3_4_data = `r f6.3.4_data %>% select(country,risk_factor,riskgrp,best,lo,hi) %>% mutate(color = ifelse(riskgrp=="alc","#084EA2",ifelse(riskgrp=="dia","#0491D1",ifelse(riskgrp=="hiv","#ED1D24",ifelse(riskgrp=="smk","#B92270","#91A93E"))))) %>% add_row(country = c("Angola","Central African Republic","Gabon","Uganda"), risk_factor = "Smoking") %>% add_row(country = c("Uganda","Zambia","Zimbabwe"), risk_factor = "Undernourishment")  %>% add_row(country = c("Uganda"), risk_factor = "Alcohol use disorders")  %>% add_row(country = c("Uganda"), risk_factor = "Diabetes") %>% arrange(factor(risk_factor, levels = c("Alcohol use disorders","Diabetes","HIV","Smoking","Undernourishment"), ordered = TRUE)) %>% toJSON("rows")`   ;
+var fig_6_3_4_data = `r f6.3.4_data %>% select(country,risk_factor,riskgrp,best,lo,hi) %>% mutate(color = ifelse(riskgrp=="alcohol","#084EA2",ifelse(riskgrp=="diabetes","#0491D1",ifelse(riskgrp=="hiv","#ED1D24",ifelse(riskgrp=="smoking","#B92270","#91A93E"))))) %>%  arrange(factor(risk_factor, levels = c("Alcohol use disorders","Diabetes","HIV","Smoking","Undernourishment"), ordered = TRUE)) %>% toJSON("rows")`   ;
 
 var fig_6_3_6_data = `r f6.3.6_data %>% mutate(country = ifelse(iso3=='PRK',"Democratic People's Republic of Korea",country)) %>%  mutate(country = ifelse(iso3=='COD',"Democratic Republic of the Congo",country)) %>% mutate(sdg = ifelse(sdg == "Income equality", "Income\nequality",sdg)) %>% add_column(color = rep(brewer.pal(6, "Paired"), 33))  %>% toJSON("rows")`   ;
 

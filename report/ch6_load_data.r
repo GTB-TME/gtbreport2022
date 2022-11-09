@@ -44,7 +44,8 @@ get_timestamped_csv <- function(csv_filename_stub, timestamp) {
 
 data_loc <- "./ch6_data/"
 csv_datestamp <- '2022-08-29'
-csv_datestamp2 <- '2022-10-04' # for sdf data updated on 4 Oct
+csv_datestamp2 <- '2022-10-04' # for sdg data updated on 4 Oct
+csv_datestamp3 <- '2022-11-08' # for risk factor updated on 8 Nov
 csv_estimate_datestamp <- '2022-09-13'
 
 sdg    <- get_timestamped_csv("sdg",csv_datestamp2)
@@ -54,10 +55,12 @@ tb    <- get_timestamped_csv("tb",csv_datestamp)
 est    <- get_timestamped_csv("./db/db_est_country",csv_estimate_datestamp)
 dic    <- get_timestamped_csv("dic",csv_datestamp)
 pop    <- get_timestamped_csv("pop",csv_datestamp)
+rf_global    <- get_timestamped_csv("./db/db_inc_risk_factor_global",csv_datestamp3)
+rf_country    <- get_timestamped_csv("./db/db_inc_risk_factor_country",csv_datestamp3)
 
-load(here::here("./report/ch6_data/att.Rdata"))
+# load(here::here("./report/ch6_data/att.Rdata"))
 # load(here::here("./data/att.rda"))
-load(here::here("./report/ch6_data/att_agg.Rdata"))
+# load(here::here("./report/ch6_data/att_agg.Rdata"))
 
 hgf <- read.csv(here::here("./csv/TBreport_SDG381382.csv"))
 

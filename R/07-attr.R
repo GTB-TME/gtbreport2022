@@ -106,15 +106,21 @@ dta2 <-
                  'diabetes',
                  'undernutrition',
                  'smoking'), .(iso3, year, sex, ind, value, sd = (hi - lo)/3.92)]
+
+
 dta3 <-
   reshape(
     dta2,
     idvar = c("iso3", "year", "sex"),
     timevar = "ind",
     direction = "wide"
-  )
+  ) %>%
+  filter(year <= yr)
 names(dta3) <- gsub('value.', '', names(dta3))
 setkey(dta3, iso3)
+
+
+
 
 dta4 <- dta3[, .(
   diabetes = lastv(diabetes) / 100,

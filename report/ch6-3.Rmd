@@ -896,6 +896,8 @@ f6.3.6_plot
 Further country-specific details for the 14 indicators related to TB incidence are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data/) and [Country profiles](https://app.powerbi.com/view?r=eyJrIjoiNDE5Y2EzNzQtZDMxYy00ZmFlLWEwMjMtZDA0NmUzYTlkZDAzIiwidCI6ImY2MTBjMGI3LWJkMjQtNGIzOS04MTBiLTNkYzI4MGFmYjU5MCIsImMiOjh9&pageName=ReportSectionbb9acc102d62977ada64).
 
 
+Note: Estimates of TB cases attributable to smoking shown in figures 6.3.2, 6.3.3(e) and 6.3.4 were updated on 9 November 2022.
+
 
 `r anch("refs")`
 
