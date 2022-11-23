@@ -75,20 +75,101 @@ maf3 <- read.csv(here("./csv/maf_fig3.csv"))
 
 ### <span class="fig" style="color:#F21905">Fig. 1.</span> Trends in the public availability of annual national TB reports from 2020 to 2022 (%)
 
-<div id="fig_MAF_1"></div>
+<div class="row">
+<div class="col-md-3">
+<div id="fig_MAF_1_hbc"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_1_afr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_1_amr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_1_sea"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3">
+<div id="fig_MAF_1_eur"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_1_emr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_1_wpr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_1_tot"></div>
+</div>
+</div>
 
 <BR>
 
 ### <span class="fig" style="color:#F21905">Fig. 2.</span> Trends in the set-up or strengthening of national multisectoral and multistakeholder accountability and review mechanisms under high-level leadership, as available from 2020 to 2022 (%)
 
-<div id="fig_MAF_2"></div>
+<div class="row">
+<div class="col-md-3">
+<div id="fig_MAF_2_hbc"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_2_afr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_2_amr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_2_sea"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3">
+<div id="fig_MAF_2_eur"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_2_emr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_2_wpr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_2_tot"></div>
+</div>
+</div>
 
 <BR>
 
 
 ### <span class="fig" style="color:#F21905">Fig. 3.</span> Reported trends in the engagement of civil society and affected communities in the multisectoral accountability and review mechanism from 2020 to 2022 (%)
 
-<div id="fig_MAF_3"></div>
+<div class="row">
+<div class="col-md-3">
+<div id="fig_MAF_3_hbc"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_3_afr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_3_amr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_3_sea"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3">
+<div id="fig_MAF_3_eur"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_3_emr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_3_wpr"></div>
+</div>
+<div class="col-md-3">
+<div id="fig_MAF_3_tot"></div>
+</div>
+</div>
 
 <BR>
 
@@ -96,11 +177,11 @@ maf3 <- read.csv(here("./csv/maf_fig3.csv"))
 <script type="text/javascript">
 /* JSON data objects for the figures */
 
-var fig_MAF_1_data = `r maf1 %>% mutate(year=factor(year, labels=c(2020,2021,2022))) %>% select(!cat2) %>% pivot_wider(names_from = year,values_from = value) %>% rename(pct2020=2,pct2021=3,pct2022=4) %>% mutate(cat=str_wrap(cat, width = 24,indent = 2)) %>% toJSON("rows") `   ;  
+var fig_MAF_1_data = `r maf1 %>% mutate(year=factor(year, labels=c(2020,2021,2022))) %>%  mutate(year=as.numeric(as.character(year))) %>% select(!cat2) %>% toJSON("rows") `   ;  
 
-var fig_MAF_2_data = `r maf2 %>% mutate(year=factor(year, labels=c(2020,2021,2022))) %>% select(!cat2) %>% pivot_wider(names_from = year,values_from = value) %>% rename(pct2020=2,pct2021=3,pct2022=4) %>% mutate(cat=str_wrap(cat, width = 24,indent = 2)) %>% toJSON("rows") ` 
+var fig_MAF_2_data = `r maf2 %>% mutate(year=factor(year, labels=c(2020,2021,2022))) %>% select(!cat2) %>% toJSON("rows") ` 
 
-var fig_MAF_3_data = `r maf3 %>% mutate(year=factor(year, labels=c(2020,2021,2022))) %>% select(!cat2) %>% pivot_wider(names_from = year,values_from = value) %>% rename(pct2020=2,pct2021=3,pct2022=4) %>% mutate(cat=str_wrap(cat, width = 24,indent = 2)) %>% toJSON("rows") ` 
+var fig_MAF_3_data = `r maf3 %>% mutate(year=factor(year, labels=c(2020,2021,2022))) %>% select(!cat2) %>% toJSON("rows") ` 
 
 
 </script>
@@ -161,43 +242,51 @@ function tb_format_num(n) {
   } 
 }
 
-function createFig_MAF(fig_ID,data) {
-		$(fig_ID).kendoChart({
-			dataSource: data,
+
+function createFig_MAF_1(fig_ID,data,filter,col) {
+    // Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.cat == filter);
+		
+  function getcolor(e) {
+
+        if (e.year == 2020) {
+            return "#FC1C1E";
+        }
+        else if (e.year == 2021 ) {
+            return "#00a76d";
+        }
+        else {
+            return "#0091D1";
+        }
+    }
+  
+   $(fig_ID).kendoChart({
+			dataSource: dataJSON,
 			chartArea: {
-				height: 500
+				height: 350
+			},	
+       title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
 			},	
 			legend: {
-				position: "bottom"
+				position: "bottom",
+        visible: false
 			},
 			seriesDefaults: {
-				type: "column",
+				type: "line",
         gap: 2,
-        spacing: 0,
+        spacing: 0.2,
 			},
 			series: [{
-        name: "2020",
-				field: "pct2020",
-				color: "#FC1C1E",
+        name: "Year",
+				field: "value",
+        color:  col,
         tooltip: {
 				visible: true,
-				template: "#= category # (2020): #= Number(value.toPrecision(2)) #%"
-			}
-			},{
-        name: "2021",
-				field: "pct2021",
-				color: "#00a76d",
-        tooltip: {
-				visible: true,
-				template: "#= category # (2021): #= Number(value.toPrecision(2)) #%"
-			}
-			},{
-        name: "2022",
-				field: "pct2022",
-				color: "#0091D1",
-        tooltip: {
-				visible: true,
-				template: "#= category # (2022): #= Number(value.toPrecision(2)) #%"
+				template: "#= category #: #= Number(value.toPrecision(2)) #%"
 			}
 			}, ],
 			valueAxis: {
@@ -211,10 +300,10 @@ function createFig_MAF(fig_ID,data) {
 					visible: false
 				},
         min: 0,
-        max: 100
-			},
+        max: 105
+			}, 
 			categoryAxis: {
-				field: "cat",
+				field: "year",
 				labels: {
 					rotation: 0
 				},
@@ -225,17 +314,36 @@ function createFig_MAF(fig_ID,data) {
 }
 
 
-
 ```
 
 ```{js, echo=FALSE}
 
 /* Create the figures after the document has been loaded */
 $(document).ready(function() {
-  createFig_MAF("#fig_MAF_1",fig_MAF_1_data);
-  createFig_MAF("#fig_MAF_2",fig_MAF_2_data);
-  createFig_MAF("#fig_MAF_3",fig_MAF_3_data);
-  
+  createFig_MAF_1("#fig_MAF_1_hbc",fig_MAF_1_data,"High TB burden countries","limegreen");
+  createFig_MAF_1("#fig_MAF_1_afr",fig_MAF_1_data,"African Region","limegreen");
+  createFig_MAF_1("#fig_MAF_1_amr",fig_MAF_1_data,"Region of the Americas","limegreen");
+  createFig_MAF_1("#fig_MAF_1_sea",fig_MAF_1_data,"South-East Asia Region","limegreen");
+  createFig_MAF_1("#fig_MAF_1_eur",fig_MAF_1_data,"European Region","limegreen");
+  createFig_MAF_1("#fig_MAF_1_emr",fig_MAF_1_data,"Eastern Mediterranean Region","limegreen");
+  createFig_MAF_1("#fig_MAF_1_wpr",fig_MAF_1_data,"Western Pacific Region","limegreen");
+  createFig_MAF_1("#fig_MAF_1_tot",fig_MAF_1_data,"Total","limegreen");
+  createFig_MAF_1("#fig_MAF_2_hbc",fig_MAF_2_data,"High TB burden countries","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_afr",fig_MAF_2_data,"African Region","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_amr",fig_MAF_2_data,"Region of the Americas","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_sea",fig_MAF_2_data,"South-East Asia Region","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_eur",fig_MAF_2_data,"European Region","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_emr",fig_MAF_2_data,"Eastern Mediterranean Region","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_wpr",fig_MAF_2_data,"Western Pacific Region","goldenrod");
+  createFig_MAF_1("#fig_MAF_2_tot",fig_MAF_2_data,"Total","goldenrod");
+  createFig_MAF_1("#fig_MAF_3_hbc",fig_MAF_3_data,"High TB burden countries","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_afr",fig_MAF_3_data,"African Region","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_amr",fig_MAF_3_data,"Region of the Americas","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_sea",fig_MAF_3_data,"South-East Asia Region","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_eur",fig_MAF_3_data,"European Region","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_emr",fig_MAF_3_data,"Eastern Mediterranean Region","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_wpr",fig_MAF_3_data,"Western Pacific Region","#0091D1");
+  createFig_MAF_1("#fig_MAF_3_tot",fig_MAF_3_data,"Total","#0091D1");
 });
 
 ```
