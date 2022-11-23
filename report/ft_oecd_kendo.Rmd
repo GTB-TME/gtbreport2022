@@ -102,19 +102,29 @@ oecd3_data <- readRDS(here('report/ft_OECD_data/FigB5_3.rds')) %>%
 
 ### <span style="color:#F21905">Fig. 1</span> International donor funding for TB prevention, diagnosis and treatment by source, globally and by WHO region, 2010&#8211;`r report_year-2`
     
-<div id="fig_OECD1a"></div>
+<div id="fig_1_lmc"></div>
+
 <div class="row">
 <div class="col-md-4">
-<div id="fig_OECD1b"></div>
-<div id="fig_OECD1e"></div>
+<div id="fig_1_afr"></div>
 </div>
 <div class="col-md-4">
-<div id="fig_OECD1c"></div>
-<div id="fig_OECD1f"></div>
+<div id="fig_1_amr"></div>
 </div>
 <div class="col-md-4">
-<div id="fig_OECD1d"></div>
-<div id="fig_OECD1g"></div>
+<div id="fig_1_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_1_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_1_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_1_wpr"></div>
 </div>
 </div>
 
@@ -124,7 +134,7 @@ oecd3_data <- readRDS(here('report/ft_OECD_data/FigB5_3.rds')) %>%
 
 ### <span style="color:#F21905">Fig. 3</span> International donor funding for Health and Population programmes, TB, HIV and malaria, 2010&#8211;`r report_year-2`
     
-<div id="fig_OECD3"></div>
+<div id="fig_3"></div>
 
 <BR>
 
@@ -307,7 +317,7 @@ function createFig_OECD3(fig_ID,data) {
         },
         tooltip: {
 				visible: true,
-				template: "TB control (#= category #): #= value.toPrecision(2) # million"
+				template: "TB control (#= category #): #= value.toPrecision(2) # billion"
 			}
 			},{
         name: "STD control including HIV",
@@ -318,7 +328,7 @@ function createFig_OECD3(fig_ID,data) {
         },
         tooltip: {
 				visible: true,
-				template: "STD control including HIV (#= category #): #= value.toPrecision(2) # million"
+				template: "STD control including HIV (#= category #): #= value.toPrecision(2) # billion"
 			}
 			},{
         name: "Malaria control",
@@ -329,7 +339,7 @@ function createFig_OECD3(fig_ID,data) {
         },
         tooltip: {
 				visible: true,
-				template: "Malaria control (#= category #): #= value.toPrecision(2) # million"
+				template: "Malaria control (#= category #): #= value.toPrecision(2) # billion"
 			}
 			},{
         name: "Total health and population programmes",
@@ -340,7 +350,7 @@ function createFig_OECD3(fig_ID,data) {
         },
         tooltip: {
 				visible: true,
-				template: "Total health and population programmes (#= category #): #= value.toPrecision(2) # million"
+				template: "Total health and population programmes (#= category #): #= value.toPrecision(2) # billion"
 			}
 			},],
 			valueAxis: {
@@ -348,7 +358,7 @@ function createFig_OECD3(fig_ID,data) {
 				template: "#= kendo.format('{0}',value) #",
 				},
 				title: {
-					text: "billions (constant 2021 US$)"
+					text: "Billions (constant 2021 US$)"
 				},
 				line: {
 					visible: false
@@ -373,14 +383,14 @@ function createFig_OECD3(fig_ID,data) {
 
 /* Create the figures after the document has been loaded */
 $(document).ready(function() {
-    createFig_OECD1("#fig_OECD1a",fig_OECD1_data,"Low- and middle-income\ncountriesᵃ");
-  createFig_OECD1("#fig_OECD1b",fig_OECD1_data,"WHO African Region");
-  createFig_OECD1("#fig_OECD1c",fig_OECD1_data,"WHO Region of\nthe Americas");
-  createFig_OECD1("#fig_OECD1d",fig_OECD1_data,"WHO South-East Asia\nRegion");
-  createFig_OECD1("#fig_OECD1e",fig_OECD1_data,"WHO European Region");
-  createFig_OECD1("#fig_OECD1f",fig_OECD1_data,"WHO Eastern Mediterranean\nRegion");
-  createFig_OECD1("#fig_OECD1g",fig_OECD1_data,"WHO Western Pacific\nRegion");
-  createFig_OECD3("#fig_OECD3",fig_OECD3_data);
+  createFig_OECD1("#fig_1_lmc",fig_OECD1_data,"Low- and middle-income\ncountriesᵃ");
+  createFig_OECD1("#fig_1_afr",fig_OECD1_data,"WHO African Region");
+  createFig_OECD1("#fig_1_amr",fig_OECD1_data,"WHO Region of\nthe Americas");
+  createFig_OECD1("#fig_1_sear",fig_OECD1_data,"WHO South-East Asia\nRegion");
+  createFig_OECD1("#fig_1_eur",fig_OECD1_data,"WHO European Region");
+  createFig_OECD1("#fig_1_emr",fig_OECD1_data,"WHO Eastern Mediterranean\nRegion");
+  createFig_OECD1("#fig_1_wpr",fig_OECD1_data,"WHO Western Pacific\nRegion");
+  createFig_OECD3("#fig_3",fig_OECD3_data);
   
 });
 
