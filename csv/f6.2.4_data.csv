@@ -1,4 +1,7 @@
 iso3,country,cat,value
+COL,Colombia,p_med,1.5
+COL,Colombia,p_nmed,70.7
+COL,Colombia,p_indirect,27.8
 LSO,Lesotho,p_med,3.9
 LSO,Lesotho,p_nmed,46.1
 LSO,Lesotho,p_indirect,50
@@ -14,9 +17,6 @@ NER,Niger,p_indirect,40.4
 SLV,El Salvador,p_med,15.36624203821656
 SLV,El Salvador,p_nmed,57.82908704883227
 SLV,El Salvador,p_indirect,26.804670912951167
-COL,Colombia,p_med,27.8
-COL,Colombia,p_nmed,70.7
-COL,Colombia,p_indirect,1.5
 BFA,Burkina Faso,p_med,12.707775862913401
 BRA,Brazil,p_med,7.757809387094171
 COD,Democratic Republic of the Congo,p_med,13.50741546149452
