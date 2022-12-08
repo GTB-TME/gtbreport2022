@@ -27,8 +27,9 @@ show_estimates <- TRUE
 # Set datestamps of CSV files to use ----
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 csv_datestamp <- '2022-08-29'
+csv_rr_estimate_datestamp <- '2022-09-14'  # Date of final RR-TB estimates
 csv_datestamp2 <- '2022-09-19' # tentative for live saved csv file as of 10 Aug
-csv_estimate_datestamp <- '2022-09-27'
+csv_estimate_datestamp <- '2022-09-27' # Final set of incidence estimates
 
 csv_tpt_fix_datestamp <- '2022-09-30' # Contains late fixes for TPT in PLHIV from GAM, nothing else
 
@@ -100,8 +101,8 @@ if(show_estimates) {
   est_regional <- read.csv(here(paste0('csv/db/db_est_regional_est_', csv_estimate_datestamp, '.csv')))
   est_global <- read.csv(here(paste0('csv/db/db_est_global_est_', csv_estimate_datestamp, '.csv')))
 
-  est_dr_country <- get_timestamped_csv('dr.est', csv_datestamp)
-  est_dr_group <- get_timestamped_csv('aggdr', csv_datestamp)
+  est_dr_country <- read.csv(here(paste0('drtb/dboutput/db_dr_country_', csv_rr_estimate_datestamp, '.csv')))
+  est_dr_group <- read.csv(here(paste0('drtb/dboutput/db_dr_group_', csv_rr_estimate_datestamp, '.csv')))
 
   lives_saved <- read.csv(here(paste0('output/RegionalLivesSaved_', csv_datestamp2, '.csv')))
 

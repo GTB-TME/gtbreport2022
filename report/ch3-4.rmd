@@ -484,18 +484,18 @@ f3.4.6_plot <- f3.4.6_data %>%
             scale.labels = c("5 000","50 000","100 000"),
             water.col = "white") +
 
-  annotate(geom='text', label='Afghanistan', x=33, y=80, hjust=0, size=3) +
-  geom_segment(x=66, xend=45, y=34, yend=74) +
-  
-  annotate(geom='text', label='Myanmar', x=150, y=17, hjust=0, size=3) +
-  geom_segment(x=97, xend=145, y=21, yend=17) +
-  
+  annotate(geom='text', label='Myanmar', x=65, y=-10, hjust=0, size=3) +
+  geom_segment(x=97, xend=90, y=21, yend=-8) +
+
   annotate(geom='text', label='Russian Federation', x=130, y=80, hjust=0, size=3) +
   geom_segment(x=99, xend=125, y=62, yend=78) +
   
-  annotate(geom='text', label='Ukraine', x=-35, y=45, hjust=0, size=3) +
-  geom_segment(x=32, xend=-12, y=49, yend=45) +
-  
+    annotate(geom='text', label='Viet Nam', x=150, y=25, hjust=0, size=3) +
+  geom_segment(x=106, xend=145, y=17, yend=25) +
+
+  annotate(geom='text', label='Philippines', x=150, y=17, hjust=0, size=3) +
+  geom_segment(x=121, xend=145, y=17, yend=17) +
+
   annotate(geom='text', label='China', x=150, y=38, hjust=0, size=3) +
   geom_segment(x=104, xend=145, y=37, yend=37) +
   
@@ -513,6 +513,7 @@ f3.4.6_plot <- f3.4.6_data %>%
   
   annotate(geom='text', label='South Africa', x=50, y=-30, hjust=0, size=3) +
   geom_segment(x=25, xend=45, y=-30, yend=-30)
+
 
 print(f3.4.6_plot)
 
@@ -708,6 +709,8 @@ print(f3.4.12_plot)
 Country-specific details about treatment for drug-resistant TB are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data#app) and [country profiles](https://worldhealthorg.shinyapps.io/tb_profiles/).
 
 Data shown on this webpage are as of `r format(as.Date(csv_datestamp), format="%d %B %Y")` (see <span class="red">Annex 2</span> of the main report for more details).
+
+Note: Figure 3.4.6 was updated (Philippines and Viet Nam replaced Afghanistan and Ukraine) on 8 December 2022 after fixing a data source error.
 
 `r anch("refs")`
 

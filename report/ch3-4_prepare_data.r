@@ -41,79 +41,6 @@ calculate_outcomes_pct <- function(df, prefix_string) {
 
 
 
-# # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# # Data: figure 3.4.01 ----
-# # (Line chart of MDR/RR-TB cases detected, MDR/RR-TB put on treatment since 2009 and estimated incidence in the latest year)
-# # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# 
-# if(show_estimates){
-# 
-#   f3.4.01_old_data <- filter(notification, year >= 2010) %>%
-#     select(year,
-#            rapid_dx_dr_r,
-#            conf_mdr,
-#            conf_rrmdr,
-#            conf_rr_nfqr,
-#            conf_rr_fqr,
-#            conf_mdr_tx,
-#            unconf_mdr_tx,
-#            conf_rrmdr_tx,
-#            unconf_rrmdr_tx,
-#            conf_rr_nfqr_tx,
-#            unconf_rr_nfqr_tx,
-#            conf_rr_fqr_tx) %>%
-# 
-#     group_by(year) %>%
-#     summarise(across(rapid_dx_dr_r:conf_rr_fqr_tx, sum, na.rm=TRUE)) %>%
-#     ungroup() %>%
-# 
-#     rowwise() %>%
-#     # Derive total number detected and total enrolled on treatment
-#     mutate(rr_detected = ifelse(year < 2014,
-#                                 rapid_dx_dr_r + conf_mdr,
-#                                 # the next three are mutually exclusive so can be added
-#                                 conf_rrmdr + conf_rr_nfqr + conf_rr_fqr),
-#            # treatment variables are in mutually exclusive sets so again can be added
-#            rr_treated = sum(across(conf_mdr_tx:conf_rr_fqr_tx), na.rm = TRUE)) %>%
-#     ungroup() %>%
-# 
-#     # drop unneeded variables
-#     select(year,
-#            rr_detected,
-#            rr_treated)
-# 
-#   rr_inc_global <- filter(est_dr_group, year==report_year-1, group_type=="global") %>%
-#     select(year,
-#            e_inc_rr_num,
-#            e_inc_rr_num_lo,
-#            e_inc_rr_num_hi)
-# 
-#   # Merge the two for the data to be plotted
-#   f3.4.01_data <- f3.4.01_data %>%
-#     left_join(rr_inc_global, by = "year")
-# 
-#   # Summary for section text
-#   f3.4.01_old_txt <- filter(f3.4.01_old_data, year >= report_year-2) %>%
-#     select(year, rr_treated) %>%
-#     pivot_wider(names_from = year,
-#                 names_prefix = "rr_treated_",
-#                 values_from = rr_treated) %>%
-#     # Calculate percent change
-#     mutate(rr_treat_change_pct = abs(rr_treated_2020 - rr_treated_2019) * 100 / rr_treated_2019)
-# 
-#   # Add estimated incidence
-#   f3.4.01_txt <- filter(f3.4.01_data, year >= report_year-1) %>%
-#     select(starts_with("e_inc_rr")) %>%
-#     cbind(f3.4.01_txt)
-# 
-#   # Clean up
-#   rm(rr_inc_global)
-# 
-# }
-
-
-
-
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Data: figure 3.4.1 (previously 3.4.3) ----
@@ -241,9 +168,9 @@ f3.4.3_txt <- filter(notification, year >= 2018) %>%
   )
 
 f3.4.3_data <- f3.4.3_txt %>%
-  
+
   select(contains("_pct"))  %>%
-  
+
   pivot_longer(cols = contains("_pct"),
                names_to = "target_completion")
 
@@ -271,7 +198,7 @@ f3.4.4_data <- filter(notification, year >= 2015 ) %>%
          unconf_rr_nfqr_tx,
          conf_rr_fqr_tx) %>%
   mutate(conf_rr_nfqr=ifelse(conf_rr_nfqr==130124,2938,conf_rr_nfqr)) %>% # tentative correction for Nigeria
-  
+
   rowwise() %>%
   # Derive total number detected and total enrolled on treatment
   mutate(rr_detected = ifelse(year < 2014,
@@ -280,18 +207,18 @@ f3.4.4_data <- filter(notification, year >= 2015 ) %>%
                               sum(across(conf_rrmdr:conf_rr_fqr), na.rm = TRUE)),
          # treatment variables are in mutually exclusive sets so again can be added
          rr_treated = sum(across(conf_mdr_tx:conf_rr_fqr_tx), na.rm = TRUE)) %>%
-  
+
   # calculate regional aggregates
   group_by(g_whoregion,year) %>%
   summarise(across(where(is.numeric), sum, na.rm = TRUE)) %>%
-  
+
   # merge with regional names
   inner_join(who_region_shortnames, by = "g_whoregion") %>%
   arrange(entity) %>%
   select(-g_whoregion) %>%
-  
+
   ungroup() %>%
-  
+
   # drop unneeded variables
   select(entity,
          year,
@@ -303,24 +230,9 @@ f3.4.4_global <- f3.4.4_data %>%
   group_by(year) %>%
   summarise(across(where(is.numeric), sum, na.rm = TRUE)) %>%
   mutate(entity="Global") %>%
-  ungroup() 
+  ungroup()
 
 f3.4.4_data <- rbind(f3.4.4_data, f3.4.4_global)
-
-# estimates
-# Get global and regional DR-TB estimates directly from the files that get imported into the database
-if(show_estimates) {
-  csv_estimate_datestamp <- '2022-09-14'
-  # Need the next one to calculation proportions in the text
-  csv_inc_estimate_datestamp <- '2022-09-27'
-  
-  est_dr_country <- read.csv(here(paste0('drtb/dboutput/db_dr_country_', csv_estimate_datestamp, '.csv')))
-  est_dr_group <- read.csv(here(paste0('drtb/dboutput/db_dr_group_', csv_estimate_datestamp, '.csv')))
-  
-  # Get incidence estimates to calculate proportion in the text
-  est_country  <- read.csv(here(paste0('csv/db/db_est_country_', csv_inc_estimate_datestamp, '.csv')))
-  
-}
 
 f3.4.4_drest <- est_dr_group %>%
   mutate(g_whoregion=group_name) %>%
@@ -361,7 +273,7 @@ f3.4.4_data <- f3.4.4_data %>%
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 if(show_estimates){
-  
+
   # A. Countries
   # - - - - - - - -
   coverage_inc_country <- filter(est_dr_country, year==report_year-1) %>%
@@ -370,10 +282,10 @@ if(show_estimates){
            e_inc_rr_num,
            e_inc_rr_num_lo,
            e_inc_rr_num_hi) %>%
-    
+
     # restrict to high burden countries
     inner_join(hbmdr30, by = "iso3")
-  
+
   coverage_country <- filter(notification, year==report_year-1) %>%
     select(entity = country,
            iso3,
@@ -395,7 +307,7 @@ if(show_estimates){
            c_rr_coverage_lo,
            c_rr_coverage_hi) %>%
     arrange(desc(c_rr_coverage))
-  
+
   # B. Regions
   # - - - - - - - -
   coverage_inc_region <- filter(est_dr_group, year==report_year-1 & group_type=="g_whoregion") %>%
@@ -403,7 +315,7 @@ if(show_estimates){
            e_inc_rr_num,
            e_inc_rr_num_lo,
            e_inc_rr_num_hi)
-  
+
   coverage_region <- filter(notification, year==report_year-1) %>%
     select(g_whoregion,
            unconf_rr_nfqr_tx,
@@ -414,15 +326,15 @@ if(show_estimates){
     summarise(across(unconf_rr_nfqr_tx:conf_rr_fqr_tx, sum, na.rm=TRUE)) %>%
     ungroup() %>%
     mutate(rr_tx = unconf_rr_nfqr_tx + conf_rr_nfqr_tx + conf_rr_fqr_tx) %>%
-    
+
     # merge with incidence estimates
     inner_join(coverage_inc_region, by = "g_whoregion") %>%
-    
+
     # Calculate coverage
     mutate(c_rr_coverage = rr_tx * 100 / e_inc_rr_num,
            c_rr_coverage_lo = rr_tx * 100  / e_inc_rr_num_hi,
            c_rr_coverage_hi = rr_tx * 100  / e_inc_rr_num_lo) %>%
-    
+
     # merge with regional names and simplify to match structure of country table
     inner_join(who_region_shortnames, by = "g_whoregion") %>%
     select(entity,
@@ -430,7 +342,7 @@ if(show_estimates){
            c_rr_coverage_lo,
            c_rr_coverage_hi) %>%
     arrange(desc(c_rr_coverage))
-  
+
   # C. Global
   # - - - - - - - -
   coverage_inc_global <- filter(est_dr_group, year==report_year-1 & group_type=="global") %>%
@@ -438,7 +350,7 @@ if(show_estimates){
            e_inc_rr_num_lo,
            e_inc_rr_num_hi) %>%
     mutate(entity="Global")
-  
+
   coverage_global <- filter(notification, year==report_year-1) %>%
     select(unconf_rr_nfqr_tx,
            conf_rr_nfqr_tx,
@@ -447,9 +359,9 @@ if(show_estimates){
     summarise(across(unconf_rr_nfqr_tx:conf_rr_fqr_tx, sum, na.rm=TRUE)) %>%
     mutate(rr_tx = unconf_rr_nfqr_tx + conf_rr_nfqr_tx + conf_rr_fqr_tx) %>%
     mutate(entity="Global") %>%
-    
+
     inner_join(coverage_inc_global, by="entity") %>%
-    
+
     # Calculate coverage
     mutate(c_rr_coverage = rr_tx * 100 / e_inc_rr_num,
            c_rr_coverage_lo = rr_tx * 100  / e_inc_rr_num_hi,
@@ -458,36 +370,36 @@ if(show_estimates){
            c_rr_coverage,
            c_rr_coverage_lo,
            c_rr_coverage_hi)
-  
+
   # D. Bring them all together
   # - - - - - - - - - - - - -
-  
+
   # Create dummy records so can see a horizontal line in the output to separate countries, regions and global parts
   coverage_dummy1 <- data.frame(entity = " ", c_rr_coverage = NA, c_rr_coverage_lo = 0, c_rr_coverage_hi = 100)
   coverage_dummy2 <- data.frame(entity = "  ", c_rr_coverage = NA, c_rr_coverage_lo = 0, c_rr_coverage_hi = 100)
-  
-  
+
+
   # Create combined dataframe in order of countries then regional and global estimates
   f3.4.5_data <- rbind(coverage_country,
                        coverage_dummy1,
                        coverage_region,
                        coverage_dummy2,
                        coverage_global) %>%
-    
+
     # The dataframe is in the order I want, so make entity an ordered factor based on
     # what I already have. That way ggplot will not reorder by entity name
     # But I need to reverse order for plotting
-    
+
     mutate(entity = factor(entity,
                            levels = rev(entity)))
-  
+
   # Simple dataframe of numbers for section text
   f3.4.5_txt <- coverage_global %>%
     select(c_rr_coverage)
-  
+
   f3.4.5_txt_list_region <- coverage_region %>%
     slice(1:2)
-  
+
   f3.4.5_txt_list_hi <- f3.4.5_data %>%
     slice(1:30) %>%
     filter(c_rr_coverage > 40) %>%
@@ -500,7 +412,7 @@ if(show_estimates){
 
   # remove the temporary dataframes
   rm(list=ls(pattern = "^coverage"))
-  
+
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -595,7 +507,7 @@ f3.4.7_data <- outcomes %>%
 
   # flip into long format
   pivot_longer(cols = `Treatment success`:`Not evaluated`,
-               names_to = "outcome") 
+               names_to = "outcome")
 
 # Summary for section text
 f3.4.7_txt <- filter(f3.4.7_data, year %in% c(2012, report_year-4,  report_year-3) & outcome=="Treatment success") %>%
@@ -718,14 +630,14 @@ f3.4.9_txt <- filter(notification, year %in% c(2013, report_year-2, report_year-
          iso3,
          year,
          mdrxdr_bdq_used) %>%
-  
+
   # Change the "No data" option 3 to NA to avoid weird effects in the map legend
   mutate(mdrxdr_bdq_used = ifelse(mdrxdr_bdq_used==3, NA, mdrxdr_bdq_used)) %>%
-  
+
   group_by(year) %>%
   summarise(across(mdrxdr_bdq_used, sum, na.rm=TRUE)) %>%
   ungroup() %>%
-  
+
   pivot_wider(names_from = year,
               names_prefix = "bdq_used_",
               values_from = mdrxdr_bdq_used)
@@ -752,19 +664,19 @@ f3.4.10_data <- filter(notification, year == report_year-1) %>%
 
 
 f3.4.10_txt <- filter(notification, year %in% c(2019, report_year-2, report_year-1)) %>%
-  
+
   select(country,
          iso3,
          year,
          mdrxdr_alloral_used) %>%
-  
+
   # Change the "No data" option 3 to NA to avoid weird effects in the map legend
   mutate(mdrxdr_alloral_used = ifelse(mdrxdr_alloral_used==3, NA, mdrxdr_alloral_used)) %>%
-  
+
   group_by(year) %>%
   summarise(across(mdrxdr_alloral_used, sum, na.rm=TRUE)) %>%
   ungroup() %>%
-  
+
   pivot_wider(names_from = year,
               names_prefix = "oral_used_",
               values_from = mdrxdr_alloral_used)
@@ -791,19 +703,19 @@ f3.4.11_data <- filter(notification, year == report_year-1) %>%
 
 
 f3.4.11_txt <-  filter(notification, year %in% c(2020, report_year-2, report_year-1)) %>%
-  
+
   select(country,
          iso3,
          year,
          mdr_alloral_short_used) %>%
-  
+
   # Change the "No data" option 3 to NA to avoid weird effects in the map legend
   mutate(mdr_alloral_short_used = ifelse(mdr_alloral_short_used==3, NA, mdr_alloral_short_used)) %>%
-  
+
   group_by(year) %>%
   summarise(across(mdr_alloral_short_used, sum, na.rm=TRUE)) %>%
   ungroup() %>%
-  
+
   pivot_wider(names_from = year,
               names_prefix = "oral_short_used_",
               values_from = mdr_alloral_short_used)
