@@ -196,7 +196,7 @@ print(f3.2.2_plot)
 
 ```
 
-
+<div class="footnote">^a^ Data are for notified cases.</div>
 
 <br />
 In general, levels of confirmation are lowest in low-income countries and highest in high-income countries (`r lnk("Fig. 3.2.3")`), where there is wide access to the most sensitive diagnostic tests. Over-reliance on direct sputum smear microscopy is inherently associated with a relatively high proportion of pulmonary TB cases that are clinically diagnosed, as opposed to bacteriologically confirmed. 
@@ -621,7 +621,7 @@ print(f3.2.11_plot)
 <br />
 Worldwide, a total of `r int_spacer(t3.1.1_txt$newrel_hivpos)` cases of TB among people living with HIV were notified in `r report_year-1` (<span class="red">Table 3.1.1</span>), equivalent to `r ftb(f3.2.10_txt$hivtest_pos_pct)`% of the `r ftb(f3.2.10_txt$hivtest_pos_pct_denominator/1e6)` million people diagnosed with TB who had an HIV test result. Overall, the percentage of people diagnosed with TB who had an HIV-positive test result has fallen globally over the past 10 years. 
 
-Bacteriological confirmation of TB is necessary to test for drug-resistant TB. In `r report_year-1`, `r ftb(f3.2.12_txt$dst_pct_Global_2021)`% of people with bacteriologically confirmed TB were tested for resistance to rifampicin (the most effective first-line anti-TB drug), the same level as in in `r report_year-2` (`r lnk("Fig. 3.2.12")`). There were declines in the WHO South-East Asia and Western Pacific regions, which contrasted with improvements in the WHO regions of Africa, the Americas and the Eastern Mediterranean. 
+Bacteriological confirmation of TB is necessary to test for drug-resistant TB. In `r report_year-1`, `r ftb(f3.2.12_txt$dst_pct_Global_2021)`% of people with bacteriologically confirmed TB were tested for resistance to rifampicin (the most effective first-line anti-TB drug), a slight decline from `r ftb(f3.2.12_txt$dst_pct_Global_2020)`% in `r report_year-2` (`r lnk("Fig. 3.2.12")`). There were declines in the WHO South-East Asia and Western Pacific regions, which contrasted with improvements in the WHO regions of Africa, the Americas and the Eastern Mediterranean. 
 
 ### `r anch("Fig. 3.2.12")`<span class="red">Fig. 3.2.12</span> Percentage of people diagnosed with bacteriologically confirmed TB who were tested for rifampicin-resistant TB (RR-TB^a^), globally and for WHO regions, 2009&#8211;`r report_year-1`
 
