@@ -1,0 +1,267 @@
+---
+title: "Featured topics: MAF-TB"
+author: "Takuya Yamanaka"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    keep_md: true
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+    
+---
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+
+# Set up the running environment ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#source("io/set_environment.r")  # particular to each person so this file is in the ignore list
+# Load packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(dplyr)
+library(tidyr)
+library(here)
+library(stringr)
+library(jsonlite)
+
+# Load TB data ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+source(here('report/ch1_prepare_data.r'))
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+  
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+
+### <span style="color:#F21905">Fig. 1</span> Provisional^a^ number of monthly TB case notifications in Zambia, 2020&#8211;`r report_year`
+    
+<div id="fig_INN"></div>
+
+<div class="footnote">^a^ Monthly data are provisional and based on those reported via the WHO online system as of 24 October 2022. They may not exactly match the final annual totals that are reported.</div>
+
+<BR>
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_INN_data = `r ft_inn_data  %>% pivot_wider(names_from = year, values_from = value) %>% rename(cn2019=2, cn2020=3, cn2021=4, cn2022=5) %>% mutate(month = month.name[c(1:12)], month_abb = month.abb[c(1:12)]) %>% toJSON("rows")`; 
+
+
+</script>
+
+
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+
+function tb_format_pct(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 99.5) {
+    return n.toPrecision(2)
+      } else {
+    return n.toPrecision(3)
+  } 
+}
+
+function tb_format_num(n) { 
+  // Show percentages to 2 sig figs if under 100%
+  if (n < 100) {
+    return Number(n.toPrecision(2))
+      } else {
+    return kendo.toString(n, 'n0').replace(/,/g, ' ');
+  } 
+}
+
+function createFig_INN(fig_ID, data) {
+  	
+		$(fig_ID).kendoChart({
+			dataSource: fig_INN_data,
+			chartArea: {
+				height: 400
+			},	
+			legend: {
+				position: "bottom"
+			},
+			series: [{
+        type: "line",
+        field: "cn2020",
+        name: "2020",
+        color: "dodgerblue",
+           markers: {
+             visible: true,
+             size: 10
+           },
+			tooltip: {
+				visible: true,
+				template: "#= dataItem.month # (2020): #= num_spacer(value) #"
+			}
+      },{
+        type: "line",
+        field: "cn2021",
+        name: "2021",
+        color: "limegreen",
+           markers: {
+             visible: true,
+             size: 10
+           },
+			tooltip: {
+				visible: true,
+				template: "#= dataItem.month # (2021): #= num_spacer(value) #"
+			}
+      },{
+        type: "line",
+        field: "cn2022",    
+        name: "2022",
+        color: "goldenrod",
+           markers: {
+             visible: true,
+             size: 10
+           },
+			tooltip: {
+				visible: true,
+				template: "#= dataItem.month # (2022): #= num_spacer(value) #"
+			}
+      },{
+        type: "line",
+        dashType: "dash",
+        field: "cn2019",
+        color: "grey",
+        markers: {
+             size: 0,
+             opacity: 0
+           },
+			tooltip: {
+				visible: false,
+				template: "#= dataItem.month # (2019): #= num_spacer(value) #"
+			}
+      },
+              ],
+      render: function (e) {
+            var draw = kendo.drawing;
+            var padding = 20;
+            var padding2 = 180;
+            var element = this.element;
+            var rect = new kendo.geometry.Rect([padding, padding2], [element.width() - 2 * padding, element.height() - 2 * padding2]);
+            var text = new draw.Text("Monthly average (2019): 3 013", [0, 0], { font: "bold 10px Verdana,Arial,sans-serif" });
+            draw.align([text], rect, "end");
+            draw.vAlign([text], rect, "start");
+            e.sender.surface.draw(text);
+          },
+			valueAxis: {
+				labels: {
+					template: "#= axis_spacer(value) #"
+				},        
+				title: {
+					text: "Monthly notifications",
+				},
+				line: {
+					visible: true
+				},
+        min: 0,
+			},
+			categoryAxis: {
+				field: "month_abb",
+				labels: {
+					rotation: 0
+				},
+				majorGridLines: {
+					visible: true
+				}
+			}
+
+		});
+}
+
+
+
+
+```
+
+```{js, echo=FALSE}
+
+/* Create the figures after the document has been loaded */
+$(document).ready(function() {
+    createFig_INN("#fig_INN",fig_INN_data);
+  
+});
+
+```

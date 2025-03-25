@@ -1,0 +1,218 @@
+iso2,iso3,iso.numeric,country,country.FR,country.ES,country.RU,g.whostatus,g.whoregion
+AW,ABW,533,Aruba,Aruba,Aruba,Аруба,,AMR
+AF,AFG,4,Afghanistan,Afghanistan,Afganistán,Афганистан,M,EMR
+AO,AGO,24,Angola,Angola,Angola,Ангола,M,AFR
+AI,AIA,660,Anguilla,Anguilla,Anguila,Ангилья,,AMR
+AL,ALB,8,Albania,Albanie,Albania,Албания,M,EUR
+AD,AND,20,Andorra,Andorre,Andorra,Андорра,M,EUR
+AN,ANT,530,Netherlands Antilles,,,,,AMR
+AE,ARE,784,United Arab Emirates,Emirats arabes unis,Emiratos Arabes Unidos,Объединенные Арабские Эмираты,M,EMR
+AR,ARG,32,Argentina,Argentine,Argentina,Аргентина,M,AMR
+AM,ARM,51,Armenia,Arménie,Armenia,Армения,M,EUR
+AS,ASM,16,American Samoa,Samoa américaines,Samoa Americana,Американское Самоа,,WPR
+AG,ATG,28,Antigua and Barbuda,Antigua-et-Barbuda,Antigua y Barbuda,Антигуа и Барбуда,M,AMR
+AU,AUS,36,Australia,Australie,Australia,Австралия,M,WPR
+AT,AUT,40,Austria,Autriche,Austria,Австрия,M,EUR
+AZ,AZE,31,Azerbaijan,Azerbaïdjan,Azerbaiyán,Азербайджан,M,EUR
+BI,BDI,108,Burundi,Burundi,Burundi,Бурунди,M,AFR
+BE,BEL,56,Belgium,Belgique,Bélgica,Бельгия,M,EUR
+BJ,BEN,204,Benin,Bénin,Benin,Бенин,M,AFR
+BF,BFA,854,Burkina Faso,Burkina Faso,Burkina Faso,Буркина-Фасо,M,AFR
+BD,BGD,50,Bangladesh,Bangladesh,Bangladesh,Бангладеш,M,SEA
+BG,BGR,100,Bulgaria,Bulgarie,Bulgaria,Болгария,M,EUR
+BH,BHR,48,Bahrain,Bahreïn,Bahrein,Бахрейн,M,EMR
+BS,BHS,44,Bahamas,Bahamas,Bahamas,Багамские Острова,M,AMR
+BA,BIH,70,Bosnia and Herzegovina,Bosnie-Herzégovine,Bosnia y Herzegovina,Босния и Герцеговина,M,EUR
+BY,BLR,112,Belarus,Bélarus,Belarús,Беларусь,M,EUR
+BZ,BLZ,84,Belize,Belize,Belice,Белиз,M,AMR
+BM,BMU,60,Bermuda,Bermudes (les),Bermuda,Бермудские острова,,AMR
+BO,BOL,68,Bolivia (Plurinational State of),Bolivie,Bolivia,Боливия,M,AMR
+BR,BRA,76,Brazil,Brésil,Brasil,Бразилия,M,AMR
+BB,BRB,52,Barbados,Barbade,Barbados,Барбадос,M,AMR
+BN,BRN,96,Brunei Darussalam,Brunéi Darussalam,Brunei Darussalam,Бруней-Даруссалам,M,WPR
+BT,BTN,64,Bhutan,Bhoutan,Bhután,Бутан,M,SEA
+BW,BWA,72,Botswana,Botswana,Botswana,Ботсвана,M,AFR
+CF,CAF,140,Central African Republic,République centrafricaine,República Centroafricana,Центральноафриканская Республика,M,AFR
+CA,CAN,124,Canada,Canada,Canadá,Канада,M,AMR
+CH,CHE,756,Switzerland,Suisse,Suiza,Швейцария,M,EUR
+CL,CHL,152,Chile,Chili,Chile,Чили,M,AMR
+CN,CHN,156,China,Chine,China,Китай,M,WPR
+CI,CIV,384,Côte d'Ivoire,Côte d'Ivoire,Côte d'Ivoire,Кот-д’Ивуар,M,AFR
+CM,CMR,120,Cameroon,Cameroun,Camerún,Камерун,M,AFR
+CD,COD,180,Democratic Republic of the Congo,République démocratique du Congo,República Democrática del Congo,Демократическая Республика Конго,M,AFR
+CG,COG,178,Congo,Congo,Congo,Конго,M,AFR
+CK,COK,184,Cook Islands,Iles Cook,Islas Cook,Острова Кука,M,WPR
+CO,COL,170,Colombia,Colombie,Colombia,Колумбия,M,AMR
+KM,COM,174,Comoros,Comores,Comoras,Коморские Острова,M,AFR
+CV,CPV,132,Cabo Verde,Cabo Verde,Cabo Verde,Кабо-Верде,M,AFR
+CR,CRI,188,Costa Rica,Costa Rica,Costa Rica,Коста-Рика,M,AMR
+CU,CUB,192,Cuba,Cuba,Cuba,Куба,M,AMR
+CW,CUW,531,Curaçao,Curaçao,Curazao,Кюрасао,,AMR
+KY,CYM,136,Cayman Islands,Caïmans (les Îles),Islas Caimán,Острова Кайман ,,AMR
+CY,CYP,196,Cyprus,Chypre,Chipre,Кипр,M,EUR
+CZ,CZE,203,Czechia,Tchéquie,Chequia,Чехия,M,EUR
+DE,DEU,276,Germany,Allemagne,Alemania,Германия,M,EUR
+DJ,DJI,262,Djibouti,Djibouti,Djibouti,Джибути,M,EMR
+DM,DMA,212,Dominica,Dominique,Dominica,Доминика,M,AMR
+DK,DNK,208,Denmark,Danemark,Dinamarca,Дания,M,EUR
+DO,DOM,214,Dominican Republic,République dominicaine,República Dominicana,Доминиканская  Республика,M,AMR
+DZ,DZA,12,Algeria,Algérie,Argelia,Алжир,M,AFR
+EC,ECU,218,Ecuador,Equateur,Ecuador,Эквадор,M,AMR
+EG,EGY,818,Egypt,Egypte,Egipto,Египет,M,EMR
+ER,ERI,232,Eritrea,Erythrée,Eritrea,Эритрея,M,AFR
+ES,ESP,724,Spain,Espagne,España,Испания,M,EUR
+EE,EST,233,Estonia,Estonie,Estonia,Эстония,M,EUR
+ET,ETH,231,Ethiopia,Ethiopie,Etiopía,Эфиопия,M,AFR
+FI,FIN,246,Finland,Finlande,Finlandia,Финляндия,M,EUR
+FJ,FJI,242,Fiji,Fidji,Fiji,Фиджи,M,WPR
+FR,FRA,250,France,France,Francia,Франция,M,EUR
+FM,FSM,583,Micronesia (Federated States of),Micronésie (Etats fédérés de),Micronesia (Estados Federados de),Микронезия (Федеративные Штаты),M,WPR
+GA,GAB,266,Gabon,Gabon,Gabón,Габон,M,AFR
+GB,GBR,826,United Kingdom of Great Britain and Northern Ireland,Royaume-Uni de Grande-Bretagne et d'Irlande du Nord,Reino Unido de Gran Bretaña e Irlanda del Norte,Соединенное Королевство Великобритании и Северной Ирландии,M,EUR
+GE,GEO,268,Georgia,Géorgie,Georgia,Грузия,M,EUR
+GH,GHA,288,Ghana,Ghana,Ghana,Гана,M,AFR
+GN,GIN,324,Guinea,Guinée,Guinea,Гвинея,M,AFR
+GM,GMB,270,Gambia,Gambie,Gambia,Гамбия,M,AFR
+GW,GNB,624,Guinea-Bissau,Guinée-Bissau,Guinea-Bissau,Гвинея-Биссау,M,AFR
+GQ,GNQ,226,Equatorial Guinea,Guinée équatoriale,Guinea Ecuatorial,Экваториальная Гвинея,M,AFR
+GR,GRC,300,Greece,Grèce,Grecia,Греция,M,EUR
+GD,GRD,308,Grenada,Grenade,Granada,Гренада,M,AMR
+GL,GRL,304,Greenland,Groenland (le),Groenlandia,Гренландия,,EUR
+GT,GTM,320,Guatemala,Guatemala,Guatemala,Гватемала,M,AMR
+GU,GUM,316,Guam,Guam,Guam,Гуам,,WPR
+GY,GUY,328,Guyana,Guyana,Guyana,Гайана,M,AMR
+HK,HKG,344,"China, Hong Kong SAR","Chine, région administrative spéciale de Hong Kong","China, región administrativa especial de Hong Kong","Китай, Специальный административный район Гонконг",,WPR
+HN,HND,340,Honduras,Honduras,Honduras,Гондурас,M,AMR
+HR,HRV,191,Croatia,Croatie,Croacia,Хорватия,M,EUR
+HT,HTI,332,Haiti,Haïti,Haití,Гаити,M,AMR
+HU,HUN,348,Hungary,Hongrie,Hungría,Венгрия,M,EUR
+ID,IDN,360,Indonesia,Indonésie,Indonesia,Индонезия,M,SEA
+IN,IND,356,India,Inde,India,Индия,M,SEA
+IE,IRL,372,Ireland,Irlande,Irlanda,Ирландия,M,EUR
+IR,IRN,364,Iran (Islamic Republic of),Iran (République islamique d'),Irán (República Islámica del),Иран (Исламская Республика),M,EMR
+IQ,IRQ,368,Iraq,Iraq,Iraq,Ирак,M,EMR
+IS,ISL,352,Iceland,Islande,Islandia,Исландия,M,EUR
+IL,ISR,376,Israel,Israël,Israel,Израиль,M,EUR
+IT,ITA,380,Italy,Italie,Italia,Италия,M,EUR
+JM,JAM,388,Jamaica,Jamaïque,Jamaica,Ямайка,M,AMR
+JO,JOR,400,Jordan,Jordanie,Jordania,Иордания,M,EMR
+JP,JPN,392,Japan,Japon,Japón,Япония,M,WPR
+KZ,KAZ,398,Kazakhstan,Kazakhstan,Kazajstán,Казахстан,M,EUR
+KE,KEN,404,Kenya,Kenya,Kenya,Кения,M,AFR
+KG,KGZ,417,Kyrgyzstan,Kirghizistan,Kirguistán,Кыргызстан,M,EUR
+KH,KHM,116,Cambodia,Cambodge,Camboya,Камбоджа,M,WPR
+KI,KIR,296,Kiribati,Kiribati,Kiribati,Кирибати,M,WPR
+KN,KNA,659,Saint Kitts and Nevis,Saint-Kitts-et-Nevis,Saint Kitts y Nevis,Сент-Китс и Невис,M,AMR
+KR,KOR,410,Republic of Korea,République de Corée,República de Corea,Республика Корея,M,WPR
+KW,KWT,414,Kuwait,Koweït,Kuwait,Кувейт,M,EMR
+LA,LAO,418,Lao People's Democratic Republic,République démocratique populaire lao,República Democrática Popular Lao,Лаосская Народно-Демократическая Республика,M,WPR
+LB,LBN,422,Lebanon,Liban,Líbano,Ливан,M,EMR
+LR,LBR,430,Liberia,Libéria,Liberia,Либерия,M,AFR
+LY,LBY,434,Libya,Libye,Libia,Либия,M,EMR
+LC,LCA,662,Saint Lucia,Sainte-Lucie,Santa Lucía,Сент-Люсия,M,AMR
+LK,LKA,144,Sri Lanka,Sri Lanka,Sri Lanka,Шри-Ланка,M,SEA
+LS,LSO,426,Lesotho,Lesotho,Lesotho,Лесото,M,AFR
+LT,LTU,440,Lithuania,Lituanie,Lituania,Литва,M,EUR
+LU,LUX,442,Luxembourg,Luxembourg,Luxemburgo,Люксембург,M,EUR
+LV,LVA,428,Latvia,Lettonie,Letonia,Латвия,M,EUR
+MO,MAC,446,"China, Macao SAR","Chine, région administrative spéciale de Macao","China, región administrativa especial de Macao","Китай, Специальный административный район Макао",,WPR
+MA,MAR,504,Morocco,Maroc,Marruecos,Марокко,M,EMR
+MC,MCO,492,Monaco,Monaco,Mónaco,Монако,M,EUR
+MD,MDA,498,Republic of Moldova,République de Moldova,República de Moldova,Республика Молдова,M,EUR
+MG,MDG,450,Madagascar,Madagascar,Madagascar,Мадагаскар,M,AFR
+MV,MDV,462,Maldives,Maldives,Maldivas,Мальдивские острова,M,SEA
+MX,MEX,484,Mexico,Mexique,México,Мексика,M,AMR
+MH,MHL,584,Marshall Islands,Iles Marshall,Islas Marshall,Маршалловы Острова,M,WPR
+MK,MKD,807,North Macedonia,Macédoine du Nord,Macedonia del Norte,Северная Македония,M,EUR
+ML,MLI,466,Mali,Mali,Malí,Мали,M,AFR
+MT,MLT,470,Malta,Malte,Malta,Мальта,M,EUR
+MM,MMR,104,Myanmar,Myanmar,Myanmar,Мьянма,M,SEA
+ME,MNE,499,Montenegro,Monténégro,Montenegro,Черногория,M,EUR
+MN,MNG,496,Mongolia,Mongolie,Mongolia,Монголия,M,WPR
+MP,MNP,580,Northern Mariana Islands,Mariannes du Nord (les Îles),Islas Marianas del Norte ,Северные Марианские острова,,WPR
+MZ,MOZ,508,Mozambique,Mozambique,Mozambique,Мозамбик,M,AFR
+MR,MRT,478,Mauritania,Mauritanie,Mauritania,Мавритания,M,AFR
+MS,MSR,500,Montserrat,Montserrat,Montserrat,Монтсеррат,,AMR
+MU,MUS,480,Mauritius,Maurice,Mauricio,Маврикий,M,AFR
+MW,MWI,454,Malawi,Malawi,Malawi,Малави,M,AFR
+MY,MYS,458,Malaysia,Malaisie,Malasia,Малайзия,M,WPR
+NA,NAM,516,Namibia,Namibie,Namibia,Намибия,M,AFR
+NC,NCL,540,New Caledonia,Nouvelle-Calédonie (la),Nueva Caledonia,Новая Каледония,,WPR
+NE,NER,562,Niger,Niger,Níger,Нигер,M,AFR
+NG,NGA,566,Nigeria,Nigéria,Nigeria,Нигерия,M,AFR
+NI,NIC,558,Nicaragua,Nicaragua,Nicaragua,Никарагуа,M,AMR
+NU,NIU,570,Niue,Nioué,Niue,Ниуе,M,WPR
+NL,NLD,528,Netherlands,Pays-Bas,Países Bajos,Нидерланды,M,EUR
+NO,NOR,578,Norway,Norvège,Noruega,Норвегия,M,EUR
+NP,NPL,524,Nepal,Népal,Nepal,Непал,M,SEA
+NR,NRU,520,Nauru,Nauru,Nauru,Науру,M,WPR
+NZ,NZL,554,New Zealand,Nouvelle-Zélande,Nueva Zelandia,Новая Зеландия,M,WPR
+OM,OMN,512,Oman,Oman,Omán,Оман,M,EMR
+PK,PAK,586,Pakistan,Pakistan,Pakistán,Пакистан,M,EMR
+PA,PAN,591,Panama,Panama,Panamá,Панама,M,AMR
+PE,PER,604,Peru,Pérou,Perú,Перу,M,AMR
+PH,PHL,608,Philippines,Philippines,Filipinas,Филиппины,M,WPR
+PW,PLW,585,Palau,Palaos,Palau,Палау,M,WPR
+PG,PNG,598,Papua New Guinea,Papouasie-Nouvelle-Guinée,Papua Nueva Guinea,Папуа-Новая Гвинея,M,WPR
+PL,POL,616,Poland,Pologne,Polonia,Польша,M,EUR
+PR,PRI,630,Puerto Rico,Porto Rico,Puerto Rico,Пуэрто-Рико,A,AMR
+KP,PRK,408,Democratic People's Republic of Korea,République populaire démocratique de Corée,República Popular Democrática de Corea,Корейская Народно-Демократическая Республика,M,SEA
+PT,PRT,620,Portugal,Portugal,Portugal,Португалия,M,EUR
+PY,PRY,600,Paraguay,Paraguay,Paraguay,Парагвай,M,AMR
+PS,PSE,275,"occupied Palestinian territory, including east Jerusalem","Territoire palestinien occupé, y compris Jérusalem-Est","Territorio Palestino Ocupado, incluida Jerusalén Oriental","Оккупированная Палестинская территория, включая Восточный Иерусалим",,EMR
+PF,PYF,258,French Polynesia,Polynésie française (la),Polinesia Francesa,Французская Полинезия,,WPR
+QA,QAT,634,Qatar,Qatar,Qatar,Катар,M,EMR
+RO,ROU,642,Romania,Roumanie,Rumania,Румыния,M,EUR
+RU,RUS,643,Russian Federation,Fédération de Russie,Federación de Rusia,Российская Федерация,M,EUR
+RW,RWA,646,Rwanda,Rwanda,Rwanda,Руанда,M,AFR
+SA,SAU,682,Saudi Arabia,Arabie saoudite,Arabia Saudita,Саудовская Аравия,M,EMR
+YU,SCG,891,Serbia & Montenegro,,,,,EUR
+SD,SDN,729,Sudan,Soudan,Sudán,Судан,M,EMR
+SN,SEN,686,Senegal,Sénégal,Senegal,Сенегал,M,AFR
+SG,SGP,702,Singapore,Singapour,Singapur,Сингапур,M,WPR
+SB,SLB,90,Solomon Islands,Iles Salomon,Islas Salomón,Соломоновы острова,M,WPR
+SL,SLE,694,Sierra Leone,Sierra Leone,Sierra Leona,Сьерра-Леоне,M,AFR
+SV,SLV,222,El Salvador,El Salvador,El Salvador,Сальвадор,M,AMR
+SM,SMR,674,San Marino,Saint-Marin,San Marino,Сан-Марино,M,EUR
+SO,SOM,706,Somalia,Somalie,Somalia,Сомали,M,EMR
+RS,SRB,688,Serbia,Serbie,Serbia,Сербия,M,EUR
+SS,SSD,728,South Sudan,Soudan du Sud,Sudán del Sur,Южный Судан,M,AFR
+ST,STP,678,Sao Tome and Principe,Sao Tomé-et-Principe,Santo Tomé y Príncipe,Сан-Томе и Принсипи,M,AFR
+SR,SUR,740,Suriname,Suriname,Suriname,Суринам,M,AMR
+SK,SVK,703,Slovakia,Slovaquie,Eslovaquia,Словакия,M,EUR
+SI,SVN,705,Slovenia,Slovénie,Eslovenia,Словения,M,EUR
+SE,SWE,752,Sweden,Suède,Suecia,Швеция,M,EUR
+SZ,SWZ,748,Eswatini,Eswatini,Eswatini,Эсватини,M,AFR
+SX,SXM,534,Sint Maarten (Dutch part),Saint-Martin (partie néerlandaise),San Martín (parte Holandesa),Синт-Мартен (нидерландская часть),,AMR
+SC,SYC,690,Seychelles,Seychelles,Seychelles,Сейшельские Острова,M,AFR
+SY,SYR,760,Syrian Arab Republic,République arabe syrienne,República Arabe Siria,Сирийская Арабская Республика,M,EMR
+TC,TCA,796,Turks and Caicos Islands,Turks-et-Caïcos (les Îles),Islas Turcas y Caicos,Острова Теркс и Кайкос,,AMR
+TD,TCD,148,Chad,Tchad,Chad,Чад,M,AFR
+TG,TGO,768,Togo,Togo,Togo,Того,M,AFR
+TH,THA,764,Thailand,Thaïlande,Tailandia,Таиланд,M,SEA
+TJ,TJK,762,Tajikistan,Tadjikistan,Tayikistán,Таджикистан,M,EUR
+TK,TKL,772,Tokelau,Tokelau (les),Tokelau,Токелау,A,WPR
+TM,TKM,795,Turkmenistan,Turkménistan,Turkmenistán,Туркменистан,M,EUR
+TL,TLS,626,Timor-Leste,Timor-Leste,Timor-Leste,Тимор-Лешти,M,SEA
+TO,TON,776,Tonga,Tonga,Tonga,Тонга,M,WPR
+TT,TTO,780,Trinidad and Tobago,Trinité-et-Tobago,Trinidad y Tobago,Тринидад и Тобаго,M,AMR
+TN,TUN,788,Tunisia,Tunisie,Túnez,Тунис,M,EMR
+TR,TUR,792,Türkiye,Türkiye,Türkiye,Турция,M,EUR
+TV,TUV,798,Tuvalu,Tuvalu,Tuvalu,Тувалу,M,WPR
+TZ,TZA,834,United Republic of Tanzania,République-Unie de Tanzanie,República Unida de Tanzanía,Объединенная Республика Танзания,M,AFR
+UG,UGA,800,Uganda,Ouganda,Uganda,Уганда,M,AFR
+UA,UKR,804,Ukraine,Ukraine,Ucrania,Украина,M,EUR
+UY,URY,858,Uruguay,Uruguay,Uruguay,Уругвай,M,AMR
+US,USA,840,United States of America,Etats-Unis d'Amérique,Estados Unidos de América,Соединенные Штаты Америки,M,AMR
+UZ,UZB,860,Uzbekistan,Ouzbékistan,Uzbekistán,Узбекистан,M,EUR
+VC,VCT,670,Saint Vincent and the Grenadines,Saint-Vincent-et-les Grenadines,San Vicente y las Granadinas,Сент-Винсент и Гренадины,M,AMR
+VE,VEN,862,Venezuela (Bolivarian Republic of),République bolivarienne du Venezuela,Venezuela (República Bolivariana de),Венесуэла (Боливарианская Республика),M,AMR
+VG,VGB,92,British Virgin Islands,Îles Vierges britanniques,Islas Vírgenes Británicas,Британские Виргинские острова,,AMR
+VN,VNM,704,Viet Nam,Viet Nam,Viet Nam,Вьетнам,M,WPR
+VU,VUT,548,Vanuatu,Vanuatu,Vanuatu,Вануату,M,WPR
+WF,WLF,876,Wallis and Futuna Islands,Wallis-et-Futuna,Islas Wallis y Futuna,Острова Уоллис и Футуна,,WPR
+WS,WSM,882,Samoa,Samoa,Samoa,Самоа,M,WPR
+YE,YEM,887,Yemen,Yémen,Yemen,Йемен,M,EMR
+ZA,ZAF,710,South Africa,Afrique du Sud,Sudáfrica,Южная Африка,M,AFR
+ZM,ZMB,894,Zambia,Zambie,Zambia,Замбия,M,AFR
+ZW,ZWE,716,Zimbabwe,Zimbabwe,Zimbabwe,Зимбабве,M,AFR

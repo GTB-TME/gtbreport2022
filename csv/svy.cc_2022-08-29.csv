@@ -1,0 +1,71 @@
+country,iso2,iso3,year,patient.group,area.type,catast.pct,catast.pct.lo,catast.pct.hi
+Benin,BJ,BEN,2018,all,a,37,33,41
+Benin,BJ,BEN,2018,dr,a,67,42,85
+Benin,BJ,BEN,2018,ds,a,36,32,40
+Burkina Faso,BF,BFA,2020,dr,a,50,14,86
+Burkina Faso,BF,BFA,2020,ds,a,54,46,62
+Burkina Faso,BF,BFA,2020,all,a,54,47,62
+Brazil,BR,BRA,2021,all,a,48,43,53
+Brazil,BR,BRA,2021,dr,a,78,68,87
+Brazil,BR,BRA,2021,ds,a,44,39,49
+Democratic Republic of the Congo,CD,COD,2019,all,a,56,50,63
+Democratic Republic of the Congo,CD,COD,2019,dr,a,80,67,91
+Democratic Republic of the Congo,CD,COD,2019,ds,a,51,44,58
+Colombia,CO,COL,2022,all,a,52,45,58
+Colombia,CO,COL,2022,dr,a,65,48,82
+Colombia,CO,COL,2022,ds,a,51,45,58
+Fiji,FJ,FJI,2017,all,a,40,33,46
+Ghana,GH,GHA,2016,all,a,64,58,69
+Ghana,GH,GHA,2016,dr,a,72,59,84
+Ghana,GH,GHA,2016,ds,a,63,57,69
+Indonesia,ID,IDN,2020,all,a,38,33,44
+Indonesia,ID,IDN,2020,dr,a,81,74,86
+Indonesia,ID,IDN,2020,ds,a,38,32,44
+Kenya,KE,KEN,2017,all,a,27,21,32
+Kenya,KE,KEN,2017,dr,a,86,79,94
+Kenya,KE,KEN,2017,ds,a,26,20,32
+Lao People's Democratic Republic,LA,LAO,2019,all,a,63,58,67
+Lao People's Democratic Republic,LA,LAO,2019,ds,a,62,58,67
+Lao People's Democratic Republic,LA,LAO,2019,dr,a,87,35,96
+Lesotho,LS,LSO,2019,all,a,19,15,25
+Lesotho,LS,LSO,2019,dr,a,92,81,97
+Lesotho,LS,LSO,2019,ds,a,17,13,23
+Mali,ML,MLI,2020,all,a,49,41,58
+Mali,ML,MLI,2020,dr,a,100,,
+Mali,ML,MLI,2020,ds,a,48,39,56
+Myanmar,MM,MMR,2015,all,a,60,53,66
+Myanmar,MM,MMR,2015,dr,a,98,93,100
+Myanmar,MM,MMR,2015,ds,a,57,51,64
+Mongolia,MN,MNG,2017,all,a,69,64,74
+Mongolia,MN,MNG,2017,dr,a,85,79,90
+Mongolia,MN,MNG,2017,ds,a,63,57,70
+Niger,NE,NER,2022,all,a,71,67,76
+Niger,NE,NER,2022,dr,a,79,,
+Niger,NE,NER,2022,ds,a,71,,
+Nigeria,NG,NGA,2017,all,a,71,66,75
+Nigeria,NG,NGA,2017,dr,a,90,83,95
+Nigeria,NG,NGA,2017,ds,a,69,64,74
+Philippines,PH,PHL,2017,all,a,42,39,46
+Philippines,PH,PHL,2017,dr,a,90,86,93
+Philippines,PH,PHL,2017,ds,a,42,38,45
+Papua New Guinea,PG,PNG,2019,all,a,34,27,42
+Papua New Guinea,PG,PNG,2019,dr,a,84,57,99
+Papua New Guinea,PG,PNG,2019,ds,a,33,26,40
+Solomon Islands,SB,SLB,2019,all,a,92,86,97
+El Salvador,SV,SLV,2021,all,a,13,10,17
+Thailand,TH,THA,2020,all,a,30,26,34
+Thailand,TH,THA,2020,dr,a,61,30,88
+Thailand,TH,THA,2020,ds,a,29,25,34
+Timor-Leste,TL,TLS,2017,all,a,83,80,86
+United Republic of Tanzania,TZ,TZA,2019,all,a,45,37,53
+United Republic of Tanzania,TZ,TZA,2019,dr,a,80,58,95
+United Republic of Tanzania,TZ,TZA,2019,ds,a,44,36,52
+Uganda,UG,UGA,2017,all,a,53,43,63
+Uganda,UG,UGA,2017,dr,a,100,,
+Uganda,UG,UGA,2017,ds,a,51,41,61
+Viet Nam,VN,VNM,2016,all,a,63,58,67
+Viet Nam,VN,VNM,2016,dr,a,98,73,99
+Viet Nam,VN,VNM,2016,ds,a,60,55,64
+Zimbabwe,ZW,ZWE,2018,all,a,80,74,85
+Zimbabwe,ZW,ZWE,2018,dr,a,90,76,98
+Zimbabwe,ZW,ZWE,2018,ds,a,79,74,85

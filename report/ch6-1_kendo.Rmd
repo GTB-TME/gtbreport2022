@@ -1,0 +1,713 @@
+---
+title: "Chapter 6.1"
+author: "Takuya Yamanaka" # Based on the test version of Chapter 5 "chapter_5_test" by Hazim 
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+    # to save intermediate .png
+    keep_md: true
+    # Don't embed external resources (stylesheets, JS libraries) in the output 
+    self_contained: FALSE
+
+---
+
+```{r setup, include=FALSE}
+
+# Set chunk options.
+# Results "asis" is needed to avoid xtable output being html encoded
+# Suppress messages, warnings and also the ## at the beginning of printed text
+# Set a default figure width too.
+
+knitr::opts_chunk$set(echo = FALSE,
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      fig.width = 12)
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(RColorBrewer)
+library(whomap)
+library(gtbreport)
+library(here)
+
+library(jsonlite)
+library(dplyr)
+library(here)
+
+# Get the data sets and computed values/statistics for section 6.1 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch6-1_prepare_data.r'))
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+```
+<!-- Add links to stylesheets, JQuery and Kendo UI  -->
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default.mobile.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+<script src="https://docs.telerik.com/kendo-ui/assets/bootstrap.min.js"></script>
+<!-- End of links section -->
+    
+
+
+
+# 6.1 UHC and TB determinants  
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` `r if(show_estimates){paste0('and estimates files dated ', csv_estimate_datestamp)}`_
+
+
+### <span style="color:#F21905">Fig. 6.1.1</span> Trends in the UHC service coverage index in WHO regions and World Bank income groups, 2000–2019 
+
+  
+#### (a) By region  
+<div id="fig_6_1_1a"></div>
+    
+#### (b) By income group  
+<div id="fig_6_1_1b"></div>
+
+
+
+
+### <span style="color:#F21905">Fig. 6.1.2</span> UHC service coverage index by country, 2019    
+
+<span class="red">**!static figure!**</span>
+
+
+
+
+### <span style="color:#F21905">Fig. 6.1.3</span> Percentage of the general population facing catastrophic health expenditure^a^ at country level, latest available year of data^b^  
+
+<span class="red">**!static figure!**</span>
+
+
+
+
+### <span style="color:#F21905">Fig. 6.1.4</span> UHC service coverage index (SDG 3.8.1)^a^ and percentage of the general population facing catastrophic health expenditures (SDG 3.8.2),^b^ 30 high TB burden countries and three global TB watchlist countries,^c^ stratified by income group^d^  
+
+<div id="fig_6_1_4_LIC"></div>
+<div id="fig_6_1_4_LMIC"></div>
+<div id="fig_6_1_4_UMIC"></div>
+
+
+
+### <span style="color:#F21905">Fig. 6.1.5</span> Current health expenditure per capita, 30 high TB burden countries, 2000–2019  
+#### (a) Low-income countries  
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_COD"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_ETH"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_LBR"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_MOZ"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_SLE"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_UGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_ZMB"></div>
+</div>
+</div>
+
+
+#### (b) Lower-middle-income countries  
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_COG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_IND"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_IDN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_KEN"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_LSO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_MMR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_NGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_PAK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_PNG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_PHL"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_TZA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_VNM"></div>
+</div>
+</div>
+
+#### (c) Upper-middle-income countries 
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_BRA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_CHN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_GAB"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_6_1_5_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_ZAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_6_1_5_THA"></div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+/* JSON data objects for the figures */
+
+var fig_6_1_1a_data = `r f6.1.1a_data %>% pivot_wider(names_from = who_reg, values_from = SCI) %>% rename(afro=2, amro=3, emro=4, euro=5, searo=6, wpro=7) %>% arrange(year) %>% toJSON("rows")`   ;
+
+var fig_6_1_1b_data = `r f6.1.1b_data %>% pivot_wider(names_from = income_group, values_from = SCI) %>% rename(hic=2, umic=3, lmic=4, lic=5) %>% arrange(year) %>% toJSON("rows")`   ;
+
+var fig_6_1_4_data = `r f6.1.4_data %>% mutate(size=5) %>% toJSON("rows")`   ;
+
+var fig_6_1_5_data = `r f6.1.5_data %>% select (year,country,value) %>% add_row(country = "Democratic People's Republic of Korea", year = rep(2000:2019, 1), value = NA) %>% toJSON("rows")`   ;
+
+</script>
+
+  
+```{js, echo=FALSE}
+
+/* Functions to create the figures */
+
+/* Functions to organize number with thousands separator */
+/* Functions to organize number with thousands separator */
+function num_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number==0) {
+        return kendo.toString(number, 'n0').replace(/,/g, '&nbsp;');
+      } else if (number<10 & number>=1) {
+      return kendo.toString(number, 'n1').replace(/,/g, '&nbsp;');
+      } else {
+      return kendo.toString(number, 'n2').replace(/,/g, '&nbsp;');
+      }
+}
+
+function axis_spacer(number) {
+  // Change thousands separator to a non-breaking space as per WHO standard
+      if (number >= 10 | number == 0 ) {
+        return kendo.toString(number, 'n0').replace(/,/g, ' ');
+      } else {return kendo.toString(number, 'n1').replace(/,/g, ' ');
+             }
+}
+
+/* format a number as thousands using GTB rounding rules */
+function tb_format_thou(n) { 
+  nt = n/1000; 
+  if (nt < 100) {
+    ntform = Number(nt.toPrecision(2))*1000;
+      } else {
+    ntform = Number(nt.toPrecision(3))*1000;
+  } 
+  return num_spacer(ntform)
+}
+
+function createFig_6_1_1a(fig_ID, data) {
+   	
+  // Filter the dataset on the country variable
+   
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 500
+			},
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+				field: "afro",
+        name: "African region",
+				color: "#FC1C1E",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "African region (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "amro",
+        name: "Region of the Americas",
+				color: "#8FD314",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Region of the Americas (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "emro",
+        name: "Eastern Mediterranean Region",
+				color: "#37F546",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Eastern Mediterranean Region (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "euro",
+        name: "European Region",
+				color: "#FF8C1F",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "European Region (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "searo",
+        name: "South-East Asia Region",
+				color: "#4ABAFC",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "South-East Asia Region (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "wpro",
+        name: "Western Pacific Region",
+				color: "#CC0ED5",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Western Pacific Region (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "GLOBAL",
+        name: "Global",
+				color: "#124CFC",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Global (#= category #): #= value.toPrecision(2) #"
+				}
+			},],
+			valueAxis: {
+				labels: {
+          template: "#= kendo.toString(value, 'n0') #"
+				},
+				title: {
+					text: "UHC service coverage index"
+				},
+				line: {
+					visible: false
+				}
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+          step: 1
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+				}
+			}
+
+		});
+}
+
+function createFig_6_1_1b(fig_ID, data) {
+   	
+  // Filter the dataset on the country variable
+   
+		$(fig_ID).kendoChart({
+			dataSource: data,
+			chartArea: {
+				height: 500
+			},
+			legend: {
+				position: "bottom"
+			},
+      series: [{
+				type: "line",
+				field: "hic",
+				name: "High-income",
+				color: "#66D6FF",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "High-income countries (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "umic",
+				name: "Upper-middle-income",
+				color: "#E63E13",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Upper-middle-income countries (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "lmic",
+				name: "Lower-middle-income",
+				color: "#8FD314",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Lower-middle-income countries (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "lic",
+				name: "Low-income",
+				color: "#814550",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Low-income countries (#= category #): #= value.toPrecision(2) #"
+				}
+			},{
+				type: "line",
+				field: "GLOBAL",
+        name: "Global",
+				color: "#124CFC",
+        markers: {
+          size: 3
+        },
+				tooltip: {
+					visible: true,
+					format: "{0}",
+					template: "Global (#= category #): #= value.toPrecision(2) #"
+				}
+			},],
+			valueAxis: {
+				labels: {
+          template: "#= kendo.toString(value, 'n0') #"
+				},
+				title: {
+					text: "UHC service coverage index"
+				},
+				line: {
+					visible: false
+				}
+			},
+			categoryAxis: {
+				field: "year",
+				labels: {
+					rotation: 0,
+          step: 1
+				},
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+				}
+			}
+
+		});
+}
+
+function createFig_6_1_4(fig_ID, data, filter,title, x_axis_title_text, y_axis_title_text, color) {
+  // Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.g_income == filter);
+   
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 350
+			},     
+      title: {
+				text: title,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},		
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "bubble"
+			},
+			series: [{
+				xField: "uhc_index",
+        yField: "uhc_ce10",
+        sizeField: "size",
+        maxSize: 10,
+        minSize: 0.1,
+        categoryField: "country",
+				color: color
+			}],
+      xAxis: {
+        labels: {
+          format: "{0:N0}",
+          skip: 1,
+          rotation: "auto"
+                    },
+        title: {
+					text: x_axis_title_text
+				},
+        max:85,
+        min:20
+                },
+      yAxis: {
+        labels: {
+          format: "{0:N0}",
+               },
+        title: {
+					text: y_axis_title_text
+				},
+        max:40,
+        min:-0,
+        majorUnit: 10,
+        },
+      tooltip: {
+				visible: true,
+				template: "#= category # (#= kendo.toString(dataItem.uhc_index_yr, 'n0') #): #= value.x.toPrecision(2) #% (SDG 3.8.1), #= value.y.toPrecision(2) #% (SDG 3.8.2)"
+			}
+
+		});
+}
+
+function createFig_6_1_5(fig_ID, data, filter, x_axis_title = True, y_axis_title = True,max) {
+  
+  		// Filter the dataset on the country variable
+		dataJSON = data.filter( element => element.country == filter);
+  
+		$(fig_ID).kendoChart({
+			dataSource: dataJSON,
+			chartArea: {
+				height: 250
+			},	
+      title: {
+				text: filter,
+				color: "black",
+				font: "bold 14px  Arial,Helvetica,sans-serif",
+        align: "center"
+			},	
+			legend: {
+				position: "bottom"
+			},
+			seriesDefaults: {
+				type: "line"
+			},
+			series: [{
+				field: "value",
+				color: "#3B53A4", 
+        markers: {
+          size: 3
+        },
+        tooltip: {
+				visible: true,
+				format: "{0:0.00}",
+				template: "#= category #: #= num_spacer(value) #",
+			}
+			}],
+			valueAxis: {
+				labels: {
+					template: "#= axis_spacer(value) #"
+				},
+				title: {
+					text: "International US$",
+					visible: y_axis_title,
+          font: "14px Arial,Helvetica,sans-serif"
+				},
+				line: {
+					visible: false
+				},
+        max: max,
+        min: 0
+			},
+			categoryAxis: {
+				field: "year",
+        labels: {
+					rotation: 0,
+          step: 5
+          },
+				majorGridLines: {
+					visible: false
+				},
+				title: {
+					text: "Year",
+					visible: x_axis_title
+				}
+			}
+
+		});
+}
+
+```
+
+```{js, echo=FALSE}
+
+
+/* Create the figures after the document has been loaded */
+$(document).ready(function () {
+  createFig_6_1_1a("#fig_6_1_1a",fig_6_1_1a_data);
+  createFig_6_1_1b("#fig_6_1_1b",fig_6_1_1b_data); 
+  createFig_6_1_4("#fig_6_1_4_LIC",fig_6_1_4_data,"LIC","Low-income countries","UHC service coverage index (SDG 3.8.1)","Percentage of the general population\nfacing catastrophic health expenditure\n(SDG 3.8.2)","#E41A1C");
+  createFig_6_1_4("#fig_6_1_4_LMIC",fig_6_1_4_data,"LMC","Lower-middle-income countries","UHC service coverage index (SDG 3.8.1)","Percentage of the general population\nfacing catastrophic health expenditure\n(SDG 3.8.2)","#377EB8");
+  createFig_6_1_4("#fig_6_1_4_UMIC",fig_6_1_4_data,"UMC","Upper-middle-income countries","UHC service coverage index (SDG 3.8.1)","Percentage of the general population\nfacing catastrophic health expenditure\n(SDG 3.8.2)","#4DAF4A");
+  createFig_6_1_5("#fig_6_1_5_AGO",fig_6_1_5_data,"Angola",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_COG",fig_6_1_5_data,"Congo",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_IND",fig_6_1_5_data,"India",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_MNG",fig_6_1_5_data,"Mongolia",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_PAK",fig_6_1_5_data,"Pakistan",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_THA",fig_6_1_5_data,"Thailand",true,true, 1600);
+                 createFig_6_1_5("#fig_6_1_5_BGD",fig_6_1_5_data,"Bangladesh",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_PRK",fig_6_1_5_data,"Democratic People's Republic of Korea",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_IDN",fig_6_1_5_data,"Indonesia",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_MOZ",fig_6_1_5_data,"Mozambique",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_PNG",fig_6_1_5_data,"Papua New Guinea",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_UGA",fig_6_1_5_data,"Uganda",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_BRA",fig_6_1_5_data,"Brazil",true,true, 1600);
+                 createFig_6_1_5("#fig_6_1_5_COD",fig_6_1_5_data,"Democratic Republic of the Congo",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_KEN",fig_6_1_5_data,"Kenya",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_MMR",fig_6_1_5_data,"Myanmar",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_PHL",fig_6_1_5_data,"Philippines",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_TZA",fig_6_1_5_data,"United Republic of Tanzania",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_CAF",fig_6_1_5_data,"Central African Republic",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_ETH",fig_6_1_5_data,"Ethiopia",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_LSO",fig_6_1_5_data,"Lesotho",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_NAM",fig_6_1_5_data,"Namibia",true,true);
+                 createFig_6_1_5("#fig_6_1_5_SLE",fig_6_1_5_data,"Sierra Leone",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_VNM",fig_6_1_5_data,"Viet Nam",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_CHN",fig_6_1_5_data,"China",true,true, 1600);
+                 createFig_6_1_5("#fig_6_1_5_GAB",fig_6_1_5_data,"Gabon",true,true, 1600);
+                 createFig_6_1_5("#fig_6_1_5_LBR",fig_6_1_5_data,"Liberia",true,true,400);
+                 createFig_6_1_5("#fig_6_1_5_NGA",fig_6_1_5_data,"Nigeria",true,true,500);
+                 createFig_6_1_5("#fig_6_1_5_ZAF",fig_6_1_5_data,"South Africa",true,true, 1600);
+                 createFig_6_1_5("#fig_6_1_5_ZMB",fig_6_1_5_data,"Zambia",true,true,400);
+
+
+ });  
+
+```

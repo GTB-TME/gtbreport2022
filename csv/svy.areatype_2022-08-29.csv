@@ -1,0 +1,29 @@
+area.type,description
+a,All areas
+con,Construction unit
+cty,City
+n01,Metro Manila
+n02,Other urban
+n03,NCR regions 3 and 4-A
+n04,Rest of Luzon
+n05,Visayas
+n06,Mindanao
+n07,Hill
+n08,Kathmandu
+n09,Terai
+n10,Regions other than Yangon
+n11,Yangon region
+n12,Stratum 1: low case notification rate: Gautang; Limpopo
+n13,Stratum 2: medium case notification rate: Mpumalanga; North West; Western Cape
+n14,Stratum 3: high case notification rate: Eastern Cape; Free State; KwaZulu Natal; Northern Cape
+n15,Mountain
+o,Other areas
+p,Pastoralist areas
+prv,Provincial
+pu,Peri-urban
+r,Rural areas
+reg,Region
+rem,Remote areas
+st,State
+su,Semi-urban
+u,Urban areas

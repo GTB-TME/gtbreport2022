@@ -1,0 +1,115 @@
+#' ---
+#' title: Data preparation, Global TB Report 2022
+#' author: Philippe Glaziou
+#' date: 10/08/2022
+#' output:
+#'    html_document:
+#'      toc: true
+#'      highlight: zenburn
+#' ---
+
+#' # Preamble
+#' (Last updated: `r Sys.Date()`)
+#'
+#' Export files to GTB database
+#'
+library(data.table)
+library(here)
+library(gtbreport)
+library(whomap)
+
+source(here('report/ch1_2_dataprep.R'))
+
+
+# fig 17
+hest[year>=2015, dec.inc := 1-inc/inc[1], by=iso3]
+lst <- hest[year==2021, .(iso3, dec.inc)][order(-dec.inc)][1:10, iso3]
+sel <- hest$iso3 %in% lst & hest$year>2014
+
+qplot(
+  year,
+  inc,
+  data = hest[sel],
+  geom = 'line',
+  colour = I('grey20')
+) +
+  geom_ribbon(
+    aes(year, ymin = inc.lo, ymax = inc.hi),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_hline(aes(yintercept = inc.milestone), linetype = I(2)) +
+  facet_wrap(~country, nrow=2, scales="free",
+             labeller = label_wrap_gen(width = 25)) +
+  xlab('') + ylab('TB incidence rate per 100 000 per year (log scale)') +
+  scale_y_log10() +
+  theme_gtb()
+
+ggsave(here('report/pdf/fig17.pdf'), width=12, height=8)
+fwrite(hest[sel, .(iso3,year,inc,inc.lo,inc.hi,inc.milestone)],
+       file=here('report/pdf/fig17.csv'))
+
+
+
+
+# fig 18
+hest[year>=2015, dec.mort := 1-mort.num/mort.num[1], by=iso3]
+lst <- hest[year==2021, .(iso3, dec.mort)][order(-dec.mort)][1:10, iso3]
+sel <- hest$iso3 %in% lst & hest$year>2014
+
+qplot(
+  year,
+  mort.num / 1e3,
+  data = hest[sel],
+  geom = 'line',
+  colour = I('grey20')
+) +
+  geom_ribbon(
+    aes(year, ymin = mort.lo.num / 1e3, ymax = mort.hi.num / 1e3),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_hline(aes(yintercept = mort.milestone / 1e3), linetype = I(2)) +
+  facet_wrap(~country, nrow=2, scales="free",
+             labeller = label_wrap_gen(width = 25)) +
+  xlab('') + ylab('TB deaths (total, in thousands) per year (log scale)') +
+  scale_y_log10() +
+  theme_gtb()
+
+ggsave(here('report/pdf/fig18.pdf'), width=12, height=8)
+fwrite(hest[sel, .(iso3,year,mort.num,mort.lo.num,mort.hi.num,mort.milestone)],
+       file=here('report/pdf/fig18.csv'))
+
+
+
+
+# fig 20
+qplot(
+    year,
+    inc.num / 1e6,
+    data = global,
+    geom = 'line',
+    colour = I('blue')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = inc.lo.num / 1e6, ymax = inc.hi.num / 1e6),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, c.newinc / 1e6)) +
+  ylab('Millions per year (log scale)') + xlab('') +
+  expand_limits(y = 1) +
+  scale_y_log10() +
+  theme_bw(base_size = 14)
+
+ggsave(here('report/pdf/fig20.pdf'), width=8.3, height=5.8)
+fwrite(global[, .(year,inc.num,inc.lo.num,inc.hi.num,c.newinc)],
+       file=here('report/pdf/fig20.csv'))
+
+
+
+
+
+
+
+

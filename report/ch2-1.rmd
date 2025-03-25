@@ -1,0 +1,814 @@
+--- 
+title: "Section 2.1 TB incidence" 
+author: "Philippe Glaziou, Nim Pathy, Pete Dodd and formatted by Irwin Law and Hazim Timimi" 
+date: "`r Sys.Date()`" 
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output:  
+  html_fragment: 
+    # Don’t include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    fig_width: 12 
+    # Don’t write figure captions 
+    fig_caption: FALSE 
+    
+    
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch2-1.rmd"), output_file = "ch2-1.html", output_dir = here::here("report/html_drafts/"))
+--- 
+
+
+```{r setup, include=FALSE} 
+# Chapter 1
+# Set options, load data, utility functions 
+
+knitr::opts_chunk$set(echo = FALSE,  
+                      results = "asis", 
+                      message = FALSE, 
+                      warning = FALSE) 
+library(data.table)
+library(gtbreport)
+library(here)
+library(kableExtra)
+library(gridExtra)
+library(whomap)
+library(ggrepel)
+library(ggpubr)
+library(RColorBrewer)
+library(tidyverse)
+
+
+source(here('report/ch1_2_dataprep.R'))
+
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+# 3. ref_lnk() creates a link from text to the references in the WHO style (black, italic)
+ref_lnk <- function(display_name){
+  return(paste0('<span class="refs">[', 
+                display_name, 
+                '](#refs)</span>'))
+}
+
+``` 
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+
+.subhead {
+	margin-top: -15px; /* Bring subheadings closer to figure headings */
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+.refs, .refs a {
+  color: #3c4245;  /* match SF normal text colour */
+  font-style: italic;
+}
+
+.textbox {
+    width: 100%;
+    background-color: #daeef4;
+    padding: 15px;
+}
+
+
+/* Table 2.1.1 */
+/* Recreating simple striped bootstrap table */
+#burden_num_table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  /* Next two lines to allow horizontal scrolling on narrow screens */
+  display: block;
+  overflow-x: auto;
+}
+
+#burden_num_table th {
+  border-bottom: 2px solid #DDDDDD;
+  padding: 8px;
+}
+
+#burden_num_table td {
+  border-top: 1px solid #DDDDDD;
+  padding: 8px;
+}
+
+/* light gray for odd rows */
+#burden_num_table tr:nth-child(odd) td {
+  background-color: #F5F5F5;	
+}
+
+/* Bold for the final row with thick line above */
+#burden_num_table tr:last-child td {
+  border-top: 2px solid #DDDDDD;
+  font-weight:bold;	
+}
+
+/* light gray when hovering over a row */
+#burden_num_table tr:hover td {
+  background-color: #DDDDDD;
+}
+
+/* Centre-align all column headings except for the first */
+#burden_num_table th:not(:first-child) {
+  text-align: center !important;
+}
+
+/* prevent numbers from wrapping in any of the columns */
+#burden_num_table td {
+  white-space: nowrap;
+}
+
+
+```
+
+
+
+## 2.1 TB incidence
+
+_Draft! Prepared `r Sys.Date()`_
+
+
+`r lnk("Box 2.1.1")` summarizes the methods used to produce estimates of TB incidence between 2000 and 2019, and the new methods that were needed to produce estimates for 2020 and 2021. Estimation of TB mortality during the COVID-19 pandemic is much more difficult than previously. The new methods have been extensively reviewed but rely heavily on country and region-specific dynamic models for low and middle-income countries, in the absence of reliable direct measurements of disease burden from national disease surveillance systems or population-based surveys.  
+
+An estimated global total of 10.6 million people (95% uncertainty interval [UI]: 9.9-11 million) fell ill with TB in 2021, equivalent to 134 cases (95% UI: 125-143) per 100 000 population (`r lnk("Table 2.1.1")`). Among all TB cases, 6.7% were among people living with HIV. Geographically, most TB cases in 2021 were in the WHO regions of South-East Asia (45%), Africa (23%) and the Western Pacific (18%), with smaller shares in the Eastern Mediterranean (8.1%), the Americas (2.9%) and Europe (2.2%). 
+
+
+### `r anch("Table 2.1.1")`<span style="color:#F21905">Table 2.1.1</span> Global and regional estimates of TB incidence, numbers (in thousands) and rates (per 100 000 population) in 2021
+<div class="subhead">Low and high are the 5th and 95th percentiles of the uncertainty interval (UI)</div>
+```{r tab_2.1.1}
+
+tab.header <- c('Region or country group','Population','Best estimate','Low', 'High',
+                  'Best estimate', 'Low', 'High',
+                  'Best estimate', 'Low', 'High',
+                  'Best estimate', 'Low', 'High'
+                  )
+
+knitr::kable(cbind(tabinc[c(32:37, 31, 38), 1:8], tab1b[c(32:37, 31, 38), 2:7]),
+             format = "html",
+             align = 'rccccccccccccc',
+             col.names = tab.header,
+             # Add a table ID so that it can be styled using extra CSS in Sitefinity
+             table.attr = "id='burden_num_table'") |>
+add_header_above(header = c(" " = 2, "Total" = 3, "HIV-positive" = 3, "Total" = 3, "HIV-positive" = 3)) |>
+add_header_above(header = c(" " = 2, "Number of cases (in thousands)" = 6, "Rate per 100 000 population" = 6)) 
+  # pack_rows("High burden countries", 1, 30) |>
+  # pack_rows('Groupings', 31, 38) 
+
+
+```
+
+
+<br />
+The estimated 10.6 million people (95% UI: 9.9-11 million) who fell ill with TB worldwide in 2021 is an increase of 4.5% from 10.1 million (95% UI: 9.5-10.7 million in 2020), reversing many years of slow decline (`r lnk("Fig. 2.1.1")`, left panel). Similarly, the TB incidence rate (new cases per 100 000 population per year) is estimated to have increased by 3.6% between 2020 and 2021, following declines of about 2% per year for most of the past two decades (`r lnk("Fig. 2.1.1")`, right panel).  
+
+These sharp reversals of progress are consistent with projections published in the Global tuberculosis report 2021 (`r ref_lnk("1")`). They reflect the estimated impact of disruptions to essential TB services during the COVID-19 pandemic: in particular, drops in the number of people newly diagnosed and officially reported with TB in many countries in 2020 and 2021 (<span class="red">Section 1</span>), under the assumption that these reflect true drops in case detection (as opposed to an increase in underreporting). Increases in the number of people with TB who are not detected by health services results in increases in the number of people with undiagnosed and untreated TB in the community. This increases transmission of TB infection, which in turn, with a time-lag, increases the number of people who go on to develop TB disease. These impacts may be partially offset by the effect of COVID-related restrictions on transmission; the dynamic models used to estimate TB incidence assume a 50% reduction in transmission during severe restrictions (lockdowns).  
+
+Globally, the number of people newly diagnosed and officially reported with TB fell from 7.1 million in 2019 to 5.8 million in 2020 (-18%), with a partial recovery to 6.4 million in 2021 (<span class="red">Section 1</span>). The impact of these shortfalls on TB transmission was relatively limited in 2020, given the time lag between acquisition of infection and breakdown to TB disease (which varies from months to many years), but more pronounced in 2021 given the extra year for the consequences of disruptions in 2020 to be manifested and the additional impact of disruptions in 2021. 
+
+Increases in the number of people not detected and thus not treated for TB also result in increases in the number of deaths caused by TB (<span class="red">Section 2.2</span>). The impact of reduced case detection on TB mortality is severe and more immediately noticeable, since there are more people with untreated TB.  
+
+The cumulative fall in the TB incidence rate was 13.5% between 2015 and 2020, but the level of 2021 was only 10% below that of 2015. This was only half-way to the first End TB Strategy milestone of a 20% reduction between 2015 and 2020 (right panel of `r lnk("Fig. 2.1.1")`) and a long way from the second milestone of a 50% reduction by 2025 (`r ref_lnk("2, 3")`). 
+
+### `r anch("Fig. 2.1.1")`<span style="color:#F21905">Fig. 2.1.1</span> Global trends in the estimated number of incident TB cases (left) and the incidence rate (right), 2000&#8211;2021
+<div class="subhead">Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.1, fig.alt="Global trend in notifications of new and relapse TB cases, 2016-2021"} 
+
+
+p1 <-
+  qplot(
+    year,
+    inc.num / 1e6,
+    data = global,
+    geom = 'line',
+    colour = I('blue')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = inc.lo.num / 1e6, ymax = inc.hi.num / 1e6),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, inc.h.num / 1e6), colour = I('lightskyblue2')) +
+  geom_line(aes(year, c.newinc / 1e6)) +
+  geom_ribbon(
+    aes(year, ymin = inc.h.lo.num / 1e6, ymax = inc.h.hi.num / 1e6),
+    fill = I('lightskyblue2'),
+    alpha = 0.4
+  ) +
+  ylab('Millions per year (log scale)') + xlab('') +
+  annotate(
+    'text',
+    x = 2000,
+    y = 7.9,
+    label = 'All TB cases',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2005,
+    y = 4.2,
+    label = 'Notifications of new \nand relapse cases',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2000,
+    y = 0.9,
+    label = 'HIV-positive TB cases',
+    hjust = 0,
+    size = I(4)
+  ) +
+  expand_limits(y = 1) +
+  scale_y_log10() +
+  theme_bw(base_size = 14)
+
+ggsave(here('report/pdf/fig10a.pdf'), width=8.3, height=5.8)
+
+write.csv(global[, .(year, inc.num, inc.lo.num, inc.hi.num, c.newinc, inc.h.num, inc.h.lo.num, inc.h.hi.num)], 
+       file=here('report/pdf/fig10a.csv'))
+
+
+p2 <- qplot(year,
+            inc,
+            data = global,
+            geom = 'line',
+            colour = I('blue')) +
+  geom_ribbon(aes(year, ymin = inc.lo, ymax = inc.hi),
+              fill = I('blue'),
+              alpha = 0.4) +
+  geom_line(aes(year, inc.h), colour = I('lightskyblue2')) +
+  #  geom_line(aes(year, newinc)) +
+  geom_line(aes(year, newinc)) +
+  geom_ribbon(aes(year, ymin = inc.h.lo, ymax = inc.h.hi),
+              fill = I('lightskyblue2'),
+              alpha = 0.4) +
+  ylab('Rate per 100 000 population per year (log scale)') + xlab('') +
+  expand_limits(y = 8) +
+  geom_hline(aes(yintercept = inc[16] * 0.8), linetype = I(2)) +
+  annotate(
+    'text',
+    x = 2000,
+    y = 110,
+    label = '2020 milestone',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2012,
+    y = 215,
+    label = 'All TB cases',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2005,
+    y = 60,
+    label = 'Notifications of new \nand relapse cases',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2000,
+    y = 15,
+    label = 'HIV-positive TB cases',
+    hjust = 0,
+    size = I(4)
+  ) +  
+  
+  scale_y_log10() +
+  theme_bw(base_size = 14)
+
+mp <- grid.arrange(p1, p2, ncol = 2)
+
+#ggsave(here('report/pdf/fig10b.pdf'), width=8.3, height=5.8)
+
+#write.csv(global[, .(year, inc, inc.lo, inc.hi, milestone=inc[16]*0.8, newinc, inc.h, inc.h.lo, inc.h.hi)], 
+#       file=here('report/pdf/fig10b.csv'))
+
+```
+
+
+<br />
+In 2021, eight countries accounted for more than two thirds of global TB cases: India (28%), Indonesia (9.2%), China (7.4%), the Philippines (7.0%), Pakistan (5.8%), Nigeria (4.4%), Bangladesh (3.6%) and Democratic Republic of the Congo (2.9%) (`r lnk("Fig. 2.1.2")`). 
+
+
+### `r anch("Fig. 2.1.2")`<span style="color:#F21905">Fig. 2.1.2</span> Estimated TB incidence in 2021, for countries with at least 100 000 incident cases
+<div class="subhead">The eight countries that rank first to eighth in terms of numbers of cases, and that accounted for two thirds of global cases in 2021, are labelled.</div>
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.2, fig.alt="Estimated TB incidence in 2021, for countries with at least 100 000 incident cases"} 
+
+
+dta <- est[year == yr & inc.num > 1e5, .(iso3, size = inc.num)]
+dta <- merge(dta, cty[,.(iso3, country)], by='iso3')
+
+bubblemap(dta, legend.pos = c(0.14, 0.5), legend.title = 'Number of\nincident cases',
+          bubble.col = "#08519C",
+          water.col = 'white',
+          scale.limits = c(100000, 3000000),
+          scale.breaks = c(100000, 500000,1000000,2000000),
+          scale.labels = c('100 000', '500 000','1 000 000', '2 000 000')) +
+  annotate(geom='text', label='India', x=80, y=-5) +
+  annotate(geom='text', label='Pakistan', x=65, y=0) +
+  annotate(geom='text', label='China', x=135, y=29, hjust=0) +
+  annotate(geom='text', label='Bangladesh', x=135, y=23, hjust=0) +
+  annotate(geom='text', label='Philippines', x=147, y=17, hjust=0) +
+  annotate(geom='text', label='Indonesia', x=90, y=-15, hjust=0) +
+  annotate(geom='text', label='Nigeria', x=-20, y=-5, hjust=0) +
+  #annotate(geom='text', label='South Africa', x=10, y=-45, hjust=0) +
+  annotate(geom='text', label='Democratic Republic of the Congo', x=-30, y=-40, hjust=0) +
+  geom_segment(x=80, xend=80, y=-3, yend=20) +
+  geom_segment(x=65, xend=65, y=3, yend=28) +
+  geom_segment(x=110, xend=132, y=29, yend=29) +
+  geom_segment(x=92, xend=132, y=23, yend=23) +
+  geom_segment(x=122, xend=145, y=17, yend=17) +
+  geom_segment(x=105, xend=115, y=-12, yend=-3) +
+  geom_segment(x=-8, xend=8, y=-2, yend=9) +
+  #geom_segment(x=25, xend=25, y=-42, yend=-30) 
+  #DRC segment below
+  geom_segment(x=10, xend=25, y=-35, yend=-3) 
+
+#ggsave(here('report/pdf/fig12.pdf'), width=8.3, height=5.8)
+
+#write.csv(dta[, .(iso3, size)], 
+#       file=here('report/pdf/fig12.csv'))
+
+
+```
+
+
+<br />
+The severity of national TB epidemics, in terms of the number of incident TB cases per 100 000 population per year, varies widely among countries (`r lnk("Fig. 2.1.3")`). In 2021, countries with the highest rates were mostly in the African Region. 
+
+
+### `r anch("Fig. 2.1.3")`<span style="color:#F21905">Fig. 2.1.3 </span>Estimated TB incidence rates, 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.3, fig.alt="Estimated TB incidence rates, 2021"} 
+
+
+dta <- est[year==yr, .(iso3, inc, country)]
+dta$var <- cut(
+  dta$inc,
+  c(0, 10, 50, 100, 300, 500, Inf),
+  c('0-9.9', '10\u201349', '50\u201399', '100\u2013299', '300\u2013499', '\u2265500'),
+  right = F,
+  ordered_result = T
+)
+
+whomap(
+  X = dta, water.col = 'white',
+  legend.title =  "Incidence\nper 100 000\npopulation per year",
+  colours = brewer.pal(6, "Greens"),
+  legend.pos = c(0.14, 0.34)
+)
+
+#ggsave(here('report/pdf/fig14.pdf'), width=8.3, height=5.8)
+
+#write.csv(dta[, .(iso3, var, country)], 
+#       file=here('report/pdf/fig14.csv'))
+
+```
+
+
+<br />
+The proportion of people with a new episode of TB (either new or relapse cases) who were coinfected with HIV was also highest in countries in the WHO African Region, exceeding 50% in parts of southern Africa (`r lnk("Fig. 2.1.4")`). 
+
+
+### `r anch("Fig. 2.1.4")`<span style="color:#F21905">Fig. 2.1.4</span> Estimated HIV prevalence in people with new or relapse TB, 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.4, fig.alt="Estimated HIV prevalence in people with new or relapse TB, 2021"} 
+
+
+dta <- est[year==yr, .(iso3, tbhiv)]
+dta$var <- cut(
+  dta$tbhiv * 100,
+  c(0, 5, 10, 20, 50, Inf),
+  c('0\u20134.9', '5\u20139.9', '10\u201319', '20\u201349', '\u226550'),
+  right = F,
+  ordered_result = T
+)
+
+whomap(
+  X = dta, water.col = 'white',
+  colours = brewer.pal(5, "Reds"),
+  legend.title =  "HIV prevalence,\nall ages (%)"
+  ) 
+
+```
+
+
+<br />
+TB affects people of both sexes and all age groups (`r lnk("Fig. 2.1.5")`), with the highest burden in adult men (54% of all TB cases in 2021). By comparison, adult women accounted for 33% and children for 13%. 
+
+ 
+### `r anch("Fig. 2.1.5")`<span style="color:#F21905">Fig. 2.1.5</span> Global estimates of TB incidence numbers and case notifications disaggregated by age and sex (female in <span style="color:#951b81">purple</span>; male in <span style="color:#80a51b">green</span>), 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.5, fig.alt="Global estimates of TB incidence numbers and case notifications disaggregated by age and sex (female in purple; male in green), 2021"} 
+
+absspace <- function(x,...) {             #works
+    format(abs(x), ..., big.mark=" ",scientific = FALSE, trim = TRUE)
+}
+
+disag.plot.inc.global <- function(D) {
+  ## ages and colors etc -- From Pete, with a minor edit
+  agz3 <- c('0\u20134',
+            '5\u201314',
+            '15\u201324',
+            '25\u201334',
+            '35\u201344',
+            '45\u201354',
+            '55\u201364',
+            '65plus') #for labels
+  agz4 <- c(rev(rev(agz3)[-1]), "\u226565")
+  clz <- c('F' = palette_gtb('female'),
+           'M' = palette_gtb('male'))
+  ## plot construction
+  plt <- ggplot(data = D, aes(x = age, y = newrel, fill = sex)) +
+    coord_flip() +
+    geom_bar(stat = 'identity', aes(y = ifelse(sex == 'M',
+                                               newrel,
+                                               -newrel))) +
+    scale_fill_manual(values = clz) +
+    geom_bar(stat = 'identity',
+             fill = 'transparent',
+             col = 1,
+             aes(y = ifelse(sex == 'M',
+                            inc,
+                            -inc))) +
+    theme_gtb() +
+    theme(legend.position = "none") + xlab('Age group (years)') + ylab('') +
+    scale_x_discrete(labels = agz4) +
+    scale_y_continuous(labels = absspace)
+  plt
+}
+
+disag.plot.inc.global(globsplt)
+
+#ggsave(here('report/pdf/fig13.pdf'), width=8.3, height=5.8)
+
+#write.csv(globsplt, file=here('report/pdf/fig13.csv'))
+
+```
+
+
+<br />
+Regional estimates of the distribution of TB cases by age and sex are shown in `r lnk("Fig. 2.1.6")`. 
+
+
+### `r anch("Fig. 2.1.6")`<span style="color:#F21905">Fig. 2.1.6</span> Regional estimates of TB incidence numbers and case notifications disaggregated by age and sex (female in <span style="color:#951b81">purple</span>; male in <span style="color:#80a51b">green</span>), 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=10, fig_2.1.6, fig.alt="Regional estimates of TB incidence numbers and case notifications disaggregated by age and sex, 2021"} 
+
+
+# disag.plot.inc.regional(regsplt)
+
+agz3 <- c('0\u20134',
+          '5\u201314',
+          '15\u201324',
+          '25\u201334',
+          '35\u201344',
+          '45\u201354',
+          '55\u201364',
+          '65plus') #for labels
+agz4 <- c(rev(rev(agz3)[-1]), "\u226565")
+clz <- c('F' = palette_gtb('female'),
+         'M' = palette_gtb('male'))
+
+ggplot(data = regsplt, aes(x = age, y = newrel/1000, fill = sex)) +
+  coord_flip() +
+  geom_bar(stat = 'identity', aes(y = ifelse(sex == 'M',
+                                             newrel/1000,
+                                             -newrel/1000))) +
+  scale_fill_manual(values = clz) +
+  geom_bar(stat = 'identity',
+           fill = 'transparent',
+           col = 1,
+           aes(y = ifelse(sex == 'M',
+                          inc/1000,
+                          -inc/1000))) +
+  xlab('Age group (years)') + ylab('') +
+  scale_x_discrete(labels = agz4) +
+  scale_y_continuous(labels = absspace) +
+    facet_wrap(
+    ~ name,
+    scales = 'free',
+    ncol= 3,
+    labeller = label_wrap_gen(width = 25)
+  ) +
+  theme_gtb() +
+  theme(legend.pos = 'none')
+
+
+```
+
+
+
+<br />
+At regional level, trends in the TB incidence rate vary and progress in relation to the 2020 milestone of the End TB Strategy (a 20% reduction compared with a baseline of 2015) is mixed (`r lnk("Fig. 2.1.7")`). The TB incidence rate increased between 2020 and 2021 in five of the six WHO regions, reflecting the estimated impact of shortfalls in TB case detection in 2020 and incomplete recovery in 2021. The exception was the African Region, where COVID-related disruptions have had little impact on the number of people diagnosed and officially notified with TB. In 2021, the African Region passed the 2020 milestone of the End TB Strategy, with a 22% reduction compared with 2015. Despite an upturn between 2020 and 2021, the TB incidence rate in 2021 in the European region was still 25% lower than in 2015. For other regions, the milestone is still some way off.  
+
+
+### `r anch("Fig. 2.1.7")`<span style="color:#F21905">Fig. 2.1.7</span> Trends in estimated TB incidence rates by WHO region, 2000&#8211;2021
+<div class="subhead">Total TB incidence rates are shown in <span style="color:#3232ff">blue</span> and incidence rates of HIV-positive TB are shown in <span style="color:#87ceeb">light blue</span>. The black solid lines show notifications of new and relapse cases for comparison with estimates of the total incidence rate. Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=8,  fig_2.1.7, fig.alt="Trends in estimated TB incidence rates by WHO region, 2000-2021"} 
+
+qplot(year,
+      inc,
+      data = regional,
+      geom = 'line',
+      colour = I('blue')) +
+  geom_line(aes(year, inc.h), colour = I('lightskyblue2')) +
+  geom_ribbon(aes(year, ymin = inc.h.lo, ymax = inc.h.hi),
+              fill = I('lightskyblue2'),
+              alpha = 0.4) +
+  geom_ribbon(aes(year, ymin = inc.lo, ymax = inc.hi),
+              fill = I('blue'),
+              alpha = 0.4) +
+  geom_line(aes(year, newinc)) +
+  geom_hline(aes(yintercept = inc.milestone), linetype = I(2)) +
+  facet_wrap(~ region, scale = 'free_y') +
+  xlab('') + ylab('Incidence rate per 100 000 population per year (log scale)') +
+  expand_limits(y=1) +
+  theme_bw(base_size = 12) +
+  #  scale_y_continuous(trans='log10', breaks=c(1,2,5,10,20,30,50,100,200,300)) +
+  scale_y_log10() +
+  theme_gtb() +
+  theme(legend.position = 'none') 
+
+#ggsave(here('report/pdf/fig11.pdf'), width=12, height=8)
+
+#write.csv(regional[, .(region, inc,inc.lo,inc.hi,inc.h,inc.h.lo,inc.h.hi,inc.milestone,newinc)], 
+#       file=here('report/pdf/fig11.csv'))
+
+
+```
+
+
+<br />
+Trends in the TB incidence rate in the 30 high TB burden countries are mixed. Between 2020 and 2021, there were estimated increases in countries with major shortfalls in TB notifications in 2020 and 2021 (e.g. India, Indonesia, Myanmar, Philippines), while in others the previous decline in the TB incidence rate has slowed or stabilized. In 2021, the best estimate of the TB incidence rate suggested that the 2020 milestone of the End TB Strategy had been reached in 7 countries: Ethiopia, Kenya, Lesotho, Namibia, South Africa, the United Republic of Tanzania and Zambia (`r lnk("Fig. 2.1.8")`).  
+
+
+### `r anch("Fig. 2.1.8")`<span style="color:#F21905">Fig. 2.1.8</span> Trends in estimated TB incidence rates in the 30 high TB burden countries ^a^ compared with notifications of new and relapse cases, 2000&#8211;2021
+<div class="subhead">TB incidence rates are shown in <span style="color:#3232ff">blue</span>. The black solid lines show notifications of new and relapse cases for comparison with estimates of the total incidence rate. Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=12, fig_2.1.8, fig.alt="Trends in estimated TB incidence rates in the 30 high TB burden countries compared with notifications of new and relapse cases, 2000−2021"} 
+
+
+qplot(year,
+      inc,
+      data = hest,
+      geom = 'line',
+      colour = I('blue')) +
+  geom_ribbon(aes(year, ymin = inc.lo, ymax = inc.hi),
+              fill = I('blue'),
+              alpha = 0.4) +
+  geom_line(aes(year, newinc)) +
+  geom_hline(aes(yintercept = inc.milestone), linetype = I(2)) +
+  #facet_wrap(~ country, scales = 'free_y', ncol = 5) +
+  facet_wrap(~country, nrow=6, scales="free",
+                     # Use the labeller function to make sure long country names are wrapped in panel headers
+                     labeller = label_wrap_gen(width = 25)) +
+#  expand_limits(y = 1) +
+  xlab('') + ylab('Incidence rate per 100 000 population per year (log scale)') +
+  scale_y_log10() +
+  theme_gtb()
+
+
+```
+<div class="footnote">^a^ Incidence estimates for India are interim and subject to finalization, in consultation with the Ministry of Health & Family Welfare, India.</div>
+
+
+<br />
+All of the three global TB watchlist countries have reached the 2020 milestone (`r lnk("Fig. 2.1.9")`). 
+
+
+### `r anch("Fig. 2.1.9")`<span style="color:#F21905">Fig. 2.1.9</span> Trends in estimated TB incidence rates in the 3 global TB watchlist countries compared with notifications of new and relapse cases, 2000&#8211;2021
+<div class="subhead">TB incidence rates are shown in <span style="color:#3232ff">blue</span>. The black solid lines show notifications of new and relapse cases for comparison with estimates of the total incidence rate. Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=2.7, fig.width=8, fig.align='left', fig_2.1.9, fig.alt="Trends in estimated TB incidence rates in the 3 WHO watchlist countries compared with notifications of new and relapse cases, 2000−2021"} 
+
+dta <- est[iso3 %in% c('KHM','RUS','ZWE')]
+dta[, inc.milestone := inc[16] * 0.8, by = iso3]
+
+qplot(year,
+      inc,
+      data = dta,
+      geom = 'line',
+      colour = I('blue')) +
+  geom_ribbon(aes(year, ymin = inc.lo, ymax = inc.hi),
+              fill = I('blue'),
+              alpha = 0.4) +
+  geom_line(aes(year, newinc)) +
+  geom_hline(aes(yintercept = inc.milestone), linetype = I(2)) +
+  #facet_wrap(~ country, scales = 'free_y', ncol = 5) +
+  facet_wrap(~country, nrow=1, scales="free",
+                     # Use the labeller function to make sure long country names are wrapped in panel headers
+                     labeller = label_wrap_gen(width = 25)) +
+#  expand_limits(y = 1) +
+  xlab('') + ylab('Incidence rate per 100 000\npopulation per year (log scale)') +
+  scale_y_log10() +
+  theme_gtb()
+
+```
+
+
+<br />
+In total, 77 countries had reached the 2020 milestone by 2021 (`r lnk("Fig. 2.1.10")`). 
+
+
+### `r anch("Fig. 2.1.10")`<span style="color:#F21905">Fig. 2.1.10</span> Countries which, by 2021, had reached the 2020 milestone of the End TB Strategy for reducing the TB incidence rate 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.10, fig.alt="Countries which, by 2021, had reached the 2020 milestone of the End TB Strategy for reducing the TB incidence rate"} 
+
+dta.inc.2015 <- est[year==2015, .(iso3, country, g.hbc, inc, year, mort.num, mort.milestone, inc.milestone)]
+dta.inc.2021 <- est[year==2021, .(iso3, country, g.hbc, inc, year, mort.num, mort.milestone, inc.milestone)]
+
+dta1 <- rbind(dta.inc.2015, dta.inc.2021)
+dta1_wide<-dcast(melt(dta1, id.vars=c("country", "year")), country~variable+year)
+dta1_wide <- dta1_wide[, c(1,2,4,6,7,8,9,10,12)]
+dta1_wide[, 4:9] <- lapply(dta1_wide[, 4:9], as.numeric)
+
+dta1_wide$inc.percent.change<-((dta1_wide$inc_2015-dta1_wide$inc_2021)/dta1_wide$inc_2015)*100
+dta1_wide$mort.percent.change<-((dta1_wide$mort.num_2015-dta1_wide$mort.num_2021)/dta1_wide$mort.num_2015)*100
+
+names(dta1_wide)[names(dta1_wide)=="mort.milestone_2015"] <- "mort.milestone"
+names(dta1_wide)[names(dta1_wide)=="inc.milestone_2015"] <- "inc.milestone"
+
+names(dta1_wide)[names(dta1_wide)=="iso3_2015"] <- "iso3"
+names(dta1_wide)[names(dta1_wide)=="g.hbc_2015"] <- "g.hbc"
+
+dta1_wide$mort.target<-dta1_wide$mort.milestone-dta1_wide$mort.num_2021
+dta1_wide$inc.target<-dta1_wide$inc.milestone-dta1_wide$inc_2021
+
+#If inc.met or mort.met = 1, then the 2020 milestone has been met
+
+dta1_wide <-dta1_wide %>%
+  mutate(inc.met = case_when(inc.target <0~ 0, #condition 1
+                             inc.target >0~ 1, #condition 2
+  ))%>%
+  mutate(mort.met = case_when(mort.target <0~ 0, #condition 1
+                              mort.target >0~ 1, #condition 2
+  ))
+
+
+#make map of countries which have met the 2020 incidence milestone
+
+dta <- dta1_wide[ .(iso3, inc.met)]
+dta$var<-dta$V2
+dta$iso3<-dta$country
+
+dta$var<-factor(dta$var, levels = c(1, 0),
+                labels = c("2020 milestone reached", "Not reached"))
+
+p1<-whomap(dta, colours= c("#66CC99","white"),
+          na.col="#999999",
+          na.label = "Not applicable",
+          water.col = 'white',
+          hidef=F)
+p1
+
+```
+
+
+`r anch("Box 2.1.1")`
+
+
+<div class="textbox">
+## Box 2.1.1 
+
+## Methods used by WHO to estimate TB incidence, before and during the COVID-19 pandemic 
+
+The main methods used by WHO to estimate TB incidence at country level in the periods 2000-2019 and 2020-2021 are shown in `r lnk("Fig. 2.1.11")` and `r lnk("Fig. 2.1.12")`. These methods adhere to global guidelines for accurate and transparent reporting of health estimates (`r ref_lnk("4")`) and are described in detail in a <span class="red">technical appendix</span>.
+
+Methods used by WHO to estimate TB incidence for 2000-2019 included: 
+
+* results from TB prevalence surveys (all except one of which were national) combined with estimates of the duration of disease, used for 29 countries with about two-thirds of the global number of incident TB cases in 2019;
+
+* notifications adjusted by a standard factor to account for underreporting, overdiagnosis and underdiagnosis, used for 139 countries (including most high-income countries and selected middle-income countries) with about 6.1% of the global number of incident TB cases in 2019;
+
+* results from national inventory studies that measured the level of underreporting of detected TB cases, used for eight countries with about 17% of the global number of incident TB cases in 2019; and
+
+* case notification data combined with expert opinion about case-detection gaps, used for 39 countries with 11% of the global number of incident TB cases in 2019.
+
+Estimates of TB incidence in 2020 and 2021 were based on country-specific dynamic models for 27 countries with the biggest absolute reductions in TB notifications during the COVID-19 pandemic (excluding countries where reductions were consistent with pre-2020 trends), and either region-specific dynamic models or pre-2020 trends for other low and middle-income countries. Estimates for high-income countries were based on the same methods as those used up to 2019 i.e. notification data with a standard adjustment. 
+
+
+### `r anch("Fig. 2.1.11")`<span style="color:#F21905">Fig. 2.1.11</span> Main methods used to estimate TB incidence, 2000&#8211;2019
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.11, fig.alt="Main methods used to estimate TB incidence, 2000-2019"} 
+
+dta <-
+  est[year == 2019, .(iso3,
+                        source.inc)]
+
+dta$var <- dta$source.inc
+
+dta$var <- plyr::revalue(dta$var, c("Case notifications, Standard adjustment"="Case notifications, standard adjustment",
+                              "Case notifications,\nStandard adjustment"="Case notifications, standard adjustment",
+                              "Case notifications,\nExpert opinion"="Case notifications, expert opinion"))
+
+
+whomap(
+  X = dta, water.col = 'white',
+  legend.title = 'Main method',
+  #colours = brewer.pal(4, "Paired"),
+  colours= c("#bdd7e7", "#2c7fb8","#fbb4b9", "#c51b8a"),
+  legend.pos = c(0.11, 0.26)
+)
+
+ggsave(here('report/html_drafts/fig2_1_11.pdf'), width=12, height=8)
+
+write.csv(dta, 
+       file=here('report/html_drafts/fig2_1_11.csv'))
+
+
+```
+
+### `r anch("Fig. 2.1.12")`<span style="color:#F21905">Fig. 2.1.12</span> Main methods used to estimate TB incidence, 2020&#8211;2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.1.12, fig.alt="Main methods used to estimate TB incidence, 2020-2021"} 
+
+dta <-
+  est[year == yr, .(iso3,
+                    source.inc)]
+dta$var <- dta$source.inc
+
+dta$var <- plyr::revalue(dta$var, c("Country model"="Country-specific dynamic model", 
+                              "Regional model"="Region-specific dynamic model", 
+                              "Case notifications,\nStandard adjustment"="Case notifications, standard adjustment"))
+
+whomap(
+  X = dta, water.col = 'white',
+  legend.title = 'Main method',
+  #colours = brewer.pal(4, "Dark2"),
+  colours= c("#2c7fb8", "#88be3b","#ffffcc", "#308047"),
+  legend.pos = c(0.11, 0.26)
+)
+
+
+ggsave(here('report/html_drafts/fig2_1_12.pdf'), width=12, height=8)
+
+write.csv(dta, 
+       file=here('report/html_drafts/fig2_1_12.csv'))
+
+```
+
+</div>
+
+
+Country-specific details are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data#app) and [country profiles](https://worldhealthorg.shinyapps.io/tb_profiles/).
+
+
+`r anch("refs")`
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+1. Global tuberculosis report 2021 (pp15). Geneva: World Health Organization; 2021 (https://www.who.int/publications/i/item/9789240037021). 
+
+2. Floyd K, Glaziou P, Houben R, Sumner T, White RG, Raviglione M. Global tuberculosis targets and milestones set for 2016-2035: definition and rationale. Int J Tuberc Lung Dis. 2018;22(7):723-30 (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6005124/). 
+
+3. World Health Organization. Resolution WHA67.1. Global strategy and targets for tuberculosis prevention, care and control after 2015. Geneva: World Health Organization; 2014 (???http://apps.who.int/gb/ebwha/pdf_files/WHA67/A67_R1-en.pdf). 
+
+4. Guidelines for Accurate and Transparent Health Estimates Reporting (GATHER) [website] (http://gather-statement.org/). 
+    
+</div>    

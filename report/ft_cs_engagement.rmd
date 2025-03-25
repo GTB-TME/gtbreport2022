@@ -1,0 +1,289 @@
+--- 
+title: "Featured topic - Civil Society Engagement" 
+author: "Lana Syed and formatted by Irwin Law" 
+date: "`r Sys.Date()`" 
+output:  
+  html_fragment: 
+    # Don’t include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    fig_width: 12 
+    # Don’t write figure captions 
+    fig_caption: FALSE 
+    
+    
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ft_cs_engagement.rmd"), output_file = "ft_cs_engagement.html", output_dir = here::here("report/html_drafts/"))
+--- 
+
+
+```{r setup, include=FALSE} 
+# Set options, load data, utility functions 
+
+knitr::opts_chunk$set(echo = FALSE,  
+                      results = "asis", 
+                      message = FALSE, 
+                      warning = FALSE) 
+library(gtbreport)
+library(here)
+#library(RColorBrewer)
+#library(tidyverse)
+
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+
+``` 
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.section.level3 {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #BCBCBC;
+  margin-bottom: 2em;
+}
+
+
+.subhead, .footnote {
+  font-size: 80%;
+  font-weight: normal;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+```
+
+
+### Featured topic - Civil Society Engagement
+
+_Draft! Prepared `r Sys.Date()`_
+
+
+The World Health Organization (WHO) End TB Strategy (_1_), aligned with the United Nations (UN) Sustainable Development Goals (SDGs) (_2_), emphasizes the role of communities and civil society in ending the tuberculosis (TB) epidemic by 2030. In addition, the political declaration of the 2018 high-level meeting of the UN General Assembly on the fight against TB highlights the need to place community at the core of the TB response and strengthen public health systems, including community systems (_3_). In 2019, during a high-level meeting on universal health coverage (UHC), Member States committed to achieving UHC through primary health care. The coronavirus (COVID-19) pandemic has demonstrated the critical role communities and civil society can play in responding to public health emergencies and in maintaining essential health services. 
+
+The 2020 UN Secretary-General's progress report on the 2018 political declaration on TB stressed that high-level commitments and targets have galvanized progress towards ending TB. However, it also emphasized that various actions are required to reverse the losses due to COVID-19, such as the need to strengthen affected community and civil society engagement in national responses, including through participation in implementation of the multisectoral accountability framework for TB (MAF-TB) (_4_). 
+
+Progress related to several of the priority recommendations from the UN Secretary-General's TB progress report (`r lnk("Fig. 1")`) (_5_) is regularly included in the main part of WHO's global TB report and the accompanying web pages; nevertheless, data related to priority recommendation number 7 (Ensure meaningful engagement of civil society, communities and people affected by TB) are limited. The WHO Global TB Programme (WHO/GTB) administered a questionnaire on this priority recommendation to the 30 countries with the highest burden of TB and the three global TB watchlist countries. The aim was to collect information on legal or policy frameworks for community and civil society engagement, funding and resource mobilization, coordination mechanisms, activities implemented and innovative initiatives.
+
+Responses were received from 27 of the 33 countries (82%). The availability of external funding for community and civil society engagement was confirmed by all those 27 countries; however, only nine of the countries (33%) had reported available domestic funding, which may negatively impact sustainability of community responses in these countries. The presence of community health worker programmes as part of the national ministry of health responses was confirmed in 25 countries (95%), with 24 countries (89%) indicating that TB services are being delivered as part of these programmes. Legal or policy frameworks for the engagement of communities and civil society on TB are in place in 20 of the 27 countries (74%). A total of 22 countries (81%) reported a functional national coordinating body for civil society and community stakeholders (`r lnk("Fig. 2")`).
+
+Overall, there is evidence of good progress among respondent countries; nevertheless, further efforts are needed to secure a systematic enabling environment in countries, including strong coordination mechanisms for community stakeholders, and legal and policy frameworks that facilitate engagement. These elements are key if the communities are to be able to fully engage with the health system as experts on community needs and TB services.
+
+Responses to the questionnaire indicated a varied degree of implementation of different community engagement activities for ending TB. Among the 27 countries, the highest number of countries systematically engaging communities was seen in supporting treatment adherence (in 19 countries; 70%) and in facilitating access to diagnosis (in 18 countries; 67%). The most important weakness was observed in community engagement in TB-associated disability support, with as many as 15 countries (58%) reporting no existing engagement, and only one country systematically providing this support (`r lnk("Fig. 3")`). Although all countries reported engagement of communities in most activities at least occasionally, more efforts are needed to systematically engage these stakeholders in key TB services, in line with the End TB Strategy (_1_).
+
+
+#### WHO guidance for community and civil society engagement to end TB
+
+Since the WHO guidance on community engagement in the TB response (ENGAGE-TB) was published in 2012 (_6_), the community has become a recognized partner for many national TB programmes (NTPs). Despite the progress, much still needs to be done to achieve meaningful engagement of communities at all levels of the response to end TB. To address the current challenges, WHO/GTB is currently updating its guidance for community and civil society engagement to end TB. The revised guidance will provide a summary of approaches for meaningful community engagement, an updated model for NTPs to engage communities in efforts to end TB by partnering together at local and national levels, and new indicators for tracking meaningful engagement. 
+
+By the end of September 2022, at least 10 virtual expert consultations had been held. A stakeholder consultation on the WHO guidance for engagement of communities and civil society to end TB was held on 6-7 September 2022, with participation of civil society, NTPs, global experts and partners, and other stakeholders from all WHO regions. Publication is expected in December 2022.
+
+#### WHO Civil Society Task Force on TB 
+
+The WHO Civil Society Task Force on TB  (CSTF) was established in December 2018 as a platform for dialogue and exchange, to harness the potential in civil society engagement and accelerate progress to end TB. The 14 members of the CSTF were selected with inputs from an independent selection panel. 
+
+Since 2018, the members of the CSTF have been leading efforts to bring the voices of TB civil society and survivors into the mainstream of the work of WHO, NTPs and multisectoral partners. The WHO/GTB has been ensuring that CSTF members are an integral part of all priority workstreams, including systematic membership in all guideline development processes. The progress report on the UN political declaration on TB includes CSTF inputs (_7_). An overview of achievements, progress and future plans can be found here (_8_).
+
+Over the past 2 years, many of the CSTF members' efforts were aimed at maintaining focus on TB in the COVID-19 pandemic era. For example, the CSTF had input into key WHO/GTB products related to the COVID-19 pandemic and mitigation of its impact on ending TB. 
+
+Highlights include:
+
+*	a Joint Statement by the WHO Director-General and the CSTF calling for urgent action to stop preventable deaths and suffering due to TB and recover gains lost during the COVID-19 pandemic (_9_); 
+*	a multicountry community survey on the impact of COVID-19 on the TB epidemic (_10_); and
+*	a Brazilian civil society national assessment of the impact of the COVID-19 pandemic on TB and HIV services. 
+* To catalyse multisectoral action on TB, WHO and the CSTF jointly developed a tool (see annexes here) to ensure thorough assessment of civil society engagement in the whole spectrum of country-level processes related to such action. The tool is being widely promoted by WHO, the CSTF members and their networks, NTPs and partners. CSTF members are currently actively supporting multisectoral action in more than 20 countries in the WHO African, European and Western Pacific regions.
+
+The upcoming 2023 UN General Assembly high-level meeting on TB will be important in fostering high-level political will, enhancing collaboration and mobilizing resources for people-centered services for TB-affected individuals, households and communities. In recognition of this situation, in August 2022, the WHO Director-General and the CSTF produced a Joint Statement calling for increased political commitment and accountability in preparation for the 2023 meeting (_11_). 
+
+Going forward, and following a recommendation of the Strategic and Technical Advisory Group for Tuberculosis (STAG-TB) in 2022, the CSTF will be closely collaborating with WHO in preparations for the 2023 UN meeting through the WHO multisectoral and multistakeholder taskforce on ending TB through united efforts and collective priorities. 
+
+
+### Highlights from country case studies on meaningful engagement of civil society, communities and people affected by TB
+
+#### Cambodia
+
+In Cambodia, the Ministry of Health's National Center for Tuberculosis and Leprosy Control (CENAT) works closely with the Khmer HIV/AIDS NGO Alliance (KHANA) to scale up local efforts to end TB through promoting and empowering networks of people with TB and TB survivors. Started in 2018, the initiative has established 91 peer support groups in 10 districts with a total of 1411 members (52% female). KHANA continues to provide institutional and organizational support to the newly established networks of TB survivors - called District Networks of People Living with and Experienced TB (DNPET) - in five provinces: Kampong Cham, Kandal, Phnom Penh, Siem Reap and Tbong Khmum. These groups play a critical role in bringing the voices of TB-affected communities to policy-makers, improving programme interventions, advocating for social protection schemes and addressing barriers to accessing TB services (e.g. through regular commune council meetings and other TB-related forums). These initiatives strengthened community ownership as major drivers of the national TB response in Cambodia.
+
+
+#### Cameroon - Francophone Africa
+
+In Francophone Africa, Dynamics of Francophone Africa's Response to TB (DRAF-TB) focuses on building the capacity of TB survivors to monitor progress on the commitments in the political declaration of the UN high-level meeting on TB in 2018 (_3_). The initiative was implemented in 12 countries in 2020-2021: Benin, Burkina Faso, Burundi, Cameroon, Chad, the Congo, C&#xF4;te d'Ivoire, the Democratic Republic of the Congo, Gabon, Guinea, the Niger and Senegal. In collaboration with regional and global partners, the initiative aimed to strengthen community advocacy, increase understanding of gender sensitivity and human rights responses, build partnerships with parliamentarians and the Global TB Caucus, and evaluate the barriers resulting from the COVID-19 pandemic on community-led TB initiatives. The project resulted in a regional report for the 12 countries, aligned with the civil society checklist for MAF-TB. Outcomes included publication of two position papers advocating for action on a TB gender-sensitive and human rights-based response in the 12 target countries. Several parliamentarians from the Francophone TB Caucus issued video statements calling on governments, stakeholders and all partners to strengthen the participation of civil society and affected communities, increase domestic financing, and address gender and human rights-related barriers to TB care.
+
+
+#### Central African Republic
+
+In 2020, the Central African Republic started a pilot of community-based surveillance in the capital of Bangui. The pilot is based on the 10 areas of presidential impetus and aims to reduce morbidity and mortality caused by endemic, epidemic-prone diseases and COVID-19 by 20% by 2030. Initial activities included home visits, awareness raising and health promotion, early detection and referral, and community treatment adherence support. During the pilot, more than 1.5 million households were reached; 133 malnourished children were connected with adequate care, 200 pregnant women were informed about available care and services, and 16 people with TB benefited from treatment adherence support. Initial successes include decongestion of the health system; broader community engagement through collaboration with religious and local leaders, and mobilization of community health workers; a move towards mutual accountability for health between community stakeholders and the health system; and improvements in health outcomes in view of early detection of symptoms and referral to care.
+
+#### India
+
+In India, the Ministry of Health & Family Welfare launched the 21-day TB Mukt Bharat Campaign at Ayushman Bharat Health and Wellness Centres (AB-HWCs), from 24 March to 14 April 2022. The campaign aimed to meaningfully engage community and civil society to build a people's movement to end TB. It was celebrated across 75 228 AB-HWCs; a total of 6 801 956 people were screened for TB, and 38 328 community awareness activities took place using 21 479 trained TB champions. Linked to this initiative, primary health care teams led by the newly introduced cadre of community health officers (CHOs) provide people-centred TB services to people's doorsteps. AB-HWCs are playing an important role in improving awareness, identifying TB symptoms at an early stage, offering treatment adherence and psychosocial support to individuals and families with TB, and creating a strong network of TB survivors to strengthen the TB response. 
+
+#### Indonesia
+
+In 2020, TB survivor organizations in Indonesia started to collaborate with philanthropic organizations and the private sector to mobilize resources, to support people affected by TB during treatment. The initiative obtained corporate social responsibility funding from the private sector to provide supplementary food, psychosocial support, house renovations and business capital for TB survivors to generate income through small enterprise. Through the collaboration, at the time of writing, more than 1000 food supplements have been distributed and more than 30 houses have been renovated to support the treatment of people affected by TB, particularly drug-resistant TB (DR-TB). More than 200 TB survivors have received capital and vocational training to start small enterprises.
+
+#### Pakistan
+
+In Pakistan, the Association for Social Development (ASD) launched a project using provider-facilitated technology-assisted engagement (i.e. using the OneImpact digital application) of TB and DR-TB survivors to voice their needs and preferences in TB care and services. The project was implemented in 227 sites in Punjab, in a mix of public and private facilities offering TB and DR-TB care. Activities included TB-survivor knowledge sharing through written messages with voiceovers and pictures, reporting challenges in care, peer support through online chat and audio conference calling, and provider-patient forums for responsive care at particular health facilities. By October 2022, more than 3000 TB and DR-TB survivors had joined the initiative, with about 1500 of those people reporting more than 3000 challenges to TB or DR-TB care. About 150 of those 1500 individuals have contributed to the health facility response to care challenges. The examples of facility responses included changes in seating arrangements in waiting areas, privacy for female clients and changes to the behaviour of facility staff. Efforts to geographically scale up the initiative are ongoing, as are efforts to include other diseases (e.g. diabetes) in the project.  
+
+
+### <span class="red">Fig. 1 </span>The 10 priority recommendations of the UN Secretary-General's 2020 progress report on TB for action needed to accelerate progress towards global TB targets
+```{r fig_1, echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',  fig.alt="Figure showing 10 priority recommendations"}
+
+#```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=20 }
+
+knitr::include_graphics("./html_drafts/fig_ft_cse_1.png")
+
+```
+
+
+ <div class="footnote"> TB: tuberculosis; UN: United Nations; WHO: World Health Organization.
+Source: UN General Assembly (2020) (_7_).</div> 
+
+
+
+### <span class="red">Fig. 2 </span>Components of engagement of communities and civil society in ending TB
+ 
+```{r fig_2.4.2, echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',  fig.alt="Figure showing Components of engagement"}
+
+#```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=7 }
+
+library(ggplot2)
+library(gtbreport)
+library(here)
+library(readr)
+library(scales)
+
+cse_fig2 <- read_csv("report/cse_fig2.csv")
+
+cse_fig2$cat2 <- factor(cse_fig2$cat2,                                    
+                        levels = c("No", "Yes"))
+
+cse_fig2$cat1 <- factor(cse_fig2$cat1,                                    
+                        levels = c("AVAILABILITY OF DOMESTIC FUNDING",
+                                   "EXISTING LEGAL/POLICY FRAMEWORK FOR ENGAGEMENT OF COMMUNITIES/CSOs",
+                                   "EXISTING NATIONAL COORDINATING BODY FOR COMMUNITY/CS ENGAGEMENT",
+                                   "INCLUSION OF TB SERVICES IN CHW PROGRAMME",
+                                   "EXISTANCE OF CHW PROGRAMME WITHIN MOH",
+                                   "AVAILABILITY OF EXTERNAL FUNDING"))
+
+p1<-ggplot(cse_fig2,aes(x = cat1, y = value, fill = cat2)) + 
+  geom_bar(position = "fill",stat = "identity", ) + 
+  scale_y_continuous(labels = percent_format())+
+  theme(legend.title=element_blank())+
+  coord_flip()+
+  theme(axis.title.x = element_blank())+
+  theme(axis.title.y = element_blank())+
+  scale_fill_manual(values=c("red", "seagreen"))+
+  guides(fill = guide_legend(reverse=TRUE))+
+  theme_gtb()
+p1
+
+ggsave(here('report/html_drafts/fig2_lana.pdf'), width=12, height=5)
+
+
+```
+ <div class="footnote"> CHW: community health worker; CS: civil society; CSO: civil society organization; MOH: ministry of health; TB: tuberculosis.</div> 
+
+
+### <span class="red">Fig. 3 </span>Involvement and implementation of community engagement activities for ending TB
+```{r fig_3, echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',  fig.alt="Figure showing components of engagement"}
+
+#```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=7 }
+
+
+
+library(ggplot2)
+library(gtbreport)
+
+cse_fig3 <- read_csv("report/html_drafts/cse_fig3.csv")
+
+cse_fig3$cat2 <- factor(cse_fig3$cat2,                                    
+                        levels = c("Never", "Sometimes", "Always"))
+
+cse_fig3$cat1 <- factor(cse_fig3$cat1,                                    
+                        levels = c("TB-ASSOCIATED DISABILITY SUPPORT", 
+                                   "ADDRESSING TB COMORBIDITIES", 
+                                   "TPT INITIATION/PROVISION", 
+                                   "MONITORING AVAILABILITY/QUALITY OF TB SERVICES",
+                                   "DEMAND CREATION / RESOURCE MOBILIZATION",
+                                   "HOUSEHOLD CONTACT TRACING",
+                                   "TREATMENT LITERACY",
+                                   "HEALTH PROMOTION",
+                                   "FACILITATING ACCESS TO DIAGNOSIS",
+                                   "TREATMENT ADHERENCE SUPPORT"))
+
+p3<-ggplot(cse_fig3,aes(x = cat1, y = value, fill = cat2)) + 
+  geom_bar(position = "fill",stat = "identity", ) + 
+  scale_y_continuous(labels = percent_format())+
+  theme(legend.title=element_blank())+
+  coord_flip()+
+  theme(axis.title.x = element_blank())+
+  theme(axis.title.y = element_blank())+
+  scale_fill_manual(values=c("red", "orange", "seagreen"))+
+  guides(fill = guide_legend(reverse=TRUE))+
+  theme_gtb()
+p3
+
+ggsave(here('report/html_drafts/fig3_lana.pdf'), width=12, height=5)
+
+
+```
+ <div class="footnote">TB: tuberculosis; TPT: tuberculosis preventive treatment.</div> 
+
+
+
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+
+1.	The End TB Strategy. Geneva: World Health Organization; 2015 (https://www.who.int/teams/global-tuberculosis-programme/the-end-tb-strategy).
+
+2.	Sustainable Development Goals [website]. New York: United Nations; 2022 (https://sustainabledevelopment.un.org/topics/sustainabledevelopmentgoals).
+
+3.	Resolution 73/3: Political declaration of the high-level meeting of the General Assembly on the fight against tuberculosis. New York: United Nations General Assembly; 2018 (https://www.who.int/publications/m/item/political-declaration-of-the-un-general-assembly-high-level-meeting-on-the-fight-against-tuberculosis).
+
+4.	WHO Multisectoral accountability framework for TB (MAF-TB): baseline assessment checklist for country use in pursuing a national MAF-TB. Geneva: World Health Organization; 2020 (https://www.who.int/publications/m/item/who-multisectoral-accountability-framework-for-tb-(maf-tb)-baseline-assessment-checklist-for-country-use-in-pursuing-a-national-maf-tb).
+
+5.	Global Strategy for Tuberculosis Research and Innovation (A75/10). Consolidated report by the Director-General. Seventy-fifth World Health Assembly. Geneva: World Health Organization; 2022 (https://apps.who.int/gb/ebwha/pdf_files/WHA75/A75_10Rev1-en.pdf).
+
+6.	ENGAGE-TB approach: operational guidance: integrating community-based tuberculosis activities into the work of nongovernmental and other civil society organizations (WHO/HTM/TB/2012.8). Geneva: World Health Organization; 2012 (https://www.who.int/publications/i/item/9789241504508).
+
+7.	Report of the Secretary-General. Progress towards the achievement of global tuberculosis targets and implementation of the political declaration of the high-level meeting of the General Assembly on the fight against tuberculosis. 75th session. Item 132 of the provisional agenda. New York: United Nations General Assembly; 2020 (https://undocs.org/en/A/75/236).
+
+8.	WHO Civil Society Task Force on TB: engagement with civil society as a driver for change: progress report. Geneva: World Health Organization; 2022 (https://www.who.int/publications/i/item/9789240049765).
+
+9.	Joint Statement: WHO Director-General and the Civil Society Task Force on TB. Urgent actions to stop preventable deaths and suffering due to tuberculosis and recover gains lost during the COVID-19 pandemic. Geneva: World Health Organization; 2021 (https://www.who.int/news/item/30-04-2021-joint-statement-who-director-general-and-the-civil-society-task-force-on-tb).
+
+10.	The Impact of COVID-19 on the TB epidemic: a community perspective. New Delhi: Global Coalition of TB Advocates; 2020  (https://gctacommunity.org/?page_id=7737&v=7d31e0da1ab9).
+
+11.	Joint Statement: WHO Director-General and the Civil Society Task Force on TB. Call for increased political commitment and accountability in preparation for the 2023 United Nations high-level meeting on tuberculosis. Geneva: World Health Organization; 2022 (https://cdn.who.int/media/docs/default-source/hq-tuberculosis/joint-statement-who-dg-cstf-2022.pdf?sfvrsn=6298608b_3).
+
+</div>    

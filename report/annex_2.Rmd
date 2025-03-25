@@ -1,0 +1,178 @@
+---
+title: "Annex 2: The WHO global TB database"
+author: "Hazim Timimi"
+date: "`r Sys.Date()`"
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/annex_2.Rmd"), output_file = "annex_2.html", output_dir = here::here("report/html_drafts/"))
+---
+
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE)
+
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(dplyr)
+library(kableExtra)
+library(here)
+
+# load data
+source(here('report/annex_2_dataprep.r'))
+
+```
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier for the graphic designer to read */
+  
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.footnote {
+  font-size: 80%;
+  font-weight: normal;
+}
+
+.red {
+  color: #F21905; /* red text to show figure and table numbers */
+}
+
+/* Styles for the first and second tables */
+
+#A2_1, #A2_2 {
+  margin: 1em 1em 3em 1em;
+}
+
+#A2_1 th, #A2_1 td, #A2_2 th, #A2_2 td {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* light gray for odd rows */
+#A2_1 tr:nth-child(odd) td, #A2_2 tr:nth-child(odd) td {
+  background-color: #F5F5F5;	
+}
+
+/* Bold for the final row with thick line above (first table only) */
+#A2_1 tr:last-child td {
+  border-top: 2px solid #DDDDDD;
+  font-weight:bold;	
+}
+
+
+```
+# Annex 2 The WHO global TB database
+
+## A2.1 Database contents
+
+The `r report_year` global tuberculosis (TB) report is based on data collected annually from 215 countries and areas, including all 194 World Health Organization (WHO) Member States. The Global TB Programme has implemented annual rounds of data collection since 1995, with an online system used since 2009. Data are stored in a global TB database that is managed by the TB monitoring, evaluation and strategic information unit of the Global TB Programme, at WHO headquarters.
+
+The topics on which data have been collected have been consistent for many years. In `r report_year`, as in previous years, data were collected on the following: TB case notifications and treatment outcomes, including breakdowns by TB case type, age, sex, HIV status and drug resistance; laboratory diagnostic services; monitoring and evaluation, including surveillance and surveys specifically related to drug-resistant TB; contact screening and TB preventive treatment; digital systems; TB infection control; engagement of all public and private care providers in TB prevention and care; community engagement; specific elements of the WHO multisectoral accountability framework for TB; budgets of national TB control programmes (NTPs); use of general health services (hospitalization and outpatient visits) during treatment; and NTP expenditures. A shortened version of the questionnaire was used for high-income countries (i.e. countries with a gross national income per capita of ≥US$ `r hic_threshold` in `r hic_threshold_yr`, as defined by the World Bank)^1^ or low-incidence countries (defined as countries with an incidence rate of <20 cases per 100 000 population or <10 cases in total in `r report_year -2`). 
+
+The main round of data collection took place in April and May `r report_year`. 
+
+High TB burden countries and selected other regional priority countries were also asked to report monthly or quarterly provisional notification data on a regular basis for `r report_year -1` and `r report_year` to allow assessment of trends in the context of the COVID-19 pandemic.
+
+Countries and areas reported data via a dedicated website^2^,  which was opened for reporting in April `r report_year`. Countries in the European Union submitted data on notifications and treatment outcomes to the TESSy system managed by the European Centre for Disease Prevention and Control (ECDC). Data from TESSy were uploaded into the global TB database. 
+
+Additional data about the provision and completion of TB preventive treatment to people newly or currently enrolled in HIV care, detection of TB among people newly enrolled in HIV care, and provision of antiretroviral therapy for HIV-positive TB patients were collected by the Joint United Nations Programme on HIV/AIDS (UNAIDS). These data were jointly validated by UNAIDS and the WHO’s Global TB Programme and HIV department, and were uploaded into the global TB database.
+
+Following review and follow-up with countries, the data used for the main part of this report were those that were available on **`r snapshot_date`**. <span class="red">Table A2.1</span> shows the number of countries and territories that had reported data by `r snapshot_date`.
+
+
+### <span class="red">Table A2.1</span> Reporting of data in the `r report_year` round of global TB data collection
+
+```{r table_A2.1}
+
+knitr::kable(select(ta2.1_data, entity, total, reported, total_ms, reported_ms),
+             format = "html",
+             col.names = c("", "Number", "Number that reported data", "Number", "Number that reported data"),
+             align = 'lcccc',
+             table.attr = "id='A2_1'") %>% 
+  
+  # Use the kableExtra package to get multi-row headers
+  add_header_above(c(" " = 1, "Countries and areas" = 2, "WHO Member States" = 2))
+
+
+
+```
+
+Indicators in the Sustainable Development Goals associated with TB incidence were imported into the global TB database on **`r sdg_update_date`**. <span class="red">Table A2.2</span> shows the data sources used.
+
+### <span class="red">Table A2.2</span> Data sources for indicators in the Sustainable Development Goals associated with TB incidence
+
+```{r table_A2.2}
+
+# Use external_indicators_tab dataframe created by io/ec_annex_db.r
+
+
+ta2.2_data %>% 
+  
+  # Now build the table
+  select(sdg_number, display_name_in_profile, data_source, name_at_source, source_url) %>% 
+  knitr::kable(format = "html",
+                col.names = c("SDG indicator", "Display name in profile", "Data source", "Name at source", "Source URL"),
+               escape = FALSE,
+                table.attr = "id='A2_2'")
+
+```
+
+## A2.2 Accessing TB data using the WHO Global TB Programme website 
+
+Most of the data held in the global TB database are available online.^3^  The web page provides access to comma-separated value (CSV) data files and data visualizations, as well as country, regional and global profiles (<span class="red">Annex A4</span>). 
+
+The CSV data files are the primary resource for anyone interested in conducting their own analyses of the records in the global TB database. Data reported by countries (e.g. time series for case notifications and treatment outcomes), and WHO’s estimates of TB disease burden), can be downloaded as CSV files covering all years for which data are available. These CSV files can be imported into many applications (e.g. spreadsheets, databases and statistical analysis software).
+
+A data dictionary that defines each of the variables available in the CSV files is also available and can be downloaded.
+
+The CSV files are generated on-demand directly from the global TB database, and may therefore include updates received after publication of the global TB report.
+
+## A2.3 Accessing TB data using the WHO Global Health Observatory
+
+The WHO Global Health Observatory (GHO)^4^ is a portal that provides access to data and analyses for monitoring the global health situation; it includes a data repository.
+
+Data from WHO’s global TB database can be viewed, filtered, aggregated and downloaded from within the GHO data repository.^5^
+
+There is also an application programme interface (API)^6^ using the open data protocol. The API allows analysts and programmers to use GHO data directly in their software applications.
+
+
+<hr />
+<div class="footnote">
+
+^1^ https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups
+
+^2^ https://extranet.who.int/tme
+
+^3^ https://www.who.int/teams/global-tuberculosis-programme/data
+
+^4^ https://www.who.int/data/gho
+
+^5^ https://www.who.int/data/gho/data/themes/tuberculosis
+
+^6^ https://www.who.int/data/gho/info/gho-odata-api
+
+</div>
+
+

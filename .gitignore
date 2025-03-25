@@ -1,0 +1,48 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rproj
+README.html
+desktop.ini
+gtbreport2022.Rproj
+
+# Don't include output of the .rmd files in the repo
+report/html_drafts/
+report/pdf/
+report/html/
+
+
+# for any mac users
+.DS_Store
+Icon
+
+
+# History files
+.Rapp.history
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# R Environment Variables
+.Renviron
+
+# in case anything run headless
+Rplots.pdf
+
+# bulky files for now
+disaggregation/html/
+drtb/html/
+disaggregation/output/incsplits/plots/* #many country plots
+disaggregation/output/mortsplits/plots/* #many country plots
+drtb/scripts/logs/
+
+

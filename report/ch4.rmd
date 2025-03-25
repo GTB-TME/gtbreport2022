@@ -1,0 +1,598 @@
+---
+title: "Section 4 TB prevention"
+author: "Hazim Timimi"
+date: "`r Sys.Date()`"
+knit: (function(inputFile, encoding) {
+      out_dir <- "./html_drafts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+output: 
+  html_fragment:
+    # Don’t include a table of contents
+    toc: no
+    # Set standard figure width to 12 inches
+    fig_width: 12
+    # Don’t write figure captions
+    fig_caption: FALSE
+
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch4.rmd"), output_file = "ch4.html", output_dir = here::here("report/html_drafts/"))
+---
+
+```{r setup, include=FALSE}
+# Set chunk options.
+# Results "asis" is useful to output markdown from a function
+# Suppress messages, warnings and also the ## at the beginning of printed text
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      results = "asis",
+                      message = FALSE,
+                      warning = FALSE,
+                      error = TRUE)  # TEMP error=TRUE for debugging!
+
+# Kill any attempt at using factors, unless we explicitly want them!
+options(stringsAsFactors=FALSE)
+
+
+# Load output packages ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(RColorBrewer)
+library(whomap)
+library(gtbreport)
+library(here)
+library(stringr)
+
+# test treemap
+library(treemapify)
+
+
+# Get the data sets and computed values/statistics for section 3.4 ----
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+source(here('report/ch4_prepare_data.r'))
+
+# Switch whether to show Irwin's donut chart
+show_doughnuts = TRUE
+
+
+# Quick functions for callouts in the text to the figures/tables:
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[', 
+                display_name, 
+                '](#', 
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="', 
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+# 3. ref_lnk() creates a link from text to the references in the WHO style (black, italic)
+ref_lnk <- function(display_name){
+  return(paste0('<span class="refs">[', 
+                display_name, 
+                '](#refs)</span>'))
+}
+
+```
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.subhead {
+  margin-top: -15px; /* Bring subheadings closer to figure headings */
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+.refs, .refs a {
+  color: #3c4245;  /* match SF normal text colour */
+  font-style: italic;
+}
+
+```
+
+# 4. TB prevention
+
+
+_Draft! Prepared `r Sys.Date()` using country-reported data CSV files dated `r csv_datestamp` (and HIV TPT file dated `r csv_tpt_fix_datestamp`_
+
+Preventing tuberculosis (TB) infection and stopping progression from infection to disease are critical to reduce TB incidence to the levels envisaged by the End TB Strategy. The main health care interventions to achieve this reduction are TB preventive treatment, which the World Health Organization (WHO) recommends for people living with HIV, household contacts of people with TB and other risk groups (`r ref_lnk("1")`); TB infection prevention and control (`r ref_lnk("2")`); and vaccination of children with the bacille Calmette-Guérin (BCG) vaccine. Addressing broader determinants that influence TB epidemics can also help to prevent TB infection and disease; these are discussed in <span class="red">Section 6.3</span>.
+
+
+## TB preventive treatment: overall status of progress
+
+The global number of people living with HIV and household contacts of people diagnosed with TB who were provided with TB preventive treatment increased from `r ftb(f4.1_txt$tot_tpt_2015/1e6)` million in 2015 to `r ftb(f4.1_txt$tot_tpt_2019/1e6)` million in 2019, after which there was a sizeable reduction in 2020 (to `r ftb(f4.1_txt$tot_tpt_2020/1e6)` million) followed by an almost complete recovery in 2021 (to `r ftb(f4.1_txt$tot_tpt_2021/1e6)` million), probably reflecting disruptions to health services caused by the COVID-19 pandemic (`r lnk("Fig. 4.1")`). Most of those being provided with TB preventive treatment are people living with HIV. The number of children under 5 provided with TB preventive treatment has not increased substantially over the last three years; in contrast, `r ftb(f4.1_txt$tot_con_tpt_2021/1e3)`\ 000 household contacts aged 5 years and over were started on TB preventive treatment in 2021, a `r ftb(f4.1_txt$con_21_20_pct)`% increase compared to the `r ftb(f4.1_txt$tot_con_tpt_2020/1e3)`\ 000 that started treatment in 2020.
+
+### `r anch("Fig. 4.1")`<span class="red">Fig. 4.1</span> The global number of people provided with TB preventive treatment, 2015–`r report_year - 1`
+
+```{r fig_4.1, fig.alt="Bar chart showing numbers provided with TB preventive treatment each year since 2015"}
+
+f4.1_plot <- f4.1_data %>% 
+  
+  ggplot(aes(x=year, y=how_many, fill = TPT_category)) +
+
+  geom_bar(stat = "identity")  +
+
+  geom_col(position = position_stack(reverse = TRUE)) +
+
+  scale_x_continuous(name="",
+                   breaks = 2015:(report_year-1)) +
+  
+  # display y-axis scale in millions
+  scale_y_continuous(name = "Millions", 
+                     labels = function(i){round(i/1e6)},
+                     limits = c(0,4.5e6)) +
+
+  scale_fill_manual("",
+                    breaks = c("hiv_tpt", "house_con04_tpt", "house_con5plus_tpt" ),
+                    labels = c("People living with HIV", "Household contacts aged <5 years", "Household contacts aged \u22655 years"),
+                    values = c("hiv_tpt"="#ffc425",
+                               "house_con04_tpt"="#9fcd25",
+                               "house_con5plus_tpt"="dark green")) +
+
+
+  theme_gtb() +
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+print(f4.1_plot)
+
+#ggsave(here('report/html_drafts/f4.1.png'),width=8.3, height = 5.8)
+
+```
+<div id="fig_4_1"></div>
+
+
+<br />
+Progress made in the past 4 years lags far behind that needed to reach the global target set at the UN high-level meeting on TB (`r lnk("Fig. 4.2")`). Although the sub-target for people living with HIV had been achieved by 2020, further scale-up will be needed to reach the target of providing TB preventive treatment to 90% of people living with HIV by 2025 (`r ref_lnk("3")`), which was reaffirmed at the 2021 UN high-level Meeting on HIV and AIDS (`r ref_lnk("4")`).
+
+### `r anch("Fig. 4.2")`<span class="red">Fig. 4.2</span> Global progress in provision of TB preventive treatment 2018–`r report_year - 1` compared with cumulative targets set for 2018–2022 at the UN high-level meeting on TB
+
+```{r fig_4.2, fig.alt="Doughnut chart showing how much of the UN high level meeting targets for 2018-2022 have been completed for TB preventive treatment", eval=!show_doughnuts}
+
+
+# The code below produces a bar chart as an alternative to the doughnuts produced by Irwin
+f4.2_plot <- f4.2_data %>%
+
+  ggplot(aes(x=TPT_category, y=target_completion)) +
+  geom_bar(stat="identity", fill="darkblue",width = 0.5) +
+
+  expand_limits(y=c(0,100)) +
+  scale_y_continuous(breaks = c(20, 40, 60 , 80, 100)) +
+  ylab("Percent of UN target achieved") +
+  scale_x_discrete(limits = c("house_con5plus_tpt",
+							  "house_con04_tpt",
+							  "hiv_tpt",
+							  "all_tpt"),
+                   labels = c("20 million contacts\naged 5 years and over",
+							  "4 million contacts\naged under 5 years",
+							  "6 million people\nliving with HIV",
+							  "30 million total")) +
+  xlab("2018-2022 cumulative target") +
+  coord_flip() +
+
+  theme_gtb() +
+
+  geom_text(data=f4.2_data,
+            aes(label = paste(round(tot/1e6, digits = 1), "million") ),
+            position = position_stack(reverse = TRUE), 
+            size=3,
+            hjust=1.5,
+            color="white")
+
+
+
+print(f4.2_plot)
+
+```
+
+```{r eval=show_doughnuts}
+
+cat('
+![Doughnut chart showing how much of the UN high level meeting targets for 2018-2022 have been completed for TB preventive treatment](images/Fig42.png "Doughnut chart showing how much of the UN high level meeting targets for 2018-2022 have been completed for TB preventive treatment")
+')
+
+```
+
+
+
+<br />
+Ensuring access to shorter rifapentine-containing regimens may help to increase access to TB preventive treatment. By June 2022, `r f4.3_txt$countries_used` countries reported that they had used shorter rifapentine-containing regimens (including trials and subnational projects) (`r lnk("Fig. 4.3")`). In 2021, over `r ftb(f4.3_txt$people_tx_2021)` individuals started shorter regimens in `r f4.3_txt$country_tx_2021` countries. Rifapentine-based regimens were used in `r f4.3_txt$rifapentine` countries  (mostly a 3-month weekly regimen of rifapentine and isoniazid); `r f4.3_txt$rifampicin` countries reported using a rifampicin-based regimen.
+
+### `r anch("Fig. 4.3")`<span class="red">Fig. 4.3</span> Use of rifapentine in TB preventive treatment regimens,^a^ by June 2022
+
+```{r fig_4.3, fig.alt="Map showing countries using rifapentine for TB preventive treatment", eval=show_rifapentine}
+
+f4.3_plot <- f4.3_data %>% 
+  
+  whomap(colours = c('#277abe', '#5ce1e6'),
+         legend.title = "Status",
+         na.label = "Not used or no data",
+         na.col = "white",
+         water.col = "white")
+
+print(f4.3_plot)
+
+```
+<div class="footnote">^a^ Data sources: Sanofi, Global Drug Facility and national reporting. Rifapentine is currently registered for use in China, Hong Kong Special Administrative Region, the Democratic Republic of the Congo, Ethiopia, Ghana, India, Indonesia, Kenya, Mongolia, Myanmar, Namibia, the Philippines, Singapore, South Africa, Thailand, Turkmenistan, Uganda and the United States of America. Several countries in which rifapentine is not yet registered have accessed it using local waiver mechanisms.
+<br /></div>
+
+
+## Household contacts
+
+Globally in 2021, `r ftb(f4.4_txt$newinc_con_2021/1e6)` million contacts of bacteriologically confirmed pulmonary TB cases were reported (up `r ftb(f4.4_txt$change_con_21_20_pct)`% from `r ftb(f4.4_txt$newinc_con_2020/1e6)` million in 2020), of whom `r ftb(f4.4_txt$newinc_con_screen_2021/1e6)` million (`r ftb(f4.4_txt$screened_pct_2021)`%) were evaluated for both TB infection and disease (up `r ftb(f4.4_txt$change_screen_21_20_pct)`% from `r ftb(f4.4_txt$newinc_con_screen_2020/1e6)` million in 2020). The percentage of contacts who were evaluated varied widely among countries (`r lnk("Fig. 4.4")`). There is considerable variation in the coverage of TB preventive treatment for eligible children aged under 5 years (`r lnk("Fig. 4.5")`). Data on treatment completion among household contacts were reported by `r f4.6_txt$countries` countries; the median completion rate was `r ftb(f4.6_txt$median)`% (IQR, `r ftb(f4.6_txt$q1)`–`r ftb(f4.6_txt$q3)`%) but varied widely (`r lnk("Fig. 4.6")`).
+
+### `r anch("Fig. 4.4")`<span class="red">Fig. 4.4</span> Percentage of household contacts of bacteriologically confirmed pulmonary new and relapse TB cases evaluated for TB disease and TB infection, `r report_year - 1`
+
+```{r fig_4.4, fig.alt="Map showing evaluation for TB disease and TB infection among household contacts of confirmed pulmonary TB cases"}
+
+f4.4_plot <- f4.4_data %>% 
+  
+  whomap(colours = brewer.pal(4, "Reds"),
+         legend.title = "Percentage (%)",
+         na.col = "white",
+         water.col = "white")
+
+print(f4.4_plot)
+
+```
+
+### `r anch("Fig. 4.5")`<span class="red">Fig. 4.5</span> Percentage of household contacts aged under 5 years provided with TB preventive treatment, `r report_year - 1` 
+
+```{r fig_4.5, fig.alt="Map showing percentage of household contacts aged under 5 years provided with TB preventive treatment"}
+
+f4.5_plot <- f4.5_data %>% 
+  
+  whomap(colours = brewer.pal(4, "Greens"),
+         legend.title = "Percentage (%)",
+         na.col = "white",
+         water.col = "white")
+
+print(f4.5_plot)
+
+```
+
+### `r anch("Fig. 4.6")`<span class="red">Fig. 4.6</span> Completion of TB preventive treatment among contacts starting treatment,^a^ `r report_year - 2`
+
+```{r fig_4.6, fig.alt="Panel plot showing percentage completion vs number contacts started TPT by WHO region"}
+
+f4.6_plot <- f4.6_data %>% 
+  
+  ggplot(aes(x=newinc_con_prevtx, y=pct_completed)) +
+  
+  geom_point(size=3, colour = "#ff748c") +
+  
+  scale_x_log10(name="Contacts starting TB preventive treatment  (log scale)",
+                     labels = function(i){gtbreport::int_spacer(i)}) +
+  
+  scale_y_continuous(name = "% contacts who completed TB preventive treatment") +
+  
+  expand_limits(y = c(0, 100)) +
+
+  facet_wrap( ~ entity, ncol = 3, scales = "free") +
+  
+  theme_bw() +  # Adds a panel border for Dennis
+
+  theme_gtb() +
+  
+  # Get rid of x-axis line so as not to overwrite panel borders
+  theme(axis.line.x = ggplot2::element_blank())
+
+print(f4.6_plot)
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_6_afr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_amr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_6_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_6_wpr"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ Each dot represents a country.
+<br /></div>
+
+
+## People living with HIV
+
+Most of those provided with TB preventive treatment to date have been people living with HIV (`r lnk("Fig. 4.1")`). Globally, the annual number increased from fewer than 30\ 000 in 2005 to `r ftb(f4.7_txt$hiv_tpt_2019/1e6)` million in 2019 before falling in 2020 and 2021 (to `r ftb(f4.7_txt$hiv_tpt_2020/1e6)` million and `r ftb(f4.7_txt$hiv_tpt_2021/1e6)` million respectively) (`r lnk("Fig. 4.7")`). Between 2005 and the end of 2021, `r ftb(f4.7_txt$hiv_tpt_05_21/1e6)` million people living with HIV were initiated on TB preventive treatment, equivalent to about `r ftb(f4.7_txt$hiv_tpt_05_21*100/38.4e6)`% percent of the 38 million people estimated to be living with HIV in 2021 (`r ref_lnk("5")`). There were reductions in most WHO regions between 2019 and 2020, with recovery only in the African and Eastern Mediterranean regions in 2021 (`r lnk("Fig. 4.7")`).
+
+### `r anch("Fig. 4.7")`<span class="red">Fig. 4.7</span> Provision of TB preventive treatment to people living with HIV^a^, 2005–`r report_year - 1`
+
+```{r fig_4.7, fig.alt="Panel plots showing numbers of people living with HIV provided with TB preventive treatment each year since 2005 by WHO region and globally"}
+
+f4.7_plot <- f4.7_data %>% 
+  
+ggplot() +
+  geom_line(aes(x=year, y=hiv_tpt_new, colour = "Newly enrolled on HIV treatment"), size=1, linetype="dashed") +
+
+  geom_line(aes(x=year, y=hiv_tpt_all, colour = "Currently on HIV treatment"), size=1, linetype="solid") +
+
+  scale_x_continuous(name="",
+                     breaks = c(2005, 2010, 2015, report_year-1)) +
+  scale_y_continuous(name = "Number of people (thousands)",
+                     # Use the remainder operator in the labeller function to make sure we don't get weird effects
+                     # when plotting small numbers
+                     labels = function(i){ifelse((i/1e3) %% 1 == 0, gtbreport::int_spacer(i/1e3), "")}) +
+  
+  # Need a colour scale for a legend to be shown
+  scale_colour_manual(name="", values = c("Newly enrolled on HIV treatment" = "red",
+                                          "Currently on HIV treatment" = "#277abe")) +
+  
+  expand_limits(y = 0) +
+
+  facet_wrap( ~ entity, ncol = 4, scales = "free_y") +
+
+  theme_gtb() +
+
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+print(f4.7_plot)
+
+```
+<div id="fig_4_7_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_7_afr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_amr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_7_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_7_wpr"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ For the period 2005-2016, countries were requested to report data for people newly enrolled in HIV care (dashed lines). Susequently, countries have been encouraged to report data for people currently on antiretroviral treatment (solid lines).</div>
+
+
+
+
+<br />
+`r nrow(f4.8_txt_list) %>% int2word() %>% stringr::str_to_title()` countries (`r knitr::combine_words(f4.8_txt_list$country, oxford_comma=FALSE)`) each reported initiating over 200\ 000 people with HIV on TB preventive treatment in 2021, accounting collectively for `r ftb(f4.8_txt$prop_top)`% of the `r ftb(f4.8_txt$hiv_tpt_glob/1e6)` million reported globally (`r lnk("Fig. 4.8")`). 
+
+Coverage of TB preventive treatment among people living with HIV varies widely among countries: in `r ftb(f4.8_txt_coverage$countries)` high TB/HIV burden countries that reported data for 2021, the median coverage was `r ftb(f4.8_txt_coverage$median)`% (interquartile range [IQR], `r ftb(f4.8_txt_coverage$q1)`–`r ftb(f4.8_txt_coverage$q3)`%) among people newly started on antiretroviral treatment. 
+
+In 20 countries reporting data, a median of 87% (IQR, 64–96%) of people living with HIV who started TB preventive treatment in 2020 completed it (`r lnk("Fig. 4.9")`).  
+
+### `r anch("Fig. 4.8")`<span class="red">Fig. 4.8</span> The countries providing TB preventive treatment to at least 200\ 000 people enrolled on HIV treatment, `r report_year - 1`
+
+```{r fig_4.8, fig.alt=paste("Tree map showing the provision of TB preventive treatment to at least 200 000 people enrolled on HIV treatment in", report_year - 1)}
+
+f4.8_plot <- f4.8_data %>% 
+  
+  ggplot(aes(area = hiv_tpt, label = paste0(entity, "\n", int_spacer(round(hiv_tpt/1e3)), "k"))) +
+  
+  geom_treemap(colour = "lightblue", fill = "darkblue") +
+  
+  geom_treemap_text(colour = "white", place = "centre", reflow = TRUE) +
+
+  theme_gtb()  
+
+print(f4.8_plot)
+
+```
+
+
+### `r anch("Fig. 4.9")`<span class="red">Fig. 4.9</span> Completion of TB preventive treatment among people living with HIV^a^, `r report_year - 2`
+
+```{r fig_4.9, fig.alt="Dot plot showing percentage completion vs number PLHIV started TPT coloured by WHO region"}
+
+f4.9_plot <- f4.9_data %>% 
+  
+  ggplot(aes(x=hiv_all_tpt_started, y=pct_completed, colour = entity)) +
+  
+  geom_point(size=3) +
+  
+  scale_x_log10(name="People living with HIV starting TB preventive treatment (log scale)",
+                     labels = function(i){gtbreport::int_spacer(i)}) +
+  
+  scale_y_continuous(name = "% who completed TB preventive treatment") +
+  
+  scale_color_hue(name = '') + 
+  
+  expand_limits(y = c(0, 100)) +
+
+  #facet_wrap( ~ entity, ncol = 3, scales = "free") +
+
+  theme_gtb() +
+  
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+print(f4.9_plot)
+
+```
+<div id="fig_4_9"></div>
+<div class="footnote">^a^ Each dot represents a country.
+<br /></div>
+
+
+## Tests for TB infection
+
+Tests for TB infection can help to target TB preventive treatment to people who can benefit the most from it. In 2021, `r f4.10_data %>% filter(infection_tests_used %in% c(177, 175, 176)) %>% nrow()` countries reported using tuberculin skin tests (TST) or interferon gamma release assays (IGRA) in either the public or private sectors to deliver TB preventive treatment to populations at risk (`r lnk("Fig. 4.10")`). Of the `r f4.10_data %>% filter(infection_tests_used == 194) %>% nrow()` countries reporting no use of tests of TB infection, `r f4.10_data %>% filter(infection_tests_used == 194 & g_whoregion == 'AFR') %>% nrow()` were in the WHO African Region.
+
+### `r anch("Fig. 4.10")`<span class="red">Fig. 4.10</span> Diagnostic tests in use for TB infection, `r report_year - 1`
+
+```{r fig_4.10, fig.alt="Map showing diagnostic tests in use for TB infection"}
+
+f4.10_plot <- f4.10_data %>% 
+  
+  whomap(colours = c(brewer.pal(3, "Greens")[3:1], brewer.pal(3, "Blues")[2:1]), 
+         legend.title = "",
+         na.col = "white",
+         water.col = "white",
+         legend.pos = c(0.11, 0.26))
+
+print(f4.10_plot)
+
+```
+
+
+## TB infection prevention and control
+
+The risk of TB among health care workers relative to the risk in the general adult population is one of the indicators recommended by WHO for measuring the impact of interventions for TB infection prevention and control in health care facilities. If effective prevention measures are in place, the risk ratio for TB in health care workers compared with the general adult population should be close to 1. In 2021, `r int_spacer(f4.11_txt$tot_hcw_tb)` health care workers from `r f4.11_txt$countries_hcw_tb` countries were reported to have been diagnosed with TB. The ratio of the TB notification rate among health care workers to the general adult population was greater than 1 in `r f4.11_txt$countries_nrr` countries that reported five or more TB cases among health care workers (`r lnk("Fig. 4.11")`).
+
+### `r anch("Fig. 4.11")`<span class="red">Fig. 4.11</span> Notification rate ratio of TB among health care workers compared with the adult population, `r report_year - 1`
+
+```{r fig_4.11, fig.alt="Map showing ratio of TB notification rates among health care workers to those among the adult population"}
+
+f4.11_plot <- f4.11_data %>% 
+  
+  whomap(colours = rev(brewer.pal(4, "Spectral")),
+         legend.title = "Notification rate ratio",
+         na.col = "white",
+         water.col = "white")
+
+print(f4.11_plot)
+
+```
+
+
+## BCG vaccination
+
+BCG vaccination is recommended as part of national childhood immunization programmes, in line with a country’s TB epidemiology. Global coverage dropped from `r f4.12_txt$bcg_cov_2019`% in 2019 to `r f4.12_txt$bcg_cov_2021`% in 2021, most likely due to disruptions to health services caused by the COVID-19 pandemic (`r lnk("Fig. 4.12")`). 
+
+### `r anch("Fig. 4.12")`<span class="red">Fig. 4.12</span> BCG vaccination coverage in infants^a^, globally and by WHO region 2019&#8211;2021
+
+```{r fig_4.12, fig.alt="Panel plot showing BCG immunisation coverage globally and by WHO regions", eval=show_bcg}
+
+f4.12_plot <- f4.12_data %>% 
+
+  ggplot(aes(x=year, y=bcg_coverage)) +
+
+  # # Add shaded box to highlight the covid years
+  # annotate("rect", xmin = 2019.5, xmax = 2021.5, ymin = 60, ymax = 100, 
+  #          colour = "#EEEEEE", alpha = 0.1) +
+  
+  geom_line(size = 1.5, colour = "slateblue4") +
+
+  scale_x_continuous(name="",
+                     breaks = c(2015:report_year-1)) +
+  scale_y_continuous(name = "BCG coverage (%)") +
+
+  expand_limits(y = 60) +
+  
+
+  facet_wrap( ~ entity, ncol = 4) +
+
+  theme_gtb() +
+
+  # Get rid of annoying x-axis line and ticks
+  theme(axis.line.x = ggplot2::element_blank(),
+        axis.ticks.x = element_blank())
+
+
+print(f4.12_plot)
+
+```
+<div id="fig_4_12_global"></div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_12_afr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_amr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_sear"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_4_12_eur"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_emr"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_4_12_wpr"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ Data for 2021 were reported by `r f4.12_txt_rep_glob$rep` out of `r f4.12_txt_rep_glob$all` WHO Member States (`r filter(f4.12_txt_rep_reg, g_whoregion=="AFR")["rep"]`/`r filter(f4.12_txt_rep_reg, g_whoregion=="AFR")["all"]` in the African Region, `r filter(f4.12_txt_rep_reg, g_whoregion=="AMR")["rep"]`/`r filter(f4.12_txt_rep_reg, g_whoregion=="AMR")["all"]` in the Region of the Americas, `r filter(f4.12_txt_rep_reg, g_whoregion=="SEA")["rep"]`/`r filter(f4.12_txt_rep_reg, g_whoregion=="SEA")["all"]` in the South-East Asia Region, `r filter(f4.12_txt_rep_reg, g_whoregion=="EUR")["rep"]`/`r filter(f4.12_txt_rep_reg, g_whoregion=="EUR")["all"]` in the European Region, `r filter(f4.12_txt_rep_reg, g_whoregion=="EMR")["rep"]`/`r filter(f4.12_txt_rep_reg, g_whoregion=="EMR")["all"]` in the Eastern Mediterranean Region and `r filter(f4.12_txt_rep_reg, g_whoregion=="WPR")["rep"]`/`r filter(f4.12_txt_rep_reg, g_whoregion=="WPR")["all"]` in the Western Pacific Region).</div>
+
+<br />
+<div class="footnote"> Source: [The Global Health Observatory](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/bcg-immunization-coverage-among-1-year-olds-(-)),  accessed 10 August 2022.</div>
+
+
+
+Country-specific details are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data#app) and [country profiles](https://worldhealthorg.shinyapps.io/tb_profiles/).
+
+
+Data shown on this webpage are as of `r format(as.Date(csv_datestamp), format="%d %B %Y")` (see <span class="red">Annex 2</span> of the main report for more details).
+
+`r anch("refs")`
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+1. WHO consolidated guidelines on tuberculosis. Module 1: Prevention – Tuberculosis preventive treatment. Geneva: World Health Organization; 2020 (https://www.who.int/publications/i/item/9789240001503)).
+2. WHO guidelines on tuberculosis infection prevention and control. 2019 update. Geneva: World Health Organization; 2019. (https://www.who.int/publications/i/item/9789241550512)
+3. Implementing the End TB Strategy: the essentials. Geneva: World Health Organization, 2015. (https://www.who.int/publications/i/item/9789241509930). 
+4. United Nations General Assembly. 75th session. Item 10 of the agenda. Implementation of the Declaration of Commitment on HIV/AIDS and the political declarations on HIV/AIDS. Draft resolution submitted by the President of the General Assembly. Political Declaration on HIV and AIDS: Ending Inequalities and Getting on Track to End AIDS by 2030 (A/75/L.95). New York: United Nations; 2018 (https://www.un.org/pga/75/wp-content/uploads/sites/100/2021/06/2107241E1.pdf).
+5. UNAIDS epidemiological estimates, 2022 (https://aidsinfo.unaids.org/).
+
+</div>
+

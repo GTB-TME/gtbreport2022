@@ -1,0 +1,687 @@
+country,iso2,iso3,year,case.type,sex,age.group,screen.group,cases
+Bangladesh,BD,BGD,2008,s,a,15_24,all,5
+Bangladesh,BD,BGD,2008,s,a,15plus,all,33
+Bangladesh,BD,BGD,2008,s,a,25_34,all,3
+Bangladesh,BD,BGD,2008,s,a,35_44,all,6
+Bangladesh,BD,BGD,2008,s,a,45_54,all,6
+Bangladesh,BD,BGD,2008,s,a,55_64,all,7
+Bangladesh,BD,BGD,2008,s,a,65plus,all,6
+Bangladesh,BD,BGD,2008,s,f,15plus,all,9
+Bangladesh,BD,BGD,2008,s,m,15plus,all,24
+Bangladesh,BD,BGD,2015,b,a,15_24,all,28
+Bangladesh,BD,BGD,2015,b,a,15plus,cxr_abn_only,172
+Bangladesh,BD,BGD,2015,b,a,15plus,symptomatic,106
+Bangladesh,BD,BGD,2015,b,a,25_34,all,41
+Bangladesh,BD,BGD,2015,b,a,35_44,all,53
+Bangladesh,BD,BGD,2015,b,a,45_54,all,43
+Bangladesh,BD,BGD,2015,s,a,65plus,all,25
+Bangladesh,BD,BGD,2015,s,f,15plus,all,26
+Bangladesh,BD,BGD,2015,s,m,15plus,all,82
+Bangladesh,BD,BGD,2015,b,a,15plus,all,278
+Bangladesh,BD,BGD,2015,s,a,15plus,cxr_abn_only,56
+Bangladesh,BD,BGD,2015,s,a,15plus,symptomatic,52
+Bangladesh,BD,BGD,2015,s,a,25_34,all,17
+Bangladesh,BD,BGD,2015,s,a,35_44,all,24
+Bangladesh,BD,BGD,2015,s,a,45_54,all,17
+Bangladesh,BD,BGD,2015,s,a,55_64,all,13
+Bangladesh,BD,BGD,2015,b,a,55_64,all,41
+Bangladesh,BD,BGD,2015,b,a,65plus,all,72
+Bangladesh,BD,BGD,2015,b,f,15plus,all,77
+Bangladesh,BD,BGD,2015,b,m,15plus,all,201
+Bangladesh,BD,BGD,2015,s,a,15_24,all,12
+Bangladesh,BD,BGD,2015,s,a,15plus,all,108
+China,CN,CHN,1990,b,a,3monthplus,all,2389
+China,CN,CHN,1990,s,a,15_24,all,170
+China,CN,CHN,1990,s,a,25_34,all,311
+China,CN,CHN,1990,s,a,35_44,all,305
+China,CN,CHN,1990,s,a,3monthplus,all,1827
+China,CN,CHN,1990,s,a,45_54,all,296
+China,CN,CHN,1990,s,a,55_64,all,367
+China,CN,CHN,1990,s,a,65plus,all,348
+China,CN,CHN,2000,b,a,3monthplus,all,584
+China,CN,CHN,2000,s,a,3monthplus,all,447
+China,CN,CHN,2010,b,a,15_24,all,12
+China,CN,CHN,2010,b,a,15plus,all,347
+China,CN,CHN,2010,b,a,25_34,all,24
+China,CN,CHN,2010,b,a,35_44,all,43
+China,CN,CHN,2010,b,a,45_54,all,48
+China,CN,CHN,2010,b,a,55_64,all,78
+China,CN,CHN,2010,b,a,15plus,symptomatic,160
+China,CN,CHN,2010,s,a,35_44,all,22
+China,CN,CHN,2010,s,a,45_54,all,30
+China,CN,CHN,2010,s,a,55_64,all,49
+China,CN,CHN,2010,s,a,65plus,all,67
+China,CN,CHN,2010,b,a,15plus,cxr_abn_only,182
+China,CN,CHN,2010,b,a,15plus,others,5
+China,CN,CHN,2010,b,a,65plus,all,141
+China,CN,CHN,2010,s,a,15_24,all,6
+China,CN,CHN,2010,s,a,15plus,all,188
+China,CN,CHN,2010,s,a,15plus,cxr_abn_only,71
+China,CN,CHN,2010,s,a,15plus,symptomatic,75
+China,CN,CHN,2010,s,a,25_34,all,14
+Ethiopia,ET,ETH,2011,b,a,15_24,all,36
+Ethiopia,ET,ETH,2011,b,a,15plus,all,110
+Ethiopia,ET,ETH,2011,b,a,15plus,cxr_abn_only,53
+Ethiopia,ET,ETH,2011,b,a,15plus,symptomatic,57
+Ethiopia,ET,ETH,2011,b,a,25_34,all,24
+Ethiopia,ET,ETH,2011,b,a,35_44,all,18
+Ethiopia,ET,ETH,2011,s,a,55_64,all,5
+Ethiopia,ET,ETH,2011,s,a,65plus,all,1
+Ethiopia,ET,ETH,2011,s,f,15plus,all,21
+Ethiopia,ET,ETH,2011,s,m,15plus,all,26
+Ethiopia,ET,ETH,2011,s,a,15plus,all,47
+Ethiopia,ET,ETH,2011,s,a,15plus,cxr_abn_only,20
+Ethiopia,ET,ETH,2011,s,a,15plus,symptomatic,27
+Ethiopia,ET,ETH,2011,s,a,25_34,all,10
+Ethiopia,ET,ETH,2011,s,a,35_44,all,9
+Ethiopia,ET,ETH,2011,s,a,45_54,all,7
+Ethiopia,ET,ETH,2011,b,a,45_54,all,16
+Ethiopia,ET,ETH,2011,b,a,55_64,all,11
+Ethiopia,ET,ETH,2011,b,a,65plus,all,5
+Ethiopia,ET,ETH,2011,b,f,15plus,all,54
+Ethiopia,ET,ETH,2011,b,m,15plus,all,56
+Ethiopia,ET,ETH,2011,s,a,15_24,all,15
+Ghana,GH,GHA,2013,b,a,15_24,all,29
+Ghana,GH,GHA,2013,b,a,15plus,all,202
+Ghana,GH,GHA,2013,b,a,15plus,cxr_abn_only,85
+Ghana,GH,GHA,2013,b,a,15plus,symptomatic,117
+Ghana,GH,GHA,2013,b,a,25_34,all,29
+Ghana,GH,GHA,2013,b,a,35_44,all,30
+Ghana,GH,GHA,2013,s,a,55_64,all,12
+Ghana,GH,GHA,2013,s,a,65plus,all,12
+Ghana,GH,GHA,2013,s,f,15plus,all,17
+Ghana,GH,GHA,2013,s,m,15plus,all,47
+Ghana,GH,GHA,2013,s,a,15plus,all,64
+Ghana,GH,GHA,2013,s,a,15plus,cxr_abn_only,22
+Ghana,GH,GHA,2013,s,a,15plus,symptomatic,42
+Ghana,GH,GHA,2013,s,a,25_34,all,4
+Ghana,GH,GHA,2013,s,a,35_44,all,11
+Ghana,GH,GHA,2013,s,a,45_54,all,18
+Ghana,GH,GHA,2013,b,a,45_54,all,37
+Ghana,GH,GHA,2013,b,a,55_64,all,30
+Ghana,GH,GHA,2013,b,a,65plus,all,47
+Ghana,GH,GHA,2013,b,f,15plus,all,102
+Ghana,GH,GHA,2013,b,m,15plus,all,100
+Ghana,GH,GHA,2013,s,a,15_24,all,7
+Gambia,GM,GMB,2012,b,a,15_24,all,15
+Gambia,GM,GMB,2012,b,a,15plus,all,77
+Gambia,GM,GMB,2012,b,a,15plus,cxr_abn_only,33
+Gambia,GM,GMB,2012,b,a,15plus,symptomatic,44
+Gambia,GM,GMB,2012,b,a,25_34,all,14
+Gambia,GM,GMB,2012,b,a,35_44,all,19
+Gambia,GM,GMB,2012,s,a,55_64,all,4
+Gambia,GM,GMB,2012,s,a,65plus,all,5
+Gambia,GM,GMB,2012,s,f,15plus,all,10
+Gambia,GM,GMB,2012,s,m,15plus,all,24
+Gambia,GM,GMB,2012,s,a,15plus,all,34
+Gambia,GM,GMB,2012,s,a,15plus,cxr_abn_only,15
+Gambia,GM,GMB,2012,s,a,15plus,symptomatic,19
+Gambia,GM,GMB,2012,s,a,25_34,all,8
+Gambia,GM,GMB,2012,s,a,35_44,all,8
+Gambia,GM,GMB,2012,s,a,45_54,all,5
+Gambia,GM,GMB,2012,b,a,45_54,all,11
+Gambia,GM,GMB,2012,b,a,55_64,all,8
+Gambia,GM,GMB,2012,b,a,65plus,all,10
+Gambia,GM,GMB,2012,b,f,15plus,all,26
+Gambia,GM,GMB,2012,b,m,15plus,all,51
+Gambia,GM,GMB,2012,s,a,15_24,all,4
+Indonesia,ID,IDN,2004,s,a,15plus,all,80
+Indonesia,ID,IDN,2013,b,a,15_24,all,44
+Indonesia,ID,IDN,2013,b,a,15plus,all,426
+Indonesia,ID,IDN,2013,b,a,25_34,all,92
+Indonesia,ID,IDN,2013,b,a,35_44,all,82
+Indonesia,ID,IDN,2013,b,a,45_54,all,82
+Indonesia,ID,IDN,2013,b,a,55_64,all,58
+Indonesia,ID,IDN,2013,b,a,15plus,cxr_abn_only,181
+Indonesia,ID,IDN,2013,b,a,15plus,symptomatic,245
+Indonesia,ID,IDN,2013,s,a,15plus,cxr_abn_only,49
+Indonesia,ID,IDN,2013,s,a,15plus,symptomatic,116
+Indonesia,ID,IDN,2013,s,a,35_44,all,35
+Indonesia,ID,IDN,2013,s,a,45_54,all,30
+Indonesia,ID,IDN,2013,s,a,55_64,all,21
+Indonesia,ID,IDN,2013,s,a,65plus,all,26
+Indonesia,ID,IDN,2013,s,f,15plus,all,45
+Indonesia,ID,IDN,2013,s,m,15plus,all,120
+Indonesia,ID,IDN,2013,b,a,65plus,all,68
+Indonesia,ID,IDN,2013,b,f,15plus,all,137
+Indonesia,ID,IDN,2013,b,m,15plus,all,289
+Indonesia,ID,IDN,2013,s,a,15_24,all,19
+Indonesia,ID,IDN,2013,s,a,15plus,all,165
+Indonesia,ID,IDN,2013,s,a,25_34,all,34
+Kenya,KE,KEN,2015,b,a,15_24,all,54
+Kenya,KE,KEN,2015,b,a,15plus,all,305
+Kenya,KE,KEN,2015,b,a,15plus,cxr_abn_only,154
+Kenya,KE,KEN,2015,b,a,15plus,others,4
+Kenya,KE,KEN,2015,b,a,15plus,symptomatic,147
+Kenya,KE,KEN,2015,b,a,25_34,all,90
+Kenya,KE,KEN,2015,s,a,35_44,all,29
+Kenya,KE,KEN,2015,s,a,45_54,all,15
+Kenya,KE,KEN,2015,s,a,55_64,all,6
+Kenya,KE,KEN,2015,s,a,65plus,all,7
+Kenya,KE,KEN,2015,s,f,15plus,all,42
+Kenya,KE,KEN,2015,s,m,15plus,all,81
+Kenya,KE,KEN,2015,s,a,15_24,all,32
+Kenya,KE,KEN,2015,s,a,15plus,all,123
+Kenya,KE,KEN,2015,s,a,15plus,cxr_abn_only,37
+Kenya,KE,KEN,2015,s,a,15plus,others,1
+Kenya,KE,KEN,2015,s,a,15plus,symptomatic,85
+Kenya,KE,KEN,2015,s,a,25_34,all,34
+Kenya,KE,KEN,2015,b,a,35_44,all,58
+Kenya,KE,KEN,2015,b,a,45_54,all,43
+Kenya,KE,KEN,2015,b,a,55_64,all,28
+Kenya,KE,KEN,2015,b,a,65plus,all,32
+Kenya,KE,KEN,2015,b,f,15plus,all,118
+Kenya,KE,KEN,2015,b,m,15plus,all,187
+Cambodia,KH,KHM,2002,b,a,10_14,all,4
+Cambodia,KH,KHM,2002,b,a,10plus,all,271
+Cambodia,KH,KHM,2002,b,a,10plus,cxr_abn_only,165
+Cambodia,KH,KHM,2002,b,a,10plus,symptomatic,106
+Cambodia,KH,KHM,2002,b,a,15_24,all,19
+Cambodia,KH,KHM,2002,b,a,25_34,all,34
+Cambodia,KH,KHM,2002,s,a,55_64,all,11
+Cambodia,KH,KHM,2002,s,a,65plus,all,19
+Cambodia,KH,KHM,2002,s,f,10plus,all,25
+Cambodia,KH,KHM,2002,s,m,10plus,all,56
+Cambodia,KH,KHM,2002,s,a,10_14,all,3
+Cambodia,KH,KHM,2002,s,a,10plus,all,81
+Cambodia,KH,KHM,2002,s,a,15_24,all,8
+Cambodia,KH,KHM,2002,s,a,25_34,all,11
+Cambodia,KH,KHM,2002,s,a,35_44,all,15
+Cambodia,KH,KHM,2002,s,a,45_54,all,14
+Cambodia,KH,KHM,2002,b,a,35_44,all,48
+Cambodia,KH,KHM,2002,b,a,45_54,all,46
+Cambodia,KH,KHM,2002,b,a,55_64,all,46
+Cambodia,KH,KHM,2002,b,a,65plus,all,74
+Cambodia,KH,KHM,2002,b,f,10plus,all,118
+Cambodia,KH,KHM,2002,b,m,10plus,all,153
+Cambodia,KH,KHM,2011,b,a,15_24,all,14
+Cambodia,KH,KHM,2011,b,a,15plus,all,314
+Cambodia,KH,KHM,2011,b,a,15plus,cxr_abn_only,221
+Cambodia,KH,KHM,2011,b,a,15plus,symptomatic,93
+Cambodia,KH,KHM,2011,b,a,25_34,all,38
+Cambodia,KH,KHM,2011,b,a,35_44,all,53
+Cambodia,KH,KHM,2011,s,a,55_64,all,28
+Cambodia,KH,KHM,2011,s,a,65plus,all,29
+Cambodia,KH,KHM,2011,s,f,15plus,all,41
+Cambodia,KH,KHM,2011,s,m,15plus,all,62
+Cambodia,KH,KHM,2011,s,a,15plus,all,103
+Cambodia,KH,KHM,2011,s,a,15plus,cxr_abn_only,58
+Cambodia,KH,KHM,2011,s,a,15plus,symptomatic,45
+Cambodia,KH,KHM,2011,s,a,25_34,all,8
+Cambodia,KH,KHM,2011,s,a,35_44,all,16
+Cambodia,KH,KHM,2011,s,a,45_54,all,20
+Cambodia,KH,KHM,2011,b,a,45_54,all,57
+Cambodia,KH,KHM,2011,b,a,55_64,all,65
+Cambodia,KH,KHM,2011,b,a,65plus,all,87
+Cambodia,KH,KHM,2011,b,f,15plus,all,126
+Cambodia,KH,KHM,2011,b,m,15plus,all,188
+Cambodia,KH,KHM,2011,s,a,15_24,all,2
+Republic of Korea,KR,KOR,1990,b,a,5plus,all,118
+Republic of Korea,KR,KOR,1990,b,a,5plus,cxr_abn_only,52
+Republic of Korea,KR,KOR,1990,b,a,5plus,symptomatic,66
+Republic of Korea,KR,KOR,1990,s,a,5plus,all,70
+Republic of Korea,KR,KOR,1990,s,a,5plus,cxr_abn_only,27
+Republic of Korea,KR,KOR,1990,s,a,5plus,symptomatic,43
+Republic of Korea,KR,KOR,1995,b,a,5plus,all,142
+Republic of Korea,KR,KOR,1995,b,a,5plus,cxr_abn_only,85
+Republic of Korea,KR,KOR,1995,b,a,5plus,symptomatic,57
+Republic of Korea,KR,KOR,1995,s,a,5plus,all,60
+Republic of Korea,KR,KOR,1995,s,a,5plus,cxr_abn_only,36
+Republic of Korea,KR,KOR,1995,s,a,5plus,symptomatic,24
+Lao People's Democratic Republic,LA,LAO,2011,b,a,15_24,all,14
+Lao People's Democratic Republic,LA,LAO,2011,b,a,15plus,all,237
+Lao People's Democratic Republic,LA,LAO,2011,b,a,15plus,cxr_abn_only,119
+Lao People's Democratic Republic,LA,LAO,2011,b,a,15plus,symptomatic,118
+Lao People's Democratic Republic,LA,LAO,2011,b,a,25_34,all,22
+Lao People's Democratic Republic,LA,LAO,2011,b,a,35_44,all,37
+Lao People's Democratic Republic,LA,LAO,2011,s,a,55_64,all,19
+Lao People's Democratic Republic,LA,LAO,2011,s,a,65plus,all,28
+Lao People's Democratic Republic,LA,LAO,2011,s,f,15plus,all,32
+Lao People's Democratic Republic,LA,LAO,2011,s,m,15plus,all,75
+Lao People's Democratic Republic,LA,LAO,2011,s,a,15plus,all,107
+Lao People's Democratic Republic,LA,LAO,2011,s,a,15plus,cxr_abn_only,36
+Lao People's Democratic Republic,LA,LAO,2011,s,a,15plus,symptomatic,71
+Lao People's Democratic Republic,LA,LAO,2011,s,a,25_34,all,12
+Lao People's Democratic Republic,LA,LAO,2011,s,a,35_44,all,15
+Lao People's Democratic Republic,LA,LAO,2011,s,a,45_54,all,25
+Lao People's Democratic Republic,LA,LAO,2011,b,a,45_54,all,44
+Lao People's Democratic Republic,LA,LAO,2011,b,a,55_64,all,43
+Lao People's Democratic Republic,LA,LAO,2011,b,a,65plus,all,77
+Lao People's Democratic Republic,LA,LAO,2011,b,f,15plus,all,80
+Lao People's Democratic Republic,LA,LAO,2011,b,m,15plus,all,157
+Lao People's Democratic Republic,LA,LAO,2011,s,a,15_24,all,8
+Lesotho,LS,LSO,2019,b,a,15_24,all,7
+Lesotho,LS,LSO,2019,b,a,15plus,all,132
+Lesotho,LS,LSO,2019,b,a,15plus,cxr_abn_only,78
+Lesotho,LS,LSO,2019,b,a,15plus,others,5
+Lesotho,LS,LSO,2019,b,a,15plus,symptomatic,49
+Lesotho,LS,LSO,2019,b,a,25_34,all,12
+Lesotho,LS,LSO,2019,b,a,35_44,all,25
+Lesotho,LS,LSO,2019,b,a,45_54,all,13
+Lesotho,LS,LSO,2019,b,a,55_64,all,28
+Lesotho,LS,LSO,2019,b,a,65plus,all,47
+Lesotho,LS,LSO,2019,b,f,15plus,all,44
+Lesotho,LS,LSO,2019,b,m,15plus,all,88
+Myanmar,MM,MMR,1994,s,a,10plus,all,39
+Myanmar,MM,MMR,1994,s,a,15_24,all,0
+Myanmar,MM,MMR,1994,s,a,25_34,all,4
+Myanmar,MM,MMR,1994,s,a,35_44,all,10
+Myanmar,MM,MMR,1994,s,a,45_54,all,10
+Myanmar,MM,MMR,1994,s,a,55plus,all,14
+Myanmar,MM,MMR,2009,b,a,15_24,all,11
+Myanmar,MM,MMR,2009,b,a,15plus,all,311
+Myanmar,MM,MMR,2009,b,a,15plus,cxr_abn_only,245
+Myanmar,MM,MMR,2009,b,a,15plus,symptomatic,66
+Myanmar,MM,MMR,2009,b,a,25_34,all,52
+Myanmar,MM,MMR,2009,b,a,35_44,all,76
+Myanmar,MM,MMR,2009,s,a,55_64,all,19
+Myanmar,MM,MMR,2009,s,a,65plus,all,17
+Myanmar,MM,MMR,2009,s,f,15plus,all,35
+Myanmar,MM,MMR,2009,s,m,15plus,all,88
+Myanmar,MM,MMR,2009,s,a,15plus,all,123
+Myanmar,MM,MMR,2009,s,a,15plus,cxr_abn_only,81
+Myanmar,MM,MMR,2009,s,a,15plus,symptomatic,42
+Myanmar,MM,MMR,2009,s,a,25_34,all,21
+Myanmar,MM,MMR,2009,s,a,35_44,all,36
+Myanmar,MM,MMR,2009,s,a,45_54,all,25
+Myanmar,MM,MMR,2009,b,a,45_54,all,66
+Myanmar,MM,MMR,2009,b,a,55_64,all,44
+Myanmar,MM,MMR,2009,b,a,65plus,all,62
+Myanmar,MM,MMR,2009,b,f,15plus,all,105
+Myanmar,MM,MMR,2009,b,m,15plus,all,206
+Myanmar,MM,MMR,2009,s,a,15_24,all,5
+Myanmar,MM,MMR,2018,b,a,15_24,all,24
+Myanmar,MM,MMR,2018,b,a,15plus,all,322
+Myanmar,MM,MMR,2018,b,a,15plus,cxr_abn_only,277
+Myanmar,MM,MMR,2018,b,a,15plus,others,0
+Myanmar,MM,MMR,2018,b,a,15plus,symptomatic,45
+Myanmar,MM,MMR,2018,b,a,25_34,all,37
+Myanmar,MM,MMR,2018,b,a,35_44,all,59
+Myanmar,MM,MMR,2018,b,a,45_54,all,58
+Myanmar,MM,MMR,2018,b,a,55_64,all,69
+Myanmar,MM,MMR,2018,b,a,65plus,all,75
+Myanmar,MM,MMR,2018,b,f,15plus,all,86
+Myanmar,MM,MMR,2018,b,m,15plus,all,236
+Mongolia,MN,MNG,2015,b,a,15_24,all,41
+Mongolia,MN,MNG,2015,b,a,15plus,all,248
+Mongolia,MN,MNG,2015,b,a,15plus,cxr_abn_only,194
+Mongolia,MN,MNG,2015,b,a,15plus,symptomatic,51
+Mongolia,MN,MNG,2015,b,a,25_34,all,63
+Mongolia,MN,MNG,2015,b,a,35_44,all,44
+Mongolia,MN,MNG,2015,s,a,55_64,all,9
+Mongolia,MN,MNG,2015,s,a,65plus,all,8
+Mongolia,MN,MNG,2015,s,f,15plus,all,20
+Mongolia,MN,MNG,2015,s,m,15plus,all,68
+Mongolia,MN,MNG,2015,s,a,15plus,all,88
+Mongolia,MN,MNG,2015,s,a,15plus,cxr_abn_only,57
+Mongolia,MN,MNG,2015,s,a,15plus,symptomatic,30
+Mongolia,MN,MNG,2015,s,a,25_34,all,27
+Mongolia,MN,MNG,2015,s,a,35_44,all,19
+Mongolia,MN,MNG,2015,s,a,45_54,all,15
+Mongolia,MN,MNG,2015,b,a,45_54,all,43
+Mongolia,MN,MNG,2015,b,a,55_64,all,31
+Mongolia,MN,MNG,2015,b,a,65plus,all,26
+Mongolia,MN,MNG,2015,b,f,15plus,all,88
+Mongolia,MN,MNG,2015,b,m,15plus,all,160
+Mongolia,MN,MNG,2015,s,a,15_24,all,10
+Mozambique,MZ,MOZ,2019,b,a,15_24,all,10
+Mozambique,MZ,MOZ,2019,b,a,15plus,all,89
+Mozambique,MZ,MOZ,2019,b,a,15plus,cxr_abn_only,41
+Mozambique,MZ,MOZ,2019,b,a,15plus,others,7
+Mozambique,MZ,MOZ,2019,b,a,15plus,symptomatic,41
+Mozambique,MZ,MOZ,2019,b,a,25_34,all,20
+Mozambique,MZ,MOZ,2019,b,a,35_44,all,18
+Mozambique,MZ,MOZ,2019,b,a,45_54,all,14
+Mozambique,MZ,MOZ,2019,b,a,55_64,all,6
+Mozambique,MZ,MOZ,2019,b,a,65plus,all,21
+Mozambique,MZ,MOZ,2019,b,f,15plus,all,55
+Mozambique,MZ,MOZ,2019,b,m,15plus,all,34
+Malawi,MW,MWI,2013,b,a,15_24,all,12
+Malawi,MW,MWI,2013,b,a,15plus,all,132
+Malawi,MW,MWI,2013,b,a,25_34,all,21
+Malawi,MW,MWI,2013,b,a,35_44,all,35
+Malawi,MW,MWI,2013,b,a,45_54,all,10
+Malawi,MW,MWI,2013,b,a,55_64,all,17
+Malawi,MW,MWI,2013,s,f,15plus,all,27
+Malawi,MW,MWI,2013,s,m,15plus,all,35
+Malawi,MW,MWI,2013,b,a,15plus,cxr_abn_only,40
+Malawi,MW,MWI,2013,b,a,15plus,symptomatic,92
+Malawi,MW,MWI,2013,s,a,15plus,symptomatic,41
+Malawi,MW,MWI,2013,s,a,25_34,all,14
+Malawi,MW,MWI,2013,s,a,35_44,all,15
+Malawi,MW,MWI,2013,s,a,45_54,all,5
+Malawi,MW,MWI,2013,s,a,55_64,all,8
+Malawi,MW,MWI,2013,s,a,65plus,all,15
+Malawi,MW,MWI,2013,b,a,65plus,all,37
+Malawi,MW,MWI,2013,b,f,15plus,all,68
+Malawi,MW,MWI,2013,b,m,15plus,all,64
+Malawi,MW,MWI,2013,s,a,15_24,all,5
+Malawi,MW,MWI,2013,s,a,15plus,all,62
+Malawi,MW,MWI,2013,s,a,15plus,cxr_abn_only,21
+Namibia,NA,NAM,2018,b,a,15_24,all,15
+Namibia,NA,NAM,2018,b,a,15plus,all,123
+Namibia,NA,NAM,2018,b,a,15plus,cxr_abn_only,62
+Namibia,NA,NAM,2018,b,a,15plus,others,1
+Namibia,NA,NAM,2018,b,a,15plus,symptomatic,60
+Namibia,NA,NAM,2018,b,a,25_34,all,19
+Namibia,NA,NAM,2018,b,a,35_44,all,29
+Namibia,NA,NAM,2018,b,a,45_54,all,25
+Namibia,NA,NAM,2018,b,a,55_64,all,17
+Namibia,NA,NAM,2018,b,a,65plus,all,18
+Namibia,NA,NAM,2018,b,f,15plus,all,49
+Namibia,NA,NAM,2018,b,m,15plus,all,74
+Nigeria,NG,NGA,2012,b,a,15_24,all,19
+Nigeria,NG,NGA,2012,b,a,15plus,all,144
+Nigeria,NG,NGA,2012,b,a,15plus,cxr_abn_only,52
+Nigeria,NG,NGA,2012,b,a,15plus,symptomatic,92
+Nigeria,NG,NGA,2012,b,a,25_34,all,35
+Nigeria,NG,NGA,2012,b,a,35_44,all,30
+Nigeria,NG,NGA,2012,s,a,55_64,all,10
+Nigeria,NG,NGA,2012,s,a,65plus,all,9
+Nigeria,NG,NGA,2012,s,f,15plus,all,41
+Nigeria,NG,NGA,2012,s,m,15plus,all,66
+Nigeria,NG,NGA,2012,s,a,15plus,all,107
+Nigeria,NG,NGA,2012,s,a,15plus,cxr_abn_only,27
+Nigeria,NG,NGA,2012,s,a,15plus,symptomatic,80
+Nigeria,NG,NGA,2012,s,a,25_34,all,25
+Nigeria,NG,NGA,2012,s,a,35_44,all,22
+Nigeria,NG,NGA,2012,s,a,45_54,all,25
+Nigeria,NG,NGA,2012,b,a,45_54,all,29
+Nigeria,NG,NGA,2012,b,a,55_64,all,15
+Nigeria,NG,NGA,2012,b,a,65plus,all,16
+Nigeria,NG,NGA,2012,b,f,15plus,all,58
+Nigeria,NG,NGA,2012,b,m,15plus,all,86
+Nigeria,NG,NGA,2012,s,a,15_24,all,16
+Nepal,NP,NPL,2018,b,a,15_24,all,19
+Nepal,NP,NPL,2018,b,a,15plus,all,225
+Nepal,NP,NPL,2018,b,a,15plus,cxr_abn_only,165
+Nepal,NP,NPL,2018,b,a,15plus,others,0
+Nepal,NP,NPL,2018,b,a,15plus,symptomatic,60
+Nepal,NP,NPL,2018,b,a,25_34,all,15
+Nepal,NP,NPL,2018,b,a,35_44,all,25
+Nepal,NP,NPL,2018,b,a,45_54,all,34
+Nepal,NP,NPL,2018,b,a,55_64,all,48
+Nepal,NP,NPL,2018,b,a,65plus,all,84
+Nepal,NP,NPL,2018,b,f,15plus,all,74
+Nepal,NP,NPL,2018,b,m,15plus,all,151
+Pakistan,PK,PAK,2011,b,a,15_24,all,60
+Pakistan,PK,PAK,2011,b,a,15plus,all,341
+Pakistan,PK,PAK,2011,b,a,15plus,cxr_abn_only,135
+Pakistan,PK,PAK,2011,b,a,15plus,symptomatic,206
+Pakistan,PK,PAK,2011,b,a,25_34,all,42
+Pakistan,PK,PAK,2011,b,a,35_44,all,61
+Pakistan,PK,PAK,2011,s,a,55_64,all,26
+Pakistan,PK,PAK,2011,s,a,65plus,all,43
+Pakistan,PK,PAK,2011,s,f,15plus,all,99
+Pakistan,PK,PAK,2011,s,m,15plus,all,144
+Pakistan,PK,PAK,2011,s,a,15plus,all,233
+Pakistan,PK,PAK,2011,s,a,15plus,cxr_abn_only,85
+Pakistan,PK,PAK,2011,s,a,15plus,symptomatic,148
+Pakistan,PK,PAK,2011,s,a,25_34,all,31
+Pakistan,PK,PAK,2011,s,a,35_44,all,46
+Pakistan,PK,PAK,2011,s,a,45_54,all,42
+Pakistan,PK,PAK,2011,b,a,45_54,all,55
+Pakistan,PK,PAK,2011,b,a,55_64,all,39
+Pakistan,PK,PAK,2011,b,a,65plus,all,84
+Pakistan,PK,PAK,2011,b,f,15plus,all,160
+Pakistan,PK,PAK,2011,b,m,15plus,all,181
+Pakistan,PK,PAK,2011,s,a,15_24,all,45
+Philippines,PH,PHL,1997,b,a,10plus,all,127
+Philippines,PH,PHL,1997,b,a,10plus,cxr_abn_only,59
+Philippines,PH,PHL,1997,b,a,10plus,symptomatic,55
+Philippines,PH,PHL,1997,s,a,10plus,all,47
+Philippines,PH,PHL,1997,s,a,10plus,cxr_abn_only,20
+Philippines,PH,PHL,1997,s,a,10plus,symptomatic,33
+Philippines,PH,PHL,2007,b,a,10_29,all,59
+Philippines,PH,PHL,2007,b,a,10plus,all,151
+Philippines,PH,PHL,2007,b,a,10plus,cxr_abn_only,56
+Philippines,PH,PHL,2007,b,a,10plus,symptomatic,80
+Philippines,PH,PHL,2007,b,a,30_49,all,56
+Philippines,PH,PHL,2007,b,a,50plus,all,35
+Philippines,PH,PHL,2007,s,f,10plus,all,22
+Philippines,PH,PHL,2007,s,m,10plus,all,38
+Philippines,PH,PHL,2007,b,f,10plus,all,44
+Philippines,PH,PHL,2007,b,m,10plus,all,107
+Philippines,PH,PHL,2007,s,a,10_29,all,11
+Philippines,PH,PHL,2007,s,a,10plus,all,60
+Philippines,PH,PHL,2007,s,a,30_49,all,23
+Philippines,PH,PHL,2007,s,a,50plus,all,26
+Philippines,PH,PHL,2016,b,a,15_24,all,72
+Philippines,PH,PHL,2016,b,a,15plus,all,466
+Philippines,PH,PHL,2016,b,a,15plus,cxr_abn_only,298
+Philippines,PH,PHL,2016,b,a,15plus,others,18
+Philippines,PH,PHL,2016,b,a,15plus,symptomatic,150
+Philippines,PH,PHL,2016,b,a,25_34,all,68
+Philippines,PH,PHL,2016,s,a,35_44,all,32
+Philippines,PH,PHL,2016,s,a,45_54,all,40
+Philippines,PH,PHL,2016,s,a,55_64,all,24
+Philippines,PH,PHL,2016,s,a,65plus,all,23
+Philippines,PH,PHL,2016,s,f,15plus,all,48
+Philippines,PH,PHL,2016,s,m,15plus,all,125
+Philippines,PH,PHL,2016,s,a,15_24,all,30
+Philippines,PH,PHL,2016,s,a,15plus,all,173
+Philippines,PH,PHL,2016,s,a,15plus,cxr_abn_only,80
+Philippines,PH,PHL,2016,s,a,15plus,others,5
+Philippines,PH,PHL,2016,s,a,15plus,symptomatic,88
+Philippines,PH,PHL,2016,s,a,25_34,all,24
+Philippines,PH,PHL,2016,b,a,35_44,all,76
+Philippines,PH,PHL,2016,b,a,45_54,all,103
+Philippines,PH,PHL,2016,b,a,55_64,all,73
+Philippines,PH,PHL,2016,b,a,65plus,all,74
+Philippines,PH,PHL,2016,b,f,15plus,all,144
+Philippines,PH,PHL,2016,b,m,15plus,all,322
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,15_24,all,15
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,15plus,all,340
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,15plus,cxr_abn_only,148
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,15plus,others,0
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,15plus,symptomatic,192
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,25_34,all,58
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,35_44,all,95
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,45_54,all,103
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,55_64,all,41
+Democratic People's Republic of Korea,KP,PRK,2016,b,a,65plus,all,28
+Democratic People's Republic of Korea,KP,PRK,2016,b,f,15plus,all,103
+Democratic People's Republic of Korea,KP,PRK,2016,b,m,15plus,all,237
+Rwanda,RW,RWA,2012,s,f,15plus,all,6
+Rwanda,RW,RWA,2012,s,m,15plus,all,21
+Rwanda,RW,RWA,2012,s,a,15plus,symptomatic,14
+Rwanda,RW,RWA,2012,s,a,25_34,all,5
+Rwanda,RW,RWA,2012,s,a,35_44,all,5
+Rwanda,RW,RWA,2012,s,a,45_54,all,3
+Rwanda,RW,RWA,2012,s,a,55_64,all,6
+Rwanda,RW,RWA,2012,s,a,65plus,all,2
+Rwanda,RW,RWA,2012,b,a,65plus,all,4
+Rwanda,RW,RWA,2012,b,f,15plus,all,10
+Rwanda,RW,RWA,2012,b,m,15plus,all,30
+Rwanda,RW,RWA,2012,s,a,15_24,all,6
+Rwanda,RW,RWA,2012,s,a,15plus,all,27
+Rwanda,RW,RWA,2012,s,a,15plus,cxr_abn_only,13
+Rwanda,RW,RWA,2012,b,a,15plus,cxr_abn_only,21
+Rwanda,RW,RWA,2012,b,a,15plus,symptomatic,19
+Rwanda,RW,RWA,2012,b,a,25_34,all,7
+Rwanda,RW,RWA,2012,b,a,35_44,all,7
+Rwanda,RW,RWA,2012,b,a,45_54,all,5
+Rwanda,RW,RWA,2012,b,a,55_64,all,9
+Rwanda,RW,RWA,2012,b,a,15_24,all,8
+Rwanda,RW,RWA,2012,b,a,15plus,all,40
+Sudan,SD,SDN,2013,b,a,15_24,all,8
+Sudan,SD,SDN,2013,b,a,15plus,all,112
+Sudan,SD,SDN,2013,b,a,25_34,all,32
+Sudan,SD,SDN,2013,b,a,35_44,all,28
+Sudan,SD,SDN,2013,b,a,45_54,all,17
+Sudan,SD,SDN,2013,b,a,55_64,all,13
+Sudan,SD,SDN,2013,s,f,15plus,all,21
+Sudan,SD,SDN,2013,s,m,15plus,all,36
+Sudan,SD,SDN,2013,b,a,15plus,cxr_abn_only,45
+Sudan,SD,SDN,2013,b,a,15plus,symptomatic,67
+Sudan,SD,SDN,2013,s,a,15plus,symptomatic,38
+Sudan,SD,SDN,2013,s,a,25_34,all,18
+Sudan,SD,SDN,2013,s,a,35_44,all,19
+Sudan,SD,SDN,2013,s,a,45_54,all,5
+Sudan,SD,SDN,2013,s,a,55_64,all,4
+Sudan,SD,SDN,2013,s,a,65plus,all,6
+Sudan,SD,SDN,2013,b,a,65plus,all,14
+Sudan,SD,SDN,2013,b,f,15plus,all,47
+Sudan,SD,SDN,2013,b,m,15plus,all,65
+Sudan,SD,SDN,2013,s,a,15_24,all,5
+Sudan,SD,SDN,2013,s,a,15plus,all,57
+Sudan,SD,SDN,2013,s,a,15plus,cxr_abn_only,19
+Eswatini,SZ,SWZ,2018,b,a,15_24,all,9
+Eswatini,SZ,SWZ,2018,b,a,15plus,all,66
+Eswatini,SZ,SWZ,2018,b,a,15plus,cxr_abn_only,40
+Eswatini,SZ,SWZ,2018,b,a,15plus,others,4
+Eswatini,SZ,SWZ,2018,b,a,15plus,symptomatic,22
+Eswatini,SZ,SWZ,2018,b,a,25_34,all,16
+Eswatini,SZ,SWZ,2018,b,a,35_44,all,12
+Eswatini,SZ,SWZ,2018,b,a,45_54,all,12
+Eswatini,SZ,SWZ,2018,b,a,55_64,all,6
+Eswatini,SZ,SWZ,2018,b,a,65plus,all,11
+Eswatini,SZ,SWZ,2018,b,f,15plus,all,33
+Eswatini,SZ,SWZ,2018,b,m,15plus,all,33
+Thailand,TH,THA,1991,b,a,10plus,all,101
+Thailand,TH,THA,1991,s,a,10plus,all,73
+Thailand,TH,THA,2012,b,a,15_24,all,7
+Thailand,TH,THA,2012,b,a,15plus,all,142
+Thailand,TH,THA,2012,b,a,15plus,cxr_abn_only,94
+Thailand,TH,THA,2012,b,a,15plus,symptomatic,48
+Thailand,TH,THA,2012,b,a,25_34,all,9
+Thailand,TH,THA,2012,b,a,35_44,all,17
+Thailand,TH,THA,2012,s,a,55_64,all,15
+Thailand,TH,THA,2012,s,a,65plus,all,20
+Thailand,TH,THA,2012,s,f,15plus,all,17
+Thailand,TH,THA,2012,s,m,15plus,all,41
+Thailand,TH,THA,2012,s,a,15plus,all,58
+Thailand,TH,THA,2012,s,a,15plus,cxr_abn_only,30
+Thailand,TH,THA,2012,s,a,15plus,symptomatic,28
+Thailand,TH,THA,2012,s,a,25_34,all,6
+Thailand,TH,THA,2012,s,a,35_44,all,5
+Thailand,TH,THA,2012,s,a,45_54,all,10
+Thailand,TH,THA,2012,b,a,45_54,all,30
+Thailand,TH,THA,2012,b,a,55_64,all,31
+Thailand,TH,THA,2012,b,a,65plus,all,48
+Thailand,TH,THA,2012,b,f,15plus,all,44
+Thailand,TH,THA,2012,b,m,15plus,all,98
+Thailand,TH,THA,2012,s,a,15_24,all,2
+United Republic of Tanzania,TZ,TZA,2012,s,a,15_24,all,7
+United Republic of Tanzania,TZ,TZA,2012,s,a,15plus,all,134
+United Republic of Tanzania,TZ,TZA,2012,s,a,15plus,cxr_abn_only,48
+United Republic of Tanzania,TZ,TZA,2012,s,a,15plus,symptomatic,86
+United Republic of Tanzania,TZ,TZA,2012,s,a,25_34,all,29
+United Republic of Tanzania,TZ,TZA,2012,s,a,35_44,all,28
+United Republic of Tanzania,TZ,TZA,2012,s,a,45_54,all,16
+United Republic of Tanzania,TZ,TZA,2012,s,a,55_64,all,21
+United Republic of Tanzania,TZ,TZA,2012,s,a,65plus,all,33
+United Republic of Tanzania,TZ,TZA,2012,s,f,15plus,all,52
+United Republic of Tanzania,TZ,TZA,2012,s,m,15plus,all,82
+Uganda,UG,UGA,2015,b,a,15_24,all,29
+Uganda,UG,UGA,2015,b,a,15plus,all,160
+Uganda,UG,UGA,2015,b,a,15plus,cxr_abn_only,81
+Uganda,UG,UGA,2015,b,a,15plus,symptomatic,79
+Uganda,UG,UGA,2015,b,a,25_34,all,42
+Uganda,UG,UGA,2015,b,a,35_44,all,39
+Uganda,UG,UGA,2015,s,a,55_64,all,5
+Uganda,UG,UGA,2015,s,a,65plus,all,2
+Uganda,UG,UGA,2015,s,f,15plus,all,15
+Uganda,UG,UGA,2015,s,m,15plus,all,51
+Uganda,UG,UGA,2015,s,a,15plus,all,66
+Uganda,UG,UGA,2015,s,a,15plus,cxr_abn_only,30
+Uganda,UG,UGA,2015,s,a,15plus,symptomatic,36
+Uganda,UG,UGA,2015,s,a,25_34,all,18
+Uganda,UG,UGA,2015,s,a,35_44,all,18
+Uganda,UG,UGA,2015,s,a,45_54,all,7
+Uganda,UG,UGA,2015,b,a,45_54,all,24
+Uganda,UG,UGA,2015,b,a,55_64,all,12
+Uganda,UG,UGA,2015,b,a,65plus,all,14
+Uganda,UG,UGA,2015,b,f,15plus,all,40
+Uganda,UG,UGA,2015,b,m,15plus,all,120
+Uganda,UG,UGA,2015,s,a,15_24,all,16
+Viet Nam,VN,VNM,2007,b,a,15_24,all,10
+Viet Nam,VN,VNM,2007,b,a,15plus,all,269
+Viet Nam,VN,VNM,2007,b,a,15plus,cxr_abn_only,160
+Viet Nam,VN,VNM,2007,b,a,15plus,symptomatic,71
+Viet Nam,VN,VNM,2007,b,a,25_34,all,27
+Viet Nam,VN,VNM,2007,b,a,35_44,all,63
+Viet Nam,VN,VNM,2007,s,a,55_64,all,24
+Viet Nam,VN,VNM,2007,s,a,65plus,all,39
+Viet Nam,VN,VNM,2007,s,f,15plus,all,32
+Viet Nam,VN,VNM,2007,s,m,15plus,all,142
+Viet Nam,VN,VNM,2007,s,a,15plus,all,174
+Viet Nam,VN,VNM,2007,s,a,15plus,cxr_abn_only,98
+Viet Nam,VN,VNM,2007,s,a,15plus,symptomatic,46
+Viet Nam,VN,VNM,2007,s,a,25_34,all,16
+Viet Nam,VN,VNM,2007,s,a,35_44,all,47
+Viet Nam,VN,VNM,2007,s,a,45_54,all,41
+Viet Nam,VN,VNM,2007,b,a,45_54,all,59
+Viet Nam,VN,VNM,2007,b,a,55_64,all,38
+Viet Nam,VN,VNM,2007,b,a,65plus,all,72
+Viet Nam,VN,VNM,2007,b,f,15plus,all,57
+Viet Nam,VN,VNM,2007,b,m,15plus,all,212
+Viet Nam,VN,VNM,2007,s,a,15_24,all,7
+Viet Nam,VN,VNM,2018,b,a,15_24,all,4
+Viet Nam,VN,VNM,2018,b,a,15plus,all,221
+Viet Nam,VN,VNM,2018,b,a,15plus,cxr_abn_only,134
+Viet Nam,VN,VNM,2018,b,a,15plus,others,0
+Viet Nam,VN,VNM,2018,b,a,15plus,symptomatic,87
+Viet Nam,VN,VNM,2018,b,a,25_34,all,17
+Viet Nam,VN,VNM,2018,b,a,35_44,all,31
+Viet Nam,VN,VNM,2018,b,a,45_54,all,50
+Viet Nam,VN,VNM,2018,b,a,55_64,all,62
+Viet Nam,VN,VNM,2018,b,a,65plus,all,57
+Viet Nam,VN,VNM,2018,b,f,15plus,all,46
+Viet Nam,VN,VNM,2018,b,m,15plus,all,175
+South Africa,ZA,ZAF,2018,b,a,15_24,all,23
+South Africa,ZA,ZAF,2018,b,a,15plus,all,234
+South Africa,ZA,ZAF,2018,b,a,15plus,cxr_abn_only,135
+South Africa,ZA,ZAF,2018,b,a,15plus,others,1
+South Africa,ZA,ZAF,2018,b,a,15plus,symptomatic,98
+South Africa,ZA,ZAF,2018,b,a,25_34,all,54
+South Africa,ZA,ZAF,2018,b,a,35_44,all,48
+South Africa,ZA,ZAF,2018,b,a,45_54,all,38
+South Africa,ZA,ZAF,2018,b,a,55_64,all,30
+South Africa,ZA,ZAF,2018,b,a,65plus,all,41
+South Africa,ZA,ZAF,2018,b,f,15plus,all,110
+South Africa,ZA,ZAF,2018,b,m,15plus,all,124
+Zambia,ZM,ZMB,2014,b,a,15_24,all,32
+Zambia,ZM,ZMB,2014,b,a,15plus,all,265
+Zambia,ZM,ZMB,2014,b,a,15plus,cxr_abn_only,104
+Zambia,ZM,ZMB,2014,b,a,15plus,symptomatic,161
+Zambia,ZM,ZMB,2014,b,a,25_34,all,66
+Zambia,ZM,ZMB,2014,b,a,35_44,all,68
+Zambia,ZM,ZMB,2014,s,a,55_64,all,11
+Zambia,ZM,ZMB,2014,s,a,65plus,all,10
+Zambia,ZM,ZMB,2014,s,f,15plus,all,51
+Zambia,ZM,ZMB,2014,s,m,15plus,all,84
+Zambia,ZM,ZMB,2014,s,a,15plus,all,135
+Zambia,ZM,ZMB,2014,s,a,15plus,cxr_abn_only,45
+Zambia,ZM,ZMB,2014,s,a,15plus,symptomatic,90
+Zambia,ZM,ZMB,2014,s,a,25_34,all,43
+Zambia,ZM,ZMB,2014,s,a,35_44,all,35
+Zambia,ZM,ZMB,2014,s,a,45_54,all,17
+Zambia,ZM,ZMB,2014,b,a,45_54,all,45
+Zambia,ZM,ZMB,2014,b,a,55_64,all,23
+Zambia,ZM,ZMB,2014,b,a,65plus,all,31
+Zambia,ZM,ZMB,2014,b,f,15plus,all,113
+Zambia,ZM,ZMB,2014,b,m,15plus,all,152
+Zambia,ZM,ZMB,2014,s,a,15_24,all,19
+Zimbabwe,ZW,ZWE,2014,b,a,15_24,all,11
+Zimbabwe,ZW,ZWE,2014,b,a,15plus,all,107
+Zimbabwe,ZW,ZWE,2014,b,a,25_34,all,28
+Zimbabwe,ZW,ZWE,2014,b,a,35_44,all,30
+Zimbabwe,ZW,ZWE,2014,b,a,45_54,all,10
+Zimbabwe,ZW,ZWE,2014,b,a,55_64,all,13
+Zimbabwe,ZW,ZWE,2014,s,f,15plus,all,10
+Zimbabwe,ZW,ZWE,2014,s,m,15plus,all,13
+Zimbabwe,ZW,ZWE,2014,b,a,15plus,cxr_abn_only,64
+Zimbabwe,ZW,ZWE,2014,b,a,15plus,symptomatic,43
+Zimbabwe,ZW,ZWE,2014,s,a,15plus,symptomatic,14
+Zimbabwe,ZW,ZWE,2014,s,a,25_34,all,8
+Zimbabwe,ZW,ZWE,2014,s,a,35_44,all,5
+Zimbabwe,ZW,ZWE,2014,s,a,45_54,all,3
+Zimbabwe,ZW,ZWE,2014,s,a,55_64,all,1
+Zimbabwe,ZW,ZWE,2014,s,a,65plus,all,1
+Zimbabwe,ZW,ZWE,2014,b,a,65plus,all,15
+Zimbabwe,ZW,ZWE,2014,b,f,15plus,all,49
+Zimbabwe,ZW,ZWE,2014,b,m,15plus,all,58
+Zimbabwe,ZW,ZWE,2014,s,a,15_24,all,5
+Zimbabwe,ZW,ZWE,2014,s,a,15plus,all,23
+Zimbabwe,ZW,ZWE,2014,s,a,15plus,cxr_abn_only,9

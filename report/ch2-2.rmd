@@ -1,0 +1,1167 @@
+--- 
+title: "Section 2.2 TB mortality" 
+author: "Philippe Glaziou, Nim Pathy, Pete Dodd - formatted by Irwin Law and Hazim Timimi" 
+date: "`r Sys.Date()`" 
+knit: (function(inputFile, encoding) {
+  out_dir <- "./html_drafts";
+  rmarkdown::render(inputFile,
+                    encoding=encoding,
+                    output_dir=file.path(dirname(inputFile), out_dir))})
+output:  
+  html_fragment: 
+    # Don’t include a table of contents 
+    toc: no 
+    # Set standard figure width to 12 inches 
+    fig_width: 12 
+    # Don’t write figure captions 
+    fig_caption: FALSE 
+    
+
+# To run this file and store output as html:
+# rmarkdown::render(here::here("report/ch2-2.rmd"), output_file = "ch2-2.html", output_dir = here::here("report/html_drafts/"))
+--- 
+
+
+
+```{r setup, include=FALSE} 
+# Chapter 1
+# Set options, load data, utility functions 
+
+knitr::opts_chunk$set(echo = FALSE,  
+                      results = "asis", 
+                      message = FALSE, 
+                      warning = FALSE) 
+library(data.table)
+library(gtbreport)
+library(here)
+library(kableExtra)
+library(gridExtra)
+library(whomap)
+library(ggpubr)
+library(productplots)
+library(RColorBrewer)
+library(tidyverse)
+
+source(here('report/ch1_2_dataprep.R'))
+
+
+# Quick functions for callouts in the text to the figures/tables:
+# 1. lnk() Creates a link from text to a named anchor)
+lnk <- function(display_name){
+  return(paste0('<span class="red">[',
+                display_name,
+                '](#',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                ')</span>'))
+}
+
+# 2. anch() creates the named anchor to go above the figure or table
+anch <- function(display_name){
+  return(paste0('<a name="',
+                gsub("[^a-zA-Z0-9]", "-", tolower(display_name)),
+                '"></a>'))
+}
+
+# 3. ref_lnk() creates a link from text to the references in the WHO style (black, italic)
+ref_lnk <- function(display_name){
+  return(paste0('<span class="refs">[', 
+                display_name, 
+                '](#refs)</span>'))
+}
+
+
+``` 
+
+
+```{css, echo=FALSE}
+
+/* Styles to make it easier to see in the html_fragment; this CSS can be included in the CSS widget of Sitefinity */
+  
+
+.subhead, .footnote {
+  font-size: 80%;
+  line-height: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.subhead {
+	margin-top: -15px; /* Bring subheadings closer to figure headings */
+}
+
+.red, .red a {
+  color: #F21905; /* red text to show figure number */
+}
+
+
+.refs, .refs a {
+  color: #3c4245;  /* match SF normal text colour */
+  font-style: italic;
+}
+
+.textbox {
+    width: 100%;
+    background-color: #daeef4;
+    padding: 15px;
+}
+
+/* Table 2.2.1 */
+/* Recreating simple striped bootstrap table */
+#burden_num_table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  /* Next two lines to allow horizontal scrolling on narrow screens */
+  display: block;
+  overflow-x: auto;
+}
+
+#burden_num_table th {
+  border-bottom: 2px solid #DDDDDD;
+  padding: 8px;
+}
+
+#burden_num_table td {
+  border-top: 1px solid #DDDDDD;
+  padding: 8px;
+}
+
+/* light gray for odd rows */
+#burden_num_table tr:nth-child(odd) td {
+  background-color: #F5F5F5;	
+}
+
+/* Bold for the final row with thick line above */
+#burden_num_table tr:last-child td {
+  border-top: 2px solid #DDDDDD;
+  font-weight:bold;	
+}
+
+/* light gray when hovering over a row */
+#burden_num_table tr:hover td {
+  background-color: #DDDDDD;
+}
+
+/* Centre-align all column headings except for the first */
+#burden_num_table th:not(:first-child) {
+  text-align: center !important;
+}
+
+/* prevent numbers from wrapping in any of the columns */
+#burden_num_table td {
+  white-space: nowrap;
+}
+
+
+```
+
+
+# 2.2 TB mortality
+
+_Draft! Prepared `r Sys.Date()`_
+
+
+`r lnk("Box 2.2.1")` summarizes the methods used to produce estimates of TB mortality between 2000 and 2019, and the new methods that were needed to produce estimates for 2020 and 2021. Estimation of TB mortality during the COVID-19 pandemic is much more difficult than previously. The new methods have been extensively reviewed but rely heavily on country and region-specific dynamic models for low and middle-income countries, in the absence of reliable and up-to-date mortality data from national vital registration (VR) systems that include coding of causes of death according to international standards (`r ref_lnk("1")`). Only two of the 30 high TB burden countries (China and Russian Federation) reported data to WHO on the number of deaths caused by TB in 2020 and 2021, based on national VR data.  
+
+For consistency with international standards (`r ref_lnk("1")`), this section makes a clear distinction between TB deaths in HIV-negative people (classified as deaths caused by TB) and TB deaths in HIV-positive people (classified as deaths from HIV, with TB as a contributory cause).  
+
+Globally, the annual number of deaths from TB fell between 2005 and 2019 but this trend was reversed in 2020 and 2021 (`r lnk("Fig. 2.2.1")`). In 2021, there were an estimated 1.4 million deaths among HIV-negative people (95% uncertainty interval [UI]: 1.3-1.5 million) and 187 000 (95% UI, 158 000-218 000) among HIV-positive people, for a combined total of 1.6 million; this was up from best estimates of 1.5 million in 2020 and 1.4 million in 2019, and back to the level of 2017. The progress previously made towards the first milestone of the End TB Strategy, which called for a 35% reduction between 2015 and 2020, has been reversed; the net reduction from 2015 to 2021 was only 5.9%.    
+
+
+### `r anch("Fig. 2.2.1")`<span style="color:#F21905">Fig. 2.2.1</span> Global trends in the estimated number of TB deaths and the mortality rate, 2000&#8211;2021
+<div class="subhead">Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.1, fig.alt="Global trends in the estimated number of TB deaths (left) and the mortality rate (right), 2000-2021"}
+
+p1 <-
+  qplot(
+    year,
+    mort.num / 1e6,
+    data = global,
+    geom = 'line',
+    colour = I('grey20')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = mort.lo.num / 1e6, ymax = mort.hi.num / 1e6),
+    fill = I('grey40'),
+    alpha = 0.4
+  ) +
+  ylab('Millions per year (log scale)') + xlab('') +
+  geom_line(aes(year, mort.h.num / 1e6), colour = I('lightskyblue2')) +
+  geom_ribbon(
+    aes(year, ymin = mort.h.lo.num / 1e6, ymax = mort.h.hi.num / 1e6),
+    fill = I('lightskyblue2'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, mort.nh.num / 1e6), colour = I('blue')) +
+  geom_ribbon(
+    aes(year, ymin = mort.nh.lo.num / 1e6, ymax = mort.nh.hi.num / 1e6),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, mort.num / 1e6), colour = I('grey20')) +
+  geom_ribbon(
+    aes(year, ymin = mort.lo.num / 1e6, ymax = mort.hi.num / 1e6),
+    fill = I('grey40'),
+    alpha = 0.4
+  ) +
+  annotate(
+    'text',
+    y = 1.15,
+    x = 2000,
+    label = '2020 milestone',
+    hjust = 0,
+    size = I(4)
+  ) +
+#  expand_limits(y = 0.1) +
+  geom_hline(aes(yintercept = mort.num[16] * 0.65 / 1e6), linetype = I(2)) +
+  annotate(
+    'text',
+    x = 2013,
+    y = 2,
+    label = 'Total',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2013,
+    y = 1.2,
+    label = 'HIV-negative people',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2013,
+    y = 0.20,
+    label = 'HIV-positive people',
+    hjust = 0,
+    size = I(4)
+  ) +
+  scale_y_log10(breaks=c(0.3,0.5,1,1.5,2)) +
+  theme_gtb() + theme(legend.position = 'none')
+
+#ggsave(here('report/html_drafts/fig06a.pdf'), width=8.3, height=5.8)
+
+#write.csv(global[, .(year, mort.num, mort.lo.num, mort.hi.num, mort.nh.num, mort.nh.lo.num, mort.nh.hi.num, mort.h.num, mort.h.lo.num, mort.h.hi.num, milestone=mort.num[16] * 0.65)], 
+#       file=here('report/html_drafts/fig06a.csv'))
+
+
+
+p2 <-
+  qplot(
+    year,
+    mort,
+    data = global,
+    geom = 'line',
+    colour = I('grey20')
+  ) +
+  geom_ribbon(aes(year, ymin = mort.lo, ymax = mort.hi),
+              fill = I('grey40'),
+              alpha = 0.4) +
+  ylab('Rate per 100 000 population per year (log scale)') + xlab('') +
+  geom_line(aes(year, mort.h), colour = I('lightskyblue2')) +
+  geom_ribbon(
+    aes(year, ymin = mort.h.lo, ymax = mort.h.hi),
+    fill = I('lightskyblue2'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, mort.nh), colour = I('blue')) +
+  geom_ribbon(
+    aes(year, ymin = mort.nh.lo, ymax = mort.nh.hi),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, mort), colour = I('grey20')) +
+  geom_ribbon(aes(year, ymin = mort.lo, ymax = mort.hi),
+              fill = I('grey40'),
+              alpha = 0.4) +
+#  expand_limits(y = 0.1) +
+  annotate(
+    'text',
+    x = 2013,
+    y = 28,
+    label = 'Total',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2013,
+    y = 15,
+    label = 'HIV-negative people',
+    hjust = 0,
+    size = I(4)
+  ) +
+  annotate(
+    'text',
+    x = 2013,
+    y = 5,
+    label = 'HIV-positive people',
+    hjust = 0,
+    size = I(4)
+  ) +
+  scale_y_log10() +
+  theme_gtb() + theme(legend.position = 'none')
+
+
+mp <- grid.arrange(p1, p2, ncol = 2)
+
+#ggsave(here('report/html_drafts/fig06b.pdf'), width=8.3, height=5.8)
+
+#write.csv(global[, .(year, mort, mort.lo, mort.hi, mort.h, mort.h.lo, mort.h.hi, mort.nh, mort.nh.lo, mort.nh.hi)], 
+#       file=here('report/html_drafts/fig06b.csv'))
+
+
+```
+<div class="col-md-6">
+#### (a) Number
+<div id="fig_2_2_1a"></div>
+</div>
+<div class="col-md-6">
+#### (b) Rate per 100 000 population
+<div id="fig_2_2_1b"></div>
+</div>
+
+
+<br />
+The continued increase in TB mortality estimated for 2021 is consistent with projections published in the Global tuberculosis report 2021 (`r ref_lnk("2")`) and reflects the estimated impact of disruptions to essential TB services during the COVID-19 pandemic: in particular, drops in the number of people with TB who were detected and treated in 2020 and 2021 (<span class="red">Section 1</span>). The death rate for untreated TB is high (about 50%), and therefore the impact of reduced case detection on TB mortality is severe and noticeable within a short time period. The impact on TB incidence is more delayed (<span class="red">Section 2.1</span>). 
+
+In 2021, 82% of global TB deaths among HIV-negative people occurred in the WHO African and South-East Asia regions (`r lnk("Table 2.2.1")`); India alone accounted for 36%. The African and South-East Asia regions accounted for 82% of the combined total of TB deaths in HIV-negative and HIV-positive people; India accounted for 32%. 
+
+
+
+
+
+
+### `r anch("Table 2.2.1")`<span style="color:#F21905">Table 2.2.1</span> Global and regional estimates of TB mortality, numbers (in thousands) and rates (per 100 000 population) in 2021
+
+<div class="subhead">Low and high are the 5th and 95th percentiles of the uncertainty interval (UI)</div>
+```{r tab_2.2.1}
+
+tab.header2 <- c('Region or country group','Best estimate','Low', 'High',
+                  'Best estimate', 'Low', 'High',
+                  'Best estimate', 'Low', 'High',
+                  'Best estimate', 'Low', 'High'
+                  )
+
+knitr::kable(cbind(tab1[c(32:37, 31, 38), c(1, 9:14)], tab1b[c(32:37, 31, 38), 8:13]),
+             format = "html",
+             align = 'rcccccccccccc',
+             col.names = tab.header2,
+             # Add a table ID so that it can be styled using extra CSS in Sitefinity
+             table.attr = "id='burden_num_table'") |>
+add_header_above(header = c(" " = 1, "HIV-negative" = 3, "HIV-positive" = 3, "HIV-negative" = 3, "HIV-positive" = 3)) |>
+add_header_above(header = c(" " = 1, "Number of deaths (in thousands)" = 6, "Rate per 100 000 population" = 6)) 
+  # pack_rows("High burden countries", 1, 30) |>
+  # pack_rows('Groupings', 31, 38) 
+
+```
+
+
+
+<br />
+Globally in 2021, 54% of the HIV-negative people who died from TB were men, 32% were women and 14% were children (aged <15 years) (`r lnk("Fig. 2.2.2")`). The higher share for children compared with their estimated share of cases (11%) suggests poorer access to diagnosis and treatment. Of the TB deaths among HIV-positive people, 51% were men, 38% were women and 11% were children. 
+
+
+### `r anch("Fig. 2.2.2")` <span style="color:#F21905">Fig. 2.2.2</span> Global distribution of estimated TB mortality in HIV-negative people by age group and sex (female in <span style="color:#951b81">purple</span>; male in <span style="color:#80a51b">green</span>), 2021 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=6, fig_2.2.2, fig.alt="Main methods used to estimate TB mortality in HIV-negative people"} 
+
+# source(here('disaggregation/reportoutput/plotfunctions.R'))
+muplot <- function(indat,cnm){
+    agz2 <- c('0_4','5_14','15_24','25_34','35_44',
+              '45_54','55_64','65plus') #for labels
+    agz3 <- gsub('_','-',agz2)
+    agz4 <- c(rev(rev(agz3)[-1]),"\u226565")
+    if(!'age' %in% names(indat)) indat[,age:=gsub("_","-",age_group)]
+    indat[age=='65plus',age:=rev(agz4)[1]]
+    indat$age <- factor(indat$age,levels=agz4,ordered=TRUE)
+    indat$sex <- factor(indat$sex,levels=c('F','M'),ordered=TRUE)
+    ## plot
+    mp <- prodplot(data=indat,
+                   mort ~ sex + age,
+                   divider=mosaic()) +
+        aes(fill=sex)
+    mp <- mp + theme(axis.line=element_blank(),
+                     axis.text.x=element_text(angle=90),
+                     axis.text.y=element_text(),
+                     axis.ticks=element_blank(),
+                     axis.title.x=element_blank(),
+                     axis.title.y=element_blank(),
+                     legend.title=element_blank(),
+                     legend.position="none",
+                     panel.background=element_blank(),
+                     panel.border=element_blank(),
+                     panel.grid.major=element_blank(),
+                     panel.grid.minor=element_blank(),
+                     plot.background=element_blank()) +
+        ggtitle(cnm)
+    mp
+}
+
+disag.plot.mort.global <- function(D,title){
+    ## ages and colors etc
+    agz3 <- c('0\u20134','5\u201314','15\u201324','25\u201334','35\u201344','45\u201354',
+              '55-64','65plus') #for labels
+    agz4 <- c(rev(rev(agz3)[-1]),"\u226565")
+    clz <- c('F'=palette_gtb('female'),
+             'M'=palette_gtb('male'))
+    ## plot construction
+    plt <- muplot(D,title) +
+        coord_flip() +
+        scale_fill_manual(values=clz)+
+        theme_gtb()+
+        theme(axis.title.x=element_blank(), #remove
+              axis.text.x=element_blank(),
+              axis.ticks.x=element_blank(),
+              legend.position = 'none')
+    plt
+}
+
+
+annotate_figure(disag.plot.mort.global(Mglobsplt, 'Global'),
+                left = text_grob('Age group (years)', rot = 90))
+
+```
+
+
+<br />
+The latest year for which WHO has published estimates of global deaths by cause remains 2019, when TB was the top cause of death from a single infectious agent and the 13th leading cause of death worldwide (`r lnk("Fig. 2.2.3")`). In 2020 and 2021, it is anticipated that TB will rank second as a cause of death from a single infectious agent, after COVID-19 (`r ref_lnk("3")`).  
+
+
+
+### `r anch("Fig. 2.2.3")`<span style="color:#F21905">Fig. 2.2.3</span> Top causes of death worldwide in 2019 ^a,b^
+<div class="subhead">Deaths from TB among HIV-positive people are shown in grey.</div>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=6, fig_2.2.3, fig.alt="Top causes of death worldwide in 2019"} 
+
+tbhiv <- global$mort.h.num[global$year == 2019] / 1e3
+top10$tbhiv <- c(rep(0, 12), tbhiv, rep(0, 7))
+top10$n <- top10$deaths / 1000 + top10$tbhiv / 1000
+
+ggplot(data = top10, aes(reorder(cause, deaths), n)) +
+  geom_bar(stat = 'identity',
+           fill = I('grey70'),
+           colour = I('black')) +
+  geom_bar(
+    aes(cause, deaths / 1000),
+    stat = 'identity',
+    fill = I('#00aaad'),
+    colour = I('black')
+  ) +
+  xlab('')  + ylab('Number of deaths (millions)') +
+  scale_y_continuous(breaks = 0:9) +
+  coord_flip() +
+  theme_gtb()
+
+ggsave(here('report/pdf/fig08.pdf'), width=8.3, height=5.8)
+
+write.csv(top10, 
+       file=here('report/pdf/fig08.csv'))
+
+```
+<div id="fig_2_2_3"></div>
+<div class="footnote"> ^a^ This is the latest year for which estimates for all causes are currently available. See WHO estimates, available at https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates/ghe-leading-causes-of-death.<br>
+^b^ Deaths from TB among HIV-positive people are officially classified as deaths caused by HIV/AIDS in the International Classification of Diseases. </div> 
+
+
+<br />
+The estimated number of deaths officially classified as caused by TB (i.e. those among HIV-negative people) in 2021, at 1.4 million, was more than double the number caused by HIV/AIDS (0.65 million) (`r lnk("Fig. 2.2.4")`).  
+
+
+### `r anch("Fig. 2.2.4")`<span style="color:#F21905">Fig. 2.2.4</span> Estimated number of deaths from HIV/AIDS and TB in 2021 ^a,b^ 
+<div class="subhead">Deaths from TB among HIV-positive people are shown in grey.</div>
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png',fig.height=6, fig_2.2.4, fig.alt="Estimated number of deaths from HIV/AIDS and TB in 2021"} 
+
+hivd <- unaids[, .(sum(mort.hiv.num, na.rm = T)), by = year]
+cod <- data.table(
+  cause = c('HIV/AIDS', 'TB'),
+  n = c((last(hivd$V1) - last(global$mort.h.num)) / 1e6, last(global$mort.nh.num) /
+          1e6),
+  tbhiv = rep(last(global$mort.h.num) / 1e6, 2)
+)
+cod[, total := n + tbhiv]
+
+ggplot(data = cod, aes(reorder(cause, total), total)) +
+  geom_bar(stat = 'identity',
+           fill = I('grey70'),
+           colour = I('black')) +
+  geom_bar(
+    aes(cause, n),
+    stat = 'identity',
+    fill = I('#00aaad'),
+    colour = I('black')
+  ) +
+  xlab('') + ylab('Millions (2021)') +
+  coord_flip() +
+  theme_gtb()
+
+
+```
+<div id="fig_2_2_4"></div>
+<div class="footnote"> ^a^ For HIV/AIDS, the latest estimates of the number of deaths in 2021 that have been published by UNAIDS are available at http://www.unaids.org/en/ (accessed 15 August 2022). For TB, the estimates for 2021 are those published in this report.<br>
+^b^ Deaths from TB among HIV-positive people are officially classified as deaths caused by HIV/AIDS in the International Classification of Diseases.</div> 
+
+
+<br />
+Compared with HIV, deaths from TB have been much more severely impacted by the COVID-19 pandemic (`r lnk("Fig. 2.2.5")`). In contrast to TB, deaths from HIV/AIDS continued to decline between 2019 and 2021 (`r ref_lnk("4")`). 
+
+
+### `r anch("Fig. 2.2.5")`<span style="color:#F21905">Fig. 2.2.5</span> Global trends in the estimated number of deaths caused by TB and HIV (in millions), 2000&#8211;2021 ^a,b^
+<div class="subhead">Shaded areas represent uncertainty intervals.</div> 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.5, fig.alt="Global trends in the estimated number of deaths caused by TB and HIV (in millions), 2000–2021"} 
+
+m <- 1e5
+ghiv.mort <-
+  est[, addXY(mort.hiv / m, r.sd = mort.hiv.sd / m, weights = as.numeric(pop)), by =
+        year]
+dta <- merge(global, ghiv.mort, by = 'year')
+M <- 1e6
+
+ggplot(data = dta, aes(year, mort.h.num / M)) +
+  geom_line(colour = I('lightskyblue2')) +
+  geom_line(aes(year, mort.nh.num / M), colour = I('blue')) +
+  geom_ribbon(
+    aes(year, ymin = mort.h.lo.num / M, ymax = mort.h.hi.num / M),
+    fill = I("lightskyblue2"),
+    alpha = I(.4)
+  ) +
+  geom_ribbon(
+    aes(year, ymin = mort.nh.lo.num / M, ymax = mort.nh.hi.num / M),
+    fill = I("blue"),
+    alpha = I(.4)
+  ) +
+  geom_line(aes(year, r.num / M), colour = I('grey50')) +
+  geom_ribbon(
+    aes(year, ymin = r.lo.num / M, ymax = r.hi.num / M),
+    fill = I("grey50"),
+    alpha = I(.4)
+  ) +
+  xlab('') + ylab('Millions of deaths per year (log scale)') +
+  annotate(
+    'text',
+    x = 2009,
+    y = 1.9,
+    label = 'HIV deaths',
+    size = I(5),
+    colour = I('grey50')
+  ) +
+  annotate(
+    'text',
+    x = 2005,
+    y = 1.3,
+    label = 'TB deaths in\nHIV-negative people',
+    size = I(5),
+    colour = I('blue')
+  ) +
+  annotate(
+    'text',
+    x = 2005,
+    y = 0.30,
+    label = 'TB deaths in\nHIV-positive people',
+    size = I(5),
+    colour = I('lightskyblue4')
+  ) +
+  expand_limits(y = 0.1) + 
+  scale_y_log10(breaks=c(0.3,0.5,1,1.5,1.8)) +
+  theme_gtb()
+
+
+#ggsave(here('report/pdf/fig07.pdf'), width=8.3, height=5.8)
+
+#write.csv(dta[, .(year, mort.h.num, mort.h.lo.num, mort.h.hi.num, mort.nh.num, mort.nh.lo.num, mort.nh.hi.num, r.num, r.lo.num, r.hi.num)], 
+#       file=here('report/pdf/fig07.csv'))
+
+```
+<div id="fig_2_2_5"></div>
+<div class="footnote"> ^a^ For HIV/AIDS, the latest estimates of the number of deaths in 2021 that have been published by UNAIDS are available at http://www.unaids.org/en/ (accessed 15 August 2022). For TB, the estimates for 2021 are those published in this report.<br>
+^b^ Deaths from TB among HIV-positive people are officially classified as deaths caused by HIV/AIDS in the International Classification of Diseases.</div> 
+
+
+
+<br />
+The global pattern of a fall in the TB mortality rate (TB deaths per 100 000 population per year), followed by increases in 2020 and 2021, is evident in five of the six WHO regions; the exception was the African Region, where there was a continued decline (`r lnk("Fig. 2.2.6")`).  
+
+
+### `r anch("Fig. 2.2.6")`<span style="color:#F21905">Fig. 2.2.6</span> Trends in estimated TB mortality rates by WHO region, 2000&#8211;2021
+<div class="subhead">Estimated TB mortality rates among HIV-negative people are shown in <span style="color:#3232ff">blue</span> and estimated mortality rates among HIV-positive people are shown in <span style="color:#87ceeb">light blue</span>. Shaded areas represent uncertainty intervals.</div> 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height = 8, fig_2.2.6, fig.alt="Trends in estimated TB mortality rates by WHO region, 2000−2021"} 
+
+qplot(
+    year,
+    mort.nh,
+    data = regional,
+    geom = 'line',
+    colour = I('blue')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = mort.nh.lo, ymax = mort.nh.hi),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_line(aes(year, mort.h), colour = I('lightskyblue2')) +
+  geom_ribbon(
+    aes(year, ymin = mort.h.lo, ymax = mort.h.hi),
+    fill = I('lightskyblue2'),
+    alpha = 0.4
+  ) +
+  expand_limits(y=0.1) +
+  facet_wrap(~ region, scale = 'free_y') +
+  xlab('') + ylab('Mortality rate per 100 000 population per year (log scale)') +
+  #  scale_y_continuous(trans='log10', breaks=c(0.1,1,5,10,20,30,50)) +
+  theme_gtb() +
+  scale_y_log10() +
+  theme(legend.position = 'none')
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_6_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_6_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_6_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_6_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_6_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_6_wpro"></div>
+</div>
+</div>
+
+
+<br />
+Trends in the absolute number of TB deaths at regional level show a similar pattern to the TB mortality rate (`r lnk("Fig. 2.2.7")`). Reversals of declines achieved up to 2019 have set back progress with respect to the first milestone of the WHO End TB Strategy, which was a 35% reduction by 2020 compared with 2015. The African Region is the closest to the milestone, with a 26% reduction between 2015 and 2021. The European Region had previously come close to reaching the 2020 milestone, with a 21% reduction in TB deaths between 2015 and 2019, but this progress was reversed in 2020 and 2021.  
+
+
+### `r anch("Fig. 2.2.7")`<span style="color:#F21905">Fig. 2.2.7</span> Trends in the estimated absolute number of TB deaths (HIV-positive and HIV-negative, in thousands) by WHO region, 2000&#8211;2021 
+<div class="subhead">Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height = 8, fig_2.2.7, fig.alt="Trends in the estimated absolute number of TB deaths (HIV-positive and HIV-negative, in thousands) by WHO region, 2000-2021"} 
+
+qplot(
+    year,
+    mort.num / 1e3,
+    data = regional,
+    geom = 'line',
+    colour = I('black')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = mort.lo.num / 1e3, ymax = mort.hi.num / 1e3),
+    fill = I('black'),
+    alpha = 0.2
+  ) +
+  geom_hline(aes(yintercept = mort.milestone / 1e3), linetype = I(2)) +
+#  expand_limits(y=0.1) +
+  facet_wrap(~ region, scale = 'free_y') +
+  xlab('') + ylab('Total TB deaths (thousands, log scale)') +
+  scale_y_log10() +
+  theme_gtb() +
+  theme(legend.position = 'none')
+
+ggsave(here('report/pdf/fig09.pdf'), width=12, height=8)
+
+write.csv(regional[, .(region,year,mort.num,mort.lo.num,mort.hi.num,mort.milestone)], 
+       file=here('report/pdf/fig09.csv'))
+
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_7_afro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_7_amro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_7_searo"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_7_euro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_7_emro"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_7_wpro"></div>
+</div>
+</div>
+
+<br />
+The regional distribution of TB deaths by age and sex in 2020 varied by WHO region (`r lnk("Fig. 2.2.8")`). 
+
+
+### `r anch("Fig. 2.2.8")`<span style="color:#F21905">Fig. 2.2.8</span> Regional distribution of estimated TB mortality in HIV-negative people by age group and sex (female in <span style="color:#951b81">purple</span>; male in <span style="color:#80a51b">green</span>), 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=10, fig_2.2.8, fig.alt="Main methods used to estimate TB mortality in HIV-negative people"} 
+
+disag.plot.mort.regional <- function(D){
+    ## ages and colors etc
+    agz3 <- c('0\u20134','5\u201314','15\u201324','25\u201334','35\u201344','45\u201354',
+              '55-64','65plus') #for labels
+    agz4 <- c(rev(rev(agz3)[-1]),"\u226565")
+    # whozt <- c('Africa','The Americas','Eastern Mediterranean','Europe',
+    #            'South-East Asia',
+    #            'Western Pacific')
+    # regs <- c('AFR','AMR','EMR','EUR','SEA','WPR')
+    clz <- c('F'=palette_gtb('female'),
+             'M'=palette_gtb('male'))
+    wr <- levels(D$name)
+    ## plot construction
+    Pltlst <- list()
+    for(i in 1:6){
+#        plt <- muplot(D[g.whoregion==regs[i]],whozt[i]) +
+        plt <- muplot(D[name==wr[i]],wr[i]) +
+            theme(legend.position="none")
+#        if(!(i%%3==1)) plt <- plt + theme(axis.text.y=element_blank())
+        plt <- plt + coord_flip() +
+            scale_fill_manual(values=clz)+
+            theme_gtb()+
+            theme(axis.title.x=element_blank(),
+                  axis.text.x=element_blank(),
+                  axis.ticks.x=element_blank(),
+                  legend.position = 'none')
+        Pltlst[[i]] <- plt
+    }
+    p <- ggpubr::ggarrange(plotlist = Pltlst, ncol = 3,nrow=2)
+    annotate_figure(p, left = text_grob('Age group (years)', rot=90))
+}
+
+disag.plot.mort.regional(Mregsplt)
+
+```
+
+
+<br />
+Trends in the number of TB deaths in the 30 high TB burden countries are mixed. Between 2019 and 2021, striking increases are estimated to have occurred in countries with major shortfalls in TB notifications in 2020 and 2021 (e.g. India, Indonesia, Myanmar, Philippines), while in others previous declines have slowed or stabilized. In 2021, the best estimate of the total number of TB deaths suggested that the 2020 milestone of the WHO End TB Strategy (a 35% reduction by 2020, compared with 2015) had been reached in 6 countries: Bangladesh, Kenya, Mozambique, Uganda, the United Republic of Tanzania and Zambia (`r lnk("Fig. 2.2.9")`). Ethiopia has almost reached the milestone, with a reduction of 34%.
+
+
+### `r anch("Fig. 2.2.9")`<span style="color:#F21905">Fig. 2.2.9</span> Trends in the estimated absolute number (in thousands) of TB deaths (HIV-positive and HIV-negative TB) in the 30 high TB burden countries, 2000&#8211;2021 ^a^
+<div class="subhead">Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=12, fig_2.2.9, fig.alt="Trends in the estimated absolute number of TB deaths (HIV-positive and HIV-negative TB) in the 30 high TB burden countries, 2000−2021"} 
+  qplot(
+    year,
+    mort.num / 1e3,
+    data = hest,
+    geom = 'line',
+    colour = I('grey20')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = mort.lo.num / 1e3, ymax = mort.hi.num / 1e3),
+    fill = I('black'),
+    alpha = 0.2
+  ) +
+  geom_hline(aes(yintercept = mort.milestone / 1e3), linetype = I(2)) +
+  #facet_wrap(~ country, scales = 'free_y', ncol = 5) +
+    facet_wrap(~country, nrow=6, scales="free",
+                     # Use the labeller function to make sure long country names are wrapped in panel headers
+                     labeller = label_wrap_gen(width = 25)) +
+  xlab('') + ylab('TB deaths (total, in thousands) per year (log scale)') +
+#  expand_limits(y = 0.1) +
+  scale_y_log10() +
+  theme_gtb()
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_AGO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_BGD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_BRA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_CAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_CHN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_COG"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_PRK"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_COD"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_ETH"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_GAB"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_IND"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_IDN"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_KEN"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_LSO"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_LBR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_MNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_MOZ"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_MMR"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_NAM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_NGA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_PAK"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_PNG"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_PHL"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_SLE"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_ZAF"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_THA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_UGA"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_9_TZA"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_VNM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_9_ZMB"></div>
+</div>
+</div>
+
+<div class="footnote">^a^ Mortality estimates for India are interim and subject to finalization, in consultation with the Ministry of Health & Family Welfare, India.</div>
+
+
+
+<br />
+Of the three global TB watchlist countries, only the Russian Federation has achieved the 2020 milestone (`r lnk("Fig. 2.2.10")`), with a cumulative reduction of 44% between 2015 and 2021. 
+
+
+### `r anch("Fig. 2.2.10")`<span style="color:#F21905">Fig. 2.2.10</span> Trends in the estimated absolute number (in thousands) of TB deaths (HIV-positive and HIV-negative TB) in the 3 global TB watchlist countries, 2000&#8211;2021
+<div class="subhead">Shaded areas represent uncertainty intervals. The horizontal dashed line shows the 2020 milestone of the End TB Strategy.</div> 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig.height=2.7, fig.width=8, fig.align='left', fig_2.2.10, fig.alt="Trends in the estimated absolute number of TB deaths (HIV-positive and HIV-negative TB) in the 3 WHO watch-list countries, 2000−2021"} 
+
+dta <- est[iso3 %in% c('KHM','RUS','ZWE')]
+dta[, mort.milestone := mort.num[16] * 0.65, by = iso3]
+
+  qplot(
+    year,
+    mort.num / 1e3,
+    data = dta,
+    geom = 'line',
+    colour = I('grey20')
+  ) +
+  geom_ribbon(
+    aes(year, ymin = mort.lo.num / 1e3, ymax = mort.hi.num / 1e3),
+    fill = I('blue'),
+    alpha = 0.4
+  ) +
+  geom_hline(aes(yintercept = mort.milestone / 1e3), linetype = I(2)) +
+  #facet_wrap(~ country, scales = 'free_y', ncol = 5) +
+    facet_wrap(~country, nrow=1, scales="free",
+                     # Use the labeller function to make sure long country names are wrapped in panel headers
+                     labeller = label_wrap_gen(width = 25)) +
+  xlab('') + ylab('TB deaths (total, in thousands)\nper year (log scale)') +
+#  expand_limits(y = 0.1) +
+  scale_y_log10() +
+  theme_gtb()
+
+```
+<div class="row">
+<div class="col-md-4">
+<div id="fig_2_2_10_KHM"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_10_RUS"></div>
+</div>
+<div class="col-md-4">
+<div id="fig_2_2_10_ZWE"></div>
+</div>
+</div>
+
+<br />
+In total, 25 countries had met the 2020 milestone by 2021 (`r lnk("Fig. 2.2.11")`). 
+
+### `r anch("Fig. 2.2.11")`<span style="color:#F21905">Fig. 2.2.11</span> Countries which, by 2021, had reached the 2020 milestone of the End TB Strategy for reducing the total number of TB deaths
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.11, fig.alt="Countries which, by 2021, had reached the 2020 milestone of the End TB Strategy for reducing the total number of TB deaths"} 
+
+dta.inc.2015 <- est[year==2015, .(iso3, country, g.hbc, inc, year, mort.num, mort.milestone, inc.milestone)]
+dta.inc.2021 <- est[year==2021, .(iso3, country, g.hbc, inc, year, mort.num, mort.milestone, inc.milestone)]
+
+dta1 <- rbind(dta.inc.2015, dta.inc.2021)
+dta1_wide<-dcast(melt(dta1, id.vars=c("country", "year")), country~variable+year)
+dta1_wide <- dta1_wide[, c(1,2,4,6,7,8,9,10,12)]
+dta1_wide[, 4:9] <- lapply(dta1_wide[, 4:9], as.numeric)
+
+dta1_wide$inc.percent.change<-((dta1_wide$inc_2015-dta1_wide$inc_2021)/dta1_wide$inc_2015)*100
+dta1_wide$mort.percent.change<-((dta1_wide$mort.num_2015-dta1_wide$mort.num_2021)/dta1_wide$mort.num_2015)*100
+
+names(dta1_wide)[names(dta1_wide)=="mort.milestone_2015"] <- "mort.milestone"
+names(dta1_wide)[names(dta1_wide)=="inc.milestone_2015"] <- "inc.milestone"
+
+names(dta1_wide)[names(dta1_wide)=="iso3_2015"] <- "iso3"
+names(dta1_wide)[names(dta1_wide)=="g.hbc_2015"] <- "g.hbc"
+
+dta1_wide$mort.target<-dta1_wide$mort.milestone-dta1_wide$mort.num_2021
+dta1_wide$inc.target<-dta1_wide$inc.milestone-dta1_wide$inc_2021
+
+#If inc.met or mort.met = 1, then the 2020 milestone has been met
+
+dta1_wide <-dta1_wide %>%
+  mutate(inc.met = case_when(inc.target <0~ 0, #condition 1
+                             inc.target >0~ 1, #condition 2
+  ))%>%
+  mutate(mort.met = case_when(mort.target <0~ 0, #condition 1
+                              mort.target >0~ 1, #condition 2
+  ))
+
+#make map of countries which have met the 2020 mortality milestone
+
+dta <- dta1_wide[ .(iso3, mort.met)]
+dta$var<-dta$V2
+dta$iso3<-dta$country
+
+dta$var<-factor(dta$var, levels = c(1, 0),
+       labels = c("2020 milestone reached", "Not reached"))
+
+p2<-whomap(dta, colours= c("#9999CC","white"),
+           na.col="#999999",
+           na.label = "Not applicable",
+           water.col = 'white',
+           hidef=F)
+p2
+
+```
+
+
+<br />
+There is considerable national variation in the TB mortality rate, with most of the countries with the highest rates in the African Region (`r lnk("Fig. 2.2.12")`). 
+
+
+### `r anch("Fig. 2.2.12")`<span style="color:#F21905">Fig. 2.2.12</span> Estimated TB mortality rates in HIV-negative people, 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.12, fig.alt="Estimated TB mortality rates in HIV-negative people, 2021"} 
+
+dta <- est[year == yr]
+dta$var <- cut(
+  dta$mort.nh,
+  c(0, 1, 5, 20, 40, Inf),
+  c('0\u20130.9', '1\u20134.9', '5\u201319', '20\u201339', '\u226540'),
+  right = F,
+  ordered_result = T
+)
+
+whomap(
+  X = dta, water.col = 'white',
+  legend.title = "Mortality\nper 100 000\npopulation per year",
+  legend.pos = c(0.14, 0.34),
+  colours = brewer.pal(5, "RdPu"),
+)
+
+```
+
+
+<br />
+There is also considerable variation in the case fatality ratio (CFR) i.e. the estimated proportion of people who develop TB that die from the disease (`r lnk("Fig. 2.2.13")`). Globally, the CFR was 15% in 2021, up from 14% in 2019. Achievement of the WHO End TB Strategy milestone of a 35% reduction in the annual number of TB deaths between 2015 and 2020 required reducing the CFR to 10% globally, in combination with an acceleration in the annual rate of decline in TB incidence to 4-5% per year by 2020. 
+
+### `r anch("Fig. 2.2.13")`<span style="color:#F21905">Fig. 2.2.13</span> Estimates of the case fatality ratio (CFR), including HIV-negative and HIV-positive people, 2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.13, fig.alt="Case fatality ratio (2021)"} 
+
+dta <-
+  est[year == yr & inc > 0, .(iso3,
+                        cfr = 100 * mort / inc)]
+dta$var <- cut(dta$cfr, 
+               breaks=c(0, 5, 10, 15, 20, Inf),
+               labels=c('0\u20134.9','5\u20139.9','10\u201314','15\u201319','\u226520'))
+
+whomap(
+  X = dta, water.col = 'white',
+  colours = brewer.pal(5, "YlOrRd"),
+  legend.title = 'Case fatality ratio\n(%)',
+)
+
+```
+
+
+`r anch("Box 2.2.1")`
+
+
+<div class="textbox">
+## Box 2.2.1 
+
+## Methods used by WHO to estimate TB mortality 
+
+The main methods used by WHO to estimate TB mortality at country level in the period 2000-2019 and 2020-2021 are shown in (`r lnk("Fig. 2.2.14")`) and (`r lnk("Fig. 2.2.15")`). These methods adhere to global guidelines for accurate and transparent reporting of health estimates (`r ref_lnk("5")`) and are described in detail in a <span class="red">technical appendix</span>.
+
+For 123 countries, estimates of the number of TB deaths among HIV-negative people for the period 2000-2019 are based on data on causes of death from national vital registration (VR) systems or mortality surveys (`r lnk("Fig. 2.2.14")`), which collectively accounted for 60% of the estimated number of TB deaths (among HIV-negative people) globally in 2019. For 21 of these countries, analyses of VR data and resulting estimates of TB deaths published by the Institute of Health Metrics and Evaluation (IHME) were used (`r ref_lnk("6")`). For all other countries, TB mortality among HIV-negative people was estimated indirectly as the product of TB incidence and the CFR. For all countries, TB mortality among HIV-positive people was estimated as the product of TB incidence and the CFR, with the latter accounting for the protective effect of antiretroviral treatment (ART). 
+
+Estimates for 2020 and 2021 were based on country-specific dynamic models for 27 countries with the biggest absolute reductions in TB notifications during the COVID-19 pandemic (when these reductions departed from pre-2020 trends). For China and the Russian Federation, data on the number of TB deaths recorded in national VR systems, which were shared with the WHO Global TB Programme as part of the annual process of reviewing draft TB country profiles, were used (`r lnk("Fig. 2.2.15")`). For other low and middle-income countries, region-specific dynamic models or the indirect method (based on estimates of TB incidence and the CFR as described above) were used. Estimates for high-income countries are based on the same methods as those used up to 2019 i.e. data from national VR systems, with the assumption that the pre-2020 trend was sustained.    
+
+
+### `r anch("Fig. 2.2.14")`<span style="color:#F21905">Fig. 2.2.14</span> Main methods used to estimate TB mortality in HIV-negative people, 2000&#8211;2019
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.14, fig.alt="Main methods used to estimate TB mortality in HIV-negative people, 2000-2019"} 
+
+dta <-
+  est[year == 2019, .(iso3,
+                        source.mort)]
+dta$var <- dta$source.mort
+
+whomap(
+  X = dta, water.col = 'white',
+  legend.title = 'Main method',
+  #colours = brewer.pal(3, "RdYlBu")
+  colours= c("#74c476", "#ffffcc", "#2c7fb8"),
+  legend.pos = c(0.11, 0.26)
+)
+
+#ggsave(here('report/html_drafts/fig2_2_14.pdf'), width=12, height=8)
+
+#write.csv(dta, 
+#       file=here('report/html_drafts/fig2_2_14.csv'))
+
+
+```
+<div class="footnote"> IHME: Institute of Health Metrics and Evaluation, Seattle, USA. VR: Vital registration of causes of deaths.</div> 
+
+
+### `r anch("Fig. 2.2.15")`<span style="color:#F21905">Fig. 2.2.15</span> Main methods used to estimate TB mortality in HIV-negative people, 2020&#8211;2021
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, results = "asis", dev = 'png', fig_2.2.15, fig.alt="Main methods used to estimate TB mortality in HIV-negative people, 2020-2021"} 
+
+dta <-
+  est[year == yr, .(iso3,
+                    source.mort)]
+dta['CHN', source.mort := 'VR']
+dta['RUS', source.mort := 'VR']
+dta$var <- factor(dta$source.mort)
+
+dta$var <- plyr::revalue(dta$var, c("Country model"="Country-specific dynamic model", "Regional model"="Region-specific dynamic model", "VR"="VR data for 2020-2021", "VR/IHME, extrapolated"="VR data and pre-2020 trend"))
+
+
+whomap(
+  X = dta, water.col = 'white',
+  legend.title = 'Main method',
+  #colours = brewer.pal(5, "Dark2"),
+  colours= c("#88be3b", "#ffffcc","#308047", "#41b6c4", "#2c7fb8"),
+  legend.pos = c(0.11, 0.26)
+)
+
+
+
+#ggsave(here('report/html_drafts/fig2_2_15.pdf'), width=12, height=8)
+
+#write.csv(dta, 
+#       file=here('report/html_drafts/fig2_2_15.csv'))
+
+
+```
+<div class="footnote"> VR: Vital registration of causes of deaths.</div> 
+
+</div>
+
+
+
+Country-specific details are available in the [Global tuberculosis report app](https://www.who.int/teams/global-tuberculosis-programme/data#app) and [country profiles](https://worldhealthorg.shinyapps.io/tb_profiles/).
+
+
+`r anch("refs")`
+
+<hr style="border:1px solid gray20">
+
+**References**
+
+<div class="footnote">
+
+
+1. International statistical classification of diseases and health related problems (The) ICD-10. Geneva: World Health Organization; 2016 (https://icd.who.int/browse10/2016/en). 
+
+2. Global tuberculosis report 2021 (pp15). Geneva: World Health Organization; 2021 (https://www.who.int/publications/i/item/9789240037021). 
+
+3. Coronavirus (COVID-19) dashboard. Geneva: World Health Organization. (https://covid19.who.int/) 
+
+4. AIDS info [website]. 2022 (http://aidsinfo.unaids.org/). 
+
+5. Guidelines for Accurate and Transparent Health Estimates Reporting (GATHER) [website]. Geneva: World Health Organization; 2021 (http://gather-statement.org/). 
+
+6. GBD results tool [website]. Global Health Data Exchange; 2020 (http://ghdx.healthdata.org/gbd-results-tool). 
+
+</div>
+
+
+
+
+
+

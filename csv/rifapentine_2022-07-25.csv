@@ -1,0 +1,218 @@
+﻿,country,iso2,iso3,var
+1,Afghanistan,AF,AFG,Not used or no data
+2,Albania,AL,ALB,Not used or no data
+3,Algeria,DZ,DZA,Not used or no data
+4,American Samoa,AS,ASM,Not used or no data
+5,Andorra,AD,AND,Not used or no data
+6,Angola,AO,AGO,Not used or no data
+7,Anguilla,AI,AIA,Not used or no data
+8,Antigua and Barbuda,AG,ATG,Not used or no data
+9,Argentina,AR,ARG,Not used or no data
+10,Armenia,AM,ARM,Not used or no data
+11,Aruba,AW,ABW,Not used or no data
+12,Australia,AU,AUS,Current or past use
+13,Austria,AT,AUT,Not used or no data
+14,Azerbaijan,AZ,AZE,Current or past use
+15,Bahamas,BS,BHS,Not used or no data
+16,Bahrain,BH,BHR,Not used or no data
+17,Bangladesh,BD,BGD,Current or past use
+18,Barbados,BB,BRB,Not used or no data
+19,Belarus,BY,BLR,Current or past use
+20,Belgium,BE,BEL,Not used or no data
+21,Belize,BZ,BLZ,Not used or no data
+22,Benin,BJ,BEN,Not used or no data
+23,Bermuda,BM,BMU,Not used or no data
+24,Bhutan,BT,BTN,Current or past use
+25,Bolivia (Plurinational State of),BO,BOL,Not used or no data
+26,"Bonaire, Saint Eustatius and Saba",BQ,BES,Not used or no data
+27,Bosnia and Herzegovina,BA,BIH,Not used or no data
+28,Botswana,BW,BWA,Current or past use
+29,Brazil,BR,BRA,Current or past use
+30,British Virgin Islands,VG,VGB,Not used or no data
+31,Brunei Darussalam,BN,BRN,Not used or no data
+32,Bulgaria,BG,BGR,Not used or no data
+33,Burkina Faso,BF,BFA,Current or past use
+34,Burundi,BI,BDI,Current or past use
+35,Cabo Verde,CV,CPV,Not used or no data
+36,Cambodia,KH,KHM,Current or past use
+37,Cameroon,CM,CMR,Not used or no data
+38,Canada,CA,CAN,Current or past use
+39,Cayman Islands,KY,CYM,Not used or no data
+40,Central African Republic,CF,CAF,Not used or no data
+41,Chad,TD,TCD,Not used or no data
+42,Chile,CL,CHL,Current or past use
+43,China,CN,CHN,Not used or no data
+44,"China, Hong Kong SAR",HK,HKG,Current or past use
+45,"China, Macao SAR",MO,MAC,Not used or no data
+46,Colombia,CO,COL,Current or past use
+47,Comoros,KM,COM,Not used or no data
+48,Congo,CG,COG,Not used or no data
+49,Cook Islands,CK,COK,Not used or no data
+50,Costa Rica,CR,CRI,Not used or no data
+51,Côte d'Ivoire,CI,CIV,Not used or no data
+52,Croatia,HR,HRV,Not used or no data
+53,Cuba,CU,CUB,Current or past use
+54,Curaçao,CW,CUW,Not used or no data
+55,Cyprus,CY,CYP,Not used or no data
+56,Czechia,CZ,CZE,Not used or no data
+57,Democratic People's Republic of Korea,KP,PRK,Not used or no data
+58,Democratic Republic of the Congo,CD,COD,Current or past use
+59,Denmark,DK,DNK,Not used or no data
+60,Djibouti,DJ,DJI,Not used or no data
+61,Dominica,DM,DMA,Not used or no data
+62,Dominican Republic,DO,DOM,Current or past use
+63,Ecuador,EC,ECU,Current or past use
+64,Egypt,EG,EGY,Not used or no data
+65,El Salvador,SV,SLV,Current or past use
+66,Equatorial Guinea,GQ,GNQ,Not used or no data
+67,Eritrea,ER,ERI,Current or past use
+68,Estonia,EE,EST,Current or past use
+69,Eswatini,SZ,SWZ,Current or past use
+70,Ethiopia,ET,ETH,Current or past use
+71,Fiji,FJ,FJI,Not used or no data
+72,Finland,FI,FIN,Not used or no data
+73,France,FR,FRA,Not used or no data
+74,French Polynesia,PF,PYF,Not used or no data
+75,Gabon,GA,GAB,Not used or no data
+76,Gambia,GM,GMB,Not used or no data
+77,Georgia,GE,GEO,Current or past use
+78,Germany,DE,DEU,Not used or no data
+79,Ghana,GH,GHA,Current or past use
+80,Greece,GR,GRC,Not used or no data
+81,Greenland,GL,GRL,Current or past use
+82,Grenada,GD,GRD,Not used or no data
+83,Guam,GU,GUM,Current or past use
+84,Guatemala,GT,GTM,Not used or no data
+85,Guinea,GN,GIN,Not used or no data
+86,Guinea-Bissau,GW,GNB,Not used or no data
+87,Guyana,GY,GUY,Not used or no data
+88,Haiti,HT,HTI,Current or past use
+89,Honduras,HN,HND,Not used or no data
+90,Hungary,HU,HUN,Not used or no data
+91,Iceland,IS,ISL,Not used or no data
+92,India,IN,IND,Current or past use
+93,Indonesia,ID,IDN,Current or past use
+94,Iran (Islamic Republic of),IR,IRN,Current or past use
+95,Iraq,IQ,IRQ,Not used or no data
+96,Ireland,IE,IRL,Not used or no data
+97,Israel,IL,ISR,Not used or no data
+98,Italy,IT,ITA,Not used or no data
+99,Jamaica,JM,JAM,Current or past use
+100,Japan,JP,JPN,Not used or no data
+101,Jordan,JO,JOR,Not used or no data
+102,Kazakhstan,KZ,KAZ,Current or past use
+103,Kenya,KE,KEN,Current or past use
+104,Kiribati,KI,KIR,Used in trials only
+105,Kosovo,XA,RKS,Not used or no data
+106,Kuwait,KW,KWT,Not used or no data
+107,Kyrgyzstan,KG,KGZ,Not used or no data
+108,Lao People's Democratic Republic,LA,LAO,Not used or no data
+109,Latvia,LV,LVA,Not used or no data
+110,Lebanon,LB,LBN,Not used or no data
+111,Lesotho,LS,LSO,Current or past use
+112,Liberia,LR,LBR,Current or past use
+113,Libya,LY,LBY,Not used or no data
+114,Lithuania,LT,LTU,Not used or no data
+115,Luxembourg,LU,LUX,Not used or no data
+116,Madagascar,MG,MDG,Not used or no data
+117,Malawi,MW,MWI,Current or past use
+118,Malaysia,MY,MYS,Used in trials only
+119,Maldives,MV,MDV,Current or past use
+120,Mali,ML,MLI,Current or past use
+121,Malta,MT,MLT,Not used or no data
+122,Marshall Islands,MH,MRT,Current or past use
+123,Mauritania,MR,MRT,Current or past use
+124,Mauritius,MU,MUS,Not used or no data
+125,Mexico,MX,MEX,Not used or no data
+126,Micronesia (Federated States of),FM,FSM,Current or past use
+127,Monaco,MC,MCO,Not used or no data
+128,Mongolia,MN,MNG,Current or past use
+129,Montenegro,ME,MNE,Not used or no data
+130,Montserrat,MS,MSR,Not used or no data
+131,Morocco,MA,MAR,Not used or no data
+132,Mozambique,MZ,MOZ,Current or past use
+133,Myanmar,MM,MMR,Current or past use
+134,Namibia,NA,NAM,Current or past use
+135,Nauru,NR,NRU,Not used or no data
+136,Nepal,NP,NPL,Current or past use
+137,Netherlands,NL,NLD,Not used or no data
+138,New Caledonia,NC,NCL,Not used or no data
+139,New Zealand,NZ,NZL,Not used or no data
+140,Nicaragua,NI,NIC,Not used or no data
+141,Niger,NE,NER,Not used or no data
+142,Nigeria,NG,NGA,Not used or no data
+143,Niue,NU,NIU,Current or past use
+144,North Macedonia,MK,MKD,Not used or no data
+145,Northern Mariana Islands,MP,MNP,Not used or no data
+146,Norway,NO,NOR,Not used or no data
+147,Oman,OM,OMN,Current or past use
+148,Pakistan,PK,PAK,Current or past use
+149,Palau,PW,PLW,Not used or no data
+150,Panama,PA,PAN,Not used or no data
+151,Papua New Guinea,PG,PNG,Current or past use
+152,Paraguay,PY,PRY,Current or past use
+153,Peru,PE,PER,Current or past use
+154,Philippines,PH,PHL,Current or past use
+155,Poland,PL,POL,Not used or no data
+156,Portugal,PT,PRT,Not used or no data
+157,Puerto Rico,PR,PRI,Not used or no data
+158,Qatar,QA,QAT,Not used or no data
+159,Republic of Korea,KR,KOR,Current or past use
+160,Republic of Moldova,MD,MDA,Current or past use
+161,Romania,RO,ROU,Not used or no data
+162,Russian Federation,RU,RUS,Not used or no data
+163,Rwanda,RW,RWA,Current or past use
+164,Saint Kitts and Nevis,KN,KNA,Not used or no data
+165,Saint Lucia,LC,LCA,Not used or no data
+166,Saint Vincent and the Grenadines,VC,VCT,Not used or no data
+167,Samoa,WS,WSM,Not used or no data
+168,San Marino,SM,SMR,Not used or no data
+169,Sao Tome and Principe,ST,STP,Not used or no data
+170,Saudi Arabia,SA,SAU,Not used or no data
+171,Senegal,SN,SEN,Not used or no data
+172,Serbia,RS,SRB,Not used or no data
+173,Seychelles,SC,SYC,Not used or no data
+174,Sierra Leone,SL,SLE,Not used or no data
+175,Singapore,SG,SGP,Not used or no data
+176,Sint Maarten (Dutch part),SX,SXM,Not used or no data
+177,Slovakia,SK,SVK,Not used or no data
+178,Slovenia,SI,SVN,Not used or no data
+179,Solomon Islands,SB,SLB,Not used or no data
+180,Somalia,SO,SOM,Current or past use
+181,South Africa,ZA,ZAF,Current or past use
+182,South Sudan,SS,SSD,Not used or no data
+183,Spain,ES,ESP,Used in trials only
+184,Sri Lanka,LK,LKA,Not used or no data
+185,Sudan,SD,SDN,Not used or no data
+186,Suriname,SR,SUR,Not used or no data
+187,Sweden,SE,SWE,Current or past use
+188,Switzerland,CH,CHE,Not used or no data
+189,Syrian Arab Republic,SY,SYR,Current or past use
+190,Tajikistan,TJ,TJK,Current or past use
+191,Thailand,TH,THA,Current or past use
+192,Timor-Leste,TL,TLS,Current or past use
+193,Togo,TG,TGO,Not used or no data
+194,Tokelau,TK,TKL,Not used or no data
+195,Tonga,TO,TON,Not used or no data
+196,Trinidad and Tobago,TT,TTO,Not used or no data
+197,Tunisia,TN,TUN,Not used or no data
+198,Turkey,TR,TUR,Current or past use
+199,Turkmenistan,TM,TKM,Current or past use
+200,Turks and Caicos Islands,TC,TCA,Not used or no data
+201,Tuvalu,TV,TUV,Not used or no data
+202,Uganda,UG,UGA,Current or past use
+203,Ukraine,UA,UKR,Current or past use
+204,United Arab Emirates,AE,ARE,Current or past use
+205,United Kingdom of Great Britain and Northern Ireland,GB,GBR,Not used or no data
+206,United Republic of Tanzania,TZ,TZA,Current or past use
+207,United States of America,US,USA,Current or past use
+208,Uruguay,UY,URY,Current or past use
+209,Uzbekistan,UZ,UZB,Current or past use
+210,Vanuatu,VU,VUT,Not used or no data
+211,Venezuela (Bolivarian Republic of),VE,VEN,Current or past use
+212,Viet Nam,VN,VNM,Current or past use
+213,Wallis and Futuna Islands,WF,WLF,Not used or no data
+214,West Bank and Gaza Strip,PS,PSE,Not used or no data
+215,Yemen,YE,YEM,Current or past use
+216,Zambia,ZM,ZMB,Current or past use
+217,Zimbabwe,ZW,ZWE,Current or past use

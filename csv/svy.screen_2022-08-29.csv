@@ -1,0 +1,5 @@
+screen.group,description
+all,All cases
+cxr_abn_only,Cases with chest x-ray abnormalities suggestive of TB but with no TB symptoms
+others,In most surveys this means cases who were exempted from chest x-ray and who were not symptomatic
+symptomatic,Cases screened positive for TB symptoms

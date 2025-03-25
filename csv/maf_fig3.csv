@@ -1,0 +1,25 @@
+cat,year,value,cat2
+High TB burden countries,a,40,a
+High TB burden countries,b,50,a
+High TB burden countries,c,57,a
+African Region,a,51,b
+African Region,b,62,b
+African Region,c,66,b
+Region of the Americas,a,13,c
+Region of the Americas,b,24,c
+Region of the Americas,c,27,c
+South-East Asia Region,a,36,d
+South-East Asia Region,b,55,d
+South-East Asia Region,c,64,d
+European Region,a,26,e
+European Region,b,31,e
+European Region,c,35,e
+Eastern Mediterranean Region,a,14,f
+Eastern Mediterranean Region,b,36,f
+Eastern Mediterranean Region,c,45,f
+Western Pacific Region,a,31,g
+Western Pacific Region,b,44,g
+Western Pacific Region,c,47,g
+Total,a,29,h
+Total,b,40,h
+Total,c,45,h
